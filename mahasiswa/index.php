@@ -105,6 +105,8 @@ require('../vendor/myfunc.php');
                                                             echo 'Disetujui';
                                                         } elseif ($verifikasifile == 2 and $status == 0) {
                                                             echo 'Berkas tidak langkap';
+                                                        } elseif ($verifikasifile == 1 and $status == 2) {
+                                                            echo 'Ditolak prodi';
                                                         }
                                                         ?>
                                                     </td>
@@ -123,6 +125,82 @@ require('../vendor/myfunc.php');
                                                             <a href="pengajuanjudul-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
                                                         <?php
                                                         } elseif ($verifikasifile == 2 and $status == 0) {
+                                                        ?>
+                                                            <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
+                                                        <?php
+                                                        } elseif ($verifikasifile == 1 and $status == 2) {
+                                                        ?>
+                                                            <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                            }
+                                            ?>
+
+                                            <!-- ambil sempro-->
+                                            <?php
+                                            $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE nim=?");
+                                            $stmt->bind_param("s", $nim,);
+                                            $stmt->execute();
+                                            $result = $stmt->get_result();
+                                            $juser = $result->num_rows;
+                                            if ($juser > 0) {
+                                                $dhasil = $result->fetch_assoc();
+                                                $jadwalujian = $dhasil['jadwalujian'];
+                                                $ruang = $dhasil['ruang'];
+                                                $pembimbing = $dhasil['pembimbing'];
+                                                $verifikasifile = $dhasil['verifikasifile'];
+                                                $status = $dhasil['status'];
+                                                $token = $dhasil['token'];
+                                                $keterangan = $dhasil['keterangan'];
+                                            ?>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Ujian Proposal</td>
+                                                    <td><?php if (isset($jadwalujian)) {
+                                                            echo tgljam_indo($jadwalujian);
+                                                        } else {
+                                                            echo '-';
+                                                        } ?>
+                                                    </td>
+                                                    <td><?= $ruang; ?></td>
+                                                    <td>
+                                                        <?php
+                                                        if ($verifikasifile == 0 and $status == 0) {
+                                                            echo 'Menunggu verifikasi Admin';
+                                                        } elseif ($verifikasifile == 1 and $status == 0) {
+                                                            echo 'Menunggu verifikasi Sekprodi';
+                                                        } elseif ($verifikasifile == 1 and ($status == 1 || $status == 3)) {
+                                                            echo 'Disetujui';
+                                                        } elseif ($verifikasifile == 2 and $status == 0) {
+                                                            echo 'Berkas tidak langkap';
+                                                        } elseif ($verifikasifile == 1 and $status == 2) {
+                                                            echo 'Ditolak prodi';
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php
+                                                        if ($verifikasifile == 0 and $status == 0) {
+                                                        ?>
+                                                            <a href="#" class="btn btn-secondary" type="button" onclick="alert('Menunggu verifikasi Admin');"><i class="fa fa-spinner" aria-hidden="true"></i></a>
+                                                        <?php
+                                                        } elseif ($verifikasifile == 1 and $status == 0) {
+                                                        ?>
+                                                            <a href="#" class="btn btn-secondary" type="button" onclick="alert('Menunggu verifikasi Sekprodi');"><i class="fa fa-spinner" aria-hidden="true"></i></a>
+                                                        <?php
+                                                        } elseif ($verifikasifile == 1 and ($status == 1 || $status == 3)) {
+                                                        ?>
+                                                            <a href="ujianproposal-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                                                        <?php
+                                                        } elseif ($verifikasifile == 2 and $status == 0) {
+                                                        ?>
+                                                            <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
+                                                        <?php
+                                                        } elseif ($verifikasifile == 1 and $status == 2) {
                                                         ?>
                                                             <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
                                                         <?php
