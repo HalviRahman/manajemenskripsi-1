@@ -144,6 +144,7 @@ require('../vendor/myfunc.php');
                                             if ($juser > 0) {
                                                 $dhasil = $result->fetch_assoc();
                                                 $jadwalujian = $dhasil['jadwalujian'];
+                                                $ruang = $dhasil['ruang'];
                                                 $pembimbing = $dhasil['pembimbing'];
                                                 $verifikasifile = $dhasil['verifikasifile'];
                                                 $status = $dhasil['status'];
@@ -153,20 +154,20 @@ require('../vendor/myfunc.php');
                                                 <tr>
                                                     <td>2</td>
                                                     <td>Ujian Proposal</td>
-                                                    <td><? if (isset($jadwalujian)) {
+                                                    <td><?php if (isset($jadwalujian)) {
                                                             echo tgljam_indo($jadwalujian);
                                                         } else {
                                                             echo '-';
                                                         } ?>
                                                     </td>
-                                                    <td>-</td>
+                                                    <td><?= $ruang; ?></td>
                                                     <td>
                                                         <?php
                                                         if ($verifikasifile == 0 and $status == 0) {
                                                             echo 'Menunggu verifikasi Admin';
                                                         } elseif ($verifikasifile == 1 and $status == 0) {
                                                             echo 'Menunggu verifikasi Sekprodi';
-                                                        } elseif ($verifikasifile == 1 and $status == 1) {
+                                                        } elseif ($verifikasifile == 1 and ($status == 1 || $status == 3)) {
                                                             echo 'Disetujui';
                                                         } elseif ($verifikasifile == 2 and $status == 0) {
                                                             echo 'Berkas tidak langkap';
@@ -183,9 +184,9 @@ require('../vendor/myfunc.php');
                                                         ?>
                                                             <a href="#" class="btn btn-secondary" type="button" onclick="alert('Menunggu verifikasi Sekprodi');"><i class="fa fa-spinner" aria-hidden="true"></i></a>
                                                         <?php
-                                                        } elseif ($verifikasifile == 1 and $status == 1) {
+                                                        } elseif ($verifikasifile == 1 and ($status == 1 || $status == 3)) {
                                                         ?>
-                                                            <a href="pengajuanjudul-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                                                            <a href="ujianproposal-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
                                                         <?php
                                                         } elseif ($verifikasifile == 2 and $status == 0) {
                                                         ?>
