@@ -45,10 +45,10 @@ require('../config.php');
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Jadwal Ujian</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Pengajuan Mahasiswa</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Dashboard</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Jadwal Ujian</li>
+              <li class="breadcrumb-item active" aria-current="page">Pengajuan Mahasiswa</li>
             </ol>
           </div>
 
@@ -72,20 +72,31 @@ require('../config.php');
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Judul Proposal</td>
-                        <td>Fulanah</td>
-                        <td>09630333</td>
-                        <td class="text-center"><a href="judulproposal-tampil.php" class="btn btn-success" type="button">LIHAT</a></td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Ujian Komprehensif</td>
-                        <td>Markonah</td>
-                        <td>09630123</td>
-                        <td class="text-center"><button class="btn btn-success" type="button">LIHAT</button></td>
-                      </tr>
+                      <?php
+                      $no = 1;
+                      // ambil data pengajuan judul
+                      $stmt = $conn->prepare("SELECT * FROM pengajuanjudul WHERE status=0");
+                      $stmt->execute();
+                      $result = $stmt->get_result();
+                      while ($dhasil = $result->fetch_assoc()) {
+                        $nim = $dhasil['nim'];
+                        $nama = $dhasil['nama'];
+                        $ujian = 'Pengajuan Judul';
+                        $token = $dhasil['token'];
+                      ?>
+                        <tr>
+                          <td><?= $no; ?></td>
+                          <td><?= $ujian; ?></td>
+                          <td><?= $nama; ?></td>
+                          <td><?= $nim; ?></td>
+                          <td class="text-center">
+                            <a href="pengajuanjudul-sekprodi-detail.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                          </td>
+                        </tr>
+                      <?php
+                        $no++;
+                      }
+                      ?>
                     </tbody>
                   </table>
                 </div>

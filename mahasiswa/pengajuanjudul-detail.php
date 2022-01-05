@@ -6,7 +6,7 @@ $role = $_SESSION['role'];
 $jabatan = $_SESSION['jabatan'];
 $nama = $_SESSION['nama'];
 $nim = $_SESSION['nim'];
-if ($role != 'admin') {
+if ($role != 'mahasiswa') {
     header("location:../deauth.php");
 }
 require('../config.php');
@@ -73,6 +73,7 @@ require('../config.php');
                                 $nama = $dhasil['nama'];
                                 $bidang = $dhasil['bidang'];
                                 $judul = $dhasil['judul'];
+                                $pembimbing = $dhasil['pembimbing'];
                                 $fileproposal = $dhasil['fileproposal'];
                                 $token = $dhasil['token'];
                                 ?>
@@ -102,37 +103,10 @@ require('../config.php');
                                         <br />
                                         <small style="color: blue">Klik pada gambar untuk memperbesar</small>
                                     </div>
-                                    <form method="POST">
-                                        <input type="hidden" name="token" value="<?= $token; ?>">
-                                        <div class="row">
-                                            <div class="col">
-                                                <button type="submit" class="btn btn-success btn-lg btn-block" formaction="ujianproposal-admin-setujui.php">SETUJUI</button>
-                                            </div>
-                                            <div class="col">
-                                                <button type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-lg btn-block">TOLAK</button>
-                                            </div>
-                                        </div>
-                                        <!-- modal tolak -->
-                                        <div class="modal fade" id="modal-tolak">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Alasan Penolakan</h4>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <textarea class="form-control" rows="3" name="keterangan"></textarea>
-                                                    </div>
-                                                    <div class="modal-footer justify-content-between">
-                                                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                                                        <button name="aksi" value="tolak" type="submit" formaction="ujianproposal-admin-tolak.php" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i class="fa fa-times"></i> Tolak</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    <div class="form-group">
+                                        <label>Dosen Pembimbing</label>
+                                        <input type="text" class="form-control" name="pembimbing" value="<?= $pembimbing; ?>" readonly>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -130,12 +130,11 @@ require('../config.php');
                           <td><?= $ujian; ?></td>
                           <td><?= $nama; ?></td>
                           <td><?= $nim; ?></td>
-                          <td>
-                            <a href="ujianproposal-admin-detail.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                          <td class="text-center">
+                            <a href="pengajuanjudul-admin-detail.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
                           </td>
                         </tr>
                       <?php
-
                         $no++;
                       }
                       ?>

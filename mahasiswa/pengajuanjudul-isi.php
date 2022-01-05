@@ -61,7 +61,7 @@ require('../config.php');
                                     <h6 class="m-0 font-weight-bold text-primary">Data Judul Proposal</h6>
                                 </div>
                                 <div class="card-body">
-                                    <form action="judulproposal-simpan.php" enctype="multipart/form-data" method="POST">
+                                    <form action="pengajuanjudul-simpan.php" enctype="multipart/form-data" method="POST">
                                         <input type="hidden" class="form-control" value="<?= $nama; ?>" name="nama">
                                         <input type="hidden" class="form-control" value="<?= $nim; ?>" name="nim">
                                         <div class="form-group">

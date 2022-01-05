@@ -36,7 +36,7 @@ if (in_array($mimetype, array('image/jpeg', 'image/jpeg'))) {
 
 
 if ($uploadOk == 0) {
-    header("location:judulproposal-isi.php?pesan=gagal");
+    header("location:pengajuanjudul-isi.php?pesan=gagal");
     //echo 'something wrong';
 } else {
     if (move_uploaded_file($_FILES["proposal"]["tmp_name"], $target_file)) {

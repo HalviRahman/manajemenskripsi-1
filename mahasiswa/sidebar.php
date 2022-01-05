@@ -26,7 +26,7 @@
         Pendaftaran
     </div>
     <li class="nav-item">
-        <a class="nav-link" href="judulproposal-isi.php">
+        <a class="nav-link" href="pengajuanjudul-isi.php">
             <i class="fas fa-fw fa-file"></i>
             <span>Pengajuan Judul</span>
         </a>

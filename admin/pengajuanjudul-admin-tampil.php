@@ -47,7 +47,7 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Data Judul Proposal</h6>
                                 </div>
                                 <div class="card-body">
-                                    <form action="ujianproposal-penguji.php" enctype="multipart/form-data" method="POST">
+                                    <form action="peng-penguji.php" enctype="multipart/form-data" method="POST">
                                         <div class="form-group">
                                             <label>Nama</label>
                                             <input type="text" class="form-control" value="Johan Ericka" disabled>

@@ -73,55 +73,66 @@ require('../vendor/myfunc.php');
                                                 <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
-                                        <!-- ambil data pengajuan judul-->
-                                        <?php
-                                        $stmt = $conn->prepare("SELECT * FROM pengajuanjudul WHERE nim=?");
-                                        $stmt->bind_param("s", $nim,);
-                                        $stmt->execute();
-                                        $result = $stmt->get_result();
-                                        $dhasil = $result->fetch_assoc();
-                                        $tanggal = $dhasil['tanggal'];
-                                        $pembimbing = $dhasil['pembimbing'];
-                                        $status = $dhasil['status'];
-                                        $token = $dhasil['token'];
-                                        $keterangan = $dhasil['keterangan'];
-                                        ?>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Pengajuan Judul</td>
-                                                <td><?= tgljam_indo($tanggal); ?></td>
-                                                <td>-</td>
-                                                <td>
-                                                    <?php
-                                                    if ($status == 0) {
-                                                        echo 'Menunggu Verifikasi';
-                                                    } elseif ($status == 1) {
-                                                        echo 'Disetujui';
-                                                    } elseif ($status == 2) {
-                                                        echo 'Ditolak';
-                                                    }
-                                                    ?>
-                                                </td>
-                                                <td>
-                                                    <?php
-                                                    if ($status == 0) {
-                                                    ?>
-                                                        <a href="#" class="btn btn-secondary" type="button" onclick="alert('Menunggu Verifikasi');"><i class="fa fa-spinner" aria-hidden="true"></i></a>
-                                                    <?php
-                                                    } elseif ($status == 1) {
-                                                    ?>
-                                                        <a href="judulproposal-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
-                                                    <?php
-                                                    } elseif ($status == 2) {
-                                                    ?>
-                                                        <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
-                                                    <?php
-                                                    }
-                                                    ?>
-
-                                                </td>
-                                            </tr>
+                                            <!-- ambil data pengajuan judul-->
+                                            <?php
+                                            $stmt = $conn->prepare("SELECT * FROM pengajuanjudul WHERE nim=?");
+                                            $stmt->bind_param("s", $nim,);
+                                            $stmt->execute();
+                                            $result = $stmt->get_result();
+                                            $juser = $result->num_rows;
+                                            if ($juser > 0) {
+                                                $dhasil = $result->fetch_assoc();
+                                                $tanggal = $dhasil['tanggal'];
+                                                $pembimbing = $dhasil['pembimbing'];
+                                                $verifikasifile = $dhasil['verifikasifile'];
+                                                $status = $dhasil['status'];
+                                                $token = $dhasil['token'];
+                                                $keterangan = $dhasil['keterangan'];
+                                            ?>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Pengajuan Judul</td>
+                                                    <td><?= tgljam_indo($tanggal); ?></td>
+                                                    <td>-</td>
+                                                    <td>
+                                                        <?php
+                                                        if ($verifikasifile == 0 and $status == 0) {
+                                                            echo 'Menunggu verifikasi Admin';
+                                                        } elseif ($verifikasifile == 1 and $status == 0) {
+                                                            echo 'Menunggu verifikasi Sekprodi';
+                                                        } elseif ($verifikasifile == 1 and $status == 1) {
+                                                            echo 'Disetujui';
+                                                        } elseif ($verifikasifile == 2 and $status == 0) {
+                                                            echo 'Berkas tidak langkap';
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php
+                                                        if ($verifikasifile == 0 and $status == 0) {
+                                                        ?>
+                                                            <a href="#" class="btn btn-secondary" type="button" onclick="alert('Menunggu verifikasi Admin');"><i class="fa fa-spinner" aria-hidden="true"></i></a>
+                                                        <?php
+                                                        } elseif ($verifikasifile == 1 and $status == 0) {
+                                                        ?>
+                                                            <a href="#" class="btn btn-secondary" type="button" onclick="alert('Menunggu verifikasi Sekprodi');"><i class="fa fa-spinner" aria-hidden="true"></i></a>
+                                                        <?php
+                                                        } elseif ($verifikasifile == 1 and $status == 1) {
+                                                        ?>
+                                                            <a href="pengajuanjudul-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                                                        <?php
+                                                        } elseif ($verifikasifile == 2 and $status == 0) {
+                                                        ?>
+                                                            <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                            }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
