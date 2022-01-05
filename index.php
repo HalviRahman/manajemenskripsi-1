@@ -33,31 +33,33 @@
                   <!-- baca pesan -->
                   <?php
                   //ambil nilai variabel pesan di URL
-                  $pesan = $_GET['pesan'];
-                  if ($pesan == 'success') {
+                  if (isset($_GET['pesan'])) {
+                    $pesan = $_GET['pesan'];
+                    if ($pesan == 'success') {
                   ?>
-                    <div class="alert alert-success" role="alert">
-                      Pendaftaran pengguna berhasil
-                    </div>
+                      <div class="alert alert-success" role="alert">
+                        Pendaftaran pengguna berhasil
+                      </div>
+                    <?php
+                    } elseif ($pesan == 'exist') {
+                    ?>
+                      <div class="alert alert-danger" role="alert">
+                        <b>ERROR!!</b> Pengguna telah terdaftar
+                      </div>
+                    <?php
+                    } elseif ($pesan == 'passsalah') {
+                    ?>
+                      <div class="alert alert-danger" role="alert">
+                        <b>ERROR!!</b> Konfirmasi password tidak sama
+                      </div>
+                    <?php
+                    } elseif ($pesan == 'hitungsalah') {
+                    ?>
+                      <div class="alert alert-danger" role="alert">
+                        <b>ERROR!!</b> Perhitungan salah
+                      </div>
                   <?php
-                  } elseif ($pesan == 'exist') {
-                  ?>
-                    <div class="alert alert-danger" role="alert">
-                      <b>ERROR!!</b> Pengguna telah terdaftar
-                    </div>
-                  <?php
-                  } elseif ($pesan == 'passsalah') {
-                  ?>
-                    <div class="alert alert-danger" role="alert">
-                      <b>ERROR!!</b> Konfirmasi password tidak sama
-                    </div>
-                  <?php
-                  } elseif ($pesan == 'hitungsalah') {
-                  ?>
-                    <div class="alert alert-danger" role="alert">
-                      <b>ERROR!!</b> Perhitungan salah
-                    </div>
-                  <?php
+                    }
                   }
                   ?>
 

@@ -99,7 +99,7 @@ require('../config.php');
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Pengajuan Ujian</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Pengajuan Mahasiswa</h6>
                 </div>
                 <div class="table-responsive p-3">
                   <table class="table align-items-center table-flush" id="dataTableHover">
@@ -113,20 +113,32 @@ require('../config.php');
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Ujian Proposal</td>
-                        <td>Fulanah</td>
-                        <td>09630333</td>
-                        <td class="text-center"><a href="ujianproposal-tampil.php" class="btn btn-success" type="button">LIHAT</a></td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Ujian Komprehensif</td>
-                        <td>Markonah</td>
-                        <td>09630123</td>
-                        <td class="text-center"><button class="btn btn-success" type="button">LIHAT</button></td>
-                      </tr>
+                      <?php
+                      $no = 1;
+                      // ambil data pengajuan judul
+                      $stmt = $conn->prepare("SELECT * FROM pengajuanjudul WHERE verifikasifile=0");
+                      $stmt->execute();
+                      $result = $stmt->get_result();
+                      while ($dhasil = $result->fetch_assoc()) {
+                        $nim = $dhasil['nim'];
+                        $nama = $dhasil['nama'];
+                        $ujian = 'Pengajuan Judul';
+                        $token = $dhasil['token'];
+                      ?>
+                        <tr>
+                          <td><?= $no; ?></td>
+                          <td><?= $ujian; ?></td>
+                          <td><?= $nama; ?></td>
+                          <td><?= $nim; ?></td>
+                          <td>
+                            <a href="ujianproposal-admin-detail.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                          </td>
+                        </tr>
+                      <?php
+
+                        $no++;
+                      }
+                      ?>
                     </tbody>
                   </table>
                 </div>
