@@ -1,3 +1,17 @@
+<?php
+session_start();
+$userid = $_SESSION['userid'];
+global $userid;
+$role = $_SESSION['role'];
+$jabatan = $_SESSION['jabatan'];
+$nama = $_SESSION['nama'];
+$nim = $_SESSION['nim'];
+if ($role != 'mahasiswa') {
+    header("location:../deauth.php");
+}
+require('../config.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,64 +52,58 @@
                             <li class="breadcrumb-item active" aria-current="page">Ujian Komprehensif</li>
                         </ol>
                     </div>
-
+                    <?php
+                    $no = 1;
+                    // ambil data pengajuan judul
+                    $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE nim=? and status=3");
+                    $stmt->bind_param("s", $nim);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    $dhasil = $result->fetch_assoc();
+                    $nim = $dhasil['nim'];
+                    $nama = $dhasil['nama'];
+                    $bidang = $dhasil['bidang'];
+                    $judul = $dhasil['judul'];
+                    $pembimbing = $dhasil['pembimbing'];
+                    $fileproposal = $dhasil['proposal'];
+                    $token = $dhasil['token'];
+                    ?>
                     <div class="row">
                         <div class="col-lg-12">
                             <!-- Form Basic -->
                             <div class="card mb-12">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Pendaftaran Ujian Komprehensif</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Data Judul Proposal</h6>
                                 </div>
                                 <div class="card-body">
-                                    <form action="index.php" enctype="multipart/form-data" method="POST">
-                                        <div class="form-group">
-                                            <label>Nama</label>
-                                            <input type="text" class="form-control" value="Johan Ericka" disabled>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>NIM</label>
-                                            <input type="text" class="form-control" value="09640001" disabled>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Telepon / HP</label>
-                                            <input type="number" class="form-control" value="08123456789" disabled>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <input type="email" class="form-control" value="johan@uin-malang.ac.id" disabled>
-                                        </div>
+                                    <form action="ujiankompre-simpan.php" enctype="multipart/form-data" method="POST">
+                                        <input type="hidden" name="bidang" value="<?= $bidang; ?>">
+                                        <input type="hidden" name="judul" value="<?= $judul; ?>">
                                         <div class="form-group">
                                             <label>Bidang Minat</label>
-                                            <input type="text" class="form-control" value="Sensor" disabled>
+                                            <input type="text" class="form-control" value="<?= $bidang ?>" disabled>
                                         </div>
                                         <div class="form-group">
                                             <label>Judul</label>
-                                            <input type="text" class="form-control" value="Perbandingan Sensitivitas Sensor Suhu dan Kelembaban DHT-11 dan DHT-22 Pada Studi Kasus Smart Green House" disabled>
+                                            <input type="text" class="form-control" value="<?= $judul; ?>" disabled>
                                         </div>
                                         <div class="form-group">
-                                            <label>Upload Bukti Lulus Ujian Proposal</label>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="inputGroupFile02" />
-                                                <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-                                            </div>
-                                            <script>
-                                                $('#inputGroupFile02').on('change', function() {
-                                                    //get the file name
-                                                    var fileName = $(this).val();
-                                                    //replace the "Choose a file" label
-                                                    $(this).next('.custom-file-label').html(fileName);
-                                                })
-                                            </script>
+                                            <label>Upload Berkas File Proposal (revisi)</label>
+                                            <input type="file" name="fileproposal" class="form-control" accept=".pdf">
+                                            <small style="color: red;">
+                                                <li>Revisi File Proposal yang telah disetujui pembimbing</li>
+                                                <li>Format file PDF ukuran maksimal 5MB</li>
+                                            </small>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Ajukan</button>
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">AJUKAN</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--Row-->
                 </div>
             </div>
+
             <!-- Footer -->
             <?php
             require('footer.php');

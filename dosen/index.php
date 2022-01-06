@@ -121,6 +121,30 @@ require('../config.php');
                         $no++;
                       }
                       ?>
+                      <?php
+                      // ambil data ujian kompre
+                      $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE verifikasifile=1 AND status=0");
+                      $stmt->execute();
+                      $result = $stmt->get_result();
+                      while ($dhasil = $result->fetch_assoc()) {
+                        $nim = $dhasil['nim'];
+                        $nama = $dhasil['nama'];
+                        $ujian = 'Ujian Komprehensif';
+                        $token = $dhasil['token'];
+                      ?>
+                        <tr>
+                          <td><?= $no; ?></td>
+                          <td><?= $ujian; ?></td>
+                          <td><?= $nama; ?></td>
+                          <td><?= $nim; ?></td>
+                          <td class="text-center">
+                            <a href="ujiankomprehensif-sekprodi-detail.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                          </td>
+                        </tr>
+                      <?php
+                        $no++;
+                      }
+                      ?>
                     </tbody>
                   </table>
                 </div>
