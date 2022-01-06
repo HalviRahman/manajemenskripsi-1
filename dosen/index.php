@@ -75,7 +75,7 @@ require('../config.php');
                       <?php
                       $no = 1;
                       // ambil data pengajuan judul
-                      $stmt = $conn->prepare("SELECT * FROM pengajuanjudul WHERE status=0");
+                      $stmt = $conn->prepare("SELECT * FROM pengajuanjudul WHERE verifikasifile=1 AND status=0");
                       $stmt->execute();
                       $result = $stmt->get_result();
                       while ($dhasil = $result->fetch_assoc()) {
@@ -99,7 +99,7 @@ require('../config.php');
                       ?>
                       <?php
                       // ambil data ujian proposal
-                      $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE status=0");
+                      $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE verifikasifile=1 AND status=0");
                       $stmt->execute();
                       $result = $stmt->get_result();
                       while ($dhasil = $result->fetch_assoc()) {
