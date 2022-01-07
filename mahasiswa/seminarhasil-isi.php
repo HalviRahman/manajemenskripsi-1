@@ -59,13 +59,16 @@ require('../config.php');
                     $stmt->bind_param("s", $nim);
                     $stmt->execute();
                     $result = $stmt->get_result();
-                    $dhasil = $result->fetch_assoc();
-                    $nama = $dhasil['nama'];
-                    $bidang = $dhasil['bidang'];
-                    $judul = $dhasil['judul'];
-                    $pembimbing = $dhasil['pembimbing'];
-                    $fileproposal = $dhasil['fileproposal'];
-                    $token = $dhasil['token'];
+                    $jhasil = $stmt->num_rows();
+                    if ($jhasil > 0) {
+                        $dhasil = $result->fetch_assoc();
+                        $nama = $dhasil['nama'];
+                        $bidang = $dhasil['bidang'];
+                        $judul = $dhasil['judul'];
+                        $pembimbing = $dhasil['pembimbing'];
+                        $fileproposal = $dhasil['fileproposal'];
+                        $token = $dhasil['token'];
+                    }
                     ?>
                     <div class="row">
                         <div class="col-lg-12">
