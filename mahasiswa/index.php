@@ -261,6 +261,8 @@ require('../vendor/myfunc.php');
                                                                 echo 'Berkas tidak langkap';
                                                             } elseif ($verifikasifile == 1 and $status == 2) {
                                                                 echo 'Ditolak prodi';
+                                                            } elseif ($verifikasifile == 1 and $status == 4) {
+                                                                echo 'Sudah dinilai';
                                                             }
                                                             ?>
                                                         </td>
@@ -285,6 +287,10 @@ require('../vendor/myfunc.php');
                                                             } elseif ($verifikasifile == 1 and $status == 2) {
                                                             ?>
                                                                 <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                                            <?php
+                                                            } elseif ($verifikasifile == 1 and $status == 4) {
+                                                            ?>
+                                                                <a href="ujiankompre-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                                             <?php
                                                             }
                                                             ?>
