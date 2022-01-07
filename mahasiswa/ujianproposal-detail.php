@@ -79,7 +79,11 @@ require('../vendor/myfunc.php');
                                 $khs = $dhasil['khs'];
                                 $proposal = $dhasil['proposal'];
                                 $penguji1 = $dhasil['penguji1'];
+                                $nilai1 = $dhasil['nilai1'];
+                                $revisi1 = $dhasil['revisi1'];
                                 $penguji2 = $dhasil['penguji2'];
+                                $nilai2 = $dhasil['nilai2'];
+                                $revisi2 = $dhasil['revisi2'];
                                 $jadwalujian = $dhasil['jadwalujian'];
                                 $ruang = $dhasil['ruang'];
                                 $linkzoom = $dhasil['linkzoom'];
@@ -89,17 +93,33 @@ require('../vendor/myfunc.php');
                                 <div class="card-body">
                                     <input type="hidden" class="form-control" value="<?= $nama; ?>" name="nama">
                                     <input type="hidden" class="form-control" value="<?= $nim; ?>" name="nim">
-                                    <div class="form-group">
-                                        <label>Nama</label>
-                                        <input type="text" class="form-control" name="nama" value="<?= $nama; ?>" readonly>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Nama</label>
+                                                <input type="text" class="form-control" name="nama" value="<?= $nama; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>NIM</label>
+                                                <input type="text" class="form-control" name="nim" value="<?= $nim; ?>" readonly>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>NIM</label>
-                                        <input type="text" class="form-control" name="nim" value="<?= $nim; ?>" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Bidang Minat</label>
-                                        <input type="text" class="form-control" name="bidang" value="<?= $bidang; ?>" readonly>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Bidang Minat</label>
+                                                <input type="text" class="form-control" name="bidang" value="<?= $bidang; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Dosen Pembimbing</label>
+                                                <input type="text" class="form-control" name="pembimbing" value="<?= $pembimbing; ?>" readonly>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Judul Proposal</label>
@@ -131,36 +151,63 @@ require('../vendor/myfunc.php');
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Dosen Pembimbing</label>
-                                        <input type="text" class="form-control" name="pembimbing" value="<?= $pembimbing; ?>" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Dosen Penguji Utama</label>
-                                        <input type="text" class="form-control" name="penguji1" value="<?= $penguji1; ?>" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Dosen Penguji Anggota</label>
-                                        <input type="text" class="form-control" name="penguji2" value="<?= $penguji2; ?>" readonly>
-                                    </div>
-                                    <div class="form-group">
                                         <label>Jadwal Ujian</label>
                                         <input type="text" class="form-control" name="jadwalujian" value="<?= tgljam_indo($jadwalujian); ?>" readonly>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Ruangan</label>
-                                        <input type="text" class="form-control" name="ruangan" value="<?= $ruang; ?>" readonly>
-                                    </div>
-                                    <?php
-                                    if ($ruang == 'Zoom') {
-                                    ?>
-                                        <div class="form-group">
-                                            <label>Link</label>
-                                            <input type="text" class="form-control" name="linkzoom" value="<?= urldecode($linkzoom); ?>" readonly>
-                                            <a href="<?= urldecode($linkzoom); ?>" type="button" class="btn btn-success" target="_blank">BUKA</a>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Ruangan</label>
+                                                <input type="text" class="form-control" name="ruangan" value="<?= $ruang; ?>" readonly>
+                                            </div>
                                         </div>
-                                    <?php
-                                    }
-                                    ?>
+
+                                        <?php
+                                        if ($ruang == 'Zoom') {
+                                        ?>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label>Link</label>
+                                                    <input type="text" class="form-control" name="linkzoom" value="<?= urldecode($linkzoom); ?>" readonly>
+                                                    <a href="<?= urldecode($linkzoom); ?>" type="button" class="btn btn-success" target="_blank">BUKA</a>
+                                                </div>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Dosen Penguji Utama</label>
+                                                <input type="text" class="form-control" name="penguji1" value="<?= $penguji1; ?>" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Nilai Penguji Utama</label>
+                                                <input type="number" class="form-control" name="nilai1" value="<?= $nilai1; ?>" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Revisi Penguji Utama</label>
+                                                <br />
+                                                <textarea name="revisi1" class="form-control" rows="5" disabled><?= ($revisi1); ?></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Dosen Penguji Anggota</label>
+                                                <input type="text" class="form-control" name="penguji2" value="<?= $penguji2; ?>" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Nilai Penguji Anggota</label>
+                                                <input type="number" class="form-control" name="nilai2" value="<?= $nilai2; ?>" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Revisi Penguji Anggota</label>
+                                                <br />
+                                                <textarea name="revisi1" class="form-control" rows="5" disabled><?= ($revisi2); ?></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

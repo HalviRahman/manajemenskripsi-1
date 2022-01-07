@@ -13,36 +13,18 @@
     </li>
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
-        Jadwal Ujian
+        Mahasiswa
     </div>
     <li class="nav-item">
-        <a class="nav-link" href="judulproposal-isi.php">
-            <i class="fas fa-fw fa-file"></i>
-            <span>Judul Proposal</span>
+        <a class="nav-link" href="mahasiswa-bimbingan.php">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Bimbingan</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="ujianproposal-isi.php">
-            <i class="fas fa-fw fa-comments"></i>
-            <span>Ujian Proposal</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="ujiankompre-isi.php">
-            <i class="fas fa-fw fa-comments"></i>
-            <span>Ujian Komprehensif</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="seminarhasil-isi.php">
-            <i class="fas fa-fw fa-comments"></i>
-            <span>Seminar Hasil</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="sidangskripsi-isi.php">
-            <i class="fas fa-fw fa-gavel"></i>
-            <span>Sidang Skripsi</span>
+        <a class="nav-link" href="#">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Penguji</span>
         </a>
     </li>
     <hr class="sidebar-divider">
