@@ -73,7 +73,11 @@ require('../config.php');
                     $proposal = $dhasil['proposal'];
                     $pembimbing = $dhasil['pembimbing'];
                     $penguji1 = $dhasil['penguji1'];
+                    $nilai1 = $dhasil['nilai1'];
+                    $revisi1 = $dhasil['revisi1'];
                     $penguji2 = $dhasil['penguji2'];
+                    $nilai2 = $dhasil['nilai2'];
+                    $revisi2 = $dhasil['revisi2'];
                     $token = $dhasil['token'];
                     if ($penguji1 == $nama) {
                         $penguji = 'PENGUJI UTAMA';
