@@ -50,7 +50,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="sidangskripsi-isi.php">
+        <a class="nav-link" href="ujianskripsi-isi.php">
             <i class="fas fa-fw fa-gavel"></i>
             <span>Ujian Skripsi</span>
         </a>
