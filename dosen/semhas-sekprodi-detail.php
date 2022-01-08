@@ -76,6 +76,8 @@ require('../config.php');
                                 $bidang = $dhasil['bidang'];
                                 $judul = $dhasil['judul'];
                                 $pembimbing = $dhasil['pembimbing'];
+                                $penguji1 = $dhasil['penguji1'];
+                                $penguji2 = $dhasil['penguji2'];
                                 $sklproposal = $dhasil['sklproposal'];
                                 $sklkompre = $dhasil['sklkompre'];
                                 $proposal = $dhasil['proposal'];
@@ -134,6 +136,7 @@ require('../config.php');
                                             <div class="col">
                                                 <label>Penguji Fisika</label>
                                                 <select name="penguji1" class="form-control">
+                                                    <option value="<?= $penguji1; ?>"><?= $penguji1; ?></option>
                                                     <?php
                                                     $stmt = $conn->prepare("SELECT * FROM pengguna WHERE role='dosen' and nama <> '$pembimbing'");
                                                     $stmt->execute();
@@ -154,6 +157,7 @@ require('../config.php');
                                             <div class="col">
                                                 <label>Penguji Integrasi</label>
                                                 <select name="penguji2" class="form-control">
+                                                    <option value="<?= $penguji2; ?>"><?= $penguji2; ?></option>
                                                     <?php
                                                     $stmt = $conn->prepare("SELECT * FROM pengguna WHERE role='dosen' and nama <> '$pembimbing'");
                                                     $stmt->execute();
