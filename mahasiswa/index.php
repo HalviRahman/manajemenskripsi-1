@@ -438,7 +438,7 @@ require('../vendor/myfunc.php');
                                                             <?php
                                                             } elseif ($verifikasifile == 1 and ($status == 1 || $status == 3)) {
                                                             ?>
-                                                                <a href="seminarhasil-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                                                <a href="ujianskripsi-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                                             <?php
                                                             } elseif ($verifikasifile == 2 and $status == 0) {
                                                             ?>
@@ -450,7 +450,7 @@ require('../vendor/myfunc.php');
                                                             <?php
                                                             } elseif ($verifikasifile == 1 and $status == 4) {
                                                             ?>
-                                                                <a href="seminarhasil-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                                                <a href="ujianskripsi-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                                             <?php
                                                             }
                                                             ?>
