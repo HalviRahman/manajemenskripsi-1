@@ -54,19 +54,18 @@ require('../config.php');
                     </div>
                     <?php
                     $no = 1;
-                    // ambil data pengajuan judul
-                    $stmt = $conn->prepare("SELECT * FROM semhas WHERE nim=?");
+                    $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE nim=? and status=4");
                     $stmt->bind_param("s", $nim);
                     $stmt->execute();
                     $result = $stmt->get_result();
-                    $jhasil = $stmt->num_rows();
+                    $jhasil = $result->num_rows;
                     if ($jhasil > 0) {
                         $dhasil = $result->fetch_assoc();
-                        $nama = $dhasil['nama'];
                         $bidang = $dhasil['bidang'];
                         $judul = $dhasil['judul'];
                         $pembimbing = $dhasil['pembimbing'];
-                        $fileproposal = $dhasil['fileproposal'];
+                        $penguji1 = $dhasil['penguji1'];
+                        $penguji2 = $dhasil['penguji2'];
                         $token = $dhasil['token'];
                     }
                     ?>
@@ -75,39 +74,34 @@ require('../config.php');
                             <!-- Form Basic -->
                             <div class="card mb-12">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Data Judul Seminar Hasil</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Data Seminar Hasil</h6>
                                 </div>
                                 <div class="card-body">
-                                    <form action="ujianproposal-simpan.php" enctype="multipart/form-data" method="POST">
+                                    <form action="seminarhasil-simpan.php" enctype="multipart/form-data" method="POST">
                                         <input type="hidden" name="bidang" value="<?= $bidang; ?>">
                                         <input type="hidden" name="judul" value="<?= $judul; ?>">
+                                        <input type="hidden" name="pembimbing" value="<?= $pembimbing; ?>">
+                                        <input type="hidden" name="penguji1" value="<?= $penguji1; ?>">
+                                        <input type="hidden" name="penguji2" value="<?= $penguji2; ?>">
                                         <div class="form-group">
-                                            <label>Bidang Minat</label>
-                                            <input type="text" class="form-control" value="<?= $bidang ?>" disabled>
+                                            <label>Surat Keterangan Lulus Ujian Proposal</label>
+                                            <input type="file" name="sklproposal" class="form-control" accept=".jpg,.jpeg" required>
+                                            <small style="color: red;">Format file JPG ukuran maksimal 1MB</small>
                                         </div>
                                         <div class="form-group">
-                                            <label>Judul</label>
-                                            <input type="text" class="form-control" value="<?= $judul; ?>" disabled>
+                                            <label>Surat Ketarangan Lulus Ujian Komprehensif</label>
+                                            <input type="file" name="sklkompre" class="form-control" accept=".jpg,.jpeg" required>
+                                            <small style="color: red;">Format file JPG ukuran maksimal 1MB</small>
                                         </div>
                                         <div class="form-group">
-                                            <label>Upload Lembar Persetujuan Pembimbing</label>
-                                            <input type="file" name="persetujuanpembimbing" class="form-control" accept=".jpg,.jpeg" required>
-                                            <small style="color: red;">Format file PDF ukuran maksimal 1MB</small>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Upload KHS</label>
-                                            <input type="file" name="khs" class="form-control" accept=".jpg,.jpeg" required>
-                                            <small style="color: red;">Lulus matakuliah Metode Penelitian dan Seminar</small>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Upload Berkas File Proposal</label>
+                                            <label>Upload File Laporan Skripsi </label>
                                             <input type="file" name="fileproposal" class="form-control" accept=".pdf" required>
                                             <small style="color: red;">
-                                                <li>File Proposal lengkap yang telah disetujui pembimbing</li>
+                                                <li>File laporan yang telah disetujui pembimbing</li>
                                                 <li>Format file PDF ukuran maksimal 5MB</li>
                                             </small>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block">AJUKAN</button>
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="return conform ('Dengan ini saya menyatakan kebenaran dokumen yang saya upload')">AJUKAN</button>
                                     </form>
                                 </div>
                             </div>
