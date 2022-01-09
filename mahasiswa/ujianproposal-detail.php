@@ -123,7 +123,7 @@ require('../vendor/myfunc.php');
                                     </div>
                                     <div class="form-group">
                                         <label>Judul Proposal</label>
-                                        <input type="text" class="form-control" name="judul" value="<?= $judul; ?>" readonly>
+                                        <textarea class="form-control" name="judul" readonly> <?= $judul; ?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">

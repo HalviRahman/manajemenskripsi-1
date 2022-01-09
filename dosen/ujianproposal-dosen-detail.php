@@ -80,7 +80,7 @@ require('../config.php');
                     $revisi2 = $dhasil['revisi2'];
                     $token = $dhasil['token'];
                     if ($penguji1 == $nama) {
-                        $penguji = 'PENGUJI UTAMA';
+                        $penguji = 'PENGUJI KETUA';
                     } elseif ($penguji2 == $nama) {
                         $penguji = 'PENGUJI ANGGOTA';
                     }
@@ -125,7 +125,7 @@ require('../config.php');
                                     </div>
                                     <div class="form-group">
                                         <label>Judul Proposal</label>
-                                        <input type="text" class="form-control" name="judul" value="<?= $judul; ?>" readonly>
+                                        <textarea class="form-control" name="judul" readonly> <?= $judul; ?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
