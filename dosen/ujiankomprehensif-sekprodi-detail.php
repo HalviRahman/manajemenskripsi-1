@@ -75,6 +75,9 @@ require('../config.php');
                                 $nama = $dhasil['nama'];
                                 $bidang = $dhasil['bidang'];
                                 $judul = $dhasil['judul'];
+                                $judulskripsi = $dhasil['judulskripsi'];
+                                $transkrip = $dhasil['transkrip'];
+                                $ijazah = $dhasil['ijazah'];
                                 $fileproposal = $dhasil['fileproposal'];
                                 $pembimbing = $dhasil['pembimbing'];
                                 $token = $dhasil['token'];
@@ -82,28 +85,63 @@ require('../config.php');
                                 <div class="card-body">
                                     <input type="hidden" class="form-control" value="<?= $nama; ?>" name="nama">
                                     <input type="hidden" class="form-control" value="<?= $nim; ?>" name="nim">
-                                    <div class="form-group">
-                                        <label>Nama</label>
-                                        <input type="text" class="form-control" name="nama" value="<?= $nama; ?>" readonly>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Nama</label>
+                                                <input type="text" class="form-control" name="nama" value="<?= $nama; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>NIM</label>
+                                                <input type="text" class="form-control" name="nim" value="<?= $nim; ?>" readonly>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>NIM</label>
-                                        <input type="text" class="form-control" name="nim" value="<?= $nim; ?>" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Bidang Minat</label>
-                                        <input type="text" class="form-control" name="bidang" value="<?= $bidang; ?>" readonly>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Bidang Minat</label>
+                                                <input type="text" class="form-control" name="bidang" value="<?= $bidang; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Dosen Pembimbing</label>
+                                                <input type="text" class="form-control" name="pembimbing" value="<?= $pembimbing; ?>" readonly>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Judul Proposal</label>
-                                        <input type="text" class="form-control" name="judul" value="<?= $judul; ?>" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Pembimbing</label>
-                                        <input type="text" class="form-control" name="pembimbing" value="<?= $pembimbing; ?>" readonly>
+                                        <textarea class="form-control" name="judul" readonly><?= $judul; ?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
+                                            <div class="col" align="center">
+                                                <label>Form Pengajuan Judul</label>
+                                                <br />
+                                                <a href="<?= $judulskripsi; ?>" target="_blank"><img src="<?= $judulskripsi; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Transkrip Nilai Sementara</label>
+                                                <br />
+                                                <a href="<?= $transkrip; ?>" target="_blank"><img src="<?= $transkrip; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col" align="center">
+                                                <label>Ijazah Terakhir</label>
+                                                <br />
+                                                <a href="<?= $ijazah; ?>" target="_blank"><img src="<?= $ijazah; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
                                             <div class="col" align="center">
                                                 <label>File Proposal</label>
                                                 <br />

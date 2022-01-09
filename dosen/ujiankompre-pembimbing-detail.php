@@ -6,10 +6,11 @@ $role = $_SESSION['role'];
 $jabatan = $_SESSION['jabatan'];
 $nama = $_SESSION['nama'];
 $nim = $_SESSION['nim'];
-if ($role != 'admin') {
+if ($role != 'dosen') {
     header("location:../deauth.php");
 }
 require('../config.php');
+require('../vendor/myfunc.php');
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +59,7 @@ require('../config.php');
                             <!-- Form Basic -->
                             <div class="card mb-12">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Data ujian Komprehensif</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Data Ujian Komprehensif</h6>
                                 </div>
                                 <?php
                                 $no = 1;
@@ -74,10 +75,17 @@ require('../config.php');
                                 $bidang = $dhasil['bidang'];
                                 $judul = $dhasil['judul'];
                                 $pembimbing = $dhasil['pembimbing'];
-                                $judulskripsi = $dhasil['judulskripsi'];
-                                $transkrip = $dhasil['transkrip'];
-                                $ijazah = $dhasil['ijazah'];
                                 $fileproposal = $dhasil['fileproposal'];
+                                $penguji1 = $dhasil['penguji1'];
+                                $penguji2 = $dhasil['penguji2'];
+                                $nilai1 = $dhasil['nilai1'];
+                                $nilai2 = $dhasil['nilai2'];
+                                $revisi1 = $dhasil['revisi1'];
+                                $revisi2 = $dhasil['revisi2'];
+                                $jadwalujian = $dhasil['jadwalujian'];
+                                $ruang = $dhasil['ruang'];
+                                $linkzoom = $dhasil['linkzoom'];
+
                                 $token = $dhasil['token'];
                                 ?>
                                 <div class="card-body">
@@ -106,80 +114,101 @@ require('../config.php');
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Dosen pembimbing</label>
+                                                <label>Dosen Pembimbing</label>
                                                 <input type="text" class="form-control" name="pembimbing" value="<?= $pembimbing; ?>" readonly>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group text-break">
+                                    <div class="form-group">
                                         <label>Judul Proposal</label>
-                                        <textarea class="form-control" name="judul" readonly> <?= $judul; ?></textarea>
+                                        <input type="text" class="form-control" name="judul" value="<?= $judul; ?>" readonly>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col" align="center">
-                                                <label>Form Pengajuan Judul</label>
-                                                <br />
-                                                <a href="<?= $judulskripsi; ?>" target="_blank"><img src="<?= $judulskripsi; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
-                                                <br />
-                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
-                                            </div>
-                                            <div class="col" align="center">
-                                                <label>Transkrip Nilai Sementara</label>
-                                                <br />
-                                                <a href="<?= $transkrip; ?>" target="_blank"><img src="<?= $transkrip; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
-                                                <br />
-                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col" align="center">
-                                                <label>Ijazah Terakhir</label>
-                                                <br />
-                                                <a href="<?= $ijazah; ?>" target="_blank"><img src="<?= $ijazah; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
-                                                <br />
-                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
-                                            </div>
-                                            <div class="col" align="center">
                                                 <label>File Proposal</label>
                                                 <br />
-                                                <a href="<?= $fileproposal; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <a href="<?= $proposal; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
                                                 <br />
                                                 <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                             </div>
                                         </div>
                                     </div>
-                                    <form method="POST">
-                                        <input type="hidden" name="token" value="<?= $token; ?>">
-                                        <div class="row">
-                                            <div class="col">
-                                                <button type="submit" class="btn btn-success btn-lg btn-block" formaction="ujiankomprehensif-admin-setujui1.php" onclick="return confirm('Menyetujui pengajuan ini ?')">SETUJUI</button>
-                                            </div>
-                                            <div class="col">
-                                                <button type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-lg btn-block">TOLAK</button>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Jadwal Ujian</label>
+                                                <input type="text" class="form-control" name="jadwalujian" value="<?= tgljam_indo($jadwalujian); ?>" readonly>
                                             </div>
                                         </div>
-                                        <!-- modal tolak -->
-                                        <div class="modal fade" id="modal-tolak">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Alasan Penolakan</h4>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <textarea class="form-control" rows="3" name="keterangan"></textarea>
-                                                    </div>
-                                                    <div class="modal-footer justify-content-between">
-                                                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                                                        <button name="aksi" value="tolak" type="submit" formaction="ujiankomprehensif-admin-tolak1.php" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i class="fa fa-times"></i> Tolak</button>
-                                                    </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Ruangan</label>
+                                                <input type="text" class="form-control" name="ruangan" value="<?= $ruang; ?>" readonly>
+                                            </div>
+                                            <?php
+                                            if ($ruang == 'Zoom') {
+                                            ?>
+                                                <div class="form-group">
+                                                    <label>Link</label>
+                                                    <input type="text" class="form-control" name="linkzoom" value="<?= urldecode($linkzoom); ?>" readonly>
+                                                    <a href="<?= urldecode($linkzoom); ?>" type="button" class="btn btn-success" target="_blank">BUKA</a>
                                                 </div>
+                                            <?php
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Dosen Penguji Fisika</label>
+                                                <input type="text" class="form-control" name="penguji1" value="<?= $penguji1; ?>" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Nilai Penguji Fisika</label>
+                                                <?php if (isset($nilai1)) {
+                                                ?>
+                                                    <input type="text" class="form-control" name="nilai1" value="<?= $nilai1; ?>" readonly>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <input type="text" class="form-control" name="nilai1" value="" readonly>
+                                                <?php
+                                                } ?>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Revisi Penguji Fisika</label>
+                                                <textarea name="revisi1" class="form-control" rows="5" disabled><?php if (isset($revisi1)) {
+                                                                                                                    echo $revisi1;
+                                                                                                                } ?></textarea>
                                             </div>
                                         </div>
-                                    </form>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Dosen Penguji Integrasi</label>
+                                                <input type="text" class="form-control" name="penguji2" value="<?= $penguji2; ?>" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Nilai Penguji Integrasi</label>
+                                                <?php if (isset($nilai2)) {
+                                                ?>
+                                                    <input type="text" class="form-control" name="nilai1" value="<?= $nilai2; ?>" readonly>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <input type="text" class="form-control" name="nilai1" value="" readonly>
+                                                <?php
+                                                } ?>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Revisi Penguji Integrasi</label>
+                                                <textarea name="revisi2" class="form-control" rows="5" disabled><?php if (isset($revisi2)) {
+                                                                                                                    echo $revisi2;
+                                                                                                                } ?></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

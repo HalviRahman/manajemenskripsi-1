@@ -105,7 +105,7 @@ require('../vendor/myfunc.php');
                                                         } elseif ($verifikasifile == 1 and $status == 1) {
                                                             echo 'Disetujui';
                                                         } elseif ($verifikasifile == 2 and $status == 0) {
-                                                            echo 'Berkas tidak langkap';
+                                                            echo 'Berkas tidak lengkap';
                                                         } elseif ($verifikasifile == 1 and $status == 2) {
                                                             echo 'Ditolak prodi';
                                                         }
@@ -180,7 +180,7 @@ require('../vendor/myfunc.php');
                                                             } elseif ($verifikasifile == 1 and $status == 3) {
                                                                 echo 'Terjadwal';
                                                             } elseif ($verifikasifile == 2 and $status == 0) {
-                                                                echo 'Berkas tidak langkap';
+                                                                echo 'Berkas tidak lengkap';
                                                             } elseif ($verifikasifile == 1 and $status == 2) {
                                                                 echo 'Ditolak prodi';
                                                             } elseif ($verifikasifile == 1 and $status == 4) {
@@ -260,7 +260,7 @@ require('../vendor/myfunc.php');
                                                             } elseif ($verifikasifile == 1 and ($status == 1 || $status == 3)) {
                                                                 echo 'Disetujui';
                                                             } elseif ($verifikasifile == 2 and $status == 0) {
-                                                                echo 'Berkas tidak langkap';
+                                                                echo 'Berkas tidak lengkap';
                                                             } elseif ($verifikasifile == 1 and $status == 2) {
                                                                 echo 'Ditolak prodi';
                                                             } elseif ($verifikasifile == 1 and $status == 4) {
@@ -340,7 +340,7 @@ require('../vendor/myfunc.php');
                                                             } elseif ($verifikasifile == 1 and ($status == 1 || $status == 3)) {
                                                                 echo 'Disetujui';
                                                             } elseif ($verifikasifile == 2 and $status == 0) {
-                                                                echo 'Berkas tidak langkap';
+                                                                echo 'Berkas tidak lengkap';
                                                             } elseif ($verifikasifile == 1 and $status == 2) {
                                                                 echo 'Ditolak prodi';
                                                             } elseif ($verifikasifile == 1 and $status == 4) {
@@ -420,7 +420,7 @@ require('../vendor/myfunc.php');
                                                             } elseif ($verifikasifile == 1 and ($status == 1 || $status == 3)) {
                                                                 echo 'Disetujui';
                                                             } elseif ($verifikasifile == 2 and $status == 0) {
-                                                                echo 'Berkas tidak langkap';
+                                                                echo 'Berkas tidak lengkap';
                                                             } elseif ($verifikasifile == 1 and $status == 2) {
                                                                 echo 'Ditolak prodi';
                                                             } elseif ($verifikasifile == 1 and $status == 4) {

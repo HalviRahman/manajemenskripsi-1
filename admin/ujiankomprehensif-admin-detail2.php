@@ -73,6 +73,10 @@ require('../config.php');
                                 $nama = $dhasil['nama'];
                                 $bidang = $dhasil['bidang'];
                                 $judul = $dhasil['judul'];
+                                $pembimbing = $dhasil['pembimbing'];
+                                $judulskripsi = $dhasil['judulskripsi'];
+                                $transkrip = $dhasil['transkrip'];
+                                $ijazah = $dhasil['ijazah'];
                                 $fileproposal = $dhasil['fileproposal'];
                                 $penguji1 = $dhasil['penguji1'];
                                 $penguji2 = $dhasil['penguji2'];
@@ -81,55 +85,117 @@ require('../config.php');
                                 <div class="card-body">
                                     <input type="hidden" class="form-control" value="<?= $nama; ?>" name="nama">
                                     <input type="hidden" class="form-control" value="<?= $nim; ?>" name="nim">
-                                    <div class="form-group">
-                                        <label>Nama</label>
-                                        <input type="text" class="form-control" name="nama" value="<?= $nama; ?>" readonly>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Nama</label>
+                                                <input type="text" class="form-control" name="nama" value="<?= $nama; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>NIM</label>
+                                                <input type="text" class="form-control" name="nim" value="<?= $nim; ?>" readonly>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>NIM</label>
-                                        <input type="text" class="form-control" name="nim" value="<?= $nim; ?>" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Bidang Minat</label>
-                                        <input type="text" class="form-control" name="bidang" value="<?= $bidang; ?>" readonly>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Bidang Minat</label>
+                                                <input type="text" class="form-control" name="bidang" value="<?= $bidang; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Dosen pembimbing</label>
+                                                <input type="text" class="form-control" name="pembimbing" value="<?= $pembimbing; ?>" readonly>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group text-break">
                                         <label>Judul Proposal</label>
-                                        <input type="text" class="form-control" name="judul" value="<?= $judul; ?>" readonly>
+                                        <textarea class="form-control" name="judul" readonly> <?= $judul; ?></textarea>
                                     </div>
-                                    <div class="form-group text-break">
-                                        <label>Penguji Fisika</label>
-                                        <input type="text" class="form-control" name="penguji1" value="<?= $penguji1; ?>" readonly>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col" align="center">
+                                                <label>Form Pengajuan Judul</label>
+                                                <br />
+                                                <a href="<?= $judulskripsi; ?>" target="_blank"><img src="<?= $judulskripsi; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Transkrip Nilai Sementara</label>
+                                                <br />
+                                                <a href="<?= $transkrip; ?>" target="_blank"><img src="<?= $transkrip; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col" align="center">
+                                                <label>Ijazah Terakhir</label>
+                                                <br />
+                                                <a href="<?= $ijazah; ?>" target="_blank"><img src="<?= $ijazah; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>File Proposal</label>
+                                                <br />
+                                                <a href="<?= $fileproposal; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group text-break">
-                                        <label>Penguji Integrasi</label>
-                                        <input type="text" class="form-control" name="penguji2" value="<?= $penguji2; ?>" readonly>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group text-break">
+                                                <label>Penguji Fisika</label>
+                                                <input type="text" class="form-control" name="penguji1" value="<?= $penguji1; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group text-break">
+                                                <label>Penguji Integrasi</label>
+                                                <input type="text" class="form-control" name="penguji2" value="<?= $penguji2; ?>" readonly>
+                                            </div>
+                                        </div>
                                     </div>
                                     <form method="POST">
-                                        <div class="form-group text-break">
-                                            <label>Jadwal Ujian</label>
-                                            <input type="datetime-local" class="form-control" name="jadwalujian" required>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group text-break">
+                                                    <label>Jadwal Ujian</label>
+                                                    <input type="datetime-local" class="form-control" name="jadwalujian" required>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group text-break">
+                                                    <label>Ruangan</label>
+                                                    <select name="ruangan" class="form-control">
+                                                        <?php
+                                                        $stmt = $conn->prepare("SELECT * FROM ruangan");
+                                                        $stmt->execute();
+                                                        $result = $stmt->get_result();
+                                                        while ($dhasil = $result->fetch_assoc()) {
+                                                            $namaruangan = $dhasil['namaruangan'];
+                                                        ?>
+                                                            <option value="<?= $namaruangan; ?>"><?= $namaruangan; ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group text-break">
-                                            <label>Ruangan</label>
-                                            <select name="ruangan" class="form-control">
-                                                <?php
-                                                $stmt = $conn->prepare("SELECT * FROM ruangan");
-                                                $stmt->execute();
-                                                $result = $stmt->get_result();
-                                                while ($dhasil = $result->fetch_assoc()) {
-                                                    $namaruangan = $dhasil['namaruangan'];
-                                                ?>
-                                                    <option value="<?= $namaruangan; ?>"><?= $namaruangan; ?></option>
-                                                <?php
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                        <div class="form-group text-break">
-                                            <label>Link Zoom</label>
+                                            <label>Link Online Meeting</label>
                                             <input type="text" class="form-control" name="linkzoom">
-                                            <small style="color:red">Diisi apabila menggunakan Zoom</small>
+                                            <small style="color:red">Diisi apabila menggunakan Zoom / GMeet / WebEx</small>
                                         </div>
                                         <input type="hidden" name="token" value="<?= $token; ?>">
                                         <div class="row">
