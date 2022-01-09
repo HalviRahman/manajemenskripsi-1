@@ -8,6 +8,7 @@ if ($role != 'admin') {
   header("location:../deauth.php");
 }
 require('../config.php');
+require('../vendor/myfunc.php');
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +58,7 @@ require('../config.php');
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Jadwal Ujian Hari Ini 8 Nopember 2021</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Jadwal Ujian Hari Ini <?= tgl_indo(date('Y-m-d')); ?></h6>
                 </div>
                 <div class="table-responsive p-3">
                   <table class="table align-items-center table-flush" id="dataTable">
@@ -75,14 +76,14 @@ require('../config.php');
                     </thead>
                     <tbody>
                       <tr>
-                        <td>1</td>
-                        <td>Ujian Proposal</td>
-                        <td>Johan Ericka</td>
-                        <td>09630001</td>
-                        <td>Dr. Imam Tazi</td>
-                        <td>Irjan, M.Si</td>
-                        <td>08.00 - 09.00 WIB</td>
-                        <td>Ruang Rapat Prodi</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                       </tr>
                       </tr>
                     </tbody>

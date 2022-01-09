@@ -16,7 +16,7 @@
         Mahasiswa
     </div>
     <li class="nav-item">
-        <a class="nav-link" href="mahasiswa-bimbingan.php">
+        <a class="nav-link" href="pembimbing-dashboard.php">
             <i class="fas fa-fw fa-users"></i>
             <span>Bimbingan</span>
         </a>

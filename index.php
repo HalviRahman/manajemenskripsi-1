@@ -62,22 +62,23 @@ require('vendor/myfunc.php');
                                             $result = $stmt->get_result();
                                             $juser = $result->num_rows;
                                             if ($juser > 0) {
-                                                $dhasil = $result->fetch_assoc();
-                                                $nama = $dhasil['nama'];
-                                                $nim = $dhasil['nim'];
-                                                $jadwalujian = $dhasil['jadwalujian'];
-                                                $ruang = $dhasil['ruang'];
+                                                while ($dhasil = $result->fetch_assoc()) {
+                                                    $nama = $dhasil['nama'];
+                                                    $nim = $dhasil['nim'];
+                                                    $jadwalujian = $dhasil['jadwalujian'];
+                                                    $ruang = $dhasil['ruang'];
                                             ?>
-                                                <tr>
-                                                    <td><?= $no; ?></td>
-                                                    <td><?= $nama; ?></td>
-                                                    <td><?= $nim; ?></td>
-                                                    <td><?= tgljam_indo($jadwalujian); ?></td>
-                                                    <td><?= $ruang; ?></td>
-                                                </tr>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $nama; ?></td>
+                                                        <td><?= $nim; ?></td>
+                                                        <td><?= tgljam_indo($jadwalujian); ?></td>
+                                                        <td><?= $ruang; ?></td>
+                                                    </tr>
                                             <?php
+                                                    $no++;
+                                                }
                                             }
-                                            $no++;
                                             ?>
                                         </tbody>
                                     </table>
@@ -113,22 +114,23 @@ require('vendor/myfunc.php');
                                             $result = $stmt->get_result();
                                             $juser = $result->num_rows;
                                             if ($juser > 0) {
-                                                $dhasil = $result->fetch_assoc();
-                                                $nama = $dhasil['nama'];
-                                                $nim = $dhasil['nim'];
-                                                $jadwalujian = $dhasil['jadwalujian'];
-                                                $ruang = $dhasil['ruang'];
+                                                while ($dhasil = $result->fetch_assoc()) {
+                                                    $nama = $dhasil['nama'];
+                                                    $nim = $dhasil['nim'];
+                                                    $jadwalujian = $dhasil['jadwalujian'];
+                                                    $ruang = $dhasil['ruang'];
                                             ?>
-                                                <tr>
-                                                    <td><?= $no; ?></td>
-                                                    <td><?= $nama; ?></td>
-                                                    <td><?= $nim; ?></td>
-                                                    <td><?= tgljam_indo($jadwalujian); ?></td>
-                                                    <td><?= $ruang; ?></td>
-                                                </tr>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $nama; ?></td>
+                                                        <td><?= $nim; ?></td>
+                                                        <td><?= tgljam_indo($jadwalujian); ?></td>
+                                                        <td><?= $ruang; ?></td>
+                                                    </tr>
                                             <?php
+                                                    $no++;
+                                                }
                                             }
-                                            $no++;
                                             ?>
                                         </tbody>
                                     </table>
@@ -164,22 +166,23 @@ require('vendor/myfunc.php');
                                             $result = $stmt->get_result();
                                             $juser = $result->num_rows;
                                             if ($juser > 0) {
-                                                $dhasil = $result->fetch_assoc();
-                                                $nama = $dhasil['nama'];
-                                                $nim = $dhasil['nim'];
-                                                $jadwalujian = $dhasil['jadwalujian'];
-                                                $ruang = $dhasil['ruang'];
+                                                while ($dhasil = $result->fetch_assoc()) {
+                                                    $nama = $dhasil['nama'];
+                                                    $nim = $dhasil['nim'];
+                                                    $jadwalujian = $dhasil['jadwalujian'];
+                                                    $ruang = $dhasil['ruang'];
                                             ?>
-                                                <tr>
-                                                    <td><?= $no; ?></td>
-                                                    <td><?= $nama; ?></td>
-                                                    <td><?= $nim; ?></td>
-                                                    <td><?= tgljam_indo($jadwalujian); ?></td>
-                                                    <td><?= $ruang; ?></td>
-                                                </tr>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $nama; ?></td>
+                                                        <td><?= $nim; ?></td>
+                                                        <td><?= tgljam_indo($jadwalujian); ?></td>
+                                                        <td><?= $ruang; ?></td>
+                                                    </tr>
                                             <?php
+                                                    $no++;
+                                                }
                                             }
-                                            $no++;
                                             ?>
                                         </tbody>
                                     </table>
@@ -215,22 +218,23 @@ require('vendor/myfunc.php');
                                             $result = $stmt->get_result();
                                             $juser = $result->num_rows;
                                             if ($juser > 0) {
-                                                $dhasil = $result->fetch_assoc();
-                                                $nama = $dhasil['nama'];
-                                                $nim = $dhasil['nim'];
-                                                $jadwalujian = $dhasil['jadwalujian'];
-                                                $ruang = $dhasil['ruang'];
+                                                while ($dhasil = $result->fetch_assoc()) {
+                                                    $nama = $dhasil['nama'];
+                                                    $nim = $dhasil['nim'];
+                                                    $jadwalujian = $dhasil['jadwalujian'];
+                                                    $ruang = $dhasil['ruang'];
                                             ?>
-                                                <tr>
-                                                    <td><?= $no; ?></td>
-                                                    <td><?= $nama; ?></td>
-                                                    <td><?= $nim; ?></td>
-                                                    <td><?= tgljam_indo($jadwalujian); ?></td>
-                                                    <td><?= $ruang; ?></td>
-                                                </tr>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $nama; ?></td>
+                                                        <td><?= $nim; ?></td>
+                                                        <td><?= tgljam_indo($jadwalujian); ?></td>
+                                                        <td><?= $ruang; ?></td>
+                                                    </tr>
                                             <?php
+                                                    $no++;
+                                                }
                                             }
-                                            $no++;
                                             ?>
                                         </tbody>
                                     </table>

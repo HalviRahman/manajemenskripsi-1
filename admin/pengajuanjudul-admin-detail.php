@@ -93,14 +93,18 @@ require('../config.php');
                                     </div>
                                     <div class="form-group">
                                         <label>Judul Proposal</label>
-                                        <input type="text" class="form-control" name="judul" value="<?= $judul; ?>" readonly>
+                                        <textarea class="form-control" name="judul" readonly><?= $judul; ?></textarea>
                                     </div>
-                                    <div class="form-group">
-                                        <label>File Proposal</label>
-                                        <br />
-                                        <a href="<?= $fileproposal; ?>" target="_blank"><img src="<?= $fileproposal; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
-                                        <br />
-                                        <small style="color: blue">Klik pada gambar untuk memperbesar</small>
+                                    <div class="row">
+                                        <div class="col" align="center">
+                                            <div class="form-group">
+                                                <label>File Proposal</label>
+                                                <br />
+                                                <a href="<?= $fileproposal; ?>" target="_blank"><img src="<?= $fileproposal; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk memperbesar</small>
+                                            </div>
+                                        </div>
                                     </div>
                                     <form method="POST">
                                         <input type="hidden" name="token" value="<?= $token; ?>">

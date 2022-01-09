@@ -175,8 +175,10 @@ require('../vendor/myfunc.php');
                                                                 echo 'Menunggu verifikasi Admin';
                                                             } elseif ($verifikasifile == 1 and $status == 0) {
                                                                 echo 'Menunggu verifikasi Sekprodi';
-                                                            } elseif ($verifikasifile == 1 and ($status == 1 || $status == 3)) {
-                                                                echo 'Disetujui';
+                                                            } elseif ($verifikasifile == 1 and $status == 1) {
+                                                                echo 'Menunggu penjadwalan';
+                                                            } elseif ($verifikasifile == 1 and $status == 3) {
+                                                                echo 'Terjadwal';
                                                             } elseif ($verifikasifile == 2 and $status == 0) {
                                                                 echo 'Berkas tidak langkap';
                                                             } elseif ($verifikasifile == 1 and $status == 2) {

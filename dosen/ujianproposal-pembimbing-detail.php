@@ -6,10 +6,11 @@ $role = $_SESSION['role'];
 $jabatan = $_SESSION['jabatan'];
 $nama = $_SESSION['nama'];
 $nim = $_SESSION['nim'];
-if ($role != 'admin') {
+if ($role != 'dosen') {
     header("location:../deauth.php");
 }
 require('../config.php');
+require('../vendor/myfunc.php');
 ?>
 
 <!DOCTYPE html>
@@ -46,10 +47,10 @@ require('../config.php');
                 <!-- Container Fluid-->
                 <div class="container-fluid" id="container-wrapper">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Pengajuan Judul Proposal Skripsi</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Data Seminar Proposal</h1>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="./">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Pengajuan Judul Proposal</li>
+                            <li class="breadcrumb-item active" aria-current="page">Data Seminar Proposal</li>
                         </ol>
                     </div>
 
@@ -58,7 +59,7 @@ require('../config.php');
                             <!-- Form Basic -->
                             <div class="card mb-12">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Data Judul Proposal</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Data Seminar Proposal</h6>
                                 </div>
                                 <?php
                                 $no = 1;
@@ -73,12 +74,20 @@ require('../config.php');
                                 $nama = $dhasil['nama'];
                                 $bidang = $dhasil['bidang'];
                                 $judul = $dhasil['judul'];
+                                $pembimbing = $dhasil['pembimbing'];
                                 $persetujuanpembimbing = $dhasil['persetujuanpembimbing'];
                                 $khs = $dhasil['khs'];
                                 $proposal = $dhasil['proposal'];
-                                $pembimbing = $dhasil['pembimbing'];
                                 $penguji1 = $dhasil['penguji1'];
+                                $nilai1 = $dhasil['nilai1'];
+                                $revisi1 = $dhasil['revisi1'];
                                 $penguji2 = $dhasil['penguji2'];
+                                $nilai2 = $dhasil['nilai2'];
+                                $revisi2 = $dhasil['revisi2'];
+                                $jadwalujian = $dhasil['jadwalujian'];
+                                $ruang = $dhasil['ruang'];
+                                $linkzoom = $dhasil['linkzoom'];
+
                                 $token = $dhasil['token'];
                                 ?>
                                 <div class="card-body">
@@ -112,86 +121,93 @@ require('../config.php');
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group text-break">
+                                    <div class="form-group">
                                         <label>Judul Proposal</label>
-                                        <textarea class="form-control" name="judul" readonly><?= $judul; ?></textarea>
+                                        <input type="text" class="form-control" name="judul" value="<?= $judul; ?>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col" align="center">
+                                                <label>Persetujuan Pembimbing</label>
+                                                <br />
+                                                <a href="<?= $persetujuanpembimbing; ?>" target="_blank"><img src="<?= $persetujuanpembimbing; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk memperbesar</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Kartu Hasil Studi</label>
+                                                <br />
+                                                <a href="<?= $khs; ?>" target="_blank"><img src="<?= $khs; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk memperbesar</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>File Proposal</label>
+                                                <br />
+                                                <a href="<?= $proposal; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Jadwal Ujian</label>
+                                        <input type="text" class="form-control" name="jadwalujian" value="<?= tgljam_indo($jadwalujian); ?>" readonly>
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <div class="form-group text-break">
-                                                <label>Penguji Ketua</label>
+                                            <div class="form-group">
+                                                <label>Ruangan</label>
+                                                <input type="text" class="form-control" name="ruangan" value="<?= $ruang; ?>" readonly>
+                                            </div>
+                                        </div>
+
+                                        <?php
+                                        if ($ruang == 'Zoom') {
+                                        ?>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label>Link</label>
+                                                    <input type="text" class="form-control" name="linkzoom" value="<?= urldecode($linkzoom); ?>" readonly>
+                                                    <a href="<?= urldecode($linkzoom); ?>" type="button" class="btn btn-success" target="_blank">BUKA</a>
+                                                </div>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Dosen Penguji Utama</label>
                                                 <input type="text" class="form-control" name="penguji1" value="<?= $penguji1; ?>" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Nilai Penguji Utama</label>
+                                                <input type="number" class="form-control" name="nilai1" value="<?= $nilai1; ?>" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Revisi Penguji Utama</label>
+                                                <br />
+                                                <textarea name="revisi1" class="form-control" rows="5" disabled><?= ($revisi1); ?></textarea>
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group text-break">
-                                                <label>Penguji Anggota</label>
+                                            <div class="form-group">
+                                                <label>Dosen Penguji Anggota</label>
                                                 <input type="text" class="form-control" name="penguji2" value="<?= $penguji2; ?>" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Nilai Penguji Anggota</label>
+                                                <input type="number" class="form-control" name="nilai2" value="<?= $nilai2; ?>" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Revisi Penguji Anggota</label>
+                                                <br />
+                                                <textarea name="revisi1" class="form-control" rows="5" disabled><?= ($revisi2); ?></textarea>
                                             </div>
                                         </div>
                                     </div>
-                                    <form method="POST">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-group text-break">
-                                                    <label>Jadwal Ujian</label>
-                                                    <input type="datetime-local" class="form-control" name="jadwalujian" required>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-group text-break">
-                                                    <label>Ruangan</label>
-                                                    <select name="ruangan" class="form-control">
-                                                        <?php
-                                                        $stmt = $conn->prepare("SELECT * FROM ruangan");
-                                                        $stmt->execute();
-                                                        $result = $stmt->get_result();
-                                                        while ($dhasil = $result->fetch_assoc()) {
-                                                            $namaruangan = $dhasil['namaruangan'];
-                                                        ?>
-                                                            <option value="<?= $namaruangan; ?>"><?= $namaruangan; ?></option>
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group text-break">
-                                            <label>Link Online Meeting</label>
-                                            <input type="text" class="form-control" name="linkzoom">
-                                            <small style="color:red">Diisi apabila menggunakan Online Meeting (Zoom / GMeet / WebEx dll)</small>
-                                        </div>
-                                        <input type="hidden" name="token" value="<?= $token; ?>">
-                                        <div class="row">
-                                            <div class="col">
-                                                <button type="submit" class="btn btn-success btn-lg btn-block" formaction="ujianproposal-admin-setujui2.php" onclick="return confirm('Menyetujui pengajuan ini ?')">SETUJUI</button>
-                                            </div>
-                                            <div class="col">
-                                                <button type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-lg btn-block">TOLAK</button>
-                                            </div>
-                                        </div>
-                                        <!-- modal tolak -->
-                                        <div class="modal fade" id="modal-tolak">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Alasan Penolakan</h4>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <textarea class="form-control" rows="3" name="keterangan"></textarea>
-                                                    </div>
-                                                    <div class="modal-footer justify-content-between">
-                                                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                                                        <button name="aksi" value="tolak" type="submit" formaction="ujianproposal-admin-tolak2.php" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i class="fa fa-times"></i> Tolak</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>

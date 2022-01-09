@@ -80,14 +80,6 @@ require('../config.php');
                                         <input type="hidden" name="bidang" value="<?= $bidang; ?>">
                                         <input type="hidden" name="judul" value="<?= $judul; ?>">
                                         <div class="form-group">
-                                            <label>Bidang Minat</label>
-                                            <input type="text" class="form-control" value="<?= $bidang ?>" disabled>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Judul</label>
-                                            <input type="text" class="form-control" value="<?= $judul; ?>" disabled>
-                                        </div>
-                                        <div class="form-group">
                                             <label>Upload Lembar Persetujuan Pembimbing</label>
                                             <input type="file" name="persetujuanpembimbing" class="form-control" accept=".jpg,.jpeg" required>
                                             <small style="color: red;">Format file PDF ukuran maksimal 1MB</small>
@@ -105,7 +97,7 @@ require('../config.php');
                                                 <li>Format file PDF ukuran maksimal 5MB</li>
                                             </small>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block">AJUKAN</button>
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="return confirm('Mengajukan Seminar Proposal ?')">AJUKAN SEMINAR PROPOSAL</button>
                                     </form>
                                 </div>
                             </div>
