@@ -48,10 +48,10 @@ require('../config.php');
                 <!-- Container Fluid-->
                 <div class="container-fluid" id="container-wrapper">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Ujian Proposal</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Ujian Komprehensif</h1>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="./">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Pengajuan Ujian Proposal</li>
+                            <li class="breadcrumb-item active" aria-current="page">Ujian Komprehensif</li>
                         </ol>
                     </div>
 
@@ -78,7 +78,7 @@ require('../config.php');
                     $revisi2 = $dhasil['revisi2'];
                     $token = $dhasil['token'];
                     if ($penguji1 == $nama) {
-                        $penguji = 'PENGUJI UTAMA';
+                        $penguji = 'Penguji Ketua';
                     } elseif ($penguji2 == $nama) {
                         $penguji = 'PENGUJI ANGGOTA';
                     }

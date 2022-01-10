@@ -46,7 +46,7 @@ require('../config.php');
                 <!-- Container Fluid-->
                 <div class="container-fluid" id="container-wrapper">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Pengajuan Seminar Hasil</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Pengajuan Ujian Skripsi</h1>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="./">Dashboard</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Pengajuan Ujian Skripsi</li>
@@ -120,7 +120,7 @@ require('../config.php');
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group text-break">
-                                                <label>Penguji Utama</label>
+                                                <label>Penguji Ketua</label>
                                                 <input type="text" class="form-control" name="penguji1" value="<?= $penguji1; ?>" readonly>
                                             </div>
                                         </div>

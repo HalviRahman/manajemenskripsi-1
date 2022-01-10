@@ -144,7 +144,7 @@ require('../config.php');
                                     <form method="POST">
                                         <div class="row">
                                             <div class="col">
-                                                <label>Penguji Utama</label>
+                                                <label>Penguji Ketua</label>
                                                 <select name="penguji1" class="form-control">
                                                     <?php
                                                     $stmt = $conn->prepare("SELECT * FROM pengguna WHERE role='dosen' and nama <> '$pembimbing'");

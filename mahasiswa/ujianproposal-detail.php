@@ -179,15 +179,15 @@ require('../vendor/myfunc.php');
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Dosen Penguji Utama</label>
+                                                <label>Dosen Penguji Ketua</label>
                                                 <input type="text" class="form-control" name="penguji1" value="<?= $penguji1; ?>" readonly>
                                             </div>
                                             <div class="form-group">
-                                                <label>Nilai Penguji Utama</label>
+                                                <label>Nilai Penguji Ketua</label>
                                                 <input type="number" class="form-control" name="nilai1" value="<?= $nilai1; ?>" readonly>
                                             </div>
                                             <div class="form-group">
-                                                <label>Revisi Penguji Utama</label>
+                                                <label>Revisi Penguji Ketua</label>
                                                 <br />
                                                 <textarea name="revisi1" class="form-control" rows="5" disabled><?= ($revisi1); ?></textarea>
                                             </div>

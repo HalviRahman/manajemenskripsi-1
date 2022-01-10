@@ -102,7 +102,6 @@ require('../vendor/myfunc.php');
                                             ?>
 
                                             <?php
-                                            $no = 1;
                                             // ambil data pengajuan ujian proposal
                                             $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE pembimbing=?");
                                             $stmt->bind_param("s", $nama);
@@ -129,7 +128,6 @@ require('../vendor/myfunc.php');
                                             ?>
 
                                             <?php
-                                            $no = 1;
                                             // ambil data pengajuan seminar hasil
                                             $stmt = $conn->prepare("SELECT * FROM semhas WHERE pembimbing=?");
                                             $stmt->bind_param("s", $nama);
@@ -156,7 +154,6 @@ require('../vendor/myfunc.php');
                                             ?>
 
                                             <?php
-                                            $no = 1;
                                             // ambil data pengajuan ujian skripsi
                                             $stmt = $conn->prepare("SELECT * FROM ujianskripsi WHERE pembimbing=?");
                                             $stmt->bind_param("s", $nama);
@@ -165,7 +162,7 @@ require('../vendor/myfunc.php');
                                             while ($dhasil = $result->fetch_assoc()) {
                                                 $nimmhs = $dhasil['nim'];
                                                 $namamhs = $dhasil['nama'];
-                                                $ujian = 'Seminar Hasil';
+                                                $ujian = 'Ujian Skripsi';
                                                 $token = $dhasil['token'];
                                             ?>
                                                 <tr>
