@@ -121,14 +121,14 @@ require('../vendor/myfunc.php');
                                     </div>
                                     <div class="form-group">
                                         <label>Judul Proposal</label>
-                                        <input type="text" class="form-control" name="judul" value="<?= $judul; ?>" readonly>
+                                        <textarea class="form-control" name="judul" readonly><?= $judul; ?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col" align="center">
                                                 <label>File Proposal</label>
                                                 <br />
-                                                <a href="<?= $proposal; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <a href="<?= $fileproposal; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
                                                 <br />
                                                 <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                             </div>
@@ -165,6 +165,7 @@ require('../vendor/myfunc.php');
                                                 <label>Dosen Penguji Fisika</label>
                                                 <input type="text" class="form-control" name="penguji1" value="<?= $penguji1; ?>" readonly>
                                             </div>
+                                            <!--
                                             <div class="form-group">
                                                 <label>Nilai Penguji Fisika</label>
                                                 <?php if (isset($nilai1)) {
@@ -177,6 +178,7 @@ require('../vendor/myfunc.php');
                                                 <?php
                                                 } ?>
                                             </div>
+                                            -->
                                             <div class="form-group">
                                                 <label>Revisi Penguji Fisika</label>
                                                 <textarea name="revisi1" class="form-control" rows="5" disabled><?php if (isset($revisi1)) {
@@ -188,18 +190,6 @@ require('../vendor/myfunc.php');
                                             <div class="form-group">
                                                 <label>Dosen Penguji Integrasi</label>
                                                 <input type="text" class="form-control" name="penguji2" value="<?= $penguji2; ?>" readonly>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Nilai Penguji Integrasi</label>
-                                                <?php if (isset($nilai2)) {
-                                                ?>
-                                                    <input type="text" class="form-control" name="nilai1" value="<?= $nilai2; ?>" readonly>
-                                                <?php
-                                                } else {
-                                                ?>
-                                                    <input type="text" class="form-control" name="nilai1" value="" readonly>
-                                                <?php
-                                                } ?>
                                             </div>
                                             <div class="form-group">
                                                 <label>Revisi Penguji Integrasi</label>

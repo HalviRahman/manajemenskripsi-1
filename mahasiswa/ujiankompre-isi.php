@@ -55,7 +55,7 @@ require('../config.php');
                     <?php
                     $no = 1;
                     // ambil data pengajuan judul
-                    $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE nim=? and status=3");
+                    $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE nim=? and status=4");
                     $stmt->bind_param("s", $nim);
                     $stmt->execute();
                     $result = $stmt->get_result();
@@ -80,12 +80,26 @@ require('../config.php');
                                         <input type="hidden" name="bidang" value="<?= $bidang; ?>">
                                         <input type="hidden" name="judul" value="<?= $judul; ?>">
                                         <div class="form-group">
-                                            <label>Bidang Minat</label>
-                                            <input type="text" class="form-control" value="<?= $bidang ?>" disabled>
+                                            <label>Upload Form Pengajuan Judul Skripsi</label>
+                                            <input type="file" name="judulskripsi" class="form-control" accept=".jpg,.jpeg">
+                                            <small style="color: red;">
+                                                <li>Revisi File Proposal yang telah disetujui pembimbing & Ketua Program Studi</li>
+                                                <li>Format file JPG ukuran maksimal 1MB</li>
+                                            </small>
                                         </div>
                                         <div class="form-group">
-                                            <label>Judul</label>
-                                            <input type="text" class="form-control" value="<?= $judul; ?>" disabled>
+                                            <label>Upload Transkrip Nilai Sementara</label>
+                                            <input type="file" name="transkrip" class="form-control" accept=".pdf">
+                                            <small style="color: red;">
+                                                <li>Format file PDF ukuran maksimal 1MB</li>
+                                            </small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Upload Ijazah Terakhir</label>
+                                            <input type="file" name="ijazah" class="form-control" accept=".jpg,.jpeg">
+                                            <small style="color: red;">
+                                                <li>Format file JPG ukuran maksimal 1MB</li>
+                                            </small>
                                         </div>
                                         <div class="form-group">
                                             <label>Upload Berkas File Proposal (revisi)</label>

@@ -79,7 +79,7 @@ require('../config.php');
                                             <input type="text" class="form-control" name="judul" required>
                                         </div>
                                         <div class="form-group">
-                                            <label>File Proposal</label>
+                                            <label>File Pengajuan Judul</label>
                                             <input type="file" name="proposal" class="form-control" accept=".jpg,.jpeg" required>
                                             <small style="color:red">
                                                 <li>Ukuran file maksimal 1 MB format JPG</li>

@@ -80,7 +80,7 @@ require('../config.php');
                     $revisi2 = $dhasil['revisi2'];
                     $token = $dhasil['token'];
                     if ($penguji1 == $nama) {
-                        $penguji = 'PENGUJI UTAMA';
+                        $penguji = 'PENGUJI KETUA';
                     } elseif ($penguji2 == $nama) {
                         $penguji = 'PENGUJI ANGGOTA';
                     }
@@ -125,7 +125,7 @@ require('../config.php');
                                     </div>
                                     <div class="form-group">
                                         <label>Judul Proposal</label>
-                                        <input type="text" class="form-control" name="judul" value="<?= $judul; ?>" readonly>
+                                        <textarea class="form-control" name="judul" readonly> <?= $judul; ?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
@@ -140,8 +140,11 @@ require('../config.php');
                                     </div>
                                     <form method="POST">
                                         <div class="row">
-                                            <label>Nilai</label>
-                                            <input type="number" name="nilai" class="form-control" required>
+                                            <label>Keputusan</label>
+                                            <select class="form-control" name="keputusan">
+                                                <option value="DITERIMA" selected>DITERIMA</option>
+                                                <option value="DITOLAK">DITOLAK</option>
+                                            </select>
                                             <label>Revisi</label>
                                             <textarea name="revisi" class="form-control" rows="5"></textarea>
                                         </div>

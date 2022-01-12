@@ -80,7 +80,7 @@ require('../vendor/myfunc.php');
                         <?php
                         $no = 1;
                         // ambil data pengajuan ujian proposal
-                        $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE verifikasifile=1 AND status=0");
+                        $stmt = $conn->prepare("SELECT * FROM pengajuanjudul WHERE verifikasifile=1 AND status=0");
                         $stmt->execute();
                         $result = $stmt->get_result();
                         while ($dhasil = $result->fetch_assoc()) {
@@ -144,6 +144,56 @@ require('../vendor/myfunc.php');
                             <td><?= $nim; ?></td>
                             <td class="text-center">
                               <a href="ujiankomprehensif-sekprodi-detail.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
+                        <?php
+                          $no++;
+                        }
+                        ?>
+
+                        <?php
+                        // ambil data ujian semhas
+                        $stmt = $conn->prepare("SELECT * FROM semhas WHERE verifikasifile=1 AND status=0");
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        while ($dhasil = $result->fetch_assoc()) {
+                          $nimmhs = $dhasil['nim'];
+                          $namamhs = $dhasil['nama'];
+                          $ujian = 'Seminar Hasil';
+                          $tokenmhs = $dhasil['token'];
+                        ?>
+                          <tr>
+                            <td><?= $no; ?></td>
+                            <td><?= $ujian; ?></td>
+                            <td><?= $namamhs; ?></td>
+                            <td><?= $nimmhs; ?></td>
+                            <td class="text-center">
+                              <a href="semhas-sekprodi-detail.php?token=<?= $tokenmhs; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
+                        <?php
+                          $no++;
+                        }
+                        ?>
+
+                        <?php
+                        // ambil data ujian skripsi
+                        $stmt = $conn->prepare("SELECT * FROM ujianskripsi WHERE verifikasifile=1 AND status=0");
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        while ($dhasil = $result->fetch_assoc()) {
+                          $nimmhs = $dhasil['nim'];
+                          $namamhs = $dhasil['nama'];
+                          $ujian = 'Seminar Hasil';
+                          $tokenmhs = $dhasil['token'];
+                        ?>
+                          <tr>
+                            <td><?= $no; ?></td>
+                            <td><?= $ujian; ?></td>
+                            <td><?= $namamhs; ?></td>
+                            <td><?= $nimmhs; ?></td>
+                            <td class="text-center">
+                              <a href="ujianskripsi-sekprodi-detail.php?token=<?= $tokenmhs; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
                             </td>
                           </tr>
                         <?php
@@ -227,6 +277,62 @@ require('../vendor/myfunc.php');
                           <td><?= $ruangmhs; ?></td>
                           <td class="text-center">
                             <a href="ujiankompre-dosen-detail.php?token=<?= $tokenmhs; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                          </td>
+                        </tr>
+                      <?php
+                        $no++;
+                      }
+                      ?>
+
+                      <?php
+                      // ambil data ujian semhas
+                      $stmt = $conn->prepare("SELECT * FROM semhas WHERE (penguji1=? OR penguji2=?) AND (nilai1=0 OR nilai2=0)");
+                      $stmt->bind_param("ss", $nama, $nama);
+                      $stmt->execute();
+                      $result = $stmt->get_result();
+                      while ($dhasil = $result->fetch_assoc()) {
+                        $nimmhs = $dhasil['nim'];
+                        $namamhs = $dhasil['nama'];
+                        $jadwalmhs = $dhasil['jadwalujian'];
+                        $ruangmhs = $dhasil['ruang'];
+                        $tokenmhs = $dhasil['token'];
+                      ?>
+                        <tr>
+                          <td><?= $no; ?></td>
+                          <td><?= $namamhs; ?></td>
+                          <td><?= $nimmhs; ?></td>
+                          <td><?= tgljam_indo($jadwalmhs); ?></td>
+                          <td><?= $ruangmhs; ?></td>
+                          <td class="text-center">
+                            <a href="semhas-dosen-detail.php?token=<?= $tokenmhs; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                          </td>
+                        </tr>
+                      <?php
+                        $no++;
+                      }
+                      ?>
+
+                      <?php
+                      // ambil data ujian semhas
+                      $stmt = $conn->prepare("SELECT * FROM ujianskripsi WHERE (penguji1=? OR penguji2=?) AND (nilai1=0 OR nilai2=0)");
+                      $stmt->bind_param("ss", $nama, $nama);
+                      $stmt->execute();
+                      $result = $stmt->get_result();
+                      while ($dhasil = $result->fetch_assoc()) {
+                        $nimmhs = $dhasil['nim'];
+                        $namamhs = $dhasil['nama'];
+                        $jadwalmhs = $dhasil['jadwalujian'];
+                        $ruangmhs = $dhasil['ruang'];
+                        $tokenmhs = $dhasil['token'];
+                      ?>
+                        <tr>
+                          <td><?= $no; ?></td>
+                          <td><?= $namamhs; ?></td>
+                          <td><?= $nimmhs; ?></td>
+                          <td><?= tgljam_indo($jadwalmhs); ?></td>
+                          <td><?= $ruangmhs; ?></td>
+                          <td class="text-center">
+                            <a href="ujianskripsi-dosen-detail.php?token=<?= $tokenmhs; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
                           </td>
                         </tr>
                       <?php

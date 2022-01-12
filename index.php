@@ -1,117 +1,272 @@
+<?php
+require('config.php');
+require('vendor/myfunc.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link href="img/logo/uinlogo.png" rel="icon">
-  <title>Manajemen SKRIPSI</title>
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="css/ruang-admin.min.css" rel="stylesheet">
-  <?php require('vendor/myfunc.php'); ?>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="img/uinlogo-small.png" rel="icon">
+    <title>Manajemen Skripsi</title>
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/ruang-admin.min.css" rel="stylesheet">
+    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-gradient-login">
-  <!-- Login Content -->
-  <div class="container-login">
-    <div class="row justify-content-center">
-      <div class="col-xl-6 col-lg-12 col-md-9">
-        <div class="card shadow-sm my-5">
-          <div class="card-body p-0">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="login-form">
-                  <div class="text-center">
-                    <img src="img/uinlogo.png" width="100px">
-                    <h1 class="h4 text-gray-900 mb-4">Sistem Manajemen Skripsi</h1>
-                  </div>
-                  <!-- baca pesan -->
-                  <?php
-                  //ambil nilai variabel pesan di URL
-                  if (isset($_GET['pesan'])) {
-                    $pesan = $_GET['pesan'];
-                    if ($pesan == 'success') {
-                  ?>
-                      <div class="alert alert-success" role="alert">
-                        Pendaftaran pengguna berhasil
-                      </div>
-                    <?php
-                    } elseif ($pesan == 'exist') {
-                    ?>
-                      <div class="alert alert-danger" role="alert">
-                        <b>ERROR!!</b> Pengguna telah terdaftar
-                      </div>
-                    <?php
-                    } elseif ($pesan == 'passsalah') {
-                    ?>
-                      <div class="alert alert-danger" role="alert">
-                        <b>ERROR!!</b> Konfirmasi password tidak sama
-                      </div>
-                    <?php
-                    } elseif ($pesan == 'hitungsalah') {
-                    ?>
-                      <div class="alert alert-danger" role="alert">
-                        <b>ERROR!!</b> Perhitungan salah
-                      </div>
-                  <?php
-                    }
-                  }
-                  ?>
+<body id="page-top">
+    <div id="wrapper">
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <!-- TopBar -->
+                <?php
+                require('topbar.php');
+                ?>
+                <!-- Topbar -->
 
-                  <form action="auth.php" method="POST">
-                    <div class="form-group">
-                      <label>User ID</label>
-                      <input type="text" class="form-control" name="userid" required>
+                <!-- Container Fluid-->
+                <div class="container-fluid" id="container-wrapper">
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Jadwal Ujian</h1>
                     </div>
-                    <div class="form-group">
-                      <label>Password</label>
-                      <input type="password" class="form-control" name="password" required>
+                    <!-- ujian hari ini -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card mb-4">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Ujian Proposal</h6>
+                                </div>
+                                <div class="table-responsive p-3">
+                                    <table class="table align-items-center table-flush display">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th class="text-center" width="5%">No</th>
+                                                <th class="text-center">Nama</th>
+                                                <th class="text-center">NIM</th>
+                                                <th class="text-center">Jadwal Ujian</th>
+                                                <th class="text-center">Ruang</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- ambil data ujian proposal-->
+                                            <?php
+                                            $no = 1;
+                                            $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE status=3");
+                                            $stmt->execute();
+                                            $result = $stmt->get_result();
+                                            $juser = $result->num_rows;
+                                            if ($juser > 0) {
+                                                while ($dhasil = $result->fetch_assoc()) {
+                                                    $nama = $dhasil['nama'];
+                                                    $nim = $dhasil['nim'];
+                                                    $jadwalujian = $dhasil['jadwalujian'];
+                                                    $ruang = $dhasil['ruang'];
+                                            ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $nama; ?></td>
+                                                        <td><?= $nim; ?></td>
+                                                        <td><?= tgljam_indo($jadwalujian); ?></td>
+                                                        <td><?= $ruang; ?></td>
+                                                    </tr>
+                                            <?php
+                                                    $no++;
+                                                }
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                      <?php
-                      $angka1 = rand(1, 5);
-                      $angka2 = rand(1, 5);
-                      $kunci = $angka1 + $angka2;
-                      ?>
-                      <label>Berapakah <b><u><?= huruf($angka1); ?> ditambah <?= huruf($angka2); ?></u></b> (angka) ?</label>
-                      <input type="number" class="form-control" name="hasil" id="hasil" required>
-                      <input type="hidden" name="kunci" value="<?= $kunci; ?>">
+
+                    <!-- tabel ujian komprehensif-->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card mb-4">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Ujian Komprehensif</h6>
+                                </div>
+                                <div class="table-responsive p-3">
+                                    <table class="table align-items-center table-flush display">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th class="text-center" width="5%">No</th>
+                                                <th class="text-center">Nama</th>
+                                                <th class="text-center">NIM</th>
+                                                <th class="text-center">Jadwal Ujian</th>
+                                                <th class="text-center">Ruang</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- ambil data ujian proposal-->
+                                            <?php
+                                            $no = 1;
+                                            $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE status=3");
+                                            $stmt->execute();
+                                            $result = $stmt->get_result();
+                                            $juser = $result->num_rows;
+                                            if ($juser > 0) {
+                                                while ($dhasil = $result->fetch_assoc()) {
+                                                    $nama = $dhasil['nama'];
+                                                    $nim = $dhasil['nim'];
+                                                    $jadwalujian = $dhasil['jadwalujian'];
+                                                    $ruang = $dhasil['ruang'];
+                                            ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $nama; ?></td>
+                                                        <td><?= $nim; ?></td>
+                                                        <td><?= tgljam_indo($jadwalujian); ?></td>
+                                                        <td><?= $ruang; ?></td>
+                                                    </tr>
+                                            <?php
+                                                    $no++;
+                                                }
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <hr>
-                    <button type="submit" class="btn btn-primary btn-block">MASUK</button>
-                  </form>
-                  <hr>
-                  <div class="row">
-                    <div class="col">
-                      <div class="text-center">
-                        <a class="font-weight-bold" href="daftar.php">Daftar Akun</a>
-                      </div>
+
+                    <!-- tabel seminar hasil -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card mb-4">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Seminar Hasil</h6>
+                                </div>
+                                <div class="table-responsive p-3">
+                                    <table class="table align-items-center table-flush display">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th class="text-center" width="5%">No</th>
+                                                <th class="text-center">Nama</th>
+                                                <th class="text-center">NIM</th>
+                                                <th class="text-center">Jadwal Ujian</th>
+                                                <th class="text-center">Ruang</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- ambil data ujian proposal-->
+                                            <?php
+                                            $no = 1;
+                                            $stmt = $conn->prepare("SELECT * FROM semhas WHERE status=3");
+                                            $stmt->execute();
+                                            $result = $stmt->get_result();
+                                            $juser = $result->num_rows;
+                                            if ($juser > 0) {
+                                                while ($dhasil = $result->fetch_assoc()) {
+                                                    $nama = $dhasil['nama'];
+                                                    $nim = $dhasil['nim'];
+                                                    $jadwalujian = $dhasil['jadwalujian'];
+                                                    $ruang = $dhasil['ruang'];
+                                            ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $nama; ?></td>
+                                                        <td><?= $nim; ?></td>
+                                                        <td><?= tgljam_indo($jadwalujian); ?></td>
+                                                        <td><?= $ruang; ?></td>
+                                                    </tr>
+                                            <?php
+                                                    $no++;
+                                                }
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col">
-                      <div class="text-center">
-                        <a class="font-weight-bold" href="lupa.php">Lupa Password</a>
-                      </div>
+
+                    <!-- tabel ujian skripsi -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card mb-4">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Ujian Skripsi</h6>
+                                </div>
+                                <div class="table-responsive p-3">
+                                    <table class="table align-items-center table-flush display">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th class="text-center" width="5%">No</th>
+                                                <th class="text-center">Nama</th>
+                                                <th class="text-center">NIM</th>
+                                                <th class="text-center">Jadwal Ujian</th>
+                                                <th class="text-center">Ruang</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- ambil data ujian proposal-->
+                                            <?php
+                                            $no = 1;
+                                            $stmt = $conn->prepare("SELECT * FROM ujianskripsi WHERE status=3");
+                                            $stmt->execute();
+                                            $result = $stmt->get_result();
+                                            $juser = $result->num_rows;
+                                            if ($juser > 0) {
+                                                while ($dhasil = $result->fetch_assoc()) {
+                                                    $nama = $dhasil['nama'];
+                                                    $nim = $dhasil['nim'];
+                                                    $jadwalujian = $dhasil['jadwalujian'];
+                                                    $ruang = $dhasil['ruang'];
+                                            ?>
+                                                    <tr>
+                                                        <td><?= $no; ?></td>
+                                                        <td><?= $nama; ?></td>
+                                                        <td><?= $nim; ?></td>
+                                                        <td><?= tgljam_indo($jadwalujian); ?></td>
+                                                        <td><?= $ruang; ?></td>
+                                                    </tr>
+                                            <?php
+                                                    $no++;
+                                                }
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  </div>
-  <!-- Login Content -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="js/ruang-admin.min.js"></script>
+
+    <!-- Scroll to top -->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../js/ruang-admin.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script>
+        $(document).ready(function() {
+            $('table.display').DataTable();
+        });
+    </script>
+
 </body>
 
 </html>

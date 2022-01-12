@@ -19,7 +19,7 @@ $nilai = $_POST['nilai'];
 $revisi = $_POST['revisi'];
 $penguji = $_POST['penguji'];
 
-if ($penguji == 'PENGUJI UTAMA') {
+if ($penguji == 'PENGUJI KETUA') {
     $stmt = $conn->prepare("UPDATE ujianproposal
                             SET status=4,
                                 nilai1=?,

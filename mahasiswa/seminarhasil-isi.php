@@ -1,3 +1,17 @@
+<?php
+session_start();
+$userid = $_SESSION['userid'];
+global $userid;
+$role = $_SESSION['role'];
+$jabatan = $_SESSION['jabatan'];
+$nama = $_SESSION['nama'];
+$nim = $_SESSION['nim'];
+if ($role != 'mahasiswa') {
+    header("location:../deauth.php");
+}
+require('../config.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,81 +49,67 @@
                         <h1 class="h3 mb-0 text-gray-800">Pendaftaran Seminar Hasil</h1>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="./">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Seminar Hasil</li>
+                            <li class="breadcrumb-item active" aria-current="page">Pendaftaran Seminar Hasil</li>
                         </ol>
                     </div>
-
+                    <?php
+                    $no = 1;
+                    $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE nim=? and status=4");
+                    $stmt->bind_param("s", $nim);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    $jhasil = $result->num_rows;
+                    if ($jhasil > 0) {
+                        $dhasil = $result->fetch_assoc();
+                        $bidang = $dhasil['bidang'];
+                        $judul = $dhasil['judul'];
+                        $pembimbing = $dhasil['pembimbing'];
+                        $penguji1 = $dhasil['penguji1'];
+                        $penguji2 = $dhasil['penguji2'];
+                        $token = $dhasil['token'];
+                    }
+                    ?>
                     <div class="row">
                         <div class="col-lg-12">
                             <!-- Form Basic -->
                             <div class="card mb-12">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Pendaftaran Seminar Hasil</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Data Seminar Hasil</h6>
                                 </div>
                                 <div class="card-body">
-                                    <form action="index.php" enctype="multipart/form-data" method="POST">
+                                    <form action="seminarhasil-simpan.php" enctype="multipart/form-data" method="POST">
+                                        <input type="hidden" name="bidang" value="<?= $bidang; ?>">
+                                        <input type="hidden" name="judul" value="<?= $judul; ?>">
+                                        <input type="hidden" name="pembimbing" value="<?= $pembimbing; ?>">
+                                        <input type="hidden" name="penguji1" value="<?= $penguji1; ?>">
+                                        <input type="hidden" name="penguji2" value="<?= $penguji2; ?>">
                                         <div class="form-group">
-                                            <label>Nama</label>
-                                            <input type="text" class="form-control" value="Johan Ericka" disabled>
+                                            <label>Surat Keterangan Lulus Ujian Proposal</label>
+                                            <input type="file" name="sklproposal" class="form-control" accept=".jpg,.jpeg" required>
+                                            <small style="color: red;">Format file JPG ukuran maksimal 1MB</small>
                                         </div>
                                         <div class="form-group">
-                                            <label>NIM</label>
-                                            <input type="text" class="form-control" value="09640001" disabled>
+                                            <label>Surat Ketarangan Lulus Ujian Komprehensif</label>
+                                            <input type="file" name="sklkompre" class="form-control" accept=".jpg,.jpeg" required>
+                                            <small style="color: red;">Format file JPG ukuran maksimal 1MB</small>
                                         </div>
                                         <div class="form-group">
-                                            <label>Telepon / HP</label>
-                                            <input type="number" class="form-control" value="08123456789" disabled>
+                                            <label>Upload File Seminar Hasil </label>
+                                            <input type="file" name="fileproposal" class="form-control" accept=".pdf" required>
+                                            <small style="color: red;">
+                                                <li>File laporan yang telah disetujui pembimbing</li>
+                                                <li>Format file PDF ukuran maksimal 5MB</li>
+                                            </small>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <input type="email" class="form-control" value="johan@uin-malang.ac.id" disabled>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Bidang Minat</label>
-                                            <input type="text" class="form-control" value="Sensor" disabled>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Judul</label>
-                                            <input type="text" class="form-control" value="Perbandingan Sensitivitas Sensor Suhu dan Kelembaban DHT-11 dan DHT-22 Pada Studi Kasus Smart Green House" disabled>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Upload Form Pendaftaran Seminar Hasil</label>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="inputGroupFile02" />
-                                                <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Upload Kartu Kendali Bukti konsultasi</label>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="inputGroupFile02" />
-                                                <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Upload Lembar Persetujuan Pembimbing 1</label>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="inputGroupFile02" />
-                                                <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Laporan Seminar Hasil</label>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="inputGroupFile02" />
-                                                <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-                                                <small>Setelah revisi</small>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Ajukan</button>
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="return conform ('Dengan ini saya menyatakan kebenaran dokumen yang saya upload')">AJUKAN</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--Row-->
                 </div>
             </div>
+
             <!-- Footer -->
             <?php
             require('footer.php');

@@ -47,10 +47,10 @@ require('../vendor/myfunc.php');
                 <!-- Container Fluid-->
                 <div class="container-fluid" id="container-wrapper">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Pengajuan Ujian Proposal</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Pendaftaran Ujian Seminar Proposal</h1>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="./">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Pengajuan Ujian Proposal</li>
+                            <li class="breadcrumb-item active" aria-current="page">Pendaftaran Ujian Proposal</li>
                         </ol>
                     </div>
 
@@ -123,7 +123,7 @@ require('../vendor/myfunc.php');
                                     </div>
                                     <div class="form-group">
                                         <label>Judul Proposal</label>
-                                        <input type="text" class="form-control" name="judul" value="<?= $judul; ?>" readonly>
+                                        <textarea class="form-control" name="judul" readonly> <?= $judul; ?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
@@ -179,15 +179,11 @@ require('../vendor/myfunc.php');
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Dosen Penguji Utama</label>
+                                                <label>Dosen Penguji Ketua</label>
                                                 <input type="text" class="form-control" name="penguji1" value="<?= $penguji1; ?>" readonly>
                                             </div>
                                             <div class="form-group">
-                                                <label>Nilai Penguji Utama</label>
-                                                <input type="number" class="form-control" name="nilai1" value="<?= $nilai1; ?>" readonly>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Revisi Penguji Utama</label>
+                                                <label>Revisi Penguji Ketua</label>
                                                 <br />
                                                 <textarea name="revisi1" class="form-control" rows="5" disabled><?= ($revisi1); ?></textarea>
                                             </div>
@@ -196,10 +192,6 @@ require('../vendor/myfunc.php');
                                             <div class="form-group">
                                                 <label>Dosen Penguji Anggota</label>
                                                 <input type="text" class="form-control" name="penguji2" value="<?= $penguji2; ?>" readonly>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Nilai Penguji Anggota</label>
-                                                <input type="number" class="form-control" name="nilai2" value="<?= $nilai2; ?>" readonly>
                                             </div>
                                             <div class="form-group">
                                                 <label>Revisi Penguji Anggota</label>

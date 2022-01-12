@@ -13,47 +13,109 @@
     </li>
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
-        Jadwal
-    </div>
-    <li class="nav-item">
-        <a class="nav-link" href="jadwal-tampil.php">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Jadwal Ujian</span>
-        </a>
-    </li>
-    <hr class="sidebar-divider">
-    <div class="sidebar-heading">
         Pendaftaran
     </div>
-    <li class="nav-item">
-        <a class="nav-link" href="pengajuanjudul-isi.php">
-            <i class="fas fa-fw fa-file"></i>
-            <span>Pengajuan Judul</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="ujianproposal-isi.php">
-            <i class="fas fa-fw fa-comments"></i>
-            <span>Ujian Proposal</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="ujiankompre-isi.php">
-            <i class="fas fa-fw fa-comments"></i>
-            <span>Ujian Komprehensif</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="seminarhasil-isi.php">
-            <i class="fas fa-fw fa-comments"></i>
-            <span>Seminar Hasil</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="sidangskripsi-isi.php">
-            <i class="fas fa-fw fa-gavel"></i>
-            <span>Ujian Skripsi</span>
-        </a>
-    </li>
+    <?php
+    $stmt = $conn->prepare("SELECT * FROM pengajuanjudul WHERE nim=?");
+    $stmt->bind_param("s", $nim);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $juser = $result->num_rows;
+    if ($juser > 0) {
+        $dhasil = $result->fetch_assoc();
+        $status = $dhasil['status'];
+        $verifikasifile = $dhasil['verifikasifile'];
+        if ($verifikasifile == 2 or $status == 2) {
+    ?>
+            <li class="nav-item">
+                <a class="nav-link" href="pengajuanjudul-isi.php">
+                    <i class="fas fa-fw fa-file"></i>
+                    <span>Pengajuan Judul</span>
+                </a>
+            </li>
+        <?php
+        }
+    } else {
+        ?>
+        <li class="nav-item">
+            <a class="nav-link" href="pengajuanjudul-isi.php">
+                <i class="fas fa-fw fa-file"></i>
+                <span>Pengajuan Judul</span>
+            </a>
+        </li>
+    <?php
+    }
+    ?>
+
+    <?php
+    $stmt = $conn->prepare("SELECT * FROM pengajuanjudul WHERE nim=? AND status=1");
+    $stmt->bind_param("s", $nim);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $juser = $result->num_rows;
+    if ($juser > 0) {
+    ?>
+        <li class="nav-item">
+            <a class="nav-link" href="ujianproposal-isi.php">
+                <i class="fas fa-fw fa-comments"></i>
+                <span>Ujian Proposal</span>
+            </a>
+        </li>
+    <?php
+    }
+    ?>
+
+    <?php
+    $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE nim=? AND status=4");
+    $stmt->bind_param("s", $nim);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $juser = $result->num_rows;
+    if ($juser > 0) {
+    ?>
+        <li class="nav-item">
+            <a class="nav-link" href="ujiankompre-isi.php">
+                <i class="fas fa-fw fa-comments"></i>
+                <span>Ujian Komprehensif</span>
+            </a>
+        </li>
+    <?php
+    }
+    ?>
+
+    <?php
+    $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE nim=? AND status=4");
+    $stmt->bind_param("s", $nim);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $juser = $result->num_rows;
+    if ($juser > 0) {
+    ?>
+        <li class="nav-item">
+            <a class="nav-link" href="seminarhasil-isi.php">
+                <i class="fas fa-fw fa-comments"></i>
+                <span>Seminar Hasil</span>
+            </a>
+        </li>
+    <?php
+    }
+    ?>
+    <?php
+    $stmt = $conn->prepare("SELECT * FROM semhas WHERE nim=? AND status=4");
+    $stmt->bind_param("s", $nim);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $juser = $result->num_rows;
+    if ($juser > 0) {
+    ?>
+        <li class="nav-item">
+            <a class="nav-link" href="ujianskripsi-isi.php">
+                <i class="fas fa-fw fa-gavel"></i>
+                <span>Ujian Skripsi</span>
+            </a>
+        </li>
+    <?php
+    }
+    ?>
     <hr class="sidebar-divider">
 </ul>

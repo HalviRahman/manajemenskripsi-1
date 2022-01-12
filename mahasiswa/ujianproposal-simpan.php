@@ -19,7 +19,7 @@ $pembimbing = $dhasil['pembimbing'];
 //upload file
 $target_dir = "../lampiran/";
 $filepersetujuanpembimbing = $target_dir . $nim . "-persetujuanpembimbing" . ".jpg";
-$filekhs = $target_dir . $nim . "-khs" . ".jpg";
+$filekhs = $target_dir . $nim . "-khs" . ".pdf";
 $fileproposal = $target_dir . $nim . "-proposal" . ".pdf";
 $uploadOk = 1;
 
@@ -27,13 +27,6 @@ $uploadOk = 1;
 $extpersetujuanpembimbing = strtolower(pathinfo($filepersetujuanpembimbing, PATHINFO_EXTENSION));
 $extkhs = strtolower(pathinfo($filekhs, PATHINFO_EXTENSION));
 $extfileproposal = strtolower(pathinfo($fileproposal, PATHINFO_EXTENSION));
-
-//hapus apabila file sudah ada
-/*
-unlink($filepersetujuanpembimbing);
-unlink($filekhs);
-unlink($fileproposal);
-*/
 
 // Check file size
 if ($_FILES["persetujuanpembimbing"]["size"] > 1048576) {
@@ -44,7 +37,7 @@ if ($_FILES["khs"]["size"] > 1048576) {
     $uploadOk = 0;
     echo 'filesize khs over';
 }
-if ($_FILES["fileproposal"]["size"] > 5242880) {
+if ($_FILES["fileproposal"]["size"] > 10485760) {
     $uploadOk = 0;
     echo 'filesize proposal over';
 }
@@ -55,7 +48,7 @@ if ($extpersetujuanpembimbing != "jpg" && $imageFileType != "jpeg") {
     $uploadOk = 0;
     echo 'ekstensi persetujuan pembimbing';
 }
-if ($extkhs != "jpg" && $imageFileType != "jpeg") {
+if ($extkhs != "pdf") {
     $uploadOk = 0;
     echo 'ekstensi khs';
 }
@@ -66,11 +59,6 @@ if ($extfileproposal != "pdf") {
 
 // check file MIME
 $mimetype = mime_content_type($_FILES['persetujuanpembimbing']['tmp_name']);
-if (in_array($mimetype, array('image/jpeg', 'image/jpeg'))) {
-} else {
-    $uploadOk = 0;
-}
-$mimetype = mime_content_type($_FILES['khs']['tmp_name']);
 if (in_array($mimetype, array('image/jpeg', 'image/jpeg'))) {
 } else {
     $uploadOk = 0;
