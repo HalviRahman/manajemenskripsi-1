@@ -99,7 +99,7 @@ require('../config.php');
                                             <small style="color: red;">Format file JPG ukuran maksimal 1MB</small>
                                         </div>
                                         <div class="form-group">
-                                            <label>Transkrip Nilai Sementara</label>
+                                            <label>Transkrip Nilai (fix)</label>
                                             <input type="file" name="transkripnilai" class="form-control" accept=".pdf" required>
                                             <small style="color: red;">
                                                 <li>Sudah di koreksi SKS dan Kode Matakuliah</li>

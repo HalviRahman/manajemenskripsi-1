@@ -140,8 +140,11 @@ require('../config.php');
                                     </div>
                                     <form method="POST">
                                         <div class="row">
-                                            <label>Nilai</label>
-                                            <input type="number" name="nilai" class="form-control" required>
+                                            <label>Keputusan</label>
+                                            <select class="form-control" name="keputusan">
+                                                <option value="DITERIMA" selected>DITERIMA</option>
+                                                <option value="DITOLAK">DITOLAK</option>
+                                            </select>
                                             <label>Revisi</label>
                                             <textarea name="revisi" class="form-control" rows="5"></textarea>
                                         </div>

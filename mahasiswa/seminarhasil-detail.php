@@ -181,6 +181,7 @@ require('../vendor/myfunc.php');
                                                 <label>Dosen Penguji Fisika</label>
                                                 <input type="text" class="form-control" name="penguji1" value="<?= $penguji1; ?>" readonly>
                                             </div>
+                                            <!--
                                             <div class="form-group">
                                                 <label>Nilai Penguji Fisika</label>
                                                 <?php if (isset($nilai1)) {
@@ -193,6 +194,7 @@ require('../vendor/myfunc.php');
                                                 <?php
                                                 } ?>
                                             </div>
+                                            -->
                                             <div class="form-group">
                                                 <label>Revisi Penguji Fisika</label>
                                                 <textarea name="revisi1" class="form-control" rows="5" disabled><?php if (isset($revisi1)) {
@@ -204,18 +206,6 @@ require('../vendor/myfunc.php');
                                             <div class="form-group">
                                                 <label>Dosen Penguji Integrasi</label>
                                                 <input type="text" class="form-control" name="penguji2" value="<?= $penguji2; ?>" readonly>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Nilai Penguji Integrasi</label>
-                                                <?php if (isset($nilai2)) {
-                                                ?>
-                                                    <input type="text" class="form-control" name="nilai1" value="<?= $nilai2; ?>" readonly>
-                                                <?php
-                                                } else {
-                                                ?>
-                                                    <input type="text" class="form-control" name="nilai1" value="" readonly>
-                                                <?php
-                                                } ?>
                                             </div>
                                             <div class="form-group">
                                                 <label>Revisi Penguji Integrasi</label>

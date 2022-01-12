@@ -94,7 +94,7 @@ require('../config.php');
                                             <small style="color: red;">Format file JPG ukuran maksimal 1MB</small>
                                         </div>
                                         <div class="form-group">
-                                            <label>Upload File Laporan Skripsi </label>
+                                            <label>Upload File Seminar Hasil </label>
                                             <input type="file" name="fileproposal" class="form-control" accept=".pdf" required>
                                             <small style="color: red;">
                                                 <li>File laporan yang telah disetujui pembimbing</li>

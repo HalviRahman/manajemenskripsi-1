@@ -46,10 +46,10 @@ require('../config.php');
                 <!-- Container Fluid-->
                 <div class="container-fluid" id="container-wrapper">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Pendaftaran Ujian Proposal</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Pendaftaran Ujian Seminar Proposal</h1>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="./">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Ujian Proposal</li>
+                            <li class="breadcrumb-item active" aria-current="page">Ujian Seminar Proposal</li>
                         </ol>
                     </div>
                     <?php
@@ -86,7 +86,7 @@ require('../config.php');
                                         </div>
                                         <div class="form-group">
                                             <label>Upload KHS</label>
-                                            <input type="file" name="khs" class="form-control" accept=".jpg,.jpeg" required>
+                                            <input type="file" name="khs" class="form-control" accept=".pdf" required>
                                             <small style="color: red;">Lulus matakuliah Metode Penelitian dan Seminar</small>
                                         </div>
                                         <div class="form-group">
@@ -94,7 +94,7 @@ require('../config.php');
                                             <input type="file" name="fileproposal" class="form-control" accept=".pdf" required>
                                             <small style="color: red;">
                                                 <li>File Proposal lengkap yang telah disetujui pembimbing</li>
-                                                <li>Format file PDF ukuran maksimal 5MB</li>
+                                                <li>Format file PDF ukuran maksimal 10MB</li>
                                             </small>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="return confirm('Mengajukan Seminar Proposal ?')">AJUKAN SEMINAR PROPOSAL</button>
