@@ -16,8 +16,8 @@ require('../vendor/myfunc.php');
 
 if (isset($_POST['edit'])) {
   // $token = $_GET['token'];
-  $nama = mysqli_real_escape_string($conn, $_POST['nama']);
-  $nim = mysqli_real_escape_string($conn, $_POST['nim']);
+  // $nama = mysqli_real_escape_string($conn, $_POST['nama']);
+  // $nim = mysqli_real_escape_string($conn, $_POST['nim']);
   $email = mysqli_real_escape_string($conn, $_POST['email']);
   $nohp = mysqli_real_escape_string($conn, $_POST['nohp']);
   $userid = mysqli_real_escape_string($conn, $_POST['userid']);
@@ -34,9 +34,9 @@ if (isset($_POST['edit'])) {
     } else {
       if ($password == $password2) {
         $stmt = $conn->prepare("UPDATE pengguna
-                              SET nama=?, nim=?, nohp=?, email=?, userid=?, pass=?
+                              SET nohp=?, email=?, userid=?, pass=?
                               WHERE token=?");
-        $stmt->bind_param("sssssss", $nama, $nim, $nohp, $email, $userid, $pass, $token);
+        $stmt->bind_param("sssssss", $nohp, $email, $userid, $pass, $token);
         $stmt->execute();
         header('location:profil.php?pesan=success');
       } else {
