@@ -15,9 +15,7 @@ require('../vendor/myfunc.php');
 
 
 if (isset($_POST['edit'])) {
-  // $token = $_GET['token'];
-  // $nama = mysqli_real_escape_string($conn, $_POST['nama']);
-  // $nim = mysqli_real_escape_string($conn, $_POST['nim']);
+
   $email = mysqli_real_escape_string($conn, $_POST['email']);
   $nohp = mysqli_real_escape_string($conn, $_POST['nohp']);
   $userid = mysqli_real_escape_string($conn, $_POST['userid']);
