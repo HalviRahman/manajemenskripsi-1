@@ -29,40 +29,23 @@ function huruf($angka)
     return $hur[$angka];
 }
 
-function namadosen($conn, $nip)
+function bulan($angka)
 {
-    require('../config.php');
-    $qdosen = mysqli_query($conn, "SELECT * FROM pengguna WHERE nip='$nip'");
-    $ddosen = mysqli_fetch_array($qdosen);
-    $nama = $ddosen['nama'];
-    return $nama;
+    $angka = (int)$angka;
+    $bul = array(
+        1 =>   'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+    );
+    return $bul[$angka];
 }
 
-function caripejabat($conn, $nip)
+function semester($tahun, $bulan)
 {
-    require('../config.php');
-    $qdosen = mysqli_query($conn, "SELECT * FROM pejabat WHERE nip='$nip'");
-    $ddosen = mysqli_fetch_array($qdosen);
-    $nama = $ddosen['nama'];
-    return $nama;
-}
-
-function nipdosen($conn, $iduser)
-{
-    require('../config.php');
-    $qdosen = mysqli_query($conn, "SELECT * FROM pengguna WHERE user='$iduser'");
-    $ddosen = mysqli_fetch_array($qdosen);
-    $nip = $ddosen['nip'];
-    return $nip;
-}
-
-function semester($tanggal)
-{
-    $pecahkan = explode('-', $tanggal);
-    if ($pecahkan[1] < 7) {
-        return "Genap Tahun Akademik " . $pecahkan[0] . "/" . $pecahkan[0];
+    $tahunlalu = $tahun - 1;
+    $tahundepan = $tahun + 1;
+    if ($bulan < 7) {
+        return "Genap Tahun Akademik " . $tahunlalu . "/" . $tahun;
     } else {
-        return "Ganjil Tahun Akademik " . $pecahkan[0] . "/" . $pecahkan[0];
+        return "Ganjil Tahun Akademik " . $tahun . "/" . $tahundepan;
     }
 }
 
@@ -81,32 +64,6 @@ function multibaris($pesan)
     }, 3000);
 </script>
 
-<!-- cari dosen -->
-<script src="../system/js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.search-box input[type="text"]').on("keyup input", function() {
-            /* Get input value on change */
-            var inputVal = $(this).val();
-            var resultDropdown = $(this).siblings(".result");
-            if (inputVal.length) {
-                $.get("cari-proses.php", {
-                    term: inputVal
-                }).done(function(data) {
-                    // Display the returned data in browser
-                    resultDropdown.html(data);
-                });
-            } else {
-                resultDropdown.empty();
-            }
-        });
-        // Set search input value on click of result item
-        $(document).on("click", ".result p", function() {
-            $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
-            $(this).parent(".result").empty();
-        });
-    });
-</script>
 
 <?php
 function hp($nohp)
