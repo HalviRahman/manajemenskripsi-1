@@ -24,6 +24,7 @@ if ($kunci == $hasil) {
         $role = $dhasil['role'];
         $jabatan = $dhasil['jabatan'];
         $email = $dhasil['email'];
+        $token = $dhasil['token'];
 
         //set settion
         $_SESSION['userid'] = $userid;
@@ -32,6 +33,7 @@ if ($kunci == $hasil) {
         $_SESSION['role'] = $role;
         $_SESSION['jabatan'] = $jabatan;
         $_SESSION['email'] = $email;
+        $_SESSION['token'] = $token;
 
         if ($role == 'admin') {
             header('location:admin/index.php');
