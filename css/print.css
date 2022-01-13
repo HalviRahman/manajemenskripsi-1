@@ -1,0 +1,14 @@
+body {
+  margin-top: 1cm;
+  margin-bottom: 0;
+  margin-right: 1cm;
+  margin-left: 1cm;
+  color: #000;
+  background-color: #fff;
+  font-size: 12pt !important;
+}
+
+@page {
+  size: A4 landscape;
+  margin: 0;
+}
