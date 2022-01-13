@@ -183,7 +183,7 @@ if (isset($_POST['edit'])) {
                       <input type="number" class="form-control" name="hasil" id="hasil" required>
                       <input type="hidden" name="kunci" value="<?= $kunci; ?>">
                     </div>
-                    <button type="submit" name="edit" class="btn btn-primary btn-lg btn-block">EDIT</button>
+                    <button type="submit" name="edit" class="btn btn-warning btn-lg btn-block">UPDATE</button>
                   </form>
                 </div>
               </div>
