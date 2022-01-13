@@ -7,7 +7,7 @@ $jabatan = $_SESSION['jabatan'];
 $nama = $_SESSION['nama'];
 $nim = $_SESSION['nim'];
 $token = $_SESSION['token'];
-if ($role != 'admin') {
+if ($role != 'mahasiswa') {
   header("location:../deauth.php");
 }
 require('../config.php');
@@ -145,6 +145,8 @@ if (isset($_POST['edit'])) {
                   }
                   ?>
                   <form action="" enctype="multipart/form-data" method="POST">
+
+
                     <div class="form-group">
                       <label>Nama</label>
                       <input type="text" class="form-control" value="<?= $nama; ?>" name="nama" readonly>
