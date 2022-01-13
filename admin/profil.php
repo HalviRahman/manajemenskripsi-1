@@ -15,9 +15,6 @@ require('../vendor/myfunc.php');
 
 
 if (isset($_POST['edit'])) {
-  // $token = $_GET['token'];
-  // $nama = mysqli_real_escape_string($conn, $_POST['nama']);
-  // $nim = mysqli_real_escape_string($conn, $_POST['nim']);
   $email = mysqli_real_escape_string($conn, $_POST['email']);
   $nohp = mysqli_real_escape_string($conn, $_POST['nohp']);
   $userid = mysqli_real_escape_string($conn, $_POST['userid']);
@@ -36,7 +33,7 @@ if (isset($_POST['edit'])) {
         $stmt = $conn->prepare("UPDATE pengguna
                               SET nohp=?, email=?, userid=?, pass=?
                               WHERE token=?");
-        $stmt->bind_param("sssssss", $nohp, $email, $userid, $pass, $token);
+        $stmt->bind_param("sssss", $nohp, $email, $userid, $pass, $token);
         $stmt->execute();
         header('location:profil.php?pesan=success');
       } else {
@@ -110,7 +107,6 @@ if (isset($_POST['edit'])) {
                 $nohp = $dhasil['nohp'];
                 $email = $dhasil['email'];
                 $userid = $dhasil['userid'];
-                $token = $dhasil['token'];
                 ?>
 
                 <div class="card-body">
@@ -146,7 +142,6 @@ if (isset($_POST['edit'])) {
                   }
                   ?>
                   <form action="" enctype="multipart/form-data" method="POST">
-                    <input type="hidden" name="token" value="<?= $token; ?>">
                     <div class="form-group">
                       <label>Nama</label>
                       <input type="text" class="form-control" value="<?= $nama; ?>" name="nama" readonly>
