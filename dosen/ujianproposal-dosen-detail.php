@@ -48,10 +48,10 @@ require('../config.php');
                 <!-- Container Fluid-->
                 <div class="container-fluid" id="container-wrapper">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Ujian Proposal</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Ujian Seminar Proposal</h1>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="./">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Pengajuan Ujian Proposal</li>
+                            <li class="breadcrumb-item active" aria-current="page">Ujian Seminar Proposal</li>
                         </ol>
                     </div>
 
@@ -83,13 +83,15 @@ require('../config.php');
                         $penguji = 'PENGUJI KETUA';
                     } elseif ($penguji2 == $nama) {
                         $penguji = 'PENGUJI ANGGOTA';
+                    } elseif ($pembimbing == $nama) {
+                        $penguji = 'PEMBIMBING';
                     }
                     ?>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card mb-12">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary"><?= $penguji; ?></h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Data mahasiswa</h6>
                                 </div>
 
                                 <div class="card-body">
@@ -120,6 +122,20 @@ require('../config.php');
                                             <div class="form-group">
                                                 <label>Pembimbing</label>
                                                 <input type="text" class="form-control" name="pembimbing" value="<?= $pembimbing; ?>" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Ketua Penguji </label>
+                                                <input type="text" class="form-control" name="penguji1" value="<?= $penguji1; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Penguji Anggota </label>
+                                                <input type="text" class="form-control" name="penguji2" value="<?= $penguji2; ?>" readonly>
                                             </div>
                                         </div>
                                     </div>

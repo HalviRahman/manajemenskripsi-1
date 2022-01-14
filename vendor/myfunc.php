@@ -55,6 +55,22 @@ function multibaris($pesan)
     return $pesan;
 }
 
+function nilai($nilai)
+{
+    if ($nilai > 85) {
+        $angka = 'A';
+    } elseif ($nilai > 70) {
+        $angka = 'B';
+    } elseif ($nilai > 60) {
+        $angka = 'C';
+    } elseif ($nilai > 50) {
+        $angka = 'D';
+    } else {
+        $angka = 'E';
+    };
+    return $angka;
+}
+
 ?>
 <script>
     window.setTimeout(function() {

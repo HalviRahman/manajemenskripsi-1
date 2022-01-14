@@ -73,32 +73,18 @@ require('../config.php');
                             <!-- Form Basic -->
                             <div class="card mb-12">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Data Judul Proposal</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Pengajuan Ujian Komprehensif</h6>
                                 </div>
                                 <div class="card-body">
                                     <form action="ujiankompre-simpan.php" enctype="multipart/form-data" method="POST">
                                         <input type="hidden" name="bidang" value="<?= $bidang; ?>">
                                         <input type="hidden" name="judul" value="<?= $judul; ?>">
                                         <div class="form-group">
-                                            <label>Upload Form Pengajuan Judul Skripsi</label>
-                                            <input type="file" name="judulskripsi" class="form-control" accept=".jpg,.jpeg">
+                                            <label>Surat Keterangan Lulus Ujian Seminar Proposal</label>
+                                            <input type="file" name="sklsempro" class="form-control" accept=".pdf">
                                             <small style="color: red;">
-                                                <li>Revisi File Proposal yang telah disetujui pembimbing & Ketua Program Studi</li>
-                                                <li>Format file JPG ukuran maksimal 1MB</li>
-                                            </small>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Upload Transkrip Nilai Sementara</label>
-                                            <input type="file" name="transkrip" class="form-control" accept=".pdf">
-                                            <small style="color: red;">
+                                                <li>Silahkan download dari dashboard</li>
                                                 <li>Format file PDF ukuran maksimal 1MB</li>
-                                            </small>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Upload Ijazah Terakhir</label>
-                                            <input type="file" name="ijazah" class="form-control" accept=".jpg,.jpeg">
-                                            <small style="color: red;">
-                                                <li>Format file JPG ukuran maksimal 1MB</li>
                                             </small>
                                         </div>
                                         <div class="form-group">
@@ -106,7 +92,7 @@ require('../config.php');
                                             <input type="file" name="fileproposal" class="form-control" accept=".pdf">
                                             <small style="color: red;">
                                                 <li>Revisi File Proposal yang telah disetujui pembimbing</li>
-                                                <li>Format file PDF ukuran maksimal 5MB</li>
+                                                <li>Format file PDF ukuran maksimal 10MB</li>
                                             </small>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-lg btn-block">AJUKAN</button>

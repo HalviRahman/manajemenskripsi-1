@@ -88,7 +88,7 @@ require('../config.php');
                                                 <li>Formulir sudah di setujui dan di tanda tangani minimal 2 calon pembimbing</li>
                                             </small>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block">AJUKAN</button>
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="return confirm('Dengan ini saya menyatakan kebenaran data yang saya ajukan')">AJUKAN</button>
                                     </form>
                                 </div>
                             </div>

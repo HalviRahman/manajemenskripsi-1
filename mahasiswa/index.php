@@ -70,7 +70,7 @@ require('../vendor/myfunc.php');
                         <th class="text-center">Waktu</th>
                         <th class="text-center">Tempat</th>
                         <th class="text-center">Status</th>
-                        <th class="text-center" width="5%">Aksi</th>
+                        <th class="text-center">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -91,13 +91,13 @@ require('../vendor/myfunc.php');
                         $token = $dhasil['token'];
                         $keterangan = $dhasil['keterangan'];
                       ?>
-                      <tr>
-                        <td><?= $no; ?></td>
-                        <td>Pengajuan Judul</td>
-                        <td><?= tgljam_indo($tanggal); ?></td>
-                        <td>-</td>
-                        <td>
-                          <?php
+                        <tr>
+                          <td><?= $no; ?></td>
+                          <td>Pengajuan Judul</td>
+                          <td><?= tgljam_indo($tanggal); ?></td>
+                          <td>-</td>
+                          <td>
+                            <?php
                             if ($verifikasifile == 0 and $status == 0) {
                               echo 'Menunggu verifikasi Admin';
                             } elseif ($verifikasifile == 1 and $status == 0) {
@@ -110,42 +110,35 @@ require('../vendor/myfunc.php');
                               echo 'Ditolak prodi';
                             }
                             ?>
-                        </td>
-                        <td>
-                          <?php
+                          </td>
+                          <td>
+                            <?php
                             if ($verifikasifile == 0 and $status == 0) {
                             ?>
-                          <a href="#" class="btn btn-secondary" type="button"
-                            onclick="alert('Menunggu verifikasi Admin');"><i class="fa fa-spinner"
-                              aria-hidden="true"></i></a>
-                          <?php
+                              <a href="pengajuanjudul-hapus.php?token=<?= $token; ?>" class="btn btn-danger" type="button" onclick="return confirm ('Menghapus pengajuan ini ?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            <?php
                             } elseif ($verifikasifile == 1 and $status == 0) {
                             ?>
-                          <a href="#" class="btn btn-secondary" type="button"
-                            onclick="alert('Menunggu verifikasi Sekprodi');"><i class="fa fa-spinner"
-                              aria-hidden="true"></i></a>
-                          <?php
+                              <a href="#" class="btn btn-secondary" type="button" onclick="alert('Menunggu verifikasi Sekprodi');"><i class="fa fa-spinner" aria-hidden="true"></i></a>
+                            <?php
                             } elseif ($verifikasifile == 1 and $status == 1) {
                             ?>
-                          <a href="pengajuanjudul-detail.php?token=<?= $token; ?>" class="btn btn-success"
-                            type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                          <?php
+                              <a href="pengajuanjudul-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                            <?php
                             } elseif ($verifikasifile == 2 and $status == 0) {
                             ?>
-                          <a href="#" class="btn btn-danger" type="button"
-                            onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle"
-                              aria-hidden="true"></i></a>
-                          <?php
+                              <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                              <a href="pengajuanjudul-hapus.php?token=<?= $token; ?>" class="btn btn-danger" type="button" onclick="return confirm ('Menghapus pengajuan ini ?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            <?php
                             } elseif ($verifikasifile == 1 and $status == 2) {
                             ?>
-                          <a href="#" class="btn btn-danger" type="button"
-                            onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle"
-                              aria-hidden="true"></i></a>
-                          <?php
+                              <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                              <a href="pengajuanjudul-hapus.php?token=<?= $token; ?>" class="btn btn-danger" type="button" onclick="return confirm ('Menghapus pengajuan ini ?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            <?php
                             }
                             ?>
-                        </td>
-                      </tr>
+                          </td>
+                        </tr>
                       <?php
                       }
                       $no++;
@@ -168,18 +161,18 @@ require('../vendor/myfunc.php');
                           $token = $dhasil['token'];
                           $keterangan = $dhasil['keterangan'];
                       ?>
-                      <tr>
-                        <td><?= $no; ?></td>
-                        <td>Ujian Proposal</td>
-                        <td><?php if (isset($jadwalujian)) {
+                          <tr>
+                            <td><?= $no; ?></td>
+                            <td>Ujian Proposal</td>
+                            <td><?php if (isset($jadwalujian)) {
                                   echo tgljam_indo($jadwalujian);
                                 } else {
                                   echo '-';
                                 } ?>
-                        </td>
-                        <td><?= $ruang; ?></td>
-                        <td>
-                          <?php
+                            </td>
+                            <td><?= $ruang; ?></td>
+                            <td>
+                              <?php
                               if ($verifikasifile == 0 and $status == 0) {
                                 echo 'Menunggu verifikasi Admin';
                               } elseif ($verifikasifile == 1 and $status == 0) {
@@ -196,47 +189,39 @@ require('../vendor/myfunc.php');
                                 echo 'Sudah dinilai';
                               }
                               ?>
-                        </td>
-                        <td>
-                          <?php
+                            </td>
+                            <td>
+                              <?php
                               if ($verifikasifile == 0 and $status == 0) {
                               ?>
-                          <a href="#" class="btn btn-secondary" type="button"
-                            onclick="alert('Menunggu verifikasi Admin');"><i class="fa fa-spinner"
-                              aria-hidden="true"></i></a>
-                          <?php
+                                <a href="ujianproposal-hapus.php?token=<?= $token; ?>" class="btn btn-danger" type="button" onclick="return confirm ('Menghapus pengajuan ini ?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 1 and $status == 0) {
                               ?>
-                          <a href="#" class="btn btn-secondary" type="button"
-                            onclick="alert('Menunggu verifikasi Sekprodi');"><i class="fa fa-spinner"
-                              aria-hidden="true"></i></a>
-                          <?php
+                                <a href="#" class="btn btn-secondary" type="button" onclick="alert('Menunggu verifikasi Sekprodi');"><i class="fa fa-spinner" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 1 and ($status == 1 || $status == 3)) {
                               ?>
-                          <a href="ujianproposal-detail.php?token=<?= $token; ?>" class="btn btn-success"
-                            type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                          <?php
+                                <a href="ujianproposal-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 2 and $status == 0) {
                               ?>
-                          <a href="#" class="btn btn-danger" type="button"
-                            onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle"
-                              aria-hidden="true"></i></a>
-                          <?php
+                                <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                <a href="ujianproposal-hapus.php?token=<?= $token; ?>" class="btn btn-danger" type="button" onclick="return confirm ('Menghapus pengajuan ini ?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 1 and $status == 2) {
                               ?>
-                          <a href="#" class="btn btn-danger" type="button"
-                            onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle"
-                              aria-hidden="true"></i></a>
-                          <?php
+                                <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                <a href="ujianproposal-hapus.php?token=<?= $token; ?>" class="btn btn-danger" type="button" onclick="return confirm ('Menghapus pengajuan ini ?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 1 and $status == 4) {
                               ?>
-                          <a href="ujianproposal-detail.php?token=<?= $token; ?>" class="btn btn-success"
-                            type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                          <?php
+                                <a href="ujianproposal-cetak.php?token=<?= $token; ?>" class="btn btn-success" type="button" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
+                              <?php
                               }
                               ?>
-                        </td>
-                      </tr>
+                            </td>
+                          </tr>
                       <?php
                           $no++;
                         }
@@ -260,18 +245,18 @@ require('../vendor/myfunc.php');
                           $token = $dhasil['token'];
                           $keterangan = $dhasil['keterangan'];
                       ?>
-                      <tr>
-                        <td><?= $no; ?></td>
-                        <td>Ujian Komprehensif</td>
-                        <td><?php if (isset($jadwalujian)) {
+                          <tr>
+                            <td><?= $no; ?></td>
+                            <td>Ujian Komprehensif</td>
+                            <td><?php if (isset($jadwalujian)) {
                                   echo tgljam_indo($jadwalujian);
                                 } else {
                                   echo '-';
                                 } ?>
-                        </td>
-                        <td><?= $ruang; ?></td>
-                        <td>
-                          <?php
+                            </td>
+                            <td><?= $ruang; ?></td>
+                            <td>
+                              <?php
                               if ($verifikasifile == 0 and $status == 0) {
                                 echo 'Menunggu verifikasi Admin';
                               } elseif ($verifikasifile == 1 and $status == 0) {
@@ -286,47 +271,39 @@ require('../vendor/myfunc.php');
                                 echo 'Sudah dinilai';
                               }
                               ?>
-                        </td>
-                        <td>
-                          <?php
+                            </td>
+                            <td>
+                              <?php
                               if ($verifikasifile == 0 and $status == 0) {
                               ?>
-                          <a href="#" class="btn btn-secondary" type="button"
-                            onclick="alert('Menunggu verifikasi Admin');"><i class="fa fa-spinner"
-                              aria-hidden="true"></i></a>
-                          <?php
+                                <a href="ujiankompre-hapus.php?token=<?= $token; ?>" class="btn btn-danger" type="button" onclick="return confirm ('Menghapus pengajuan ini ?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 1 and $status == 0) {
                               ?>
-                          <a href="#" class="btn btn-secondary" type="button"
-                            onclick="alert('Menunggu verifikasi Sekprodi');"><i class="fa fa-spinner"
-                              aria-hidden="true"></i></a>
-                          <?php
+                                <a href="#" class="btn btn-secondary" type="button" onclick="alert('Menunggu verifikasi Sekprodi');"><i class="fa fa-spinner" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 1 and ($status == 1 || $status == 3)) {
                               ?>
-                          <a href="ujiankompre-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i
-                              class="fa fa-info-circle" aria-hidden="true"></i></a>
-                          <?php
+                                <a href="ujiankompre-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 2 and $status == 0) {
                               ?>
-                          <a href="#" class="btn btn-danger" type="button"
-                            onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle"
-                              aria-hidden="true"></i></a>
-                          <?php
+                                <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                <a href="ujiankompre-hapus.php?token=<?= $token; ?>" class="btn btn-danger" type="button" onclick="return confirm ('Menghapus pengajuan ini ?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 1 and $status == 2) {
                               ?>
-                          <a href="#" class="btn btn-danger" type="button"
-                            onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle"
-                              aria-hidden="true"></i></a>
-                          <?php
+                                <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                <a href="ujiankompre-hapus.php?token=<?= $token; ?>" class="btn btn-danger" type="button" onclick="return confirm ('Menghapus pengajuan ini ?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 1 and $status == 4) {
                               ?>
-                          <a href="ujiankompre-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i
-                              class="fa fa-info-circle" aria-hidden="true"></i></a>
-                          <?php
+                                <a href="ujiankompre-cetak.php?token=<?= $token; ?>" class="btn btn-success" type="button" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
+                              <?php
                               }
                               ?>
-                        </td>
-                      </tr>
+                            </td>
+                          </tr>
                       <?php
                           $no++;
                         }
@@ -350,18 +327,18 @@ require('../vendor/myfunc.php');
                           $token = $dhasil['token'];
                           $keterangan = $dhasil['keterangan'];
                       ?>
-                      <tr>
-                        <td><?= $no; ?></td>
-                        <td>Ujian Seminar Hasil</td>
-                        <td><?php if (isset($jadwalujian)) {
+                          <tr>
+                            <td><?= $no; ?></td>
+                            <td>Ujian Seminar Hasil</td>
+                            <td><?php if (isset($jadwalujian)) {
                                   echo tgljam_indo($jadwalujian);
                                 } else {
                                   echo '-';
                                 } ?>
-                        </td>
-                        <td><?= $ruang; ?></td>
-                        <td>
-                          <?php
+                            </td>
+                            <td><?= $ruang; ?></td>
+                            <td>
+                              <?php
                               if ($verifikasifile == 0 and $status == 0) {
                                 echo 'Menunggu verifikasi Admin';
                               } elseif ($verifikasifile == 1 and $status == 0) {
@@ -376,47 +353,37 @@ require('../vendor/myfunc.php');
                                 echo 'Sudah dinilai';
                               }
                               ?>
-                        </td>
-                        <td>
-                          <?php
+                            </td>
+                            <td>
+                              <?php
                               if ($verifikasifile == 0 and $status == 0) {
                               ?>
-                          <a href="#" class="btn btn-secondary" type="button"
-                            onclick="alert('Menunggu verifikasi Admin');"><i class="fa fa-spinner"
-                              aria-hidden="true"></i></a>
-                          <?php
+                                <a href="#" class="btn btn-secondary" type="button" onclick="alert('Menunggu verifikasi Admin');"><i class="fa fa-spinner" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 1 and $status == 0) {
                               ?>
-                          <a href="#" class="btn btn-secondary" type="button"
-                            onclick="alert('Menunggu verifikasi Sekprodi');"><i class="fa fa-spinner"
-                              aria-hidden="true"></i></a>
-                          <?php
+                                <a href="#" class="btn btn-secondary" type="button" onclick="alert('Menunggu verifikasi Sekprodi');"><i class="fa fa-spinner" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 1 and ($status == 1 || $status == 3)) {
                               ?>
-                          <a href="seminarhasil-detail.php?token=<?= $token; ?>" class="btn btn-success"
-                            type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                          <?php
+                                <a href="seminarhasil-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 2 and $status == 0) {
                               ?>
-                          <a href="#" class="btn btn-danger" type="button"
-                            onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle"
-                              aria-hidden="true"></i></a>
-                          <?php
+                                <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 1 and $status == 2) {
                               ?>
-                          <a href="#" class="btn btn-danger" type="button"
-                            onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle"
-                              aria-hidden="true"></i></a>
-                          <?php
+                                <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 1 and $status == 4) {
                               ?>
-                          <a href="seminarhasil-detail.php?token=<?= $token; ?>" class="btn btn-success"
-                            type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                          <?php
+                                <a href="seminarhasil-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                              <?php
                               }
                               ?>
-                        </td>
-                      </tr>
+                            </td>
+                          </tr>
                       <?php
                           $no++;
                         }
@@ -440,18 +407,18 @@ require('../vendor/myfunc.php');
                           $token = $dhasil['token'];
                           $keterangan = $dhasil['keterangan'];
                       ?>
-                      <tr>
-                        <td><?= $no; ?></td>
-                        <td>Ujian Skripsi</td>
-                        <td><?php if (isset($jadwalujian)) {
+                          <tr>
+                            <td><?= $no; ?></td>
+                            <td>Ujian Skripsi</td>
+                            <td><?php if (isset($jadwalujian)) {
                                   echo tgljam_indo($jadwalujian);
                                 } else {
                                   echo '-';
                                 } ?>
-                        </td>
-                        <td><?= $ruang; ?></td>
-                        <td>
-                          <?php
+                            </td>
+                            <td><?= $ruang; ?></td>
+                            <td>
+                              <?php
                               if ($verifikasifile == 0 and $status == 0) {
                                 echo 'Menunggu verifikasi Admin';
                               } elseif ($verifikasifile == 1 and $status == 0) {
@@ -466,47 +433,37 @@ require('../vendor/myfunc.php');
                                 echo 'Sudah dinilai';
                               }
                               ?>
-                        </td>
-                        <td>
-                          <?php
+                            </td>
+                            <td>
+                              <?php
                               if ($verifikasifile == 0 and $status == 0) {
                               ?>
-                          <a href="#" class="btn btn-secondary" type="button"
-                            onclick="alert('Menunggu verifikasi Admin');"><i class="fa fa-spinner"
-                              aria-hidden="true"></i></a>
-                          <?php
+                                <a href="#" class="btn btn-secondary" type="button" onclick="alert('Menunggu verifikasi Admin');"><i class="fa fa-spinner" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 1 and $status == 0) {
                               ?>
-                          <a href="#" class="btn btn-secondary" type="button"
-                            onclick="alert('Menunggu verifikasi Sekprodi');"><i class="fa fa-spinner"
-                              aria-hidden="true"></i></a>
-                          <?php
+                                <a href="#" class="btn btn-secondary" type="button" onclick="alert('Menunggu verifikasi Sekprodi');"><i class="fa fa-spinner" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 1 and ($status == 1 || $status == 3)) {
                               ?>
-                          <a href="ujianskripsi-detail.php?token=<?= $token; ?>" class="btn btn-success"
-                            type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                          <?php
+                                <a href="ujianskripsi-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 2 and $status == 0) {
                               ?>
-                          <a href="#" class="btn btn-danger" type="button"
-                            onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle"
-                              aria-hidden="true"></i></a>
-                          <?php
+                                <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 1 and $status == 2) {
                               ?>
-                          <a href="#" class="btn btn-danger" type="button"
-                            onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle"
-                              aria-hidden="true"></i></a>
-                          <?php
+                                <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                              <?php
                               } elseif ($verifikasifile == 1 and $status == 4) {
                               ?>
-                          <a href="ujianskripsi-detail.php?token=<?= $token; ?>" class="btn btn-success"
-                            type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                          <?php
+                                <a href="ujianskripsi-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                              <?php
                               }
                               ?>
-                        </td>
-                      </tr>
+                            </td>
+                          </tr>
                       <?php
                           $no++;
                         }
@@ -544,10 +501,10 @@ require('../vendor/myfunc.php');
 
   <!-- Page level custom scripts -->
   <script>
-  $(document).ready(function() {
-    $('#dataTable').DataTable(); // ID From dataTable 
-    $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-  });
+    $(document).ready(function() {
+      $('#dataTable').DataTable(); // ID From dataTable 
+      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+    });
   </script>
 
 </body>

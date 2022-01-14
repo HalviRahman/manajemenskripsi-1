@@ -76,11 +76,18 @@ require('../config.php');
                                 $bidang = $dhasil['bidang'];
                                 $judul = $dhasil['judul'];
                                 $judulskripsi = $dhasil['judulskripsi'];
-                                $transkrip = $dhasil['transkrip'];
-                                $ijazah = $dhasil['ijazah'];
+                                $sklsempro = $dhasil['sklsempro'];
                                 $fileproposal = $dhasil['fileproposal'];
                                 $pembimbing = $dhasil['pembimbing'];
                                 $token = $dhasil['token'];
+
+                                //ambil data penguji1
+                                $stmt2 = $conn->prepare("SELECT * FROM ujianproposal WHERE nim=?");
+                                $stmt2->bind_param("s", $nim);
+                                $stmt2->execute();
+                                $result2 = $stmt2->get_result();
+                                $dhasil2 = $result2->fetch_assoc();
+                                $penguji1 = $dhasil2['penguji1'];
                                 ?>
                                 <div class="card-body">
                                     <input type="hidden" class="form-control" value="<?= $nama; ?>" name="nama">
@@ -120,25 +127,9 @@ require('../config.php');
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col" align="center">
-                                                <label>Form Pengajuan Judul</label>
+                                                <label>Surat Keterangan Lulus Ujian Seminar Proposal</label>
                                                 <br />
-                                                <a href="<?= $judulskripsi; ?>" target="_blank"><img src="<?= $judulskripsi; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
-                                                <br />
-                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
-                                            </div>
-                                            <div class="col" align="center">
-                                                <label>Transkrip Nilai Sementara</label>
-                                                <br />
-                                                <a href="<?= $transkrip; ?>" target="_blank"><img src="<?= $transkrip; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
-                                                <br />
-                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col" align="center">
-                                                <label>Ijazah Terakhir</label>
-                                                <br />
-                                                <a href="<?= $ijazah; ?>" target="_blank"><img src="<?= $ijazah; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <a href="<?= $ijazah; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
                                                 <br />
                                                 <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                             </div>
@@ -156,6 +147,7 @@ require('../config.php');
                                             <div class="col">
                                                 <label>Penguji Fisika</label>
                                                 <select name="penguji1" class="form-control">
+                                                    <option value="<?= $penguji1; ?>"><?= $penguji1; ?></option>
                                                     <?php
                                                     $stmt = $conn->prepare("SELECT * FROM pengguna WHERE role='dosen' and nama <> '$pembimbing'");
                                                     $stmt->execute();

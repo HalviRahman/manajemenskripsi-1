@@ -126,7 +126,7 @@ require('../config.php');
                                             <div class="col" align="center">
                                                 <label>Kartu Hasil Studi</label>
                                                 <br />
-                                                <a href="<?= $khs; ?>" target="_blank"><img src="<?= $khs; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <a href="<?= $khs; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
                                                 <br />
                                                 <small style="color: blue">Klik pada gambar untuk memperbesar</small>
                                             </div>

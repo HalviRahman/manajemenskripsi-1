@@ -79,13 +79,19 @@ require('../config.php');
                                 <div class="card-body">
                                     <input type="hidden" class="form-control" value="<?= $nama; ?>" name="nama">
                                     <input type="hidden" class="form-control" value="<?= $nim; ?>" name="nim">
-                                    <div class="form-group">
-                                        <label>Nama</label>
-                                        <input type="text" class="form-control" name="nama" value="<?= $nama; ?>" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>NIM</label>
-                                        <input type="text" class="form-control" name="nim" value="<?= $nim; ?>" readonly>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Nama</label>
+                                                <input type="text" class="form-control" name="nama" value="<?= $nama; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>NIM</label>
+                                                <input type="text" class="form-control" name="nim" value="<?= $nim; ?>" readonly>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Bidang Minat</label>

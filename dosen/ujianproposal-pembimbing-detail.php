@@ -84,6 +84,8 @@ require('../vendor/myfunc.php');
                                 $penguji2 = $dhasil['penguji2'];
                                 $nilai2 = $dhasil['nilai2'];
                                 $revisi2 = $dhasil['revisi2'];
+                                $nilaipembimbing = $dhasil['nilaipembimbing'];
+                                $revisipembimbing = $dhasil['revisipembimbing'];
                                 $jadwalujian = $dhasil['jadwalujian'];
                                 $ruang = $dhasil['ruang'];
                                 $linkzoom = $dhasil['linkzoom'];
@@ -137,7 +139,7 @@ require('../vendor/myfunc.php');
                                             <div class="col" align="center">
                                                 <label>Kartu Hasil Studi</label>
                                                 <br />
-                                                <a href="<?= $khs; ?>" target="_blank"><img src="<?= $khs; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <a href="<?= $khs; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
                                                 <br />
                                                 <small style="color: blue">Klik pada gambar untuk memperbesar</small>
                                             </div>
@@ -183,8 +185,8 @@ require('../vendor/myfunc.php');
                                                 <input type="text" class="form-control" name="penguji1" value="<?= $penguji1; ?>" readonly>
                                             </div>
                                             <div class="form-group">
-                                                <label>Nilai Penguji Ketua</label>
-                                                <input type="number" class="form-control" name="nilai1" value="<?= $nilai1; ?>" readonly>
+                                                <label>Keputusan Penguji Ketua</label>
+                                                <input type="text" class="form-control" name="nilai1" value="<?= $nilai1; ?>" readonly>
                                             </div>
                                             <div class="form-group">
                                                 <label>Revisi Penguji Ketua</label>
@@ -194,17 +196,32 @@ require('../vendor/myfunc.php');
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Dosen Penguji Anggota</label>
+                                                <label>Keputusan Penguji Anggota</label>
                                                 <input type="text" class="form-control" name="penguji2" value="<?= $penguji2; ?>" readonly>
                                             </div>
                                             <div class="form-group">
                                                 <label>Nilai Penguji Anggota</label>
-                                                <input type="number" class="form-control" name="nilai2" value="<?= $nilai2; ?>" readonly>
+                                                <input type="text" class="form-control" name="nilai2" value="<?= $nilai2; ?>" readonly>
                                             </div>
                                             <div class="form-group">
                                                 <label>Revisi Penguji Anggota</label>
                                                 <br />
                                                 <textarea name="revisi1" class="form-control" rows="5" disabled><?= ($revisi2); ?></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Dosen Pembimbing</label>
+                                                <input type="text" class="form-control" name="pembimbing" value="<?= $pembimbing; ?>" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Keputusan Pembimbing</label>
+                                                <input type="text" class="form-control" name="nilaipembimbing" value="<?= $nilaipembimbing; ?>" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Revisi Pembimbing</label>
+                                                <br />
+                                                <textarea name="revisipembimbing" class="form-control" rows="5" disabled><?= ($revisipembimbing); ?></textarea>
                                             </div>
                                         </div>
                                     </div>

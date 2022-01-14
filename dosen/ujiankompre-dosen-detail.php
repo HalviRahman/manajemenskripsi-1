@@ -83,6 +83,16 @@ require('../config.php');
                         $penguji = 'PENGUJI ANGGOTA';
                     }
                     ?>
+                    <?php
+                    if (isset($_GET['pesan'])) {
+                        $pesan = $_GET['pesan'];
+                    ?>
+                        <div class="alert alert-danger">
+                            <strong>ERROR!!</strong> nilai bilangan bulat diantara 0 s/d 100.
+                        </div>
+                    <?php
+                    }
+                    ?>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card mb-12">
@@ -136,9 +146,44 @@ require('../config.php');
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <table class="table table-bordered table-responsive-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <td class="text-center">Rentang Nilai</td>
+                                                        <td class="text-center">Nilai Huruf</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">85 - 100</td>
+                                                        <td class="text-center">A</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">70 - 84</td>
+                                                        <td class="text-center">B</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">60 - 69</td>
+                                                        <td class="text-center">C</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">50 - 59</td>
+                                                        <td class="text-center">D</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">0 - 49</td>
+                                                        <td class="text-center">E</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <br />
                                     <form method="POST">
                                         <div class="row">
-                                            <label>Nilai</label>
+                                            <label>Nilai (0 - 100)</label>
                                             <input type="number" name="nilai" class="form-control" required>
                                             <label>Revisi</label>
                                             <textarea name="revisi" class="form-control" rows="5"></textarea>
