@@ -75,8 +75,7 @@ require('../config.php');
                                 $judul = $dhasil['judul'];
                                 $pembimbing = $dhasil['pembimbing'];
                                 $judulskripsi = $dhasil['judulskripsi'];
-                                $transkrip = $dhasil['transkrip'];
-                                $ijazah = $dhasil['ijazah'];
+                                $sklsempro = $dhasil['sklsempro'];
                                 $fileproposal = $dhasil['fileproposal'];
                                 $penguji1 = $dhasil['penguji1'];
                                 $penguji2 = $dhasil['penguji2'];
@@ -120,25 +119,9 @@ require('../config.php');
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col" align="center">
-                                                <label>Form Pengajuan Judul</label>
+                                                <label>Surat Keterangan Lulus Seminar Proposal</label>
                                                 <br />
-                                                <a href="<?= $judulskripsi; ?>" target="_blank"><img src="<?= $judulskripsi; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
-                                                <br />
-                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
-                                            </div>
-                                            <div class="col" align="center">
-                                                <label>Transkrip Nilai Sementara</label>
-                                                <br />
-                                                <a href="<?= $transkrip; ?>" target="_blank"><img src="<?= $transkrip; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
-                                                <br />
-                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col" align="center">
-                                                <label>Ijazah Terakhir</label>
-                                                <br />
-                                                <a href="<?= $ijazah; ?>" target="_blank"><img src="<?= $ijazah; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <a href="<?= $sklsempro; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
                                                 <br />
                                                 <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                             </div>

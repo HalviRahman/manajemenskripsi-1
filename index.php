@@ -40,7 +40,7 @@ require('vendor/myfunc.php');
                         <div class="col-lg-12">
                             <div class="card mb-4">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Ujian Proposal</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Jadwal Ujian Seminar Proposal</h6>
                                 </div>
                                 <div class="table-responsive p-3">
                                     <table class="table align-items-center table-flush display">
@@ -92,7 +92,7 @@ require('vendor/myfunc.php');
                         <div class="col-lg-12">
                             <div class="card mb-4">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Ujian Komprehensif</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Jadwal Ujian Komprehensif</h6>
                                 </div>
                                 <div class="table-responsive p-3">
                                     <table class="table align-items-center table-flush display">
@@ -144,7 +144,7 @@ require('vendor/myfunc.php');
                         <div class="col-lg-12">
                             <div class="card mb-4">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Seminar Hasil</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Jadwal Ujian Seminar Hasil</h6>
                                 </div>
                                 <div class="table-responsive p-3">
                                     <table class="table align-items-center table-flush display">
@@ -196,7 +196,7 @@ require('vendor/myfunc.php');
                         <div class="col-lg-12">
                             <div class="card mb-4">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Ujian Skripsi</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Jadwal Ujian Skripsi</h6>
                                 </div>
                                 <div class="table-responsive p-3">
                                     <table class="table align-items-center table-flush display">

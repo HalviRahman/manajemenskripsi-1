@@ -54,14 +54,21 @@
     $result = $stmt->get_result();
     $juser = $result->num_rows;
     if ($juser > 0) {
+        $stmt2 = $conn->prepare("SELECT * FROM ujianproposal WHERE nim=?");
+        $stmt2->bind_param("s", $nim);
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+        $juser2 = $result2->num_rows;
+        if ($juser2 == 0) {
     ?>
-        <li class="nav-item">
-            <a class="nav-link" href="ujianproposal-isi.php">
-                <i class="fas fa-fw fa-comments"></i>
-                <span>Ujian Seminar Proposal</span>
-            </a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ujianproposal-isi.php">
+                    <i class="fas fa-fw fa-comments"></i>
+                    <span>Ujian Seminar Proposal</span>
+                </a>
+            </li>
     <?php
+        }
     }
     ?>
 
@@ -72,14 +79,21 @@
     $result = $stmt->get_result();
     $juser = $result->num_rows;
     if ($juser > 0) {
+        $stmt3 = $conn->prepare("SELECT * FROM ujiankompre WHERE nim=?");
+        $stmt3->bind_param("s", $nim);
+        $stmt3->execute();
+        $result3 = $stmt3->get_result();
+        $juser3 = $result3->num_rows;
+        if ($juser3 == 0) {
     ?>
-        <li class="nav-item">
-            <a class="nav-link" href="ujiankompre-isi.php">
-                <i class="fas fa-fw fa-comments"></i>
-                <span>Ujian Komprehensif</span>
-            </a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ujiankompre-isi.php">
+                    <i class="fas fa-fw fa-comments"></i>
+                    <span>Ujian Komprehensif</span>
+                </a>
+            </li>
     <?php
+        }
     }
     ?>
 

@@ -78,7 +78,7 @@
                       $angka2 = rand(1, 5);
                       $kunci = $angka1 + $angka2;
                       ?>
-                      <label>Berapakah <b><u><?= huruf($angka1); ?> ditambah <?= huruf($angka2); ?></u></b> (angka) ?</label>
+                      <label>Berapakah <b><u><?= huruf($angka1); ?> + <?= huruf($angka2); ?></u></b> ?</label>
                       <input type="number" class="form-control" name="hasil" id="hasil" required>
                       <input type="hidden" name="kunci" value="<?= $kunci; ?>">
                     </div>

@@ -18,22 +18,25 @@ $token = $_POST['token'];
 $nilai = $_POST['nilai'];
 $revisi = $_POST['revisi'];
 $penguji = $_POST['penguji'];
-
-if ($penguji == 'Penguji Ketua') {
-    $stmt = $conn->prepare("UPDATE ujiankompre
+if ($nilai > 100 or $nilai < 0) {
+    header("location:ujiankompre-dosen-detail.php?token=$token&pesan=nilaierror");
+} else {
+    if ($penguji == 'Penguji Ketua') {
+        $stmt = $conn->prepare("UPDATE ujiankompre
                             SET status=4,
                                 nilai1=?,
                                 revisi1=?
                             WHERE token=?");
-    $stmt->bind_param("iss", $nilai, $revisi, $token);
-    $stmt->execute();
-} elseif ($penguji == 'PENGUJI ANGGOTA') {
-    $stmt = $conn->prepare("UPDATE ujiankompre
+        $stmt->bind_param("iss", $nilai, $revisi, $token);
+        $stmt->execute();
+    } elseif ($penguji == 'PENGUJI ANGGOTA') {
+        $stmt = $conn->prepare("UPDATE ujiankompre
                             SET status=4,
                                 nilai2=?,
                                 revisi2=?
                             WHERE token=?");
-    $stmt->bind_param("iss", $nilai, $revisi, $token);
-    $stmt->execute();
+        $stmt->bind_param("iss", $nilai, $revisi, $token);
+        $stmt->execute();
+    }
+    header('location:index.php?pesan=nilaiok');
 }
-header('location:index.php?pesan=nilaiok');
