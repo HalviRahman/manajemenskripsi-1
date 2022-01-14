@@ -6,34 +6,46 @@ global $userid;
 $role = $_SESSION['role'];
 $jabatan = $_SESSION['jabatan'];
 if ($role != 'dosen') {
-    if ($jabatan != 'kaprodi' || $jabatan != 'sekprodi') {
-        header("location:../deauth.php");
-    }
+    header("location:../deauth.php");
 }
 
 $nama = $_SESSION['nama'];
 $nip = $_SESSION['nim'];
 $token = $_POST['token'];
 
-$nilai = $_POST['nilai'];
+$keputusan = $_POST['keputusan'];
 $revisi = $_POST['revisi'];
 $penguji = $_POST['penguji'];
 
+if ($keputusan == 'DITOLAK') {
+    $status = 2;
+} else {
+    $tatus = 4;
+}
+
 if ($penguji == 'PENGUJI KETUA') {
     $stmt = $conn->prepare("UPDATE ujianproposal
-                            SET status=4,
+                            SET status=?,
                                 nilai1=?,
                                 revisi1=?
                             WHERE token=?");
-    $stmt->bind_param("iss", $nilai, $revisi, $token);
+    $stmt->bind_param("isss", $status, $keputusan, $revisi, $token);
     $stmt->execute();
 } elseif ($penguji == 'PENGUJI ANGGOTA') {
     $stmt = $conn->prepare("UPDATE ujianproposal
-                            SET status=4,
+                            SET status=?,
                                 nilai2=?,
                                 revisi2=?
                             WHERE token=?");
-    $stmt->bind_param("iss", $nilai, $revisi, $token);
+    $stmt->bind_param("isss", $status, $keputusan, $revisi, $token);
+    $stmt->execute();
+} elseif ($penguji == 'PEMBIMBING') {
+    $stmt = $conn->prepare("UPDATE ujianproposal
+                            SET status=?,
+                                nilaipembimbing=?,
+                                revisipembimbing=?
+                            WHERE token=?");
+    $stmt->bind_param("isss", $status, $keputusan, $revisi, $token);
     $stmt->execute();
 }
 header('location:index.php?pesan=nilaiok');

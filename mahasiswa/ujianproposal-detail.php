@@ -84,6 +84,7 @@ require('../vendor/myfunc.php');
                                 $penguji2 = $dhasil['penguji2'];
                                 $nilai2 = $dhasil['nilai2'];
                                 $revisi2 = $dhasil['revisi2'];
+                                $revisipembimbing = $dhasil['revisipembimbing'];
                                 $jadwalujian = $dhasil['jadwalujian'];
                                 $ruang = $dhasil['ruang'];
                                 $linkzoom = $dhasil['linkzoom'];
@@ -137,7 +138,7 @@ require('../vendor/myfunc.php');
                                             <div class="col" align="center">
                                                 <label>Kartu Hasil Studi</label>
                                                 <br />
-                                                <a href="<?= $khs; ?>" target="_blank"><img src="<?= $khs; ?>" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <a href="<?= $khs; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
                                                 <br />
                                                 <small style="color: blue">Klik pada gambar untuk memperbesar</small>
                                             </div>
@@ -150,32 +151,39 @@ require('../vendor/myfunc.php');
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Jadwal Ujian</label>
-                                        <input type="text" class="form-control" name="jadwalujian" value="<?= tgljam_indo($jadwalujian); ?>" readonly>
-                                    </div>
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Ruangan</label>
-                                                <input type="text" class="form-control" name="ruangan" value="<?= $ruang; ?>" readonly>
+                                                <label>Jadwal Ujian</label>
+                                                <input type="text" class="form-control" name="jadwalujian" value="<?= tgljam_indo($jadwalujian); ?>" readonly>
                                             </div>
                                         </div>
-
-                                        <?php
-                                        if ($ruang == 'Zoom') {
-                                        ?>
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label>Link</label>
-                                                    <input type="text" class="form-control" name="linkzoom" value="<?= urldecode($linkzoom); ?>" readonly>
-                                                    <a href="<?= urldecode($linkzoom); ?>" type="button" class="btn btn-success" target="_blank">BUKA</a>
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Ruangan</label>
+                                                        <input type="text" class="form-control" name="ruangan" value="<?= $ruang; ?>" readonly>
+                                                    </div>
                                                 </div>
+
+                                                <?php
+                                                if ($ruang == 'Zoom') {
+                                                ?>
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label>Link</label>
+                                                            <input type="text" class="form-control" name="linkzoom" value="<?= urldecode($linkzoom); ?>" readonly>
+                                                            <a href="<?= urldecode($linkzoom); ?>" type="button" class="btn btn-success" target="_blank">BUKA</a>
+                                                        </div>
+                                                    </div>
+                                                <?php
+                                                }
+                                                ?>
                                             </div>
-                                        <?php
-                                        }
-                                        ?>
+                                        </div>
                                     </div>
+
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
@@ -197,6 +205,17 @@ require('../vendor/myfunc.php');
                                                 <label>Revisi Penguji Anggota</label>
                                                 <br />
                                                 <textarea name="revisi1" class="form-control" rows="5" disabled><?= ($revisi2); ?></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Pembimbing</label>
+                                                <input type="text" class="form-control" name="pembimbing" value="<?= $pembimbing; ?>" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Revisi Pembimbing</label>
+                                                <br />
+                                                <textarea name="revisipembimbing" class="form-control" rows="5" disabled><?= ($revisipembimbing); ?></textarea>
                                             </div>
                                         </div>
                                     </div>

@@ -82,12 +82,17 @@ require('../config.php');
                                         <div class="form-group">
                                             <label>Upload Lembar Persetujuan Pembimbing</label>
                                             <input type="file" name="persetujuanpembimbing" class="form-control" accept=".jpg,.jpeg" required>
-                                            <small style="color: red;">Format file PDF ukuran maksimal 1MB</small>
+                                            <small style="color: red;">Format file JPG ukuran maksimal 1MB</small>
                                         </div>
                                         <div class="form-group">
                                             <label>Upload KHS</label>
                                             <input type="file" name="khs" class="form-control" accept=".pdf" required>
-                                            <small style="color: red;">Lulus matakuliah Metode Penelitian dan Seminar</small>
+                                            <small style="color: red;">
+                                                <li>Lulus matakuliah Metode Penelitian dan Seminar</li>
+                                            </small>
+                                            <small style="color: red;">
+                                                <li>Format file PDF ukuran maksimal 1MB</li>
+                                            </small>
                                         </div>
                                         <div class="form-group">
                                             <label>Upload Berkas File Proposal</label>
@@ -97,7 +102,7 @@ require('../config.php');
                                                 <li>Format file PDF ukuran maksimal 10MB</li>
                                             </small>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="return confirm('Mengajukan Seminar Proposal ?')">AJUKAN SEMINAR PROPOSAL</button>
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya ajukan adalah benar')">AJUKAN SEMINAR PROPOSAL</button>
                                     </form>
                                 </div>
                             </div>

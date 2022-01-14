@@ -46,15 +46,15 @@ if ($_FILES["fileproposal"]["size"] > 10485760) {
 // check file extention
 if ($extpersetujuanpembimbing != "jpg" && $imageFileType != "jpeg") {
     $uploadOk = 0;
-    echo 'ekstensi persetujuan pembimbing';
+    echo 'ekstensi persetujuan pembimbing salah';
 }
 if ($extkhs != "pdf") {
     $uploadOk = 0;
-    echo 'ekstensi khs';
+    echo 'ekstensi khs salah';
 }
 if ($extfileproposal != "pdf") {
     $uploadOk = 0;
-    echo 'ekstensi file proposal';
+    echo 'ekstensi file proposal salah';
 }
 
 // check file MIME

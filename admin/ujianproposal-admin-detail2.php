@@ -167,11 +167,6 @@ require('../config.php');
                                             <div class="col">
                                                 <button type="submit" class="btn btn-success btn-lg btn-block" formaction="ujianproposal-admin-setujui2.php" onclick="return confirm('Jadwalkan ujian ini ?')">JADWALKAN</button>
                                             </div>
-                                            <!--
-                                            <div class="col">
-                                                <button type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-lg btn-block">TOLAK</button>
-                                            </div>
-                                            -->
                                         </div>
                                         <!-- modal tolak -->
                                         <div class="modal fade" id="modal-tolak">

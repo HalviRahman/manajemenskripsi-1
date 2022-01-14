@@ -47,7 +47,7 @@ require('../vendor/myfunc.php');
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data Mahasiswa</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Ujian Mahasiswa</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Dashboard</a></li>
               <li class="breadcrumb-item active" aria-current="page">Data Mahasiswa</li>
@@ -231,8 +231,8 @@ require('../vendor/myfunc.php');
                       <?php
                       $no = 1;
                       // ambil data pengajuan judul
-                      $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE (penguji1=? OR penguji2=?) AND (nilai1=0 OR nilai2=0)");
-                      $stmt->bind_param("ss", $nama, $nama);
+                      $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE (penguji1=? OR penguji2=? OR pembimbing=?) AND (nilai1 is null OR nilai2 is null OR nilaipembimbing is null) AND jadwalujian is not null");
+                      $stmt->bind_param("sss", $nama, $nama, $nama);
                       $stmt->execute();
                       $result = $stmt->get_result();
                       while ($dhasil = $result->fetch_assoc()) {
@@ -258,7 +258,7 @@ require('../vendor/myfunc.php');
                       ?>
                       <?php
                       // ambil data ujian kompre
-                      $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE (penguji1=? OR penguji2=?) AND (nilai1=0 OR nilai2=0)");
+                      $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE (penguji1=? OR penguji2=?) AND (nilai1=0 OR nilai2=0) AND jadwalujian is not null");
                       $stmt->bind_param("ss", $nama, $nama);
                       $stmt->execute();
                       $result = $stmt->get_result();
@@ -286,7 +286,7 @@ require('../vendor/myfunc.php');
 
                       <?php
                       // ambil data ujian semhas
-                      $stmt = $conn->prepare("SELECT * FROM semhas WHERE (penguji1=? OR penguji2=?) AND (nilai1=0 OR nilai2=0)");
+                      $stmt = $conn->prepare("SELECT * FROM semhas WHERE (penguji1=? OR penguji2=?) AND (nilai1=0 OR nilai2=0) AND jadwalujian is not null");
                       $stmt->bind_param("ss", $nama, $nama);
                       $stmt->execute();
                       $result = $stmt->get_result();
@@ -314,7 +314,7 @@ require('../vendor/myfunc.php');
 
                       <?php
                       // ambil data ujian semhas
-                      $stmt = $conn->prepare("SELECT * FROM ujianskripsi WHERE (penguji1=? OR penguji2=?) AND (nilai1=0 OR nilai2=0)");
+                      $stmt = $conn->prepare("SELECT * FROM ujianskripsi WHERE (penguji1=? OR penguji2=?) AND (nilai1=0 OR nilai2=0) AND jadwalujian is not null");
                       $stmt->bind_param("ss", $nama, $nama);
                       $stmt->execute();
                       $result = $stmt->get_result();
