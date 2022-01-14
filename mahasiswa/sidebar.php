@@ -58,7 +58,7 @@
         <li class="nav-item">
             <a class="nav-link" href="ujianproposal-isi.php">
                 <i class="fas fa-fw fa-comments"></i>
-                <span>Ujian Proposal</span>
+                <span>Ujian Seminar Proposal</span>
             </a>
         </li>
     <?php
