@@ -209,7 +209,7 @@ require('../vendor/myfunc.php');
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Pembimbing</label>
+                                                <label>Dosen Pembimbing</label>
                                                 <input type="text" class="form-control" name="pembimbing" value="<?= $pembimbing; ?>" readonly>
                                             </div>
                                             <div class="form-group">
