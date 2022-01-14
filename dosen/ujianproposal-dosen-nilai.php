@@ -20,7 +20,7 @@ $penguji = $_POST['penguji'];
 if ($keputusan == 'DITOLAK') {
     $status = 2;
 } else {
-    $tatus = 4;
+    $status = 4;
 }
 
 if ($penguji == 'PENGUJI KETUA') {
