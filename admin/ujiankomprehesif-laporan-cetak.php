@@ -39,7 +39,7 @@ $tahun = $_POST['tahun'];
   <tbody>
     <tr>
       <td colspan="6" align="center">
-        <h1>JADWAL SEMINAR PROPOSAL</h1>
+        <h1>JADWAL UJIAN KOMPREHENSIF</h1>
         <h2>Bulan <?= bulan($bulan); ?> Semester <?= semester($tahun, $bulan); ?></h2>
       </td>
     </tr>
@@ -51,49 +51,46 @@ $tahun = $_POST['tahun'];
   <thead>
     <tr>
       <td align="center">No.</td>
-      <td align="center">Nama</td>
+      <td align="center">Nama Mahasiswa</td>
       <td align="center">NIM</td>
-      <td align="center">Judul Skripsi</td>
-      <td align="center">Pembimbing</td>
-      <td align="center">Ketua Penguji</td>
-      <td align="center">Anggota</td>
+      <td align="center">Bidang Minat</td>
+      <td align="center">Penguji I (FISIKA)</td>
+      <td align="center">Penguji II (INTEGRASI)</td>
       <td align="center">Tanggal</td>
       <td align="center">Ruang</td>
     </tr>
   </thead>
   <tbody>
     <?php
-        //get data penelitian
-        $no = 1;
-        $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE status=4 AND month(jadwalujian) = {$bulan}");
-        $stmt->execute();
-        $result = $stmt->get_result();
-        while ($dhasil = $result->fetch_assoc()) {
-            $nim = $dhasil['nim'];
-            $nama = $dhasil['nama'];
-            $judul = $dhasil['judul'];
-            $jadwalujian = $dhasil['jadwalujian'];
-            $ruang = $dhasil['ruang'];
-            $penguji1 = $dhasil['penguji1'];
-            $penguji2 = $dhasil['penguji2'];
-            $pembimbing = $dhasil['pembimbing'];
-            $token = $dhasil['token'];
-        ?>
+    //get data penelitian
+    $no = 1;
+    $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE status=4 AND month(jadwalujian) = {$bulan}");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($dhasil = $result->fetch_assoc()) {
+      $nim = $dhasil['nim'];
+      $nama = $dhasil['nama'];
+      $bidang = $dhasil['bidang'];
+      $penguji1 = $dhasil['penguji1'];
+      $penguji2 = $dhasil['penguji2'];
+      $ruang = $dhasil['ruang'];
+      $jadwalujian = $dhasil['jadwalujian'];
+      $token = $dhasil['token'];
+    ?>
     <tr>
       <td><?= $no; ?></td>
       <td><?= $nama; ?></td>
       <td><?= $nim; ?></td>
-      <td><?= $judul; ?></td>
-      <td><?= $pembimbing; ?></td>
+      <td><?= $bidang; ?></td>
       <td><?= $penguji1; ?></td>
       <td><?= $penguji2; ?></td>
       <td><?= tgljam_indo($jadwalujian); ?></td>
       <td><?= $ruang; ?></td>
     </tr>
     <?php
-            $no++;
-        }
-        ?>
+      $no++;
+    }
+    ?>
   </tbody>
 </table>
 <br>
@@ -101,39 +98,31 @@ $tahun = $_POST['tahun'];
   <thead>
     <tr>
       <td align="center">No.</td>
-      <td align="center">Pembimbing</td>
-      <td align="center">Ketua Penguji</td>
-      <td align="center">Anggota Penguji</td>
+      <td align="center">Penguji I (FISIKA)</td>
+      <td align="center">Penguji II (INTEGRASI)</td>
     </tr>
   </thead>
   <tbody>
     <?php
-        //get data penelitian
-        $no = 1;
-        $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE status=4 AND month(jadwalujian) = {$bulan}");
-        $stmt->execute();
-        $result = $stmt->get_result();
-        while ($dhasil = $result->fetch_assoc()) {
-            $nim = $dhasil['nim'];
-            $nama = $dhasil['nama'];
-            $judul = $dhasil['judul'];
-            $jadwalujian = $dhasil['jadwalujian'];
-            $ruang = $dhasil['ruang'];
-            $penguji1 = $dhasil['penguji1'];
-            $penguji2 = $dhasil['penguji2'];
-            $pembimbing = $dhasil['pembimbing'];
-            $token = $dhasil['token'];
-        ?>
+    //get data penelitian
+    $no = 1;
+    $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE status=4 AND month(jadwalujian) = {$bulan}");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($dhasil = $result->fetch_assoc()) {
+      $penguji1 = $dhasil['penguji1'];
+      $penguji2 = $dhasil['penguji2'];
+      $token = $dhasil['token'];
+    ?>
     <tr>
       <td><?= $no; ?></td>
-      <td><?= $pembimbing; ?></td>
       <td><?= $penguji1; ?></td>
       <td><?= $penguji2; ?></td>
     </tr>
     <?php
-            $no++;
-        }
-        ?>
+      $no++;
+    }
+    ?>
   </tbody>
 </table>
 <br />

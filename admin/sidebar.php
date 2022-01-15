@@ -28,8 +28,8 @@
         <h6 class="collapse-header">Laporan Skripsi</h6>
         <a class="collapse-item" href="#">Pengajuan Judul</a>
         <a class="collapse-item" href="ujianproposal-laporan.php">Seminar Proposal</a>
-        <a class="collapse-item" href="#">Ujian Komprehensif</a>
-        <a class="collapse-item" href="#">Seminar Hasil</a>
+        <a class="collapse-item" href="ujiankomprehensif-laporan.php">Ujian Komprehensif</a>
+        <a class="collapse-item" href="seminarhasil-laporan.php">Seminar Hasil</a>
         <a class="collapse-item" href="#">Ujian Skripsi</a>
       </div>
     </div>
