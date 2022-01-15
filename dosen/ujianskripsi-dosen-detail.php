@@ -165,55 +165,165 @@ require('../config.php');
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <table class="table table-bordered table-responsive-sm">
-                                                <thead>
-                                                    <tr>
-                                                        <td class="text-center">Rentang Nilai</td>
-                                                        <td class="text-center">Nilai Huruf</td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="text-center">85 - 100</td>
-                                                        <td class="text-center">A</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">75 - 84</td>
-                                                        <td class="text-center">B+</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">70 - 74</td>
-                                                        <td class="text-center">B</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">65 - 69</td>
-                                                        <td class="text-center">C+</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">60 - 64</td>
-                                                        <td class="text-center">C</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">50 - 59</td>
-                                                        <td class="text-center">D</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">0 - 49</td>
-                                                        <td class="text-center">E</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <br />
                                     <form method="POST">
                                         <div class="row">
-                                            <label>Nilai</label>
-                                            <input type="number" name="nilai" class="form-control" required>
-                                            <label>Revisi</label>
-                                            <textarea name="revisi" class="form-control" rows="5"></textarea>
+                                            <div class="col">
+                                                <table class="table table-bordered table-responsive-sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <td class="text-center" colspan="2"><b>1. Isi Skripsi</b></td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="70%">a. Pentingnya masalah</td>
+                                                            <td><select name="pentingnyamasalah" class="form-control">
+                                                                    <option value="5">5</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="1">1</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>b. Keselarasan rumusan masalah, tujuan, dan metode penelitian</td>
+                                                            <td><select name="keselarasan" class="form-control">
+                                                                    <option value="5">5</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="1">1</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>c. Ketepatan teknik analisa data</td>
+                                                            <td><select name="analisadata" class="form-control">
+                                                                    <option value="5">5</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="1">1</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>d. Relevansi Kajian Pustaka</td>
+                                                            <td><select name="kajianpustaka" class="form-control">
+                                                                    <option value="5">5</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="1">1</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>e. Paparan Data</td>
+                                                            <td><select name="paparandata" class="form-control">
+                                                                    <option value="5">5</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="1">1</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>f. Keteraturan alur pembahasan</td>
+                                                            <td><select name="alurpembahasan" class="form-control">
+                                                                    <option value="5">5</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="1">1</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>g. Kesesuaian kesimpulan dengan masalah penelitian</td>
+                                                            <td><select name="kesimpulan" class="form-control">
+                                                                    <option value="5">5</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="1">1</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col">
+                                                <table class="table table-bordered table-responsive-sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <td class="text-center" colspan="2"><b>2. Pelaksanaan Ujian</b></td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="70%">a. Penguasaan materi</td>
+                                                            <td><select name="penguasaanmateri" class="form-control">
+                                                                    <option value="5">5</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="1">1</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>b. Sikap</td>
+                                                            <td><select name="sikap" class="form-control">
+                                                                    <option value="5">5</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="1">1</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <br />
+                                                <table class="table table-bordered table-responsive-sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <td class="text-center" colspan="2"><b>3. Penulisan</b></td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="70%">a. Ketepatan teknik penulisan dan tata bahasa</td>
+                                                            <td><select name="penulisan" class="form-control">
+                                                                    <option value="5">5</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="1">1</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <br />
+                                                <table class="table table-bordered table-responsive-sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <td class="text-center" colspan="2"><b>Revisi</b></td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <textarea name="revisi" class="form-control" rows="4"></textarea>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                         <br />
                                         <input type="hidden" name="token" value="<?= $token; ?>">
