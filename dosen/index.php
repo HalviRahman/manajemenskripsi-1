@@ -222,6 +222,7 @@ require('../vendor/myfunc.php');
                         <th class="text-center">No</th>
                         <th class="text-center">Nama</th>
                         <th class="text-center">NIM</th>
+                        <th class="text-center">Ujian</th>
                         <th class="text-center">Jadwal</th>
                         <th class="text-center">Ruang</th>
                         <th class="text-center">Aksi</th>
@@ -241,11 +242,13 @@ require('../vendor/myfunc.php');
                         $jadwalmhs = $dhasil['jadwalujian'];
                         $ruangmhs = $dhasil['ruang'];
                         $tokenmhs = $dhasil['token'];
+                        $ujian = 'Ujian Seminar Proposal';
                       ?>
                         <tr>
                           <td><?= $no; ?></td>
                           <td><?= $namamhs; ?></td>
                           <td><?= $nimmhs; ?></td>
+                          <td><?= $ujian; ?></td>
                           <td><?= tgljam_indo($jadwalmhs); ?></td>
                           <td><?= $ruangmhs; ?></td>
                           <td class="text-center">
@@ -268,11 +271,13 @@ require('../vendor/myfunc.php');
                         $jadwalmhs = $dhasil['jadwalujian'];
                         $ruangmhs = $dhasil['ruang'];
                         $tokenmhs = $dhasil['token'];
+                        $ujian = 'Ujian Komprehensif';
                       ?>
                         <tr>
                           <td><?= $no; ?></td>
                           <td><?= $namamhs; ?></td>
                           <td><?= $nimmhs; ?></td>
+                          <td><?= $ujian; ?></td>
                           <td><?= tgljam_indo($jadwalmhs); ?></td>
                           <td><?= $ruangmhs; ?></td>
                           <td class="text-center">
@@ -296,11 +301,13 @@ require('../vendor/myfunc.php');
                         $jadwalmhs = $dhasil['jadwalujian'];
                         $ruangmhs = $dhasil['ruang'];
                         $tokenmhs = $dhasil['token'];
+                        $ujian = 'Ujian Seminar Hasil';
                       ?>
                         <tr>
                           <td><?= $no; ?></td>
                           <td><?= $namamhs; ?></td>
                           <td><?= $nimmhs; ?></td>
+                          <td><?= $ujian; ?></td>
                           <td><?= tgljam_indo($jadwalmhs); ?></td>
                           <td><?= $ruangmhs; ?></td>
                           <td class="text-center">
@@ -313,9 +320,9 @@ require('../vendor/myfunc.php');
                       ?>
 
                       <?php
-                      // ambil data ujian semhas
-                      $stmt = $conn->prepare("SELECT * FROM ujianskripsi WHERE (penguji1=? OR penguji2=?) AND (nilai1=0 OR nilai2=0) AND jadwalujian is not null");
-                      $stmt->bind_param("ss", $nama, $nama);
+                      // ambil data ujian skripsi
+                      $stmt = $conn->prepare("SELECT * FROM ujianskripsi WHERE (penguji1=? OR penguji2=? OR penguji3=? OR pembimbing=?) AND (nilai1=0 OR nilai2=0 OR nilai3=0 OR nilaipembimbing=0) AND jadwalujian is not null");
+                      $stmt->bind_param("ssss", $nama, $nama, $nama, $nama);
                       $stmt->execute();
                       $result = $stmt->get_result();
                       while ($dhasil = $result->fetch_assoc()) {
@@ -324,11 +331,13 @@ require('../vendor/myfunc.php');
                         $jadwalmhs = $dhasil['jadwalujian'];
                         $ruangmhs = $dhasil['ruang'];
                         $tokenmhs = $dhasil['token'];
+                        $ujian = 'Ujian Skripsi';
                       ?>
                         <tr>
                           <td><?= $no; ?></td>
                           <td><?= $namamhs; ?></td>
                           <td><?= $nimmhs; ?></td>
+                          <td><?= $ujian; ?></td>
                           <td><?= tgljam_indo($jadwalmhs); ?></td>
                           <td><?= $ruangmhs; ?></td>
                           <td class="text-center">

@@ -95,14 +95,35 @@ require('../config.php');
                                         </div>
                                         <div class="form-group">
                                             <label>Surat Keterangan Lulus Seminar Hasil</label>
-                                            <input type="file" name="sklsemhas" class="form-control" accept=".jpg,.jpeg" required>
+                                            <input type="file" name="sklsemhas" class="form-control" accept=".pdf" required>
+                                            <small style="color: red;">Download dari dashboard</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Bukti pembayaran semester terakhir</label>
+                                            <input type="file" name="buktibayar" class="form-control" accept=".jpg,.jpeg" required>
                                             <small style="color: red;">Format file JPG ukuran maksimal 1MB</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Kartu Hasil Studi</label>
+                                            <input type="file" name="khs" class="form-control" accept=".jpg,.jpeg" required>
+                                            <small style="color: red;">
+                                                <li>KHS Lengkap (semester awal s/d akhir)</li>
+                                                <li>Format file JPG ukuran maksimal 1MB</li>
+                                            </small>
                                         </div>
                                         <div class="form-group">
                                             <label>Transkrip Nilai (fix)</label>
                                             <input type="file" name="transkripnilai" class="form-control" accept=".pdf" required>
                                             <small style="color: red;">
                                                 <li>Sudah di koreksi SKS dan Kode Matakuliah</li>
+                                                <li>Format File PDF ukuran maksimal 1MB</li>
+                                            </small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Scan Ijazah Terakhir</label>
+                                            <input type="file" name="ijazah" class="form-control" accept=".pdf" required>
+                                            <small style="color: red;">
+                                                <li>Ijazah Terakhir</li>
                                                 <li>Format File PDF ukuran maksimal 1MB</li>
                                             </small>
                                         </div>
@@ -127,9 +148,18 @@ require('../config.php');
                                         <div class="form-group">
                                             <label>File Laporan Skripsi</label>
                                             <input type="file" name="skripsi" class="form-control" accept=".pdf" required>
-                                            <small style="color: red;">Format file PDF ukuran maksimal 5MB</small>
+                                            <small style="color: red;">Format file PDF ukuran maksimal 10MB</small>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="return conform ('Dengan ini saya menyatakan kebenaran dokumen yang saya upload')">AJUKAN</button>
+                                        <div class="form-group">
+                                            <label>Bukti cek plagiarisme</label>
+                                            <input type="file" name="turnitin" class="form-control" accept=".pdf">
+                                            <small style="color: red;">
+                                                <li>Format file PDF ukuran maksimal 1MB</li>
+                                                <li>Similarity maksimal 30%</li>
+                                            </small>
+                                        </div>
+                                        <hr>
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="return confirm ('Dengan ini saya menyatakan kebenaran dokumen yang saya upload')">AJUKAN</button>
                                     </form>
                                 </div>
                             </div>

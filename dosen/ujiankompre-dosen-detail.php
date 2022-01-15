@@ -161,11 +161,19 @@ require('../config.php');
                                                         <td class="text-center">A</td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-center">70 - 84</td>
+                                                        <td class="text-center">75 - 84</td>
+                                                        <td class="text-center">B+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">70 - 74</td>
                                                         <td class="text-center">B</td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-center">60 - 69</td>
+                                                        <td class="text-center">65 - 69</td>
+                                                        <td class="text-center">C+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">60 - 64</td>
                                                         <td class="text-center">C</td>
                                                     </tr>
                                                     <tr>

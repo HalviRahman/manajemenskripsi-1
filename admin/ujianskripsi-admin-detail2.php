@@ -76,14 +76,19 @@ require('../config.php');
                                 $pembimbing = $dhasil['pembimbing'];
                                 $penguji1 = $dhasil['penguji1'];
                                 $penguji2 = $dhasil['penguji2'];
+                                $penguji3 = $dhasil['penguji3'];
                                 $forma = $dhasil['forma'];
                                 $foto = $dhasil['foto'];
                                 $sklsemhas = $dhasil['sklsemhas'];
+                                $buktibayar = $dhasil['buktibayar'];
+                                $khs = $dhasil['khs'];
                                 $transkripnilai = $dhasil['transkripnilai'];
+                                $ijazah = $dhasil['ijazah'];
                                 $toefl = $dhasil['toefl'];
                                 $toafl = $dhasil['toafl'];
                                 $alumni = $dhasil['alumni'];
                                 $skripsi = $dhasil['skripsi'];
+                                $turnitin = $dhasil['turnitin'];
                                 $token = $dhasil['token'];
                                 ?>
                                 <div class="card-body">
@@ -107,7 +112,7 @@ require('../config.php');
                                         <div class="col">
                                             <div class="form-group text-break">
                                                 <label>Judul Proposal</label>
-                                                <input type="text" class="form-control" name="judul" value="<?= $judul; ?>" readonly>
+                                                <textarea class="form-control" name="judul" rows="3" readonly><?= $judul; ?></textarea>
                                             </div>
                                         </div>
                                         <div class="col">
@@ -130,7 +135,14 @@ require('../config.php');
                                                 <input type="text" class="form-control" name="penguji2" value="<?= $penguji2; ?>" readonly>
                                             </div>
                                         </div>
+                                        <div class="col">
+                                            <div class="form-group text-break">
+                                                <label>Penguji Integrasi</label>
+                                                <input type="text" class="form-control" name="penguji3" value="<?= $penguji3; ?>" readonly>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <hr>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col" align="center">
@@ -138,58 +150,74 @@ require('../config.php');
                                                 <br />
                                                 <a href="<?= $forma; ?>" target="_blank"><img src="<?= '../img/pdficon.jpg'; ?>" width="100px" class="img-thumbnail" name="sklproposal"></a>
                                                 <br />
-                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                             </div>
                                             <div class="col" align="center">
                                                 <label>Foto</label>
                                                 <br />
                                                 <a href="<?= $foto; ?>" target="_blank"><img src="<?= $foto; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
                                                 <br />
-                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                             </div>
                                             <div class="col" align="center">
                                                 <label>SKL Seminar Hasil</label>
                                                 <br />
-                                                <a href="<?= $sklsemhas; ?>" target="_blank"><img src="<?= $sklsemhas; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <a href="<?= $sklsemhas; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="sklkompre"></a>
                                                 <br />
-                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Bukti Bayar Semester Terakhir</label>
+                                                <br />
+                                                <a href="<?= $buktibayar; ?>" target="_blank"><img src="<?= $buktibayar; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <br />
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Kartu Hasil Studi</label>
+                                                <br />
+                                                <a href="<?= $khs; ?>" target="_blank"><img src="<?= $khs; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <br />
                                             </div>
                                             <div class="col" align="center">
                                                 <label>Transkrip Nilai</label>
                                                 <br />
                                                 <a href="<?= $transkripnilai; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
                                                 <br />
-                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                             </div>
                                         </div>
                                         <div class="row">
+                                            <div class="col" align="center">
+                                                <label>Ijazah terakhir</label>
+                                                <br />
+                                                <a href="<?= $ijazah; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="sklproposal"></a>
+                                                <br />
+                                            </div>
                                             <div class="col" align="center">
                                                 <label>Sertifikat TOEFL</label>
                                                 <br />
                                                 <a href="<?= $toefl; ?>" target="_blank"><img src="<?= $toefl; ?>" width="100px" class="img-thumbnail" name="sklproposal"></a>
                                                 <br />
-                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                             </div>
                                             <div class="col" align="center">
                                                 <label>Sertifikat TOAFL</label>
                                                 <br />
                                                 <a href="<?= $toafl; ?>" target="_blank"><img src="<?= $toafl; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
                                                 <br />
-                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                             </div>
                                             <div class="col" align="center">
                                                 <label>Form Alumni</label>
                                                 <br />
                                                 <a href="<?= $alumni; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="sklkompre"></a>
                                                 <br />
-                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                             </div>
                                             <div class="col" align="center">
                                                 <label>Laporan Skripsi</label>
                                                 <br />
                                                 <a href="<?= $skripsi; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
                                                 <br />
-                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Hasil Cek Plagiasi</label>
+                                                <br />
+                                                <a href="<?= $turnitin; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <br />
                                             </div>
                                         </div>
                                     </div>
@@ -230,11 +258,9 @@ require('../config.php');
                                             <div class="col">
                                                 <button type="submit" class="btn btn-success btn-lg btn-block" formaction="ujianskripsi-admin-setujui2.php" onclick="return confirm('Jadwalkan ujian ini ?')">JADWALKAN</button>
                                             </div>
-                                            <!--
                                             <div class="col">
                                                 <button type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-lg btn-block">TOLAK</button>
                                             </div>
-                                                    -->
                                         </div>
                                         <!-- modal tolak -->
                                         <div class="modal fade" id="modal-tolak">

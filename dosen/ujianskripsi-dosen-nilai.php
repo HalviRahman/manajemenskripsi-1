@@ -35,5 +35,21 @@ if ($penguji == 'Penguji Ketua') {
                             WHERE token=?");
     $stmt->bind_param("iss", $nilai, $revisi, $token);
     $stmt->execute();
+} elseif ($penguji == 'PENGUJI INTEGRASI') {
+    $stmt = $conn->prepare("UPDATE ujianskripsi
+                        SET status=4,
+                            nilai3=?,
+                            revisi3=?
+                        WHERE token=?");
+    $stmt->bind_param("iss", $nilai, $revisi, $token);
+    $stmt->execute();
+} elseif ($penguji == 'PEMBIMBING') {
+    $stmt = $conn->prepare("UPDATE ujianskripsi
+                        SET status=4,
+                            nilaipembimbing=?,
+                            revisipembimbing=?
+                        WHERE token=?");
+    $stmt->bind_param("iss", $nilai, $revisi, $token);
+    $stmt->execute();
 }
 header('location:index.php?pesan=nilaiok');

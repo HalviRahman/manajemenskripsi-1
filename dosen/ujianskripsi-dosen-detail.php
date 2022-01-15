@@ -69,6 +69,8 @@ require('../config.php');
                     $bidang = $dhasil['bidang'];
                     $judul = $dhasil['judul'];
                     $pembimbing = $dhasil['pembimbing'];
+                    $nilaipembimbing = $dhasil['nilaipembimbing'];
+                    $revisipembimbing = $dhasil['revisipembimbing'];
                     $skripsi = $dhasil['skripsi'];
                     $penguji1 = $dhasil['penguji1'];
                     $nilai1 = $dhasil['nilai1'];
@@ -76,11 +78,18 @@ require('../config.php');
                     $penguji2 = $dhasil['penguji2'];
                     $nilai2 = $dhasil['nilai2'];
                     $revisi2 = $dhasil['revisi2'];
+                    $penguji3 = $dhasil['penguji3'];
+                    $nilai3 = $dhasil['nilai3'];
+                    $revisi3 = $dhasil['revisi3'];
                     $token = $dhasil['token'];
                     if ($penguji1 == $nama) {
                         $penguji = 'Penguji Ketua';
                     } elseif ($penguji2 == $nama) {
                         $penguji = 'PENGUJI ANGGOTA';
+                    } elseif ($penguji3 == $nama) {
+                        $penguji = 'PENGUJI INTEGRASI';
+                    } elseif ($pembimbing == $nama) {
+                        $penguji = 'PEMBIMBING';
                     }
                     ?>
                     <div class="row">
@@ -125,6 +134,26 @@ require('../config.php');
                                         <label>Judul Proposal</label>
                                         <textarea class="form-control" name="judul" readonly><?= $judul; ?></textarea>
                                     </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Ketua Penguji</label>
+                                                <input type="text" class="form-control" name="penguji1" value="<?= $penguji1; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Penguji Anggota</label>
+                                                <input type="text" class="form-control" name="penguji2" value="<?= $penguji2; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Penguji Integrasi</label>
+                                                <input type="text" class="form-control" name="penguji3" value="<?= $penguji3; ?>" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col" align="center">
@@ -136,6 +165,49 @@ require('../config.php');
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <table class="table table-bordered table-responsive-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <td class="text-center">Rentang Nilai</td>
+                                                        <td class="text-center">Nilai Huruf</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">85 - 100</td>
+                                                        <td class="text-center">A</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">75 - 84</td>
+                                                        <td class="text-center">B+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">70 - 74</td>
+                                                        <td class="text-center">B</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">65 - 69</td>
+                                                        <td class="text-center">C+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">60 - 64</td>
+                                                        <td class="text-center">C</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">50 - 59</td>
+                                                        <td class="text-center">D</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">0 - 49</td>
+                                                        <td class="text-center">E</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <br />
                                     <form method="POST">
                                         <div class="row">
                                             <label>Nilai</label>

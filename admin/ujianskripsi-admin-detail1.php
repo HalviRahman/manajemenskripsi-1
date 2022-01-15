@@ -79,11 +79,15 @@ require('../config.php');
                                 $forma = $dhasil['forma'];
                                 $foto = $dhasil['foto'];
                                 $sklsemhas = $dhasil['sklsemhas'];
+                                $buktibayar = $dhasil['buktibayar'];
+                                $khs = $dhasil['khs'];
                                 $transkripnilai = $dhasil['transkripnilai'];
+                                $ijazah = $dhasil['ijazah'];
                                 $toefl = $dhasil['toefl'];
                                 $toafl = $dhasil['toafl'];
                                 $alumni = $dhasil['alumni'];
                                 $skripsi = $dhasil['skripsi'];
+                                $turnitin = $dhasil['turnitin'];
                                 $token = $dhasil['token'];
                                 ?>
                                 <div class="card-body">
@@ -150,7 +154,21 @@ require('../config.php');
                                             <div class="col" align="center">
                                                 <label>SKL Seminar Hasil</label>
                                                 <br />
-                                                <a href="<?= $sklsemhas; ?>" target="_blank"><img src="<?= $sklsemhas; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <a href="<?= $sklsemhas; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Bukti Bayar Semester Terakhir</label>
+                                                <br />
+                                                <a href="<?= $buktibayar; ?>" target="_blank"><img src="<?= $buktibayar; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Kartu Hasil Studi</label>
+                                                <br />
+                                                <a href="<?= $khs; ?>" target="_blank"><img src="<?= $khs; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
                                                 <br />
                                                 <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                             </div>
@@ -163,6 +181,13 @@ require('../config.php');
                                             </div>
                                         </div>
                                         <div class="row">
+                                            <div class="col" align="center">
+                                                <label>Ijazah terakhir</label>
+                                                <br />
+                                                <a href="<?= $ijazah; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="sklproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
                                             <div class="col" align="center">
                                                 <label>Sertifikat TOEFL</label>
                                                 <br />
@@ -188,6 +213,13 @@ require('../config.php');
                                                 <label>Laporan Skripsi</label>
                                                 <br />
                                                 <a href="<?= $skripsi; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Hasil Cek Plagiasi</label>
+                                                <br />
+                                                <a href="<?= $turnitin; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
                                                 <br />
                                                 <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                             </div>

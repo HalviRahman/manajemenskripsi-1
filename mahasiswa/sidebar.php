@@ -129,14 +129,21 @@
     $result = $stmt->get_result();
     $juser = $result->num_rows;
     if ($juser > 0) {
+        $stmt5 = $conn->prepare("SELECT * FROM ujianskripsi WHERE nim=?");
+        $stmt5->bind_param("s", $nim);
+        $stmt5->execute();
+        $result5 = $stmt5->get_result();
+        $juser5 = $result5->num_rows;
+        if ($juser5 == 0) {
     ?>
-        <li class="nav-item">
-            <a class="nav-link" href="ujianskripsi-isi.php">
-                <i class="fas fa-fw fa-gavel"></i>
-                <span>Ujian Skripsi</span>
-            </a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ujianskripsi-isi.php">
+                    <i class="fas fa-fw fa-gavel"></i>
+                    <span>Ujian Skripsi</span>
+                </a>
+            </li>
     <?php
+        }
     }
     ?>
     <hr class="sidebar-divider">
