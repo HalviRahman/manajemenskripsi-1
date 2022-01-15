@@ -12,6 +12,7 @@ if ($role != 'dosen') {
     }
 }
 require('../config.php');
+require('../vendor/myfunc.php');
 ?>
 
 <!DOCTYPE html>
@@ -70,6 +71,9 @@ require('../config.php');
                     $judul = $dhasil['judul'];
                     $persetujuanpembimbing = $dhasil['persetujuanpembimbing'];
                     $khs = $dhasil['khs'];
+                    $jadwalujian = $dhasil['jadwalujian'];
+                    $ruang = $dhasil['ruang'];
+                    $linkzoom = $dhasil['linkzoom'];
                     $proposal = $dhasil['proposal'];
                     $pembimbing = $dhasil['pembimbing'];
                     $penguji1 = $dhasil['penguji1'];
@@ -143,6 +147,37 @@ require('../config.php');
                                         <label>Judul Proposal</label>
                                         <textarea class="form-control" name="judul" readonly> <?= $judul; ?></textarea>
                                     </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Jadwal Ujian</label>
+                                                <input type="text" class="form-control" name="jadwalujian" value="<?= tgljam_indo($jadwalujian); ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Ruangan</label>
+                                                        <input type="text" class="form-control" name="ruangan" value="<?= $ruang; ?>" readonly>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                                if ($ruang == 'Zoom') {
+                                                ?>
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label>Link</label>
+                                                            <input type="text" class="form-control" name="linkzoom" value="<?= urldecode($linkzoom); ?>" readonly>
+                                                            <a href="<?= urldecode($linkzoom); ?>" type="button" class="btn btn-success" target="_blank">BUKA</a>
+                                                        </div>
+                                                    </div>
+                                                <?php
+                                                }
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col" align="center">
@@ -156,13 +191,15 @@ require('../config.php');
                                     </div>
                                     <form method="POST">
                                         <div class="row">
-                                            <label>Keputusan</label>
-                                            <select class="form-control" name="keputusan">
-                                                <option value="DITERIMA" selected>DITERIMA</option>
-                                                <option value="DITOLAK">DITOLAK</option>
-                                            </select>
-                                            <label>Revisi</label>
-                                            <textarea name="revisi" class="form-control" rows="5"></textarea>
+                                            <div class="col">
+                                                <label>Keputusan</label>
+                                                <select class="form-control" name="keputusan">
+                                                    <option value="DITERIMA" selected>DITERIMA</option>
+                                                    <option value="DITOLAK">DITOLAK</option>
+                                                </select>
+                                                <label>Revisi</label>
+                                                <textarea name="revisi" class="form-control" rows="5"></textarea>
+                                            </div>
                                         </div>
                                         <br />
                                         <input type="hidden" name="token" value="<?= $token; ?>">

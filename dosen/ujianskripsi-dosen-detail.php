@@ -12,6 +12,7 @@ if ($role != 'dosen') {
     }
 }
 require('../config.php');
+require('../vendor/myfunc.php');
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +69,9 @@ require('../config.php');
                     $namamhs = $dhasil['nama'];
                     $bidang = $dhasil['bidang'];
                     $judul = $dhasil['judul'];
+                    $jadwalujian = $dhasil['jadwalujian'];
+                    $ruang = $dhasil['ruang'];
+                    $linkzoom = $dhasil['linkzoom'];
                     $pembimbing = $dhasil['pembimbing'];
                     $nilaipembimbing = $dhasil['nilaipembimbing'];
                     $revisipembimbing = $dhasil['revisipembimbing'];
@@ -151,6 +155,37 @@ require('../config.php');
                                             <div class="form-group">
                                                 <label>Penguji Integrasi</label>
                                                 <input type="text" class="form-control" name="penguji3" value="<?= $penguji3; ?>" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Jadwal Ujian</label>
+                                                <input type="text" class="form-control" name="jadwalujian" value="<?= tgljam_indo($jadwalujian); ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Ruangan</label>
+                                                        <input type="text" class="form-control" name="ruangan" value="<?= $ruang; ?>" readonly>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                                if ($ruang == 'Zoom') {
+                                                ?>
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label>Link</label>
+                                                            <input type="text" class="form-control" name="linkzoom" value="<?= urldecode($linkzoom); ?>" readonly>
+                                                            <a href="<?= urldecode($linkzoom); ?>" type="button" class="btn btn-success" target="_blank">BUKA</a>
+                                                        </div>
+                                                    </div>
+                                                <?php
+                                                }
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
@@ -328,6 +363,7 @@ require('../config.php');
                                         <br />
                                         <input type="hidden" name="token" value="<?= $token; ?>">
                                         <input type="hidden" name="penguji" value="<?= $penguji; ?>">
+                                        <input type="hidden" name="nimmhs" value="<?= $nimmhs; ?>">
                                         <div class="col">
                                             <button type="submit" class="btn btn-success btn-lg btn-block" formaction="ujianskripsi-dosen-nilai.php" onclick="return confirm('Menyimpan Nilai ?')">NILAI</button>
                                         </div>

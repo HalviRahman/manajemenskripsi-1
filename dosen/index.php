@@ -85,14 +85,14 @@ require('../vendor/myfunc.php');
                         $result = $stmt->get_result();
                         while ($dhasil = $result->fetch_assoc()) {
                           $nim = $dhasil['nim'];
-                          $nama = $dhasil['nama'];
+                          $namamhs = $dhasil['nama'];
                           $ujian = 'Pengajuan Judul';
                           $token = $dhasil['token'];
                         ?>
                           <tr>
                             <td><?= $no; ?></td>
                             <td><?= $ujian; ?></td>
-                            <td><?= $nama; ?></td>
+                            <td><?= $namamhs; ?></td>
                             <td><?= $nim; ?></td>
                             <td class="text-center">
                               <a href="pengajuanjudul-sekprodi-detail.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
@@ -109,14 +109,14 @@ require('../vendor/myfunc.php');
                         $result = $stmt->get_result();
                         while ($dhasil = $result->fetch_assoc()) {
                           $nim = $dhasil['nim'];
-                          $nama = $dhasil['nama'];
+                          $namamhs = $dhasil['nama'];
                           $ujian = 'Ujian Proposal';
                           $token = $dhasil['token'];
                         ?>
                           <tr>
                             <td><?= $no; ?></td>
                             <td><?= $ujian; ?></td>
-                            <td><?= $nama; ?></td>
+                            <td><?= $namamhs; ?></td>
                             <td><?= $nim; ?></td>
                             <td class="text-center">
                               <a href="ujianproposal-sekprodi-detail.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
@@ -133,14 +133,14 @@ require('../vendor/myfunc.php');
                         $result = $stmt->get_result();
                         while ($dhasil = $result->fetch_assoc()) {
                           $nim = $dhasil['nim'];
-                          $nama = $dhasil['nama'];
+                          $namamhs = $dhasil['nama'];
                           $ujian = 'Ujian Komprehensif';
                           $token = $dhasil['token'];
                         ?>
                           <tr>
                             <td><?= $no; ?></td>
                             <td><?= $ujian; ?></td>
-                            <td><?= $nama; ?></td>
+                            <td><?= $namamhs; ?></td>
                             <td><?= $nim; ?></td>
                             <td class="text-center">
                               <a href="ujiankomprehensif-sekprodi-detail.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>

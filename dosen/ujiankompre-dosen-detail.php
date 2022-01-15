@@ -12,6 +12,7 @@ if ($role != 'dosen') {
     }
 }
 require('../config.php');
+require('../vendor/myfunc.php');
 ?>
 
 <!DOCTYPE html>
@@ -69,6 +70,9 @@ require('../config.php');
                     $bidang = $dhasil['bidang'];
                     $judul = $dhasil['judul'];
                     $proposal = $dhasil['fileproposal'];
+                    $jadwalujian = $dhasil['jadwalujian'];
+                    $ruang = $dhasil['ruang'];
+                    $linkzoom = $dhasil['linkzoom'];
                     $pembimbing = $dhasil['pembimbing'];
                     $penguji1 = $dhasil['penguji1'];
                     $nilai1 = $dhasil['nilai1'];
@@ -148,6 +152,37 @@ require('../config.php');
                                     </div>
                                     <div class="row">
                                         <div class="col">
+                                            <div class="form-group">
+                                                <label>Jadwal Ujian</label>
+                                                <input type="text" class="form-control" name="jadwalujian" value="<?= tgljam_indo($jadwalujian); ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Ruangan</label>
+                                                        <input type="text" class="form-control" name="ruangan" value="<?= $ruang; ?>" readonly>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                                if ($ruang == 'Zoom') {
+                                                ?>
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label>Link</label>
+                                                            <input type="text" class="form-control" name="linkzoom" value="<?= urldecode($linkzoom); ?>" readonly>
+                                                            <a href="<?= urldecode($linkzoom); ?>" type="button" class="btn btn-success" target="_blank">BUKA</a>
+                                                        </div>
+                                                    </div>
+                                                <?php
+                                                }
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
                                             <table class="table table-bordered table-responsive-sm">
                                                 <thead>
                                                     <tr>
@@ -191,10 +226,12 @@ require('../config.php');
                                     <br />
                                     <form method="POST">
                                         <div class="row">
-                                            <label>Nilai (0 - 100)</label>
-                                            <input type="number" name="nilai" class="form-control" required>
-                                            <label>Revisi</label>
-                                            <textarea name="revisi" class="form-control" rows="5"></textarea>
+                                            <div class="col">
+                                                <label>Nilai (0 - 100)</label>
+                                                <input type="number" name="nilai" class="form-control" required>
+                                                <label>Revisi</label>
+                                                <textarea name="revisi" class="form-control" rows="5"></textarea>
+                                            </div>
                                         </div>
                                         <br />
                                         <input type="hidden" name="token" value="<?= $token; ?>">

@@ -12,6 +12,7 @@ if ($role != 'dosen') {
     }
 }
 require('../config.php');
+require('../vendor/myfunc.php');
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +69,9 @@ require('../config.php');
                     $namamhs = $dhasil['nama'];
                     $bidang = $dhasil['bidang'];
                     $judul = $dhasil['judul'];
+                    $jadwalujian = $dhasil['jadwalujian'];
+                    $ruang = $dhasil['ruang'];
+                    $linkzoom = $dhasil['linkzoom'];
                     $fileproposal = $dhasil['proposal'];
                     $pembimbing = $dhasil['pembimbing'];
                     $sklproposal = $dhasil['sklproposal'];
@@ -154,6 +158,37 @@ require('../config.php');
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Jadwal Ujian</label>
+                                                <input type="text" class="form-control" name="jadwalujian" value="<?= tgljam_indo($jadwalujian); ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Ruangan</label>
+                                                        <input type="text" class="form-control" name="ruangan" value="<?= $ruang; ?>" readonly>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                                if ($ruang == 'Zoom') {
+                                                ?>
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label>Link</label>
+                                                            <input type="text" class="form-control" name="linkzoom" value="<?= urldecode($linkzoom); ?>" readonly>
+                                                            <a href="<?= urldecode($linkzoom); ?>" type="button" class="btn btn-success" target="_blank">BUKA</a>
+                                                        </div>
+                                                    </div>
+                                                <?php
+                                                }
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col" align="center">
@@ -180,11 +215,19 @@ require('../config.php');
                                                         <td class="text-center">A</td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-center">70 - 84</td>
+                                                        <td class="text-center">75 - 84</td>
+                                                        <td class="text-center">B+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">70 - 74</td>
                                                         <td class="text-center">B</td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-center">60 - 69</td>
+                                                        <td class="text-center">65 - 69</td>
+                                                        <td class="text-center">C+</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">60 - 64</td>
                                                         <td class="text-center">C</td>
                                                     </tr>
                                                     <tr>
@@ -202,10 +245,12 @@ require('../config.php');
                                     <br />
                                     <form method="POST">
                                         <div class="row">
-                                            <label>Nilai</label>
-                                            <input type="number" name="nilai" class="form-control" required>
-                                            <label>Revisi</label>
-                                            <textarea name="revisi" class="form-control" rows="5"></textarea>
+                                            <div class="col">
+                                                <label>Nilai</label>
+                                                <input type="number" name="nilai" class="form-control" required>
+                                                <label>Revisi</label>
+                                                <textarea name="revisi" class="form-control" rows="5"></textarea>
+                                            </div>
                                         </div>
                                         <br />
                                         <input type="hidden" name="token" value="<?= $token; ?>">
