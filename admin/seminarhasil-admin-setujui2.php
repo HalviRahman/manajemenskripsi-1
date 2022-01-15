@@ -17,7 +17,8 @@ require('../config.php');
 
 //update status file proposal
 $stmt = $conn->prepare("UPDATE semhas
-                        SET jadwalujian=?,
+                        SET verifikasifile=1, 
+                            jadwalujian=?,
                             ruang=?,
                             linkzoom=?,
                             status=3

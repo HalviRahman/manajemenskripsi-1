@@ -358,7 +358,7 @@ require('../vendor/myfunc.php');
                               <?php
                               if ($verifikasifile == 0 and $status == 0) {
                               ?>
-                                <a href="#" class="btn btn-secondary" type="button" onclick="alert('Menunggu verifikasi Admin');"><i class="fa fa-spinner" aria-hidden="true"></i></a>
+                                <a href="seminarhasil-hapus.php?token=<?= $token; ?>" class="btn btn-danger" type="button" onclick="return confirm ('Menghapus pengajuan ini ?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
                               <?php
                               } elseif ($verifikasifile == 1 and $status == 0) {
                               ?>
@@ -371,14 +371,16 @@ require('../vendor/myfunc.php');
                               } elseif ($verifikasifile == 2 and $status == 0) {
                               ?>
                                 <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                <a href="seminarhasil-hapus.php?token=<?= $token; ?>" class="btn btn-danger" type="button" onclick="return confirm ('Menghapus pengajuan ini ?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
                               <?php
                               } elseif ($verifikasifile == 1 and $status == 2) {
                               ?>
                                 <a href="#" class="btn btn-danger" type="button" onclick="alert('Alasan <?= $keterangan; ?>');"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                <a href="seminarhasil-hapus.php?token=<?= $token; ?>" class="btn btn-danger" type="button" onclick="return confirm ('Menghapus pengajuan ini ?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
                               <?php
                               } elseif ($verifikasifile == 1 and $status == 4) {
                               ?>
-                                <a href="seminarhasil-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                <a href="seminarhasil-cetak.php?token=<?= $token; ?>" class="btn btn-success" type="button" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
                               <?php
                               }
                               ?>

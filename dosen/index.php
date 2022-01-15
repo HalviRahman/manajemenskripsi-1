@@ -286,8 +286,8 @@ require('../vendor/myfunc.php');
 
                       <?php
                       // ambil data ujian semhas
-                      $stmt = $conn->prepare("SELECT * FROM semhas WHERE (penguji1=? OR penguji2=?) AND (nilai1=0 OR nilai2=0) AND jadwalujian is not null");
-                      $stmt->bind_param("ss", $nama, $nama);
+                      $stmt = $conn->prepare("SELECT * FROM semhas WHERE (penguji1=? OR penguji2=? OR pembimbing=?) AND (nilai1=0 OR nilai2=0 OR nilaipembimbing=0) AND jadwalujian is not null");
+                      $stmt->bind_param("sss", $nama, $nama, $nama);
                       $stmt->execute();
                       $result = $stmt->get_result();
                       while ($dhasil = $result->fetch_assoc()) {

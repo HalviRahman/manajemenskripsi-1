@@ -257,7 +257,7 @@ require('../vendor/myfunc.php');
                           <td><?= $nama; ?></td>
                           <td><?= $nim; ?></td>
                           <td class="text-center">
-                            <a href="seminarhasil-admin-detail1.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                            <a href="seminarhasil-admin-detail2.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
                           </td>
                         </tr>
                       <?php
