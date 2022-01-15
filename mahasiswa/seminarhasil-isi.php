@@ -85,20 +85,47 @@ require('../config.php');
                                         <input type="hidden" name="penguji2" value="<?= $penguji2; ?>">
                                         <div class="form-group">
                                             <label>Surat Keterangan Lulus Ujian Proposal</label>
-                                            <input type="file" name="sklproposal" class="form-control" accept=".jpg,.jpeg" required>
-                                            <small style="color: red;">Format file JPG ukuran maksimal 1MB</small>
+                                            <input type="file" name="sklproposal" class="form-control" accept=".pdf" required>
+                                            <small style="color: red;">
+                                                <li>Download dari dashboard</li>
+                                            </small>
+                                            <small style="color: red;">
+                                                <li>Format file PDF ukuran maksimal 1MB</li>
+                                            </small>
                                         </div>
                                         <div class="form-group">
-                                            <label>Surat Ketarangan Lulus Ujian Komprehensif</label>
-                                            <input type="file" name="sklkompre" class="form-control" accept=".jpg,.jpeg" required>
-                                            <small style="color: red;">Format file JPG ukuran maksimal 1MB</small>
+                                            <label>Surat Keterangan Lulus Ujian Komprehensif</label>
+                                            <input type="file" name="sklkompre" class="form-control" accept=".pdf" required>
+                                            <small style="color: red;">
+                                                <li>Download dari dashboard</li>
+                                            </small>
+                                            <small style="color: red;">
+                                                <li>Format file PDF ukuran maksimal 1MB</li>
+                                            </small>
                                         </div>
                                         <div class="form-group">
-                                            <label>Upload File Seminar Hasil </label>
+                                            <label>Kartu Kendali Bukti Konsultasi</label>
+                                            <input type="file" name="kartukendali" class="form-control" accept=".jpg,.jpeg" required>
+                                            <small style="color: red;">
+                                                <li>Format file JPG ukuran maksimal 1MB</li>
+                                            </small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Lembar Persetujuan Seminar Hasil</label>
+                                            <input type="file" name="lembarpersetujuan" class="form-control" accept=".jpg,.jpeg" required>
+                                            <small style="color: red;">
+                                                <li>Di tanda tangani Dosen Pembimbing</li>
+                                            </small>
+                                            <small style="color: red;">
+                                                <li>Format file JPG ukuran maksimal 1MB</li>
+                                            </small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>File Seminar Hasil </label>
                                             <input type="file" name="fileproposal" class="form-control" accept=".pdf" required>
                                             <small style="color: red;">
                                                 <li>File laporan yang telah disetujui pembimbing</li>
-                                                <li>Format file PDF ukuran maksimal 5MB</li>
+                                                <li>Format file PDF ukuran maksimal 10 MB</li>
                                             </small>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="return conform ('Dengan ini saya menyatakan kebenaran dokumen yang saya upload')">AJUKAN</button>

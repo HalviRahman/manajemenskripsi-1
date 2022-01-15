@@ -81,9 +81,21 @@ require('../config.php');
                     $revisi2 = $dhasil['revisi2'];
                     $token = $dhasil['token'];
                     if ($penguji1 == $nama) {
-                        $penguji = 'Penguji Ketua';
+                        $penguji = 'KETUA PENGUJI';
                     } elseif ($penguji2 == $nama) {
                         $penguji = 'PENGUJI ANGGOTA';
+                    } elseif ($pembimbing == $nama) {
+                        $penguji = 'PEMBIMBING';
+                    }
+                    ?>
+                    <?php
+                    if (isset($_GET['pesan'])) {
+                        $pesan = $_GET['pesan'];
+                    ?>
+                        <div class="alert alert-danger">
+                            <strong>ERROR!!</strong> nilai bilangan bulat diantara 0 s/d 100.
+                        </div>
+                    <?php
                     }
                     ?>
                     <div class="row">
@@ -128,22 +140,22 @@ require('../config.php');
                                         <label>Judul Proposal</label>
                                         <textarea class="form-control" name="judul" readonly><?= $judul; ?></textarea>
                                     </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Ketua Penguji</label>
+                                                <input type="text" class="form-control" name="penguji1" value="<?= $penguji1; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Penguji Anggota</label>
+                                                <input type="text" class="form-control" name="penguji2" value="<?= $penguji2; ?>" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <div class="row">
-                                            <div class="col" align="center">
-                                                <label>Surat Keterangan Lulus Seminar Proposal</label>
-                                                <br />
-                                                <a href="<?= $sklproposal; ?>" target="_blank"><img src="<?= $sklproposal; ?>" width="100px" class="img-thumbnail" name="sklproposal"></a>
-                                                <br />
-                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
-                                            </div>
-                                            <div class="col" align="center">
-                                                <label>Surat Keterangan Lulus Ujian Komprehensif</label>
-                                                <br />
-                                                <a href="<?= $sklkompre; ?>" target="_blank"><img src="<?= $sklkompre; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
-                                                <br />
-                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
-                                            </div>
                                             <div class="col" align="center">
                                                 <label>File Proposal</label>
                                                 <br />
@@ -153,6 +165,41 @@ require('../config.php');
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <table class="table table-bordered table-responsive-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <td class="text-center">Rentang Nilai</td>
+                                                        <td class="text-center">Nilai Huruf</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">85 - 100</td>
+                                                        <td class="text-center">A</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">70 - 84</td>
+                                                        <td class="text-center">B</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">60 - 69</td>
+                                                        <td class="text-center">C</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">50 - 59</td>
+                                                        <td class="text-center">D</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">0 - 49</td>
+                                                        <td class="text-center">E</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <br />
                                     <form method="POST">
                                         <div class="row">
                                             <label>Nilai</label>

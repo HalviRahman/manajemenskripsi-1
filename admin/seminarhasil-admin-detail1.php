@@ -76,6 +76,8 @@ require('../config.php');
                                 $pembimbing = $dhasil['pembimbing'];
                                 $sklproposal = $dhasil['sklproposal'];
                                 $sklkompre = $dhasil['sklkompre'];
+                                $kartukendali = $dhasil['kartukendali'];
+                                $lembarpersetujuan = $dhasil['lembarpersetujuan'];
                                 $proposal = $dhasil['proposal'];
                                 $token = $dhasil['token'];
                                 ?>
@@ -117,16 +119,30 @@ require('../config.php');
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col" align="center">
-                                                <label>Surat Keterangan Lulus Seminar Proposal</label>
+                                                <label>SKL Seminar Proposal</label>
                                                 <br />
-                                                <a href="<?= $sklproposal; ?>" target="_blank"><img src="<?= $sklproposal; ?>" width="100px" class="img-thumbnail" name="sklproposal"></a>
+                                                <a href="<?= $sklproposal; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="sklproposal"></a>
                                                 <br />
                                                 <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                             </div>
                                             <div class="col" align="center">
-                                                <label>Surat Keterangan Lulus Ujian Komprehensif</label>
+                                                <label>SKL Ujian Komprehensif</label>
                                                 <br />
-                                                <a href="<?= $sklkompre; ?>" target="_blank"><img src="<?= $sklkompre; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <a href="<?= $sklkompre; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Kartu Kendali</label>
+                                                <br />
+                                                <a href="<?= $kartukendali; ?>" target="_blank"><img src="<?= $kartukendali; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Lembar Persetujuan</label>
+                                                <br />
+                                                <a href="<?= $lembarpersetujuan; ?>" target="_blank"><img src="<?= $lembarpersetujuan; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
                                                 <br />
                                                 <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                             </div>
