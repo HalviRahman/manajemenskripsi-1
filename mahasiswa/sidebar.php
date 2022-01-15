@@ -104,16 +104,24 @@
     $result = $stmt->get_result();
     $juser = $result->num_rows;
     if ($juser > 0) {
+        $stmt4 = $conn->prepare("SELECT * FROM semhas WHERE nim=?");
+        $stmt4->bind_param("s", $nim);
+        $stmt4->execute();
+        $result4 = $stmt4->get_result();
+        $juser4 = $result4->num_rows;
+        if ($juser4 == 0) {
     ?>
-        <li class="nav-item">
-            <a class="nav-link" href="seminarhasil-isi.php">
-                <i class="fas fa-fw fa-comments"></i>
-                <span>Seminar Hasil</span>
-            </a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link" href="seminarhasil-isi.php">
+                    <i class="fas fa-fw fa-comments"></i>
+                    <span>Seminar Hasil</span>
+                </a>
+            </li>
     <?php
+        }
     }
     ?>
+
     <?php
     $stmt = $conn->prepare("SELECT * FROM semhas WHERE nim=? AND status=4");
     $stmt->bind_param("s", $nim);
