@@ -1,7 +1,7 @@
 <html>
 
 <script>
-//window.print();
+window.print();
 </script>
 
 <head>
@@ -97,33 +97,97 @@ $tahun = $_POST['tahun'];
   </tbody>
 </table>
 <br>
-<table table style="width:90%; margin-left:auto;margin-right:auto;" cellspacing="0" border="1">
+<table table style="width:40%; margin-left:68;margin-right:auto;" cellspacing="0" border="1">
   <thead>
     <tr>
       <td align="center">No.</td>
-      <td align="center">Pembimbing Anggota 2</td>
-      <td align="center">Penguji Ketua</td>
-      <td align="center">Penguji Anggota 1</td>
+      <td align="center">Nama</td>
+      <td align="center">Pembimbing</td>
     </tr>
   </thead>
   <tbody>
     <?php
     //get data penelitian
     $no = 1;
-    $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE status=4 AND month(jadwalujian) = {$bulan}");
+    // $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE status=4 AND month(jadwalujian) = {$bulan}");
+    $stmt = $conn->prepare("SELECT pembimbing AS pembimbing,count(pembimbing) AS frekuensi_pembimbing from semhas WHERE status=4 AND month(jadwalujian) = {$bulan} group by pembimbing");
     $stmt->execute();
     $result = $stmt->get_result();
     while ($dhasil = $result->fetch_assoc()) {
       $pembimbing = $dhasil['pembimbing'];
-      $penguji1 = $dhasil['penguji1'];
-      $penguji2 = $dhasil['penguji2'];
-      $token = $dhasil['token'];
+      $frekuensi = $dhasil['frekuensi_pembimbing'];
+      // $token = $dhasil['token'];
     ?>
     <tr>
       <td><?= $no; ?></td>
       <td><?= $pembimbing; ?></td>
-      <td><?= $penguji1; ?></td>
-      <td><?= $penguji2; ?></td>
+      <td><?= $frekuensi; ?></td>
+    </tr>
+    <?php
+      $no++;
+    }
+    ?>
+  </tbody>
+</table>
+<br />
+<table table style="width:40%; margin-left:68;margin-right:auto;" cellspacing="0" border="1">
+  <thead>
+    <tr>
+      <td align="center">No.</td>
+      <td align="center">Nama</td>
+      <td align="center">Ketua Penguji</td>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+    //get data penelitian
+    $no = 1;
+    // $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE status=4 AND month(jadwalujian) = {$bulan}");
+    $stmt = $conn->prepare("SELECT penguji1 AS penguji1,count(penguji1) AS frekuensi_penguji1 from semhas WHERE status=4 AND month(jadwalujian) = {$bulan} group by penguji1");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($dhasil = $result->fetch_assoc()) {
+      $pembimbing = $dhasil['penguji1'];
+      $frekuensi = $dhasil['frekuensi_penguji1'];
+      // $token = $dhasil['token'];
+    ?>
+    <tr>
+      <td><?= $no; ?></td>
+      <td><?= $pembimbing; ?></td>
+      <td><?= $frekuensi; ?></td>
+    </tr>
+    <?php
+      $no++;
+    }
+    ?>
+  </tbody>
+</table>
+<br />
+<table table style="width:40%; margin-left:68;margin-right:auto;" cellspacing="0" border="1">
+  <thead>
+    <tr>
+      <td align="center">No.</td>
+      <td align="center">Nama</td>
+      <td align="center">Anggota Penguji</td>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+    //get data penelitian
+    $no = 1;
+    // $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE status=4 AND month(jadwalujian) = {$bulan}");
+    $stmt = $conn->prepare("SELECT penguji2 AS penguji2,count(penguji2) AS frekuensi_penguji2 from semhas WHERE status=4 AND month(jadwalujian) = {$bulan} group by penguji2");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($dhasil = $result->fetch_assoc()) {
+      $pembimbing = $dhasil['penguji2'];
+      $frekuensi = $dhasil['frekuensi_penguji2'];
+      // $token = $dhasil['token'];
+    ?>
+    <tr>
+      <td><?= $no; ?></td>
+      <td><?= $pembimbing; ?></td>
+      <td><?= $frekuensi; ?></td>
     </tr>
     <?php
       $no++;
