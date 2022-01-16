@@ -59,8 +59,12 @@ function nilai($nilai)
 {
     if ($nilai > 85) {
         $angka = 'A';
+    } elseif ($nilai > 75) {
+        $angka = 'B+';
     } elseif ($nilai > 70) {
         $angka = 'B';
+    } elseif ($nilai > 65) {
+        $angka = 'C+';
     } elseif ($nilai > 60) {
         $angka = 'C';
     } elseif ($nilai > 50) {
@@ -73,11 +77,11 @@ function nilai($nilai)
 
 ?>
 <script>
-window.setTimeout(function() {
-  $(".alert").fadeTo(500, 0).slideUp(500, function() {
-    $(this).remove();
-  });
-}, 3000);
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function() {
+            $(this).remove();
+        });
+    }, 3000);
 </script>
 
 

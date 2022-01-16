@@ -18,8 +18,7 @@
   </li>
   <hr class="sidebar-divider">
   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap" aria-expanded="true"
-      aria-controls="collapseBootstrap">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap" aria-expanded="true" aria-controls="collapseBootstrap">
       <i class="far fa-fw fa-window-maximize"></i>
       <span>Laporan Skripsi</span>
     </a>
@@ -30,7 +29,7 @@
         <a class="collapse-item" href="ujianproposal-laporan.php">Seminar Proposal</a>
         <a class="collapse-item" href="ujiankomprehensif-laporan.php">Ujian Komprehensif</a>
         <a class="collapse-item" href="seminarhasil-laporan.php">Seminar Hasil</a>
-        <a class="collapse-item" href="#">Ujian Skripsi</a>
+        <a class="collapse-item" href="ujianskripsi-laporan.php">Ujian Skripsi</a>
       </div>
     </div>
   </li>
