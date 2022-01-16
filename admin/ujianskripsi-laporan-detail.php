@@ -226,7 +226,8 @@ require('../vendor/myfunc.php');
                                         <input type="hidden" name="token" value="<?= $token; ?>">
                                         <div class="row">
                                             <div class="col">
-                                                <button type="submit" class="btn btn-success btn-lg btn-block" formaction="ujianskripsi-laporan-cetak.php" onclick="return confirm('Cetak Berita Acara Ujian Skripsi ?')">Cetak</button>
+                                                <input type="hidden" name="token" value="<?= $token; ?>">
+                                                <button type="submit" class="btn btn-success btn-lg btn-block" formaction="ujianskripsi-laporan-cetak.php" onclick="return confirm('Cetak Berita Acara Ujian Skripsi ?')"><i class="fa fa-print" aria-hidden="true"></i> Cetak</button>
                                             </div>
                                         </div>
                                     </form>

@@ -38,6 +38,15 @@ function bulan($angka)
     return $bul[$angka];
 }
 
+function hari($angka)
+{
+    $angka = (int)$angka;
+    $har = array(
+        1 =>   'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
+    );
+    return $har[$angka];
+}
+
 function semester($tahun, $bulan)
 {
     $tahunlalu = $tahun - 1;
