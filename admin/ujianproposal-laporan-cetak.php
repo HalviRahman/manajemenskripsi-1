@@ -1,7 +1,7 @@
 <html>
 
 <script>
-//window.print();
+  window.print();
 </script>
 
 <head>
@@ -63,37 +63,37 @@ $tahun = $_POST['tahun'];
   </thead>
   <tbody>
     <?php
-        //get data penelitian
-        $no = 1;
-        $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE status=4 AND month(jadwalujian) = {$bulan}");
-        $stmt->execute();
-        $result = $stmt->get_result();
-        while ($dhasil = $result->fetch_assoc()) {
-            $nim = $dhasil['nim'];
-            $nama = $dhasil['nama'];
-            $judul = $dhasil['judul'];
-            $jadwalujian = $dhasil['jadwalujian'];
-            $ruang = $dhasil['ruang'];
-            $penguji1 = $dhasil['penguji1'];
-            $penguji2 = $dhasil['penguji2'];
-            $pembimbing = $dhasil['pembimbing'];
-            $token = $dhasil['token'];
-        ?>
-    <tr>
-      <td><?= $no; ?></td>
-      <td><?= $nama; ?></td>
-      <td><?= $nim; ?></td>
-      <td><?= $judul; ?></td>
-      <td><?= $pembimbing; ?></td>
-      <td><?= $penguji1; ?></td>
-      <td><?= $penguji2; ?></td>
-      <td><?= tgljam_indo($jadwalujian); ?></td>
-      <td><?= $ruang; ?></td>
-    </tr>
+    //get data penelitian
+    $no = 1;
+    $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE status=4 AND month(jadwalujian) = {$bulan}");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($dhasil = $result->fetch_assoc()) {
+      $nim = $dhasil['nim'];
+      $nama = $dhasil['nama'];
+      $judul = $dhasil['judul'];
+      $jadwalujian = $dhasil['jadwalujian'];
+      $ruang = $dhasil['ruang'];
+      $penguji1 = $dhasil['penguji1'];
+      $penguji2 = $dhasil['penguji2'];
+      $pembimbing = $dhasil['pembimbing'];
+      $token = $dhasil['token'];
+    ?>
+      <tr>
+        <td><?= $no; ?></td>
+        <td><?= $nama; ?></td>
+        <td><?= $nim; ?></td>
+        <td><?= $judul; ?></td>
+        <td><?= $pembimbing; ?></td>
+        <td><?= $penguji1; ?></td>
+        <td><?= $penguji2; ?></td>
+        <td><?= tgljam_indo($jadwalujian); ?></td>
+        <td><?= $ruang; ?></td>
+      </tr>
     <?php
-            $no++;
-        }
-        ?>
+      $no++;
+    }
+    ?>
   </tbody>
 </table>
 <br>
@@ -108,32 +108,32 @@ $tahun = $_POST['tahun'];
   </thead>
   <tbody>
     <?php
-        //get data penelitian
-        $no = 1;
-        $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE status=4 AND month(jadwalujian) = {$bulan}");
-        $stmt->execute();
-        $result = $stmt->get_result();
-        while ($dhasil = $result->fetch_assoc()) {
-            $nim = $dhasil['nim'];
-            $nama = $dhasil['nama'];
-            $judul = $dhasil['judul'];
-            $jadwalujian = $dhasil['jadwalujian'];
-            $ruang = $dhasil['ruang'];
-            $penguji1 = $dhasil['penguji1'];
-            $penguji2 = $dhasil['penguji2'];
-            $pembimbing = $dhasil['pembimbing'];
-            $token = $dhasil['token'];
-        ?>
-    <tr>
-      <td><?= $no; ?></td>
-      <td><?= $pembimbing; ?></td>
-      <td><?= $penguji1; ?></td>
-      <td><?= $penguji2; ?></td>
-    </tr>
+    //get data penelitian
+    $no = 1;
+    $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE status=4 AND month(jadwalujian) = {$bulan}");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($dhasil = $result->fetch_assoc()) {
+      $nim = $dhasil['nim'];
+      $nama = $dhasil['nama'];
+      $judul = $dhasil['judul'];
+      $jadwalujian = $dhasil['jadwalujian'];
+      $ruang = $dhasil['ruang'];
+      $penguji1 = $dhasil['penguji1'];
+      $penguji2 = $dhasil['penguji2'];
+      $pembimbing = $dhasil['pembimbing'];
+      $token = $dhasil['token'];
+    ?>
+      <tr>
+        <td><?= $no; ?></td>
+        <td><?= $pembimbing; ?></td>
+        <td><?= $penguji1; ?></td>
+        <td><?= $penguji2; ?></td>
+      </tr>
     <?php
-            $no++;
-        }
-        ?>
+      $no++;
+    }
+    ?>
   </tbody>
 </table>
 <br />

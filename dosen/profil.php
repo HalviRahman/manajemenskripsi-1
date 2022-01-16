@@ -33,12 +33,29 @@ if (isset($_POST['edit'])) {
       header('location: profil.php?pesan=exist');
     } else {
       if ($password == $password2) {
-        $stmt = $conn->prepare("UPDATE pengguna
-                              SET nohp=?, email=?, userid=?, pass=?
+        //upload file
+        $target_dir = "../img/ttd/";
+        $ttd = $target_dir . $nim . "-ttd" . ".png";
+        $uploadOk = 1;
+
+        // Check file size
+        if ($_FILES["ttd"]["size"] > 1048576) {
+          $uploadOk = 0;
+          echo 'file ttd oversize';
+        }
+        if ($uploadOk == 0) {
+          header("location:profil.php?pesan=gagal");
+          //echo 'something wrong';
+        } else {
+          move_uploaded_file($_FILES["ttd"]["tmp_name"], $ttd);
+          $stmt = $conn->prepare("UPDATE pengguna
+                              SET nohp=?, email=?, userid=?, pass=?,ttd=?
                               WHERE token=?");
-        $stmt->bind_param("sssss", $nohp, $email, $userid, $pass, $token);
-        $stmt->execute();
-        header('location:profil.php?pesan=success');
+          $stmt->bind_param("ssssss", $nohp, $email, $userid, $pass, $ttd, $token);
+          $stmt->execute();
+          header("location:index.php?pesan=success");
+          //echo 'success';
+        }
       } else {
         header('location:profil.php?pesan=passtidaksama');
       }
@@ -110,8 +127,8 @@ if (isset($_POST['edit'])) {
                 $nohp = $dhasil['nohp'];
                 $email = $dhasil['email'];
                 $userid = $dhasil['userid'];
+                $ttd = $dhasil['ttd'];
                 ?>
-
                 <div class="card-body">
                   <?php
                   //ambil nilai variabel pesan di URL
@@ -119,34 +136,32 @@ if (isset($_POST['edit'])) {
                     $pesan = $_GET['pesan'];
                     if ($pesan == 'success') {
                   ?>
-                  <div class="alert alert-success" role="alert">
-                    Berhasil Edit Profil!
-                  </div>
-                  <?php
+                      <div class="alert alert-success" role="alert">
+                        Berhasil Edit Profil!
+                      </div>
+                    <?php
                     } elseif ($pesan == 'exist') {
                     ?>
-                  <div class="alert alert-danger" role="alert">
-                    <b>ERROR!!</b> Pengguna telah terdaftar
-                  </div>
-                  <?php
+                      <div class="alert alert-danger" role="alert">
+                        <b>ERROR!!</b> Pengguna telah terdaftar
+                      </div>
+                    <?php
                     } elseif ($pesan == 'passtidaksama') {
                     ?>
-                  <div class="alert alert-danger" role="alert">
-                    <b>ERROR!!</b> Konfirmasi password tidak sama
-                  </div>
-                  <?php
+                      <div class="alert alert-danger" role="alert">
+                        <b>ERROR!!</b> Konfirmasi password tidak sama
+                      </div>
+                    <?php
                     } elseif ($pesan == 'hitungsalah') {
                     ?>
-                  <div class="alert alert-danger" role="alert">
-                    <b>ERROR!!</b> Perhitungan salah
-                  </div>
+                      <div class="alert alert-danger" role="alert">
+                        <b>ERROR!!</b> Perhitungan salah
+                      </div>
                   <?php
                     }
                   }
                   ?>
                   <form action="" enctype="multipart/form-data" method="POST">
-
-
                     <div class="form-group">
                       <label>Nama</label>
                       <input type="text" class="form-control" value="<?= $nama; ?>" name="nama" readonly>
@@ -177,6 +192,18 @@ if (isset($_POST['edit'])) {
                         <input type="password" class="form-control" name="password2" required>
                       </div>
                     </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label>Foto tanda tangan</label>
+                          <input type="file" name="ttd" class="form-control" accept=".png">
+                          <small style="color: red;">Format file PNG ukuran maksimal 1MB</small>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <img src="<?= $ttd; ?>" width="300px">
+                      </div>
+                    </div>
                     <div class="form-group">
                       <?php
                       $angka1 = rand(1, 5);
@@ -188,7 +215,7 @@ if (isset($_POST['edit'])) {
                       <input type="number" class="form-control" name="hasil" id="hasil" required>
                       <input type="hidden" name="kunci" value="<?= $kunci; ?>">
                     </div>
-                    <button type="submit" name="edit" class="btn btn-warning btn-lg btn-block">UPDATE</button>
+                    <button type="submit" name="edit" class="btn btn-primary btn-lg btn-block">UPDATE</button>
                   </form>
                 </div>
               </div>

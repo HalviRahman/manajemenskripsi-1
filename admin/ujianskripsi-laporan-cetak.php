@@ -1,7 +1,7 @@
 <html>
 
 <script>
-    //window.print();
+    window.print();
 </script>
 
 <head>
@@ -228,29 +228,105 @@ while ($dhasil = $result->fetch_assoc()) {
         <td style="text-align: center;">Nama Penguji</td>
         <td style="text-align: center;">Tanda Tangan</td>
     </tr>
+    <?php
+    //cari ttd penguji1
+    $stmt = $conn->prepare("SELECT * FROM pengguna WHERE nama=?");
+    $stmt->bind_param("s", $penguji1);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $dhasil = $result->fetch_assoc();
+    $ttd = $dhasil['ttd'];
+    ?>
     <tr>
         <td style="height:40">1.</td>
         <td>Penguji Utama / Ketua</td>
         <td><?= $penguji1; ?></td>
-        <td></td>
+        <?php
+        if ($ttd != null) {
+        ?>
+            <td style="text-align: left;"><img src="<?= $ttd; ?>" height="40"> </td>
+        <?php
+        } else {
+        ?>
+            <td></td>
+        <?php
+        }
+        ?>
     </tr>
+    <?php
+    //cari ttd penguji1
+    $stmt = $conn->prepare("SELECT * FROM pengguna WHERE nama=?");
+    $stmt->bind_param("s", $penguji2);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $dhasil = $result->fetch_assoc();
+    $ttd = $dhasil['ttd'];
+    ?>
     <tr>
         <td style="height:40">2.</td>
         <td>Penguji 1 / Anggota 1</td>
         <td><?= $penguji2; ?></td>
-        <td></td>
+        <?php
+        if ($ttd != null) {
+        ?>
+            <td style="text-align: right;"><img src="<?= $ttd; ?>" height="40"> </td>
+        <?php
+        } else {
+        ?>
+            <td></td>
+        <?php
+        }
+        ?>
     </tr>
+    <?php
+    //cari ttd pembimbing
+    $stmt = $conn->prepare("SELECT * FROM pengguna WHERE nama=?");
+    $stmt->bind_param("s", $penguji2);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $dhasil = $result->fetch_assoc();
+    $ttd = $dhasil['ttd'];
+    ?>
     <tr>
-        <td style="height:40">3.</td>
+        <td style="height:40">2.</td>
         <td>Sekretaris Penguji / Anggota 2</td>
         <td><?= $pembimbing; ?></td>
-        <td></td>
+        <?php
+        if ($ttd != null) {
+        ?>
+            <td style="text-align: left;"><img src="<?= $ttd; ?>" height="40"> </td>
+        <?php
+        } else {
+        ?>
+            <td></td>
+        <?php
+        }
+        ?>
     </tr>
+    <?php
+    //cari ttd pembimbing
+    $stmt = $conn->prepare("SELECT * FROM pengguna WHERE nama=?");
+    $stmt->bind_param("s", $penguji3);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $dhasil = $result->fetch_assoc();
+    $ttd = $dhasil['ttd'];
+    ?>
     <tr>
-        <td style="height:40">4.</td>
-        <td>Anggota Penguji / Anggota 3</td>
+        <td style="height:40">2.</td>
+        <td>Sekretaris Penguji / Anggota 2</td>
         <td><?= $penguji3; ?></td>
-        <td></td>
+        <?php
+        if ($ttd != null) {
+        ?>
+            <td style="text-align: right;"><img src="<?= $ttd; ?>" height="40"> </td>
+        <?php
+        } else {
+        ?>
+            <td></td>
+        <?php
+        }
+        ?>
     </tr>
 </table>
 
