@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
   // $_POST['no'] = $no;
   $_POST['namaruangan'] = $namaruangan;
 
-  $stmt = $conn->prepare("INSERT INTO ruangan 
+  $stmt = $conn->prepare("INSERT INTO ruangan (namaruangan)
                         VALUES (?)");
   $stmt->bind_param("s", $namaruangan);
   $stmt->execute();
