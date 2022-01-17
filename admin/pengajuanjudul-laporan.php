@@ -95,6 +95,7 @@ require('../vendor/myfunc.php');
                                         <thead class="thead-light">
                                             <tr>
                                                 <th class="text-center">No</th>
+                                                <th class="text-center">Tanggal Pengajuan</th>
                                                 <th class="text-center">Nama</th>
                                                 <th class="text-center">NIM</th>
                                                 <th class="text-center">Judul</th>
@@ -108,6 +109,7 @@ require('../vendor/myfunc.php');
                                             $stmt->execute();
                                             $result = $stmt->get_result();
                                             while ($dhasil = $result->fetch_assoc()) {
+                                                $tanggal = $dhasil['tanggal'];
                                                 $nim = $dhasil['nim'];
                                                 $nama = $dhasil['nama'];
                                                 $judul = $dhasil['judul'];
@@ -116,6 +118,7 @@ require('../vendor/myfunc.php');
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
+                                                    <td width="20%"><?= tgl_indo($tanggal); ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $nim; ?></td>
                                                     <td><?= $judul; ?></td>

@@ -1,12 +1,8 @@
 <html>
 
-<script>
-    //window.print();
-</script>
-
 <head>
     <script>
-        var css = '@page { size: landscape; }',
+        var css = '@page { size: landscape; margin:0 }',
             head = document.head || document.getElementsByTagName('head')[0],
             style = document.createElement('style');
 
@@ -67,11 +63,11 @@ $tahun = $_POST['tahun'];
 <table table style="width:90%; margin-left:50;margin-right:auto;" cellspacing="0" border="1">
     <thead>
         <tr>
-            <td align="center">No.</td>
-            <td align="center">Nama</td>
-            <td align="center">NIM</td>
-            <td align="center">Judul Skripsi</td>
-            <td align="center">Pembimbing</td>
+            <td style="text-align:center;">No.</td>
+            <td style="text-align:center;">Nama</td>
+            <td style="text-align:center;">NIM</td>
+            <td style="text-align:center;">Judul Skripsi</td>
+            <td style="text-align:center;" width="20%">Pembimbing</td>
         </tr>
     </thead>
     <tbody>
@@ -107,9 +103,9 @@ $tahun = $_POST['tahun'];
 <table table style="width:40%; margin-left:50;margin-right:auto;" cellspacing="0" border="1">
     <thead>
         <tr>
-            <td align="center">No.</td>
-            <td align="center">Nama Pembimbing</td>
-            <td align="center">Jumlah Bimbingan</td>
+            <td style="text-align:center;">No.</td>
+            <td style="text-align:center;">Nama Pembimbing</td>
+            <td style="text-align:center;">Jumlah Bimbingan</td>
         </tr>
     </thead>
     <tbody>
@@ -126,7 +122,7 @@ $tahun = $_POST['tahun'];
             <tr>
                 <td><?= $no; ?></td>
                 <td><?= $pembimbing; ?></td>
-                <td><?= $frekuensi; ?></td>
+                <td style="text-align:center;"><?= $frekuensi; ?></td>
             </tr>
         <?php
             $no++;
