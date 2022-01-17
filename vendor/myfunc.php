@@ -90,9 +90,18 @@ function nilai($nilai)
         $(".alert").fadeTo(500, 0).slideUp(500, function() {
             $(this).remove();
         });
-    }, 3000);
+    }, 4000);
 </script>
 
+<!-- disable button once it clicked -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#my-form").submit(function(e) {
+            $("#btn-submit").attr("disabled", true);
+            return true;
+        });
+    });
+</script>
 
 <?php
 function hp($nohp)

@@ -69,9 +69,9 @@ require('../vendor/myfunc.php');
                     $pesan = $_GET['pesan'];
                     if ($pesan == 'success') {
                   ?>
-                  <div class="alert alert-success" role="alert">
-                    Berhasil!
-                  </div>
+                      <div class="alert alert-success" role="alert">
+                        Berhasil!
+                      </div>
                   <?php
                     }
                   }
@@ -102,29 +102,26 @@ require('../vendor/myfunc.php');
                         $status = $dhasil['aktif'];
                         $token = $dhasil['token'];
                       ?>
-                      <tr>
-                        <td><?= $no; ?></td>
-                        <td><?= $nim; ?></td>
-                        <td><?= $nama; ?></td>
-                        <td><?= $email; ?></td>
-                        <td class="text-center">
-                          <?php
+                        <tr>
+                          <td><?= $no; ?></td>
+                          <td><?= $nim; ?></td>
+                          <td><?= $nama; ?></td>
+                          <td><?= $email; ?></td>
+                          <td class="text-center">
+                            <?php
                             if ($status == 0) {
                             ?>
-                          <a href="aktivasiuser-detail.php?token=<?= $token; ?>" type="button"
-                            class="btn btn-danger btn-sm">Nonaktif</a>
-                          <?php
+                              <a href="aktivasiuser-detail.php?token=<?= $token; ?>" type="button" class="btn btn-danger btn-sm">Nonaktif</a>
+                            <?php
                             } elseif ($status == 1) {
                             ?>
-                          <a href="aktivasiuser-detail.php?token=<?= $token; ?>" type="button"
-                            class="btn btn-success btn-sm">Aktif</a>
-                          <?php } ?>
-                        </td>
-                        <td class="text-center">
-                          <a href="" class="btn btn-danger" type="button" data-toggle="modal"
-                            data-target="#hapusModal"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                        </td>
-                      </tr>
+                              <a href="aktivasiuser-detail.php?token=<?= $token; ?>" type="button" class="btn btn-success btn-sm">Aktif</a>
+                            <?php } ?>
+                          </td>
+                          <td class="text-center">
+                            <a href="aktivasiuser-hapus.php?token=<?= $token; ?>" class="btn btn-danger" type="button" onclick="return confirm('Hapus data ini ?')"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                          </td>
+                        </tr>
                       <?php
                         $no++;
                       }
@@ -140,27 +137,6 @@ require('../vendor/myfunc.php');
         </div>
       </div>
 
-      <!-- Modal Logout -->
-      <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelHapus"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabelHapus">Hapus</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>Hapus pengguna dari sistem ?</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Batal</button>
-              <a href="aktivasiuser-hapus.php?token=<?= $token; ?>" class="btn btn-danger">Hapus</a>
-            </div>
-          </div>
-        </div>
-      </div>
       <!-- Footer -->
       <?php
       require('footer.php');
@@ -184,10 +160,10 @@ require('../vendor/myfunc.php');
 
   <!-- Page level custom scripts -->
   <script>
-  $(document).ready(function() {
-    $('#dataTable').DataTable(); // ID From dataTable 
-    $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-  });
+    $(document).ready(function() {
+      $('#dataTable').DataTable(); // ID From dataTable 
+      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+    });
   </script>
 
 </body>

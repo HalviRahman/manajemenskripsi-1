@@ -12,6 +12,7 @@ if ($role != 'dosen') {
     }
 }
 require('../config.php');
+require('../vendor/myfunc.php');
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +77,6 @@ require('../config.php');
                                 $bidang = $dhasil['bidang'];
                                 $judul = $dhasil['judul'];
                                 $fileproposal = $dhasil['fileproposal'];
-                                $token = $dhasil['token'];
                                 ?>
                                 <div class="card-body">
                                     <input type="hidden" class="form-control" value="<?= $nama; ?>" name="nama">
@@ -114,7 +114,7 @@ require('../config.php');
                                             </div>
                                         </div>
                                     </div>
-                                    <form method="POST">
+                                    <form method="POST" id="my-form">
                                         <div class="form-group">
                                             <label>Dosen Pembimbing</label>
                                             <select name="pembimbing" class="form-control">
@@ -136,6 +136,7 @@ require('../config.php');
                                             </select>
                                         </div>
                                         <input type="hidden" name="token" value="<?= $token; ?>">
+                                        <input type="hidden" name="nimmhs" value="<?= $nim; ?>">
                                         <div class="row">
                                             <div class="col">
                                                 <button type="submit" class="btn btn-success btn-lg btn-block" formaction="pengajuanjudul-sekprodi-setujui.php" onclick="return confirm('Menyetujui pengajuan ini ?')">SETUJUI</button>

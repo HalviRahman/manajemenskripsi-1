@@ -9,7 +9,7 @@ $kunci = mysqli_real_escape_string($conn, strtolower($_POST['kunci']));
 $hasil = mysqli_real_escape_string($conn, strtolower($_POST['hasil']));
 
 if ($kunci == $hasil) {
-    $stmt = $conn->prepare("SELECT * FROM pengguna WHERE userid=? AND pass=?");
+    $stmt = $conn->prepare("SELECT * FROM pengguna WHERE userid=? AND pass=? AND aktif=1");
     $stmt->bind_param("ss", $userid, $md5pass);
     $stmt->execute();
     $result = $stmt->get_result();

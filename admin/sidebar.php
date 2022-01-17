@@ -12,19 +12,13 @@
       <span>Dashboard</span></a>
   </li>
   <li class="nav-item active">
-    <a class="nav-link" href="daftarruang.php">
-      <i class="fa fa-home"></i>
-      <span>Daftar Ruang</span></a>
-  </li>
-  <li class="nav-item active">
     <a class="nav-link" href="aktivasiuser.php">
       <i class="fa fa-user"></i>
       <span>Aktivasi User</span></a>
   </li>
   <hr class="sidebar-divider">
   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap" aria-expanded="true"
-      aria-controls="collapseBootstrap">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap" aria-expanded="true" aria-controls="collapseBootstrap">
       <i class="far fa-fw fa-window-maximize"></i>
       <span>Rekap Laporan</span>
     </a>
@@ -50,6 +44,7 @@
         <h6 class="collapse-header">Setting</h6>
         <a class="collapse-item" href="email-isi.php">E-Mail</a>
         <a class="collapse-item" href="kaprodi-isi.php">Kaprodi</a>
+        <a class="collapse-item" href="daftarruang.php">Daftar Ruang</a>
       </div>
     </div>
   </li>

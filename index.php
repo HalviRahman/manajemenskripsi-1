@@ -31,7 +31,45 @@ require('vendor/myfunc.php');
                 <!-- Topbar -->
 
                 <!-- Container Fluid-->
+
                 <div class="container-fluid" id="container-wrapper">
+                    <?php
+                    //ambil nilai variabel pesan di URL
+                    if (isset($_GET['pesan'])) {
+                        $pesan = $_GET['pesan'];
+                        if ($pesan == 'gagal') {
+                    ?>
+                            <div class="alert alert-danger" role="alert">
+                                ERROR!! UserID / Password salah / belum aktif!
+                            </div>
+                        <?php
+                        } elseif ($pesan == 'hitungsalah') {
+                        ?>
+                            <div class="alert alert-danger" role="alert">
+                                <b>ERROR!!</b> hasil penjumlahan salah!!
+                            </div>
+                        <?php
+                        } elseif ($pesan == 'success') {
+                        ?>
+                            <div class="alert alert-success" role="alert">
+                                <b>SUKSES!!</b> Pendaftaran berhasil. Tunggu aktivasi user oleh admin prodi.
+                            </div>
+                        <?php
+                        } elseif ($pesan == 'passsalah') {
+                        ?>
+                            <div class="alert alert-danger" role="alert">
+                                <b>ERROR!!</b> verifikasi password salah!!
+                            </div>
+                        <?php
+                        } elseif ($pesan == 'exist') {
+                        ?>
+                            <div class="alert alert-danger" role="alert">
+                                <b>ERROR!!</b> Pengguna telah terdaftar. Gunakan lupa password untuk me-reset password anda.
+                            </div>
+                    <?php
+                        }
+                    }
+                    ?>
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Jadwal Ujian</h1>
                     </div>
