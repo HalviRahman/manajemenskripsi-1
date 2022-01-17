@@ -52,111 +52,129 @@ require('../vendor/myfunc.php');
               <li class="breadcrumb-item active" aria-current="page">Daftar Ruang</li>
             </ol>
           </div>
-
           <div class="col">
             <a href="daftarruang-tambah.php" class="btn btn-success"><i class="fa fa-plus-circle"
                 aria-hidden="true"></i>
               TAMBAH</a>
           </div>
           <br>
-          <!-- <div class="row"> -->
-          <div class="col-lg-12">
-            <div class="card mb-4">
-              <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Laporan Ujian Seminar Proposal</h6>
-              </div> -->
-              <div class="table-responsive p-3">
-                <table class="table align-items-center table-flush" id="dataTable">
-                  <thead class="thead-light">
-                    <tr>
-                      <th class="text-center">No</th>
-                      <th class="text-center">Nama Ruangan</th>
-                      <th class="text-center">Aksi</th>
-                      <!--<th class="text-center">Aksi</th>-->
-                    </tr>
-                  </thead>
-                  <tbody class="text-center">
-                    <?php
-                    $nomer = 1;
-                    $stmt = $conn->prepare("SELECT * FROM ruangan");
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    while ($dhasil = $result->fetch_assoc()) {
-                      $namaruangan = $dhasil['namaruangan'];
-                      $no = $dhasil['no'];
+          <!-- pengajuan ujian -->
+          <div class="row">
+            <!-- Datatables -->
+            <div class="col-lg-12">
+              <div class="card mb-4">
+
+                <div class="table-responsive p-3">
+                  <?php
+                  //ambil nilai variabel pesan di URL
+                  if (isset($_GET['pesan'])) {
+                    $pesan = $_GET['pesan'];
+                    if ($pesan == 'success') {
+                  ?>
+                  <div class="alert alert-success" role="alert">
+                    Berhasil!
+                  </div>
+                  <?php
+                    } else if ($pesan == 'gagal') {
                     ?>
-                    <tr>
-                      <td><?= $nomer; ?></td>
-                      <td><?= $namaruangan; ?></td>
-                      <td class="text-center">
-                        <a href="" class="btn btn-danger btn-sm" type="button" data-toggle="modal"
-                          data-target="#hapusModal"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                      </td>
-                    </tr>
-                    <?php
-                      $nomer++;
+                  <div class="alert alert-danger" role="alert">
+                    ERRORR!! Gagal menambahkan data ruangan!
+                  </div>
+                  <?php
                     }
-                    ?>
-                  </tbody>
-                </table>
+                  }
+                  ?>
+                  <table class="table align-items-center table-flush" id="dataTable">
+                    <thead class="thead-light">
+                      <tr>
+                        <th class="text-center">No</th>
+                        <th class="text-center">Nama Ruangan</th>
+                        <th class="text-center">Aksi</th>
+                        <!--<th class="text-center">Aksi</th>-->
+                      </tr>
+                    </thead>
+                    <tbody class="text-center">
+                      <?php
+                      $nomer = 1;
+                      $stmt = $conn->prepare("SELECT * FROM ruangan");
+                      $stmt->execute();
+                      $result = $stmt->get_result();
+                      while ($dhasil = $result->fetch_assoc()) {
+                        $namaruangan = $dhasil['namaruangan'];
+                        $no = $dhasil['no'];
+                      ?>
+                      <tr>
+                        <td><?= $nomer; ?></td>
+                        <td><?= $namaruangan; ?></td>
+                        <td class="text-center">
+                          <a href="" class="btn btn-danger btn-sm" type="button" data-toggle="modal"
+                            data-target="#hapusModal"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        </td>
+                      </tr>
+                      <?php
+                        $nomer++;
+                      }
+                      ?>
+                    </tbody>
+                  </table>
+                  <div class="table-responsive p-3">
+
+                  </div>
+                </div>
               </div>
-              <hr>
             </div>
-            <!-- </div> -->
           </div>
         </div>
+
+        <!-- Modal Logout -->
+        <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelHapus"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelHapus">Hapus</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Hapus Ruangan dari sistem ?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Batal</button>
+                <a href="daftarruang-hapus.php?no=<?= $no; ?>" class="btn btn-danger">Hapus</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Footer -->
+        <?php
+        require('footer.php');
+        ?>
+        <!-- Footer -->
       </div>
     </div>
 
-    <!-- Modal Logout -->
-    <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelHapus"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabelHapus">Hapus</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Hapus Ruangan dari sistem ?</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Batal</button>
-            <a href="daftarruang-hapus.php?no=<?= $no; ?>" class="btn btn-danger">Hapus</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Footer -->
-    <?php
-    require('footer.php');
-    ?>
-    <!-- Footer -->
-  </div>
-  </div>
+    <!-- Scroll to top -->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
 
-  <!-- Scroll to top -->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../js/ruang-admin.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="../js/ruang-admin.min.js"></script>
-  <!-- Page level plugins -->
-  <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script>
-  $(document).ready(function() {
-    $('#dataTable').DataTable(); // ID From dataTable 
-    $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-  });
-  </script>
+    <!-- Page level custom scripts -->
+    <script>
+    $(document).ready(function() {
+      $('#dataTable').DataTable(); // ID From dataTable 
+      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+    });
+    </script>
 
 </body>
 
