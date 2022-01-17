@@ -11,9 +11,7 @@ require('../config.php');
 require('../vendor/myfunc.php');
 
 if (isset($_POST['submit'])) {
-
-  // $_POST['no'] = $no;
-  $_POST['namaruangan'] = $namaruangan;
+  $namaruangan = $_POST['namaruangan'];
 
   $stmt = $conn->prepare("INSERT INTO ruangan (namaruangan)
                         VALUES (?)");
