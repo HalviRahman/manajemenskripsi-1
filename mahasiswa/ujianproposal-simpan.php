@@ -1,6 +1,8 @@
 <?php
 session_start();
 require('../config.php');
+require('../vendor/phpmailer/sendmail.php');
+
 $nama = $_SESSION['nama'];
 $nim = $_SESSION['nim'];
 $bidang = $_POST['bidang'];
@@ -76,6 +78,30 @@ if ($uploadOk == 0) {
         VALUES (?,?,?,?,?,?,?,?,?,?)");
     $stmt->bind_param("ssssssssss", $tanggal, $nama, $nim, $bidang, $judul, $filepersetujuanpembimbing, $filekhs, $fileproposal, $pembimbing, $token);
     $stmt->execute();
+
+    //kirim email notifikasi ke admin
+    $stmt = $conn->prepare("SELECT * FROM pengguna WHERE role='admin'");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $dhasil = $result->fetch_assoc();
+    $emailfak = $dhasil['email'];
+    $namaadmin = $dhasil['nama'];
+    $actual_link = "https://$_SERVER[HTTP_HOST]/manajemenskripsi";
+    $subject = "Pengajuan Ujian Seminar Proposal";
+    $pesan = "Yth. " . $namaadmin . "
+                                <br/>
+                                Assalamualaikum Wr. Wb.
+                                <br/>
+                                Terdapat pengajuan Ujian Seminar Proposal atas nama " . $nama . " NIM " . $nim . ".
+                                <br/>
+                                Silahkan klik tombol berikut ini untuk melakukan verifikasi dokumen.
+                                <br/>
+                                <a href='" . $actual_link . "' style=' background-color: #0000FF;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>Manajemen Skripsi</a> 
+                                <br/>
+                                Wassalamualaikum Wr. Wb.
+                                ";
+    sendmail($emailfak, $namaadmin, $subject, $pesan);
+
     header("location:index.php?pesan=success");
     //echo 'success';
 }

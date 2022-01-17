@@ -10,6 +10,7 @@ if ($role != 'admin') {
     header("location:../deauth.php");
 }
 require('../config.php');
+require('../vendor/myfunc.php');
 ?>
 
 <!DOCTYPE html>
@@ -139,8 +140,10 @@ require('../config.php');
                                             </div>
                                         </div>
                                     </div>
-                                    <form method="POST">
+                                    <form method="POST" id="my-form">
                                         <input type="hidden" name="token" value="<?= $token; ?>">
+                                        <input type="hidden" name="namamhs" value="<?= $nama; ?>">
+                                        <input type="hidden" name="nimmhs" value="<?= $nim; ?>">
                                         <div class="row">
                                             <div class="col">
                                                 <button type="submit" class="btn btn-success btn-lg btn-block" formaction="ujianproposal-admin-setujui1.php" onclick="return confirm('Menyetujui pengajuan ini ?')">SETUJUI</button>

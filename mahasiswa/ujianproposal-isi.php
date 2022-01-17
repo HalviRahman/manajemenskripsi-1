@@ -10,6 +10,7 @@ if ($role != 'mahasiswa') {
     header("location:../deauth.php");
 }
 require('../config.php');
+require('../vendor/myfunc.php');
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +77,7 @@ require('../config.php');
                                     <h6 class="m-0 font-weight-bold text-primary">Data Judul Proposal</h6>
                                 </div>
                                 <div class="card-body">
-                                    <form action="ujianproposal-simpan.php" enctype="multipart/form-data" method="POST">
+                                    <form action="ujianproposal-simpan.php" enctype="multipart/form-data" method="POST" id="my-form">
                                         <input type="hidden" name="bidang" value="<?= $bidang; ?>">
                                         <input type="hidden" name="judul" value="<?= $judul; ?>">
                                         <div class="form-group">

@@ -19,7 +19,8 @@ $stmt = $conn->prepare("UPDATE pengajuanjudul
                         WHERE token=?");
 $stmt->bind_param("s", $token);
 $stmt->execute();
-//kirim email notifikasi ke admin
+
+//kirim email notifikasi ke sekprodi
 $stmt = $conn->prepare("SELECT * FROM pengguna WHERE jabatan='sekprodi'");
 $stmt->execute();
 $result = $stmt->get_result();
@@ -43,4 +44,5 @@ $pesan = "Yth. " . $namaadmin . "
                             Wassalamualaikum Wr. Wb.
                             ";
 sendmail($emailfak, $namaadmin, $subject, $pesan);
+
 header('location:index.php?pesan=adminsetujui');
