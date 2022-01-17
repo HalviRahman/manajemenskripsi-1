@@ -122,18 +122,27 @@ $status = $dhasil['status'];
     </tr>
 </table>
 <br>
-<!-- table bawah -->
+<!-- tanda tangan -->
+<?php
+$stmt = $conn->prepare("SELECT * FROM kaprodi");
+$stmt->execute();
+$result = $stmt->get_result();
+$dhasil = $result->fetch_assoc();
+$nip = $dhasil['nip'];
+$nama = $dhasil['nama'];
+$ttd = $dhasil['ttd'];
+?>
 <table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
     <tr>
         <td width="40%"></td>
         <td style="text-align:right">
             <div class="container">
-                <div>Malang,<?= tgl_indo($jadwalujian); ?></div>
-                <div class="jabatan">Ketua Jurusan Fisika,</div>
-                <img src="../img/ttdkaprodi.png" style="width:250px;">
+                <div><b>Malang,<?= tgl_indo($jadwalujian); ?></b></div>
+                <div class="jabatan"><b>Ketua Jurusan Fisika,</b></div>
+                <img src="<?= $ttd; ?>" style="width:250px;">
                 <div class="nama">
-                    <u>Dr. Imam Tazi, M.Si</u><br />
-                    NIP.197407302003121002
+                    <u><b><?= $nama; ?></b></u><br />
+                    <b>NIP.<?= $nip; ?></b>
                 </div>
             </div>
         </td>

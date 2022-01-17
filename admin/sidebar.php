@@ -34,4 +34,17 @@
     </div>
   </li>
   <hr class="sidebar-divider">
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#systemsetting" aria-expanded="true" aria-controls="systemsetting">
+      <i class="fas fa-fw fa-lock"></i>
+      <span>Setting Sistem</span>
+    </a>
+    <div id="systemsetting" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Setting</h6>
+        <a class="collapse-item" href="email-isi.php">E-Mail</a>
+        <a class="collapse-item" href="kaprodi-isi.php">Kaprodi</a>
+      </div>
+    </div>
+  </li>
 </ul>
