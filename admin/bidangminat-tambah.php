@@ -4,12 +4,21 @@ $userid = $_SESSION['userid'];
 global $userid;
 $role = $_SESSION['role'];
 $jabatan = $_SESSION['jabatan'];
-$nama = $_SESSION['nama'];
-$nim = $_SESSION['nim'];
-if ($role != 'mahasiswa') {
+if ($role != 'admin') {
   header("location:../deauth.php");
 }
 require('../config.php');
+require('../vendor/myfunc.php');
+
+if (isset($_POST['submit'])) {
+  $bidangminat = mysqli_real_escape_string($conn, $_POST['bidang']);
+
+  $stmt = $conn->prepare("INSERT INTO bidangminat (bidang)
+                        VALUES (?)");
+  $stmt->bind_param("s", $bidangminat);
+  $stmt->execute();
+  header('location:bidangminat.php?pesan=success');
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,10 +55,10 @@ require('../config.php');
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Pengajuan Judul Proposal Skripsi</h1>
+            <h1 class="h3 mb-0 text-gray-800">Tambah Bidang Minat</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Dashboard</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Pengajuan Judul Proposal</li>
+              <li class="breadcrumb-item active" aria-current="page">Tambah Bidang Minat</li>
             </ol>
           </div>
 
@@ -58,44 +67,16 @@ require('../config.php');
               <!-- Form Basic -->
               <div class="card mb-12">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Data Judul Proposal</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Data Tambah Bidang Minat</h6>
                 </div>
                 <div class="card-body">
-                  <form action="pengajuanjudul-simpan.php" enctype="multipart/form-data" method="POST">
-                    <input type="hidden" class="form-control" value="<?= $nama; ?>" name="nama">
-                    <input type="hidden" class="form-control" value="<?= $nim; ?>" name="nim">
+                  <form action="" method="POST">
                     <div class="form-group">
-                      <label>Bidang Minat</label>
-                      <select name="bidang" class="form-control">
-                        <?php
-                        $stmt = $conn->prepare("SELECT * FROM bidangminat");
-                        $stmt->execute();
-                        $result = $stmt->get_result();
-                        while ($dhasil = $result->fetch_assoc()) {
-                          $bidang = $dhasil['bidang'];
-                        ?>
-                        <option value="<?= $bidang; ?>"><?= $bidang; ?></option>
-                        <?php
-                        }
-                        ?>
-                      </select>
+                      <input type="text" class="form-control" name="no" hidden>
+                      <label for="nama">Bidang Minat</label>
+                      <input type="text" id="nama" class="form-control" name="bidang" required>
                     </div>
-                    <div class="form-group">
-                      <label>Judul Proposal</label>
-                      <input type="text" class="form-control" name="judul" required>
-                    </div>
-                    <div class="form-group">
-                      <label>File Pengajuan Judul</label>
-                      <input type="file" name="proposal" class="form-control" accept=".jpg,.jpeg" required>
-                      <small style="color:red">
-                        <li>Ukuran file maksimal 1 MB format JPG</li>
-                      </small>
-                      <small style="color:red">
-                        <li>Formulir sudah di setujui dan di tanda tangani minimal 2 calon pembimbing</li>
-                      </small>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block"
-                      onclick="return confirm('Dengan ini saya menyatakan kebenaran data yang saya ajukan')">AJUKAN</button>
+                    <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block">INSERT</button>
                   </form>
                 </div>
               </div>

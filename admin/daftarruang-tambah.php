@@ -11,7 +11,7 @@ require('../config.php');
 require('../vendor/myfunc.php');
 
 if (isset($_POST['submit'])) {
-  $namaruangan = $_POST['namaruangan'];
+  $namaruangan = mysqli_real_escape_string($conn, $_POST['namaruangan']);
 
   $stmt = $conn->prepare("INSERT INTO ruangan (namaruangan)
                         VALUES (?)");
