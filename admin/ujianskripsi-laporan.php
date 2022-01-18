@@ -52,6 +52,43 @@ require('../vendor/myfunc.php');
               <li class="breadcrumb-item active" aria-current="page">Ujian Skripsi</li>
             </ol>
           </div>
+
+          <div class="row">
+            <form action="ujianskripsi-laporan-cetak2.php" method="POST">
+              <label>Cetak Laporan Bulan</label>
+              <div class="row">
+                <div class="col">
+                  <select class="form-control" name="bulan">
+                    <option value="01" selected>Januari</option>
+                    <option value="02">Februari</option>
+                    <option value="03">Maret</option>
+                    <option value="04">April</option>
+                    <option value="05">Mei</option>
+                    <option value="06">Juni</option>
+                    <option value="07">Juli</option>
+                    <option value="08">Agustus</option>
+                    <option value="09">September</option>
+                    <option value="10">Oktober</option>
+                    <option value="11">November</option>
+                    <option value="12">Desember</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <select class="form-control" name="tahun">
+                    <option value="<?= date('Y'); ?>"><?= date('Y'); ?></option>
+                    <option value="<?= date('Y', strtotime("-1 year")); ?>"><?= date('Y', strtotime("-1 year")); ?>
+                    </option>
+                    <option value="<?= date('Y', strtotime("-2 year")); ?>"><?= date('Y', strtotime("-2 year")); ?>
+                    </option>
+                  </select>
+                </div>
+                <div class="col">
+                  <button type="submit" class="btn btn-success"><i class="fa fa-print" aria-hidden="true"></i>
+                    CETAK</button>
+                </div>
+            </form>
+          </div>
+
           <!-- ujian hari ini -->
           <div class="row">
             <!-- Datatables -->
@@ -91,19 +128,20 @@ require('../vendor/myfunc.php');
                         $penguji3 = $dhasil['penguji3'];
                         $token = $dhasil['token'];
                       ?>
-                        <tr>
-                          <td><?= $no; ?></td>
-                          <td><?= tgljam_indo($jadwalujian); ?></td>
-                          <td><?= $nama; ?></td>
-                          <td><?= $nim; ?></td>
-                          <td><?= $pembimbing; ?></td>
-                          <td><?= $penguji1; ?></td>
-                          <td><?= $penguji2; ?></td>
-                          <td><?= $penguji3; ?></td>
-                          <td class="text-center">
-                            <a href="ujianskripsi-laporan-detail.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
-                          </td>
-                        </tr>
+                      <tr>
+                        <td><?= $no; ?></td>
+                        <td><?= tgljam_indo($jadwalujian); ?></td>
+                        <td><?= $nama; ?></td>
+                        <td><?= $nim; ?></td>
+                        <td><?= $pembimbing; ?></td>
+                        <td><?= $penguji1; ?></td>
+                        <td><?= $penguji2; ?></td>
+                        <td><?= $penguji3; ?></td>
+                        <td class="text-center">
+                          <a href="ujianskripsi-laporan-detail.php?token=<?= $token; ?>" class="btn btn-info"
+                            type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                        </td>
+                      </tr>
                       <?php
                         $no++;
                       }
@@ -139,10 +177,10 @@ require('../vendor/myfunc.php');
 
   <!-- Page level custom scripts -->
   <script>
-    $(document).ready(function() {
-      $('#dataTable').DataTable(); // ID From dataTable 
-      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-    });
+  $(document).ready(function() {
+    $('#dataTable').DataTable(); // ID From dataTable 
+    $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+  });
   </script>
 
 </body>
