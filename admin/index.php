@@ -53,12 +53,15 @@ require('../vendor/myfunc.php');
             </ol>
           </div>
           <!-- ujian hari ini -->
+          <?php
+          $tglhariini = date('Y-m-d');
+          ?>
           <div class="row">
             <!-- Datatables -->
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Jadwal Ujian Hari Ini <?= tgl_indo(date('Y-m-d')); ?></h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Jadwal Ujian Hari Ini <?= tgl_indo($tglhariini); ?></h6>
                 </div>
                 <div class="table-responsive p-3">
                   <table class="table align-items-center table-flush" id="dataTable">
@@ -68,24 +71,140 @@ require('../vendor/myfunc.php');
                         <th class="text-center">Ujian</th>
                         <th class="text-center">Nama</th>
                         <th class="text-center">NIM</th>
-                        <th class="text-center">Penguji 1</th>
-                        <th class="text-center">Penguji 2</th>
-                        <th class="text-center">Jam</th>
+                        <th class="text-center">Jadwal</th>
                         <th class="text-center">Tempat</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                      </tr>
+                      <!-- ambil data ujian proposal-->
+                      <?php
+                      $no = 1;
+                      $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE DATE(jadwalujian)='$tglhariini'");
+                      $stmt->execute();
+                      $result = $stmt->get_result();
+                      $juser = $result->num_rows;
+                      if ($juser > 0) {
+                        while ($dhasil = $result->fetch_assoc()) {
+                          $ujian = 'Seminar Proposal';
+                          $nama = $dhasil['nama'];
+                          $nim = $dhasil['nim'];
+                          $pembimbing = $dhasil['pembimbing'];
+                          $ketuapenguji = $dhasil['penguji1'];
+                          $anggotapenguji = $dhasil['penguji2'];
+                          $jadwalujian = $dhasil['jadwalujian'];
+                          $ruang = $dhasil['ruang'];
+                          $token = $dhasil['token'];
+                      ?>
+                          <tr>
+                            <td><?= $no; ?></td>
+                            <td><?= $ujian; ?></td>
+                            <td><?= $nama; ?></td>
+                            <td><?= $nim; ?></td>
+                            <td><?= jam($jadwalujian); ?> WIB</td>
+                            <td><?= $ruang; ?></td>
+                          </tr>
+                      <?php
+                          $no++;
+                        }
+                      }
+                      ?>
+
+                      <!-- ujian komprehensif-->
+                      <?php
+                      $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE DATE(jadwalujian)='$tglhariini'");
+                      $stmt->execute();
+                      $result = $stmt->get_result();
+                      $juser = $result->num_rows;
+                      if ($juser > 0) {
+                        while ($dhasil = $result->fetch_assoc()) {
+                          $ujian = 'Ujian Komprehensif';
+                          $nama = $dhasil['nama'];
+                          $nim = $dhasil['nim'];
+                          $pembimbing = $dhasil['pembimbing'];
+                          $ketuapenguji = $dhasil['penguji1'];
+                          $anggotapenguji = $dhasil['penguji2'];
+                          $jadwalujian = $dhasil['jadwalujian'];
+                          $ruang = $dhasil['ruang'];
+                          $token = $dhasil['token'];
+                      ?>
+                          <tr>
+                            <td><?= $no; ?></td>
+                            <td><?= $ujian; ?></td>
+                            <td><?= $nama; ?></td>
+                            <td><?= $nim; ?></td>
+                            <td><?= jam($jadwalujian); ?> WIB</td>
+                            <td><?= $ruang; ?></td>
+                          </tr>
+                      <?php
+                          $no++;
+                        }
+                      }
+                      ?>
+
+                      <!-- ujian seminar hasil-->
+                      <?php
+                      $stmt = $conn->prepare("SELECT * FROM semhas WHERE DATE(jadwalujian)='$tglhariini'");
+                      $stmt->execute();
+                      $result = $stmt->get_result();
+                      $juser = $result->num_rows;
+                      if ($juser > 0) {
+                        while ($dhasil = $result->fetch_assoc()) {
+                          $ujian = 'Seminar Hasil';
+                          $nama = $dhasil['nama'];
+                          $nim = $dhasil['nim'];
+                          $pembimbing = $dhasil['pembimbing'];
+                          $ketuapenguji = $dhasil['penguji1'];
+                          $anggotapenguji = $dhasil['penguji2'];
+                          $jadwalujian = $dhasil['jadwalujian'];
+                          $ruang = $dhasil['ruang'];
+                          $token = $dhasil['token'];
+                      ?>
+                          <tr>
+                            <td><?= $no; ?></td>
+                            <td><?= $ujian; ?></td>
+                            <td><?= $nama; ?></td>
+                            <td><?= $nim; ?></td>
+                            <td><?= jam($jadwalujian); ?> WIB</td>
+                            <td><?= $ruang; ?></td>
+                          </tr>
+                      <?php
+                          $no++;
+                        }
+                      }
+                      ?>
+
+                      <!-- ujian skripsi-->
+                      <?php
+                      $stmt = $conn->prepare("SELECT * FROM ujianskripsi WHERE DATE(jadwalujian)='$tglhariini'");
+                      $stmt->execute();
+                      $result = $stmt->get_result();
+                      $juser = $result->num_rows;
+                      if ($juser > 0) {
+                        while ($dhasil = $result->fetch_assoc()) {
+                          $ujian = 'Ujian Skripsi';
+                          $nama = $dhasil['nama'];
+                          $nim = $dhasil['nim'];
+                          $pembimbing = $dhasil['pembimbing'];
+                          $ketuapenguji = $dhasil['penguji1'];
+                          $anggotapenguji = $dhasil['penguji2'];
+                          $anggotapenguji2 = $dhasil['penguji3'];
+                          $jadwalujian = $dhasil['jadwalujian'];
+                          $ruang = $dhasil['ruang'];
+                          $token = $dhasil['token'];
+                      ?>
+                          <tr>
+                            <td><?= $no; ?></td>
+                            <td><?= $ujian; ?></td>
+                            <td><?= $nama; ?></td>
+                            <td><?= $nim; ?></td>
+                            <td><?= jam($jadwalujian); ?> WIB</td>
+                            <td><?= $ruang; ?></td>
+                          </tr>
+                      <?php
+                          $no++;
+                        }
+                      }
+                      ?>
                     </tbody>
                   </table>
                 </div>

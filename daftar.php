@@ -48,7 +48,7 @@
                         <input type="number" class="form-control" name="nohp" required>
                       </div>
                       <div class="col-sm-6">
-                        <label>E-Mail</label>
+                        <label>E-Mail Aktif</label>
                         <input type="email" class="form-control" name="email" required>
                       </div>
                     </div>

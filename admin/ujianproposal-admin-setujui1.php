@@ -32,19 +32,19 @@ $namaadmin = $dhasil['nama'];
 $actual_link = "https://$_SERVER[HTTP_HOST]/manajemenskripsi";
 $subject = "Pengajuan Ujian Seminar Proposal";
 $pesan = "Yth. " . $namaadmin . "
-                            <br/>
-                            Assalamualaikum Wr. Wb.
-                            <br/>
-                            Terdapat pengajuan ujian seminar proposal atas nama " . $namamhs . " NIM " . $nimmhs . ".
-                            <br/>
-                            Admin prodi telah melakukan verifikasi dokumen pada pengajuan judul ini dan dokumen dinyatakan valid.
-                            <br/>
-                            Silahkan klik tombol berikut ini untuk melakukan verifikasi.
-                            <br/>
-                            <a href='" . $actual_link . "' style=' background-color: #0000FF;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>Manajemen Skripsi</a> 
-                            <br/>
-                            Wassalamualaikum Wr. Wb.
-                            ";
+        <br/>
+        Assalamualaikum Wr. Wb.
+        <br/>
+        Terdapat pengajuan ujian seminar proposal atas nama " . $namamhs . " NIM " . $nimmhs . ".
+        <br/>
+        Admin prodi telah melakukan verifikasi dokumen pada pengajuan judul ini dan dokumen dinyatakan valid.
+        <br/>
+        Silahkan klik tombol berikut ini untuk melakukan verifikasi.
+        <br/>
+        <a href='" . $actual_link . "' style=' background-color: #0000FF;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>Manajemen Skripsi</a> 
+        <br/>
+        Wassalamualaikum Wr. Wb.
+        ";
 sendmail($emailfak, $namaadmin, $subject, $pesan);
 
 header('location:index.php?pesan=adminsetujui');

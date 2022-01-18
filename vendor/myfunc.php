@@ -21,6 +21,12 @@ function tgljam_indo($tanggal)
     }
 }
 
+function jam($tanggal)
+{
+    $jam = date('H:i', strtotime($tanggal));
+    return $jam;
+}
+
 function huruf($angka)
 {
     $hur = array(

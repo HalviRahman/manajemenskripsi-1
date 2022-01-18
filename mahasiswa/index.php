@@ -462,7 +462,7 @@ require('../vendor/myfunc.php');
                               <?php
                               } elseif ($verifikasifile == 1 and $status == 4) {
                               ?>
-                                <a href="ujianskripsi-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                <a href="#" class="btn btn-success" type="button" onclick="return alert('Diproses oleh administrasi prodi')"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                               <?php
                               }
                               ?>

@@ -19,6 +19,7 @@ if (isset($_POST['edit'])) {
 
   $aktif = mysqli_real_escape_string($conn, $_POST['aktif']);
   $token = mysqli_real_escape_string($conn, $_POST['token']);
+  $namamhs = mysqli_real_escape_string($conn, $_POST['namamhs']);
   $email = $_POST['email'];
 
   $stmt = $conn->prepare("UPDATE pengguna
@@ -29,7 +30,7 @@ if (isset($_POST['edit'])) {
 
   $actual_link = "https://$_SERVER[HTTP_HOST]/manajemenskripsi/";
   $subject = "Aktivasi Akun Sistem Manajemen Skripsi Jurusan FISIKA UIN Malang";
-  $pesan = "Yth. " . $nama . "
+  $pesan = "Yth. " . $namamhs . "
 				<br/>
 				Assalamualaikum Wr. Wb.
 				<br/>
@@ -105,7 +106,7 @@ if (isset($_POST['edit'])) {
                 $stmt->execute();
                 $result = $stmt->get_result();
                 $dhasil = $result->fetch_assoc();
-                $nama = $dhasil['nama'];
+                $namamhs = $dhasil['nama'];
                 $nim = $dhasil['nim'];
                 $nohp = $dhasil['nohp'];
                 $email = $dhasil['email'];
@@ -120,7 +121,7 @@ if (isset($_POST['edit'])) {
                     <input type="hidden" name="token" value="<?= $token; ?>">
                     <div class="form-group">
                       <label>Nama</label>
-                      <input type="text" class="form-control" value="<?= $nama; ?>" name="nama" readonly>
+                      <input type="text" class="form-control" value="<?= $namamhs; ?>" name="namamhs" readonly>
                     </div>
                     <div class="form-group">
                       <label>NIM / NIP / NIPT</label>
