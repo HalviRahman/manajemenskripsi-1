@@ -170,7 +170,7 @@ $tahun = $_POST['tahun'];
       <div class="container">
         <div>Malang,<?= tgl_indo($jadwalujian); ?></div>
         <div class="jabatan">Ketua Jurusan Fisika,</div>
-        <img src="../img/ttdkaprodi.png" style="width:250px;">
+        <img src="../img/ttd/ttdkaprodi.png" style="width:250px;">
         <div class="nama">
           <u>Dr. Imam Tazi, M.Si</u><br />
           NIP.197407302003121002
