@@ -70,7 +70,7 @@ require('../vendor/myfunc.php');
                         <th class="text-center">Waktu</th>
                         <th class="text-center">Tempat</th>
                         <th class="text-center">Status</th>
-                        <th class="text-center">Aksi</th>
+                        <th class="text-center" width="15%">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -216,6 +216,7 @@ require('../vendor/myfunc.php');
                               <?php
                               } elseif ($verifikasifile == 1 and $status == 4) {
                               ?>
+                                <a href="ujianproposal-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                 <a href="ujianproposal-cetak.php?token=<?= $token; ?>" class="btn btn-success" type="button" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
                               <?php
                               }
@@ -298,6 +299,7 @@ require('../vendor/myfunc.php');
                               <?php
                               } elseif ($verifikasifile == 1 and $status == 4) {
                               ?>
+                                <a href="ujiankompre-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                 <a href="ujiankompre-cetak.php?token=<?= $token; ?>" class="btn btn-success" type="button" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
                               <?php
                               }
@@ -380,6 +382,7 @@ require('../vendor/myfunc.php');
                               <?php
                               } elseif ($verifikasifile == 1 and $status == 4) {
                               ?>
+                                <a href="seminarhasil-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                 <a href="seminarhasil-cetak.php?token=<?= $token; ?>" class="btn btn-success" type="button" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
                               <?php
                               }

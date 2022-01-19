@@ -10,6 +10,7 @@ if ($role != 'admin') {
     header("location:../deauth.php");
 }
 require('../config.php');
+require('../vendor/myfunc.php');
 ?>
 
 <!DOCTYPE html>
@@ -75,6 +76,8 @@ require('../config.php');
                                 $judul = $dhasil['judul'];
                                 $sklproposal = $dhasil['sklproposal'];
                                 $sklkompre = $dhasil['sklkompre'];
+                                $kartukendali = $dhasil['kartukendali'];
+                                $lembarpersetujuan = $dhasil['lembarpersetujuan'];
                                 $proposal = $dhasil['proposal'];
                                 $pembimbing = $dhasil['pembimbing'];
                                 $penguji1 = $dhasil['penguji1'];
@@ -82,8 +85,7 @@ require('../config.php');
                                 $token = $dhasil['token'];
                                 ?>
                                 <div class="card-body">
-                                    <input type="hidden" class="form-control" value="<?= $nama; ?>" name="nama">
-                                    <input type="hidden" class="form-control" value="<?= $nim; ?>" name="nim">
+
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
@@ -116,6 +118,45 @@ require('../config.php');
                                         <label>Judul Proposal</label>
                                         <input type="text" class="form-control" name="judul" value="<?= $judul; ?>" readonly>
                                     </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col" align="center">
+                                                <label>SKL Seminar Proposal</label>
+                                                <br />
+                                                <a href="<?= $sklproposal; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="sklproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>SKL Ujian Komprehensif</label>
+                                                <br />
+                                                <a href="<?= $sklkompre; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Kartu Kendali</label>
+                                                <br />
+                                                <a href="<?= $kartukendali; ?>" target="_blank"><img src="<?= $kartukendali; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Lembar Persetujuan</label>
+                                                <br />
+                                                <a href="<?= $lembarpersetujuan; ?>" target="_blank"><img src="<?= $lembarpersetujuan; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>File Proposal</label>
+                                                <br />
+                                                <a href="<?= $proposal; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group text-break">
@@ -130,7 +171,7 @@ require('../config.php');
                                             </div>
                                         </div>
                                     </div>
-                                    <form method="POST">
+                                    <form method="POST" id="my-form">
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group text-break">
@@ -163,15 +204,18 @@ require('../config.php');
                                             <small style="color:red">Diisi apabila menggunakan video conference (Zoom / Gmeet / WebEx dll)</small>
                                         </div>
                                         <input type="hidden" name="token" value="<?= $token; ?>">
+                                        <input type="hidden" value="<?= $nama; ?>" name="namamhs">
+                                        <input type="hidden" value="<?= $nim; ?>" name="nimmhs">
+                                        <input type="hidden" value="<?= $penguji1; ?>" name="penguji1">
+                                        <input type="hidden" value="<?= $penguji2; ?>" name="penguji2">
+                                        <input type="hidden" value="<?= $pembimbing; ?>" name="pembimbing">
                                         <div class="row">
                                             <div class="col">
                                                 <button type="submit" class="btn btn-success btn-lg btn-block" formaction="seminarhasil-admin-setujui2.php" onclick="return confirm('Jadwalkan ujian ini ?')">JADWALKAN</button>
                                             </div>
-                                            <!--
                                             <div class="col">
                                                 <button type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-lg btn-block">TOLAK</button>
                                             </div>
-                                                    -->
                                         </div>
                                         <!-- modal tolak -->
                                         <div class="modal fade" id="modal-tolak">

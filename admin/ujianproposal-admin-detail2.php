@@ -163,6 +163,11 @@ require('../config.php');
                                             <small style="color:red">Diisi apabila menggunakan Online Meeting (Zoom / GMeet / WebEx dll)</small>
                                         </div>
                                         <input type="hidden" name="token" value="<?= $token; ?>">
+                                        <input type="hidden" name="pembimbing" value="<?= $pembimbing; ?>">
+                                        <input type="hidden" name="penguji1" value="<?= $penguji1; ?>">
+                                        <input type="hidden" name="penguji2" value="<?= $penguji2; ?>">
+                                        <input type="hidden" name="nama" value="<?= $nama; ?>">
+                                        <input type="hidden" name="nim" value="<?= $nim; ?>">
                                         <div class="row">
                                             <div class="col">
                                                 <button type="submit" class="btn btn-success btn-lg btn-block" formaction="ujianproposal-admin-setujui2.php" onclick="return confirm('Jadwalkan ujian ini ?')">JADWALKAN</button>

@@ -188,6 +188,8 @@ require('../config.php');
                                         </div>
                                         <br />
                                         <input type="hidden" name="token" value="<?= $token; ?>">
+                                        <input type="hidden" name="nimmhs" value="<?= $nim; ?>">
+                                        <input type="hidden" name="namamhs" value="<?= $namamhs; ?>">
                                         <div class="row">
                                             <div class="col">
                                                 <button type="submit" class="btn btn-success btn-lg btn-block" formaction="ujiankomprehensif-sekprodi-setujui.php" onclick="return confirm('Menyetujui pengajuan ini ?')">SETUJUI</button>

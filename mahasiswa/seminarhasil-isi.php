@@ -10,6 +10,7 @@ if ($role != 'mahasiswa') {
     header("location:../deauth.php");
 }
 require('../config.php');
+require('../vendor/myfunc.php');
 ?>
 
 <!DOCTYPE html>
@@ -77,18 +78,17 @@ require('../config.php');
                                     <h6 class="m-0 font-weight-bold text-primary">Data Seminar Hasil</h6>
                                 </div>
                                 <div class="card-body">
-                                    <form action="seminarhasil-simpan.php" enctype="multipart/form-data" method="POST">
+                                    <form action="seminarhasil-simpan.php" enctype="multipart/form-data" method="POST" id="my-form">
                                         <input type="hidden" name="bidang" value="<?= $bidang; ?>">
                                         <input type="hidden" name="judul" value="<?= $judul; ?>">
                                         <input type="hidden" name="pembimbing" value="<?= $pembimbing; ?>">
                                         <input type="hidden" name="penguji1" value="<?= $penguji1; ?>">
                                         <input type="hidden" name="penguji2" value="<?= $penguji2; ?>">
+                                        <input type="hidden" name="namamhs" value="<?= $nama; ?>">
+                                        <input type="hidden" name="nimmhs" value="<?= $nim; ?>">
                                         <div class="form-group">
                                             <label>Surat Keterangan Lulus Ujian Proposal</label>
                                             <input type="file" name="sklproposal" class="form-control" accept=".pdf" required>
-                                            <small style="color: red;">
-                                                <li>Download dari dashboard</li>
-                                            </small>
                                             <small style="color: red;">
                                                 <li>Format file PDF ukuran maksimal 1MB</li>
                                             </small>
@@ -96,9 +96,6 @@ require('../config.php');
                                         <div class="form-group">
                                             <label>Surat Keterangan Lulus Ujian Komprehensif</label>
                                             <input type="file" name="sklkompre" class="form-control" accept=".pdf" required>
-                                            <small style="color: red;">
-                                                <li>Download dari dashboard</li>
-                                            </small>
                                             <small style="color: red;">
                                                 <li>Format file PDF ukuran maksimal 1MB</li>
                                             </small>

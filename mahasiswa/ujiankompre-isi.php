@@ -10,6 +10,7 @@ if ($role != 'mahasiswa') {
     header("location:../deauth.php");
 }
 require('../config.php');
+require('../vendor/myfunc.php');
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +77,7 @@ require('../config.php');
                                     <h6 class="m-0 font-weight-bold text-primary">Pengajuan Ujian Komprehensif</h6>
                                 </div>
                                 <div class="card-body">
-                                    <form action="ujiankompre-simpan.php" enctype="multipart/form-data" method="POST">
+                                    <form action="ujiankompre-simpan.php" enctype="multipart/form-data" method="POST" id="my-form">
                                         <input type="hidden" name="bidang" value="<?= $bidang; ?>">
                                         <input type="hidden" name="judul" value="<?= $judul; ?>">
                                         <div class="form-group">
@@ -95,6 +96,8 @@ require('../config.php');
                                                 <li>Format file PDF ukuran maksimal 10MB</li>
                                             </small>
                                         </div>
+                                        <input type="hidden" nama="namamhs" value="<?= $nama; ?>">
+                                        <input type="hidden" nama="nimmhs" value="<?= $nim; ?>">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block">AJUKAN</button>
                                     </form>
                                 </div>
