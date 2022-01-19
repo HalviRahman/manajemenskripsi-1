@@ -46,6 +46,14 @@ if (isset($_POST['edit'])) {
         if ($uploadOk == 0) {
           header("location:profil.php?pesan=gagal");
           //echo 'something wrong';
+        } else if ($_FILES["ttd"]["tmp_name"] == 1) {
+          $stmt = $conn->prepare("UPDATE pengguna
+                              SET nohp=?, email=?, userid=?, pass=?
+                              WHERE token=?");
+          $stmt->bind_param("sssss", $nohp, $email, $userid, $pass, $token);
+          $stmt->execute();
+          header("location:index.php?pesan=success");
+          //echo 'success';
         } else {
           move_uploaded_file($_FILES["ttd"]["tmp_name"], $ttd);
           $stmt = $conn->prepare("UPDATE pengguna
@@ -136,27 +144,27 @@ if (isset($_POST['edit'])) {
                     $pesan = $_GET['pesan'];
                     if ($pesan == 'success') {
                   ?>
-                      <div class="alert alert-success" role="alert">
-                        Berhasil Edit Profil!
-                      </div>
-                    <?php
+                  <div class="alert alert-success" role="alert">
+                    Berhasil Edit Profil!
+                  </div>
+                  <?php
                     } elseif ($pesan == 'exist') {
                     ?>
-                      <div class="alert alert-danger" role="alert">
-                        <b>ERROR!!</b> Pengguna telah terdaftar
-                      </div>
-                    <?php
+                  <div class="alert alert-danger" role="alert">
+                    <b>ERROR!!</b> Pengguna telah terdaftar
+                  </div>
+                  <?php
                     } elseif ($pesan == 'passtidaksama') {
                     ?>
-                      <div class="alert alert-danger" role="alert">
-                        <b>ERROR!!</b> Konfirmasi password tidak sama
-                      </div>
-                    <?php
+                  <div class="alert alert-danger" role="alert">
+                    <b>ERROR!!</b> Konfirmasi password tidak sama
+                  </div>
+                  <?php
                     } elseif ($pesan == 'hitungsalah') {
                     ?>
-                      <div class="alert alert-danger" role="alert">
-                        <b>ERROR!!</b> Perhitungan salah
-                      </div>
+                  <div class="alert alert-danger" role="alert">
+                    <b>ERROR!!</b> Perhitungan salah
+                  </div>
                   <?php
                     }
                   }

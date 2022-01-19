@@ -45,7 +45,7 @@ if (isset($_POST['edit'])) {
 				";
   sendmail($email, $nama, $subject, $pesan);
 
-  //header('location:aktivasiuser.php?pesan=success');
+  header('location:aktivasiuser.php?pesan=success');
 }
 ?>
 
@@ -177,12 +177,12 @@ if (isset($_POST['edit'])) {
 
   <!-- disable button once it clicked -->
   <script type="text/javascript">
-    $(document).ready(function() {
-      $("#my-form").submit(function(e) {
-        $("#btn-submit").attr("disabled", true);
-        return true;
-      });
+  $(document).ready(function() {
+    $("#my-form").submit(function(e) {
+      $("#btn-submit").attr("disabled", true);
+      return true;
     });
+  });
   </script>
 </body>
 
