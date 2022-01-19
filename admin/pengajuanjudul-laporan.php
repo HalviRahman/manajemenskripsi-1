@@ -26,7 +26,6 @@ require('../vendor/myfunc.php');
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="../css/ruang-admin.min.css" rel="stylesheet">
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">

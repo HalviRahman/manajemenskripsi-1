@@ -267,7 +267,7 @@ require('../vendor/myfunc.php');
                       while ($dhasil = $result->fetch_assoc()) {
                         $nim = $dhasil['nim'];
                         $nama = $dhasil['nama'];
-                        $ujian = 'Ujian Proposal';
+                        $ujian = 'Ujian Seminar Proposal';
                         $token = $dhasil['token'];
                       ?>
                         <tr>
