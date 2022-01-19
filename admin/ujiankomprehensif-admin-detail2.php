@@ -10,6 +10,7 @@ if ($role != 'admin') {
     header("location:../deauth.php");
 }
 require('../config.php');
+require('../vendor/myfunc.php');
 ?>
 
 <!DOCTYPE html>
@@ -148,7 +149,7 @@ require('../config.php');
                                             </div>
                                         </div>
                                     </div>
-                                    <form method="POST">
+                                    <form method="POST" id="my-form">
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group text-break">
@@ -181,6 +182,11 @@ require('../config.php');
                                             <small style="color:red">Diisi apabila menggunakan Zoom / GMeet / WebEx</small>
                                         </div>
                                         <input type="hidden" name="token" value="<?= $token; ?>">
+                                        <input type="hidden" name="pembimbing" value="<?= $pembimbing; ?>">
+                                        <input type="hidden" name="penguji1" value="<?= $penguji1; ?>">
+                                        <input type="hidden" name="penguji2" value="<?= $penguji2; ?>">
+                                        <input type="hidden" name="nama" value="<?= $nama; ?>">
+                                        <input type="hidden" name="nim" value="<?= $nim; ?>">
                                         <div class="row">
                                             <div class="col">
                                                 <button type="submit" class="btn btn-success btn-lg btn-block" formaction="ujiankomprehensif-admin-setujui2.php" onclick="return confirm('Jadwalkan ujian ini ?')">JADWALKAN</button>
