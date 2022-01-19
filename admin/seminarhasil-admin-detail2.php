@@ -211,7 +211,7 @@ require('../vendor/myfunc.php');
                                         <input type="hidden" value="<?= $pembimbing; ?>" name="pembimbing">
                                         <div class="row">
                                             <div class="col">
-                                                <button type="submit" class="btn btn-success btn-lg btn-block" formaction="seminarhasil-admin-setujui2.php" onclick="return confirm('Jadwalkan ujian ini ?')">JADWALKAN</button>
+                                                <button type="submit" class="btn btn-success btn-lg btn-block" id="btn-submit" formaction="seminarhasil-admin-setujui2.php" onclick="return confirm('Jadwalkan ujian ini ?')">JADWALKAN</button>
                                             </div>
                                             <div class="col">
                                                 <button type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-lg btn-block">TOLAK</button>

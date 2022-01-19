@@ -98,7 +98,7 @@ require('../vendor/myfunc.php');
                                         </div>
                                         <input type="hidden" nama="namamhs" value="<?= $nama; ?>">
                                         <input type="hidden" nama="nimmhs" value="<?= $nim; ?>">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block">AJUKAN</button>
+                                        <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block">AJUKAN</button>
                                     </form>
                                 </div>
                             </div>

@@ -189,7 +189,7 @@ require('../vendor/myfunc.php');
                                         <input type="hidden" name="nimmhs" value="<?= $nim; ?>">
                                         <div class="row">
                                             <div class="col">
-                                                <button type="submit" class="btn btn-success btn-lg btn-block" formaction="ujiankomprehensif-admin-setujui2.php" onclick="return confirm('Jadwalkan ujian ini ?')">JADWALKAN</button>
+                                                <button type="submit" class="btn btn-success btn-lg btn-block" id="btn-submit" formaction="ujiankomprehensif-admin-setujui2.php" onclick="return confirm('Jadwalkan ujian ini ?')">JADWALKAN</button>
                                             </div>
                                             <!--
                                             <div class="col">

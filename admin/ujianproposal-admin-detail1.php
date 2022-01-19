@@ -146,7 +146,7 @@ require('../vendor/myfunc.php');
                                         <input type="hidden" name="nimmhs" value="<?= $nim; ?>">
                                         <div class="row">
                                             <div class="col">
-                                                <button type="submit" class="btn btn-success btn-lg btn-block" formaction="ujianproposal-admin-setujui1.php" onclick="return confirm('Menyetujui pengajuan ini ?')">SETUJUI</button>
+                                                <button type="submit" class="btn btn-success btn-lg btn-block" id="btn-submit" formaction="ujianproposal-admin-setujui1.php" onclick="return confirm('Menyetujui pengajuan ini ?')">SETUJUI</button>
                                             </div>
                                             <div class="col">
                                                 <button type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-lg btn-block">TOLAK</button>

@@ -11,8 +11,8 @@ $token = mysqli_real_escape_string($conn, $_GET['token']);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="img/logo/uinlogo.png" rel="icon">
-    <title>Pelayanan Online | Login</title>
+    <link href="img/uinlogo.png" rel="icon">
+    <title>Manajemen SKRIPSI</title>
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/ruang-admin.min.css" rel="stylesheet">
@@ -30,8 +30,8 @@ $token = mysqli_real_escape_string($conn, $_GET['token']);
                             <div class="col-lg-12">
                                 <div class="login-form">
                                     <div class="text-center">
-                                        <img src="img/logo/kop.jpg" width="300px">
-                                        <h1 class="h4 text-gray-900 mb-4">Pelayanan Online</h1>
+                                        <img src="img/uinlogo.png" width="20%">
+                                        <h1 class="h4 text-gray-900 mb-4">Reset Password</h1>
                                     </div>
                                     <?php
                                     if (isset($_GET['pesan'])) {
@@ -121,7 +121,7 @@ $token = mysqli_real_escape_string($conn, $_GET['token']);
                                         <hr>
                                         <div class="form-group">
                                             <input type="hidden" name="token" value="<?= $token; ?>">
-                                            <button type="submit" class="btn btn-warning btn-block" id="btn-submit"> <b>UBAH PASSWORD</b></button>
+                                            <button type="submit" class="btn btn-primary btn-block" id="btn-submit" onclick="return confirm('Ubah Password ?')"> <b>UBAH PASSWORD</b></button>
                                         </div>
                                     </form>
                                     <hr>

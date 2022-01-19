@@ -103,7 +103,7 @@ require('../vendor/myfunc.php');
                                                 <li>Format file PDF ukuran maksimal 10MB</li>
                                             </small>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya ajukan adalah benar')">AJUKAN SEMINAR PROPOSAL</button>
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block" id="btn-submit" onclick="return confirm('Dengan ini saya menyatakan bahwa data yang saya ajukan adalah benar')">AJUKAN SEMINAR PROPOSAL</button>
                                     </form>
                                 </div>
                             </div>

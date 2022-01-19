@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="img/logo/uinlogo.png" rel="icon">
-    <title>Pelayanan Online | Login</title>
+    <title>Manajemen SKRIPSI</title>
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/ruang-admin.min.css" rel="stylesheet">
@@ -27,8 +27,8 @@
                             <div class="col-lg-12">
                                 <div class="login-form">
                                     <div class="text-center">
-                                        <img src="img/logo/kop.jpg" class="img-fluid">
-                                        <h1 class="h4 text-gray-900 mb-4">Pelayanan Online</h1>
+                                        <img src="img/uinlogo.png" class="img-fluid" width="20%">
+                                        <h1 class="h4 text-gray-900 mb-4">Sistem Manajemen Skripsi</h1>
                                     </div>
                                     <?php
                                     if (isset($_GET['pesan'])) {
@@ -113,7 +113,7 @@
                                         </div>
                                         <hr>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-warning btn-block" id="btn-submit"> <b>RESET PASSWORD</b></button>
+                                            <button type="submit" class="btn btn-primary btn-block" id="btn-submit"> <b>RESET PASSWORD</b></button>
                                         </div>
                                     </form>
                                     <hr>

@@ -61,7 +61,7 @@ require('../config.php');
                   <h6 class="m-0 font-weight-bold text-primary">Data Judul Proposal</h6>
                 </div>
                 <div class="card-body">
-                  <form action="pengajuanjudul-simpan.php" enctype="multipart/form-data" method="POST">
+                  <form action="pengajuanjudul-simpan.php" enctype="multipart/form-data" method="POST" id="my-form">
                     <input type="hidden" class="form-control" value="<?= $nama; ?>" name="nama">
                     <input type="hidden" class="form-control" value="<?= $nim; ?>" name="nim">
                     <div class="form-group">
@@ -74,7 +74,7 @@ require('../config.php');
                         while ($dhasil = $result->fetch_assoc()) {
                           $bidang = $dhasil['bidang'];
                         ?>
-                        <option value="<?= $bidang; ?>"><?= $bidang; ?></option>
+                          <option value="<?= $bidang; ?>"><?= $bidang; ?></option>
                         <?php
                         }
                         ?>
@@ -94,8 +94,7 @@ require('../config.php');
                         <li>Formulir sudah di setujui dan di tanda tangani minimal 2 calon pembimbing</li>
                       </small>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block"
-                      onclick="return confirm('Dengan ini saya menyatakan kebenaran data yang saya ajukan')">AJUKAN</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" id="btn-submit" onclick="return confirm('Dengan ini saya menyatakan kebenaran data yang saya ajukan')">AJUKAN</button>
                   </form>
                 </div>
               </div>

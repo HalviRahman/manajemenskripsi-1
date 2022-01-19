@@ -148,7 +148,7 @@ if (isset($_POST['edit'])) {
                         <option value="1">Aktif</option>
                       </select>
                     </div>
-                    <button type="submit" name="edit" class="btn btn-primary btn-lg btn-block">Aktifkan Akun</button>
+                    <button type="submit" name="edit" id="btn-submit" class="btn btn-primary btn-lg btn-block">Aktifkan Akun</button>
                   </form>
                 </div>
               </div>
@@ -177,12 +177,12 @@ if (isset($_POST['edit'])) {
 
   <!-- disable button once it clicked -->
   <script type="text/javascript">
-  $(document).ready(function() {
-    $("#my-form").submit(function(e) {
-      $("#btn-submit").attr("disabled", true);
-      return true;
+    $(document).ready(function() {
+      $("#my-form").submit(function(e) {
+        $("#btn-submit").attr("disabled", true);
+        return true;
+      });
     });
-  });
   </script>
 </body>
 

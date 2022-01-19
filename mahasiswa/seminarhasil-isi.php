@@ -125,7 +125,7 @@ require('../vendor/myfunc.php');
                                                 <li>Format file PDF ukuran maksimal 10 MB</li>
                                             </small>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="return conform ('Dengan ini saya menyatakan kebenaran dokumen yang saya upload')">AJUKAN</button>
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block" id="btn-submit" onclick="return conform ('Dengan ini saya menyatakan kebenaran dokumen yang saya upload')">AJUKAN</button>
                                     </form>
                                 </div>
                             </div>

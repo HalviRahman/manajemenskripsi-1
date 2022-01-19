@@ -17,7 +17,7 @@ if ($kunci == $hasil) {
         $token = $dpengguna['token'];
         $actual_link = "https://$_SERVER[HTTP_HOST]";
         //kirim email user
-        $subject = "Lupa Password Pelayanan Online Fakultas Humaniora UIN Malang";
+        $subject = "Lupa Password Sistem Manajemen Skripsi FISIKA UIN Malang";
         $pesan = "Yth. " . $nama . "
                             <br/>
                             Assalamualaikum Wr. Wb.
