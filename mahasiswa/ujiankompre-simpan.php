@@ -6,6 +6,8 @@ $nama = $_SESSION['nama'];
 $nim = $_SESSION['nim'];
 $bidang = $_POST['bidang'];
 $judul = $_POST['judul'];
+$namamhs = $_POST['namamhs'];
+$nimmhs = $_POST['nimmhs'];
 $token = md5(microtime());
 date_default_timezone_set("Asia/Jakarta");
 $tanggal = date('Y-m-d H:i:s');
@@ -73,7 +75,7 @@ if ($uploadOk == 0) {
                                 <br/>
                                 Assalamualaikum Wr. Wb.
                                 <br/>
-                                Terdapat pengajuan <b>Ujian Komprehensif</b> atas nama " . $nama . " NIM " . $nim . ".
+                                Terdapat pengajuan <b>Ujian Komprehensif</b> atas nama " . $namamhs . " NIM " . $nimmhs . ".
                                 <br/>
                                 Silahkan klik tombol berikut ini untuk melakukan verifikasi dokumen.
                                 <br/>

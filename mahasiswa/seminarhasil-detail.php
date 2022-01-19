@@ -130,14 +130,14 @@ require('../vendor/myfunc.php');
                                             <div class="col" align="center">
                                                 <label>Surat Keterangan Lulus Seminar Proposal</label>
                                                 <br />
-                                                <a href="<?= $sklproposal; ?>" target="_blank"><img src="<?= $sklproposal; ?>" width="100px" class="img-thumbnail" name="sklproposal"></a>
+                                                <a href="<?= $sklproposal; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="sklproposal"></a>
                                                 <br />
                                                 <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                             </div>
                                             <div class="col" align="center">
                                                 <label>Surat Keterangan Lulus Ujian Komprehensif</label>
                                                 <br />
-                                                <a href="<?= $sklkompre; ?>" target="_blank"><img src="<?= $sklkompre; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <a href="<?= $sklkompre; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="sklkompre"></a>
                                                 <br />
                                                 <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                             </div>

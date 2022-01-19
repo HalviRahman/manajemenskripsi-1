@@ -382,6 +382,7 @@ require('../vendor/myfunc.php');
                               <?php
                               } elseif ($verifikasifile == 1 and $status == 4) {
                               ?>
+                                <a href="seminarhasil-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                 <a href="seminarhasil-cetak.php?token=<?= $token; ?>" class="btn btn-success" type="button" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
                               <?php
                               }

@@ -110,7 +110,7 @@ $pesan = "Yth. " . $namapenguji2 . "
         <br/>
         Assalamualaikum Wr. Wb.
         <br/>
-        Anda dijadwalkan untuk <b>Ujian Komprehensif</b> Mahasiswa atas nama " . $namamhs . " NIM " . $nimmhs . " <b>sebagai KETUA PENGUJI</b> pada :
+        Anda dijadwalkan untuk <b>Ujian Komprehensif</b> Mahasiswa atas nama " . $namamhs . " NIM " . $nimmhs . " <b>sebagai ANGGOTA PENGUJI</b> pada :
         <br/>
         Hari : " . hari(date('N', strtotime($jadwalujian))) . "
         <br/>
