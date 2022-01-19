@@ -18,7 +18,8 @@
   </li>
   <hr class="sidebar-divider">
   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap" aria-expanded="true" aria-controls="collapseBootstrap">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap" aria-expanded="true"
+      aria-controls="collapseBootstrap">
       <i class="far fa-fw fa-window-maximize"></i>
       <span>Rekap Laporan</span>
     </a>
@@ -35,7 +36,8 @@
   </li>
   <hr class="sidebar-divider">
   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#systemsetting" aria-expanded="true" aria-controls="systemsetting">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#systemsetting" aria-expanded="true"
+      aria-controls="systemsetting">
       <i class="fas fa-fw fa-lock"></i>
       <span>Setting Sistem</span>
     </a>
@@ -45,6 +47,7 @@
         <a class="collapse-item" href="email-isi.php">E-Mail</a>
         <a class="collapse-item" href="kaprodi-isi.php">Kaprodi</a>
         <a class="collapse-item" href="daftarruang.php">Daftar Ruang</a>
+        <a class="collapse-item" href="bidangminat.php">Bidang Minat</a>
       </div>
     </div>
   </li>
