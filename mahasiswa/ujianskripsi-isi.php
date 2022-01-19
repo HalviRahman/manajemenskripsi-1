@@ -83,6 +83,8 @@ require('../config.php');
                                         <input type="hidden" name="pembimbing" value="<?= $pembimbing; ?>">
                                         <input type="hidden" name="penguji1" value="<?= $penguji1; ?>">
                                         <input type="hidden" name="penguji2" value="<?= $penguji2; ?>">
+                                        <input type="hidden" name="namamhs" value="<?= $nama; ?>">
+                                        <input type="hidden" name="nimmhs" value="<?= $nim; ?>">
                                         <div class="form-group">
                                             <label>Form A, A1 dan A2 yang sudah di tanda tangani (1 file)</label>
                                             <input type="file" name="forma" class="form-control" accept=".pdf" required>

@@ -242,9 +242,9 @@ while ($dhasil = $result->fetch_assoc()) {
         <td>Penguji Utama / Ketua</td>
         <td><?= $penguji1; ?></td>
         <?php
-        if ($ttd != null) {
+        if (isset($ttd)) {
         ?>
-            <td style="text-align: left;"><img src="<?= $ttd; ?>" height="40"> </td>
+            <td style="text-align: left;"><img src="../img/ttd/198106132006042002-ttd.jpg" height="40"> </td>
         <?php
         } else {
         ?>
@@ -267,7 +267,7 @@ while ($dhasil = $result->fetch_assoc()) {
         <td>Penguji 1 / Anggota 1</td>
         <td><?= $penguji2; ?></td>
         <?php
-        if ($ttd != null) {
+        if (isset($ttd)) {
         ?>
             <td style="text-align: right;"><img src="<?= $ttd; ?>" height="40"> </td>
         <?php
@@ -292,7 +292,7 @@ while ($dhasil = $result->fetch_assoc()) {
         <td>Sekretaris Penguji / Anggota 2</td>
         <td><?= $pembimbing; ?></td>
         <?php
-        if ($ttd != null) {
+        if (isset($ttd)) {
         ?>
             <td style="text-align: left;"><img src="<?= $ttd; ?>" height="40"> </td>
         <?php
@@ -317,7 +317,7 @@ while ($dhasil = $result->fetch_assoc()) {
         <td>Sekretaris Penguji / Anggota 2</td>
         <td><?= $penguji3; ?></td>
         <?php
-        if ($ttd != null) {
+        if (isset($ttd)) {
         ?>
             <td style="text-align: right;"><img src="<?= $ttd; ?>" height="40"> </td>
         <?php

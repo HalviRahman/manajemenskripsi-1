@@ -77,6 +77,7 @@ require('../vendor/myfunc.php');
                                 $pembimbing = $dhasil['pembimbing'];
                                 $penguji1 = $dhasil['penguji1'];
                                 $penguji2 = $dhasil['penguji2'];
+                                $penguji3 = $dhasil['penguji3'];
                                 $forma = $dhasil['forma'];
                                 $foto = $dhasil['foto'];
                                 $sklsemhas = $dhasil['sklsemhas'];
@@ -90,8 +91,12 @@ require('../vendor/myfunc.php');
                                 $linkzoom = $dhasil['linkzoom'];
                                 $nilai1 = $dhasil['nilai1'];
                                 $nilai2 = $dhasil['nilai2'];
+                                $nilai3 = $dhasil['nilai3'];
+                                $nilaipembimbing = $dhasil['nilaipembimbing'];
                                 $revisi1 = $dhasil['revisi1'];
                                 $revisi2 = $dhasil['revisi2'];
+                                $revisi3 = $dhasil['revisi3'];
+                                $revisipembimbing = $dhasil['revisipembimbing'];
                                 $token = $dhasil['token'];
                                 ?>
                                 <div class="card-body">
@@ -127,7 +132,7 @@ require('../vendor/myfunc.php');
                                     </div>
                                     <div class="form-group">
                                         <label>Judul Proposal</label>
-                                        <input type="text" class="form-control" name="judul" value="<?= $judul; ?>" readonly>
+                                        <textarea class="form-control" name="judul" readonly> <?= $judul; ?></textarea>
                                     </div>
                                     <div class="row">
                                         <div class="col">
@@ -157,11 +162,11 @@ require('../vendor/myfunc.php');
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Dosen Penguji Fisika</label>
+                                                <label>Ketua Penguji</label>
                                                 <input type="text" class="form-control" name="penguji1" value="<?= $penguji1; ?>" readonly>
                                             </div>
                                             <div class="form-group">
-                                                <label>Revisi Penguji Fisika</label>
+                                                <label>Revisi Ketua Penguji</label>
                                                 <textarea name="revisi1" class="form-control" rows="5" disabled><?php if (isset($revisi1)) {
                                                                                                                     echo $revisi1;
                                                                                                                 } ?></textarea>
@@ -169,13 +174,37 @@ require('../vendor/myfunc.php');
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Dosen Penguji Integrasi</label>
+                                                <label>Anggota Penguji 1</label>
                                                 <input type="text" class="form-control" name="penguji2" value="<?= $penguji2; ?>" readonly>
                                             </div>
                                             <div class="form-group">
-                                                <label>Revisi Penguji Integrasi</label>
+                                                <label>Revisi Anggota Penguji 1</label>
                                                 <textarea name="revisi2" class="form-control" rows="5" disabled><?php if (isset($revisi2)) {
                                                                                                                     echo $revisi2;
+                                                                                                                } ?></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Anggota Penguji 2</label>
+                                                <input type="text" class="form-control" name="pembimbing" value="<?= $pembimbing; ?>" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Revisi Anggota Penguji 2</label>
+                                                <textarea name="revisi2" class="form-control" rows="5" disabled><?php if (isset($revisipembimbing)) {
+                                                                                                                    echo $revisipembimbing;
+                                                                                                                } ?></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label>Anggota Penguji 3</label>
+                                                <input type="text" class="form-control" name="penguji2" value="<?= $penguji3; ?>" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Revisi Anggota Penguji 3</label>
+                                                <textarea name="revisi2" class="form-control" rows="5" disabled><?php if (isset($revisi3)) {
+                                                                                                                    echo $revisi3;
                                                                                                                 } ?></textarea>
                                             </div>
                                         </div>

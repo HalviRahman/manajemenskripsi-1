@@ -1,6 +1,8 @@
 <?php
 session_start();
 require('../config.php');
+require('../vendor/myfunc.php');
+require('../vendor/phpmailer/sendmail.php');
 $nama = $_SESSION['nama'];
 $nim = $_SESSION['nim'];
 $bidang = $_POST['bidang'];
@@ -8,6 +10,8 @@ $judul = $_POST['judul'];
 $pembimbing = $_POST['pembimbing'];
 $penguji1 = $_POST['penguji1'];
 $penguji2 = $_POST['penguji2'];
+$namamhs = $_POST['namamhs'];
+$nimmhs = $_POST['nimmhs'];
 
 $token = md5(microtime());
 
@@ -199,6 +203,30 @@ if ($uploadOk == 0) {
         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
     $stmt->bind_param("ssssssssssssssssssssss", $tanggal, $nama, $nim, $bidang, $judul, $forma, $foto, $sklsemhas, $buktibayar, $khs, $transkripnilai, $ijazah, $toefl, $toafl, $alumni, $skripsi, $turnitin, $pembimbing, $penguji1, $penguji2, $penguji3, $token);
     $stmt->execute();
+
+    //kirim email notifikasi ke admin
+    $stmt = $conn->prepare("SELECT * FROM pengguna WHERE role='admin'");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $dhasil = $result->fetch_assoc();
+    $emailfak = $dhasil['email'];
+    $namaadmin = $dhasil['nama'];
+    $actual_link = "https://$_SERVER[HTTP_HOST]/manajemenskripsi";
+    $subject = "Pengajuan Ujian Skripsi";
+    $pesan = "Yth. " . $namaadmin . "
+                            <br/>
+                            Assalamualaikum Wr. Wb.
+                            <br/>
+                            Terdapat pengajuan <b>Ujian Skripsi</b> atas nama " . $namamhs . " NIM " . $nimmhs . ".
+                            <br/>
+                            Silahkan klik tombol berikut ini untuk melakukan verifikasi dokumen.
+                            <br/>
+                            <a href='" . $actual_link . "' style=' background-color: #0000FF;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>Manajemen Skripsi</a> 
+                            <br/>
+                            Wassalamualaikum Wr. Wb.
+                            ";
+    sendmail($emailfak, $namaadmin, $subject, $pesan);
+
     header("location:index.php?pesan=success");
     //echo 'success';
 }

@@ -86,7 +86,7 @@ $status = $dhasil['status'];
         </td>
     </tr>
     <tr>
-        <td>
+        <td style="vertical-align:top">
             Judul Proposal
         </td>
         <td>

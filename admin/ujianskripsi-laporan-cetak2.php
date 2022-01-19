@@ -4,22 +4,22 @@
 
 <head>
   <script>
-  var css = '@page { size: landscape; margin:0 }',
-    head = document.head || document.getElementsByTagName('head')[0],
-    style = document.createElement('style');
+    var css = '@page { size: landscape; margin:0 }',
+      head = document.head || document.getElementsByTagName('head')[0],
+      style = document.createElement('style');
 
-  style.type = 'text/css';
-  style.media = 'print';
+    style.type = 'text/css';
+    style.media = 'print';
 
-  if (style.styleSheet) {
-    style.styleSheet.cssText = css;
-  } else {
-    style.appendChild(document.createTextNode(css));
-  }
+    if (style.styleSheet) {
+      style.styleSheet.cssText = css;
+    } else {
+      style.appendChild(document.createTextNode(css));
+    }
 
-  head.appendChild(style);
+    head.appendChild(style);
 
-  window.print();
+    window.print();
   </script>
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -96,18 +96,18 @@ $tahun = $_POST['tahun'];
       $pembimbing = $dhasil['pembimbing'];
       $token = $dhasil['token'];
     ?>
-    <tr>
-      <td><?= $no; ?></td>
-      <td><?= $nama; ?></td>
-      <td><?= $nim; ?></td>
-      <td><?= $judul; ?></td>
-      <td><?= $pembimbing; ?></td>
-      <td><?= $penguji3; ?></td>
-      <td><?= $penguji1; ?></td>
-      <td><?= $penguji2; ?></td>
-      <td><?= tgljam_indo($jadwalujian); ?></td>
-      <td><?= $ruang; ?></td>
-    </tr>
+      <tr>
+        <td><?= $no; ?></td>
+        <td><?= $nama; ?></td>
+        <td><?= $nim; ?></td>
+        <td><?= $judul; ?></td>
+        <td><?= $pembimbing; ?></td>
+        <td><?= $penguji3; ?></td>
+        <td><?= $penguji1; ?></td>
+        <td><?= $penguji2; ?></td>
+        <td><?= tgljam_indo($jadwalujian); ?></td>
+        <td><?= $ruang; ?></td>
+      </tr>
     <?php
       $no++;
     }
@@ -154,17 +154,17 @@ $tahun = $_POST['tahun'];
       $penguji2 = $dhasil['penguji2'];
       $frekuensi2 = $dhasil['frekuensi_penguji2'];
     ?>
-    <tr>
-      <td><?= $no; ?></td>
-      <td><?= $pembimbing; ?></td>
-      <td style="text-align:center"><?= $frekuensi_pembimbing; ?></td>
-      <td><?= $penguji3; ?></td>
-      <td style="text-align:center"><?= $frekuensi3; ?></td>
-      <td><?= $penguji1; ?></td>
-      <td style="text-align:center"><?= $frekuensi1; ?></td>
-      <td><?= $penguji2; ?></td>
-      <td style="text-align:center"><?= $frekuensi2; ?></td>
-    </tr>
+      <tr>
+        <td><?= $no; ?></td>
+        <td><?= $pembimbing; ?></td>
+        <td style="text-align:center"><?= $frekuensi_pembimbing; ?></td>
+        <td><?= $penguji3; ?></td>
+        <td style="text-align:center"><?= $frekuensi3; ?></td>
+        <td><?= $penguji1; ?></td>
+        <td style="text-align:center"><?= $frekuensi1; ?></td>
+        <td><?= $penguji2; ?></td>
+        <td style="text-align:center"><?= $frekuensi2; ?></td>
+      </tr>
     <?php
       $no++;
     }
@@ -172,22 +172,33 @@ $tahun = $_POST['tahun'];
   </tbody>
 </table>
 <br>
+
 <!-- tanda tangan -->
+<?php
+$stmt = $conn->prepare("SELECT * FROM kaprodi");
+$stmt->execute();
+$result = $stmt->get_result();
+$dhasil = $result->fetch_assoc();
+$nip = $dhasil['nip'];
+$nama = $dhasil['nama'];
+$ttd = $dhasil['ttd'];
+?>
 <table table style="width:80%; margin-left:auto;margin-right:auto;" cellspacing="0" border="0">
   <tr>
     <td width="40%"></td>
     <td style="text-align:right">
       <div class="container">
-        <div>Malang,<?= tgl_indo($jadwalujian); ?></div>
-        <div class="jabatan">Ketua Jurusan Fisika,</div>
-        <img src="../img/ttd/ttdkaprodi.png" style="width:250px;">
+        <div><b>Malang,<?= tgl_indo($jadwalujian); ?></b></div>
+        <div class="jabatan"><b>Ketua Jurusan Fisika,</b></div>
+        <img src="<?= $ttd; ?>" style="width:250px;">
         <div class="nama">
-          <u>Dr. Imam Tazi, M.Si</u><br />
-          NIP.197407302003121002
+          <u><b><?= $nama; ?></b></u><br />
+          <b>NIP.<?= $nip; ?></b>
         </div>
       </div>
     </td>
   </tr>
 </table>
+
 
 </html>
