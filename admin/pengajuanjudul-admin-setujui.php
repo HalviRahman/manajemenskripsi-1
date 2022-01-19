@@ -4,8 +4,8 @@ $userid = $_SESSION['userid'];
 global $userid;
 $role = $_SESSION['role'];
 $jabatan = $_SESSION['jabatan'];
-$namamhs = $_POST['nama'];
-$nimmhs = $_POST['nim'];
+$namamhs = $_POST['namamhs'];
+$nimmhs = $_POST['nimmhs'];
 $token = $_POST['token'];
 if ($role != 'admin') {
     header("location:../deauth.php");

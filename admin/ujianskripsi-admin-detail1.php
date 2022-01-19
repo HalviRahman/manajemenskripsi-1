@@ -91,8 +91,6 @@ require('../config.php');
                                 $token = $dhasil['token'];
                                 ?>
                                 <div class="card-body">
-                                    <input type="hidden" class="form-control" value="<?= $nama; ?>" name="nama">
-                                    <input type="hidden" class="form-control" value="<?= $nim; ?>" name="nim">
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
@@ -227,6 +225,8 @@ require('../config.php');
                                     </div>
                                     <form method="POST">
                                         <input type="hidden" name="token" value="<?= $token; ?>">
+                                        <input type="hidden" class="form-control" value="<?= $nama; ?>" name="namamhs">
+                                        <input type="hidden" class="form-control" value="<?= $nim; ?>" name="nimmhs">
                                         <div class="row">
                                             <div class="col">
                                                 <button type="submit" class="btn btn-success btn-lg btn-block" formaction="ujianskripsi-admin-setujui1.php" onclick="return confirm('Menyetujui pengajuan ini ?')">SETUJUI</button>

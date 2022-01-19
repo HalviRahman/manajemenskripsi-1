@@ -115,8 +115,8 @@ require('../vendor/myfunc.php');
                                     </div>
                                     <form method="POST" id="my-form">
                                         <input type="hidden" name="token" value="<?= $token; ?>">
-                                        <input type="hidden" name="nama" value="<?= $nama; ?>">
-                                        <input type="hidden" name="nim" value="<?= $nim; ?>">
+                                        <input type="hidden" name="nama" value="<?= $namamhs; ?>">
+                                        <input type="hidden" name="nim" value="<?= $nimmhs; ?>">
                                         <div class="row">
                                             <div class="col">
                                                 <button type="submit" class="btn btn-success btn-lg btn-block" formaction="pengajuanjudul-admin-setujui.php" onclick="return confirm('Menyetujui pengajuan ini ?')">SETUJUI</button>

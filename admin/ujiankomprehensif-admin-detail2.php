@@ -185,8 +185,8 @@ require('../vendor/myfunc.php');
                                         <input type="hidden" name="pembimbing" value="<?= $pembimbing; ?>">
                                         <input type="hidden" name="penguji1" value="<?= $penguji1; ?>">
                                         <input type="hidden" name="penguji2" value="<?= $penguji2; ?>">
-                                        <input type="hidden" name="nama" value="<?= $nama; ?>">
-                                        <input type="hidden" name="nim" value="<?= $nim; ?>">
+                                        <input type="hidden" name="namamhs" value="<?= $nama; ?>">
+                                        <input type="hidden" name="nimmhs" value="<?= $nim; ?>">
                                         <div class="row">
                                             <div class="col">
                                                 <button type="submit" class="btn btn-success btn-lg btn-block" formaction="ujiankomprehensif-admin-setujui2.php" onclick="return confirm('Jadwalkan ujian ini ?')">JADWALKAN</button>
