@@ -16,6 +16,11 @@
       <i class="fa fa-user"></i>
       <span>Aktivasi User</span></a>
   </li>
+  <li class="nav-item active">
+    <a class="nav-link" href="pemakaianruang.php">
+      <i class="fa fa-home"></i>
+      <span>Pemakaian Ruangan</span></a>
+  </li>
   <hr class="sidebar-divider">
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap" aria-expanded="true"
