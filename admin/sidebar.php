@@ -23,8 +23,7 @@
   </li>
   <hr class="sidebar-divider">
   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap" aria-expanded="true"
-      aria-controls="collapseBootstrap">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap" aria-expanded="true" aria-controls="collapseBootstrap">
       <i class="far fa-fw fa-window-maximize"></i>
       <span>Rekap Laporan</span>
     </a>
@@ -41,8 +40,23 @@
   </li>
   <hr class="sidebar-divider">
   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#systemsetting" aria-expanded="true"
-      aria-controls="systemsetting">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap" aria-expanded="true" aria-controls="collapseBootstrap">
+      <i class="far fa-fw fa-window-maximize"></i>
+      <span>Rekap Nilai</span>
+    </a>
+    <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Rekap Nilai</h6>
+        <a class="collapse-item" href="ujiankomprehensif-nilai.php">Nilai Ujian Komprehensif</a>
+        <a class="collapse-item" href="seminarhasil-nilai.php">Nilai Seminar Hasil</a>
+        <a class="collapse-item" href="ujianskripsi-nilai.php">Nilai Ujian Skripsi</a>
+        <a class="collapse-item" href="nilaiakhir.php">Nilai Akhir Skripsi</a>
+      </div>
+    </div>
+  </li>
+  <hr class="sidebar-divider">
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#systemsetting" aria-expanded="true" aria-controls="systemsetting">
       <i class="fas fa-fw fa-lock"></i>
       <span>Setting Sistem</span>
     </a>
