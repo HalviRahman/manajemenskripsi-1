@@ -32,38 +32,6 @@ $stmt = $conn->prepare("UPDATE ujiankompre
 $stmt->bind_param("ssss", $jadwalujian, $ruangan, $linkzoom, $token);
 $stmt->execute();
 
-//kirim email notifikasi ke pembimbing
-$stmt = $conn->prepare("SELECT * FROM pengguna WHERE nama=?");
-$stmt->bind_param("s", $pembimbing);
-$stmt->execute();
-$result = $stmt->get_result();
-$dhasil = $result->fetch_assoc();
-$emailpembimbing = $dhasil['email'];
-$namapembimbing = $dhasil['nama'];
-$actual_link = "https://$_SERVER[HTTP_HOST]/manajemenskripsi";
-$subject = "Notifikasi Pelaksanaan Ujian Komprehensif";
-$pesan = "Yth. " . $namapembimbing . "
-        <br/>
-        Assalamualaikum Wr. Wb.
-        <br/>
-        Anda dijadwalkan untuk <b>Ujian Komprehensif</b> Mahasiswa atas nama " . $namamhs . " NIM " . $nimmhs . " <b>sebagai PEMBIMBING</b> pada :
-        <br/>
-        Hari : " . hari(date('N', strtotime($jadwalujian))) . "
-        <br/>
-        Tanggal : " . tgljam_indo($jadwalujian) . "
-        <br/>
-        Tempat : " . $ruangan . "
-        <br/>
-        Dimohon hadir tepat waktu.
-        <br/>
-        Informasi detail terkait ujian tersebut silahkan klik tombol berikut ini
-        <br/>
-        <a href='" . $actual_link . "' style=' background-color: #0000FF;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;'>Manajemen Skripsi</a> 
-        <br/>
-        Wassalamualaikum Wr. Wb.
-        ";
-sendmail($emailpembimbing, $namapembimbing, $subject, $pesan);
-
 //kirim email notifikasi ke penguji1
 $stmt = $conn->prepare("SELECT * FROM pengguna WHERE nama=?");
 $stmt->bind_param("s", $penguji1);
@@ -142,7 +110,7 @@ $pesan = "Yth. " . $namamhs . "
         <br/>
         Assalamualaikum Wr. Wb.
         <br/>
-        Anda dijadwalkan untuk <b>Ujian Komprehensif</b> Mahasiswa pada :
+        Anda dijadwalkan untuk <b>Ujian Komprehensif</b> pada :
         <br/>
         Hari : " . hari(date('N', strtotime($jadwalujian))) . "
         <br/>

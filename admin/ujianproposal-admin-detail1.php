@@ -81,8 +81,6 @@ require('../vendor/myfunc.php');
                                 $token = $dhasil['token'];
                                 ?>
                                 <div class="card-body">
-                                    <input type="hidden" class="form-control" value="<?= $nama; ?>" name="nama">
-                                    <input type="hidden" class="form-control" value="<?= $nim; ?>" name="nim">
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
