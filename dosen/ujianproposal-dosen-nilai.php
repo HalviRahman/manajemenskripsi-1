@@ -25,19 +25,17 @@ if ($keputusan == 'DITOLAK') {
 
 if ($penguji == 'PENGUJI KETUA') {
     $stmt = $conn->prepare("UPDATE ujianproposal
-                            SET status=?,
-                                nilai1=?,
+                            SET nilai1=?,
                                 revisi1=?
                             WHERE token=?");
-    $stmt->bind_param("isss", $status, $keputusan, $revisi, $token);
+    $stmt->bind_param("sss", $keputusan, $revisi, $token);
     $stmt->execute();
 } elseif ($penguji == 'PENGUJI ANGGOTA') {
     $stmt = $conn->prepare("UPDATE ujianproposal
-                            SET status=?,
-                                nilai2=?,
+                            SET nilai2=?,
                                 revisi2=?
                             WHERE token=?");
-    $stmt->bind_param("isss", $status, $keputusan, $revisi, $token);
+    $stmt->bind_param("sss", $keputusan, $revisi, $token);
     $stmt->execute();
 } elseif ($penguji == 'PEMBIMBING') {
     $stmt = $conn->prepare("UPDATE ujianproposal
