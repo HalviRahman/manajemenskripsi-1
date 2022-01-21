@@ -53,7 +53,7 @@ require('../vendor/myfunc.php');
                         </ol>
                     </div>
                     <div class="row">
-                        <form action="ujiankomprehesif-laporan-cetak.php" method="POST">
+                        <form action="ujiankomprehesif-nilai-cetak.php" method="POST">
                             <label>Cetak Laporan Bulan</label>
                             <div class="row">
                                 <div class="col">
@@ -110,7 +110,7 @@ require('../vendor/myfunc.php');
                                         <tbody>
                                             <?php
                                             $no = 1;
-                                            $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE status=4");
+                                            $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE status=4 ORDER BY jadwalujian DESC");
                                             $stmt->execute();
                                             $result = $stmt->get_result();
                                             while ($dhasil = $result->fetch_assoc()) {

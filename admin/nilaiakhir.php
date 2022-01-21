@@ -54,7 +54,7 @@ require('../vendor/myfunc.php');
                     </div>
 
                     <div class="row">
-                        <form action="ujianskripsi-laporan-cetak2.php" method="POST">
+                        <form action="nilaiakhir-cetak.php" method="POST">
                             <label>Cetak Laporan Bulan</label>
                             <div class="row">
                                 <div class="col">
@@ -102,6 +102,7 @@ require('../vendor/myfunc.php');
                                         <thead class="thead-light">
                                             <tr>
                                                 <th class="text-center">No</th>
+                                                <th class="text-center">Jadwal Ujian</th>
                                                 <th class="text-center">Nama</th>
                                                 <th class="text-center">NIM</th>
                                                 <th class="text-center">Nilai Ujian Komprehensif</th>
@@ -118,7 +119,6 @@ require('../vendor/myfunc.php');
                                             $stmt->execute();
                                             $result = $stmt->get_result();
                                             $jhasil = $result->num_rows;
-                                            echo "Jumlah data " . $jhasil;
                                             while ($dhasil = $result->fetch_assoc()) {
                                                 $jadwalujian = $dhasil['jadwalujian'];
                                                 $nim = $dhasil['nim'];
@@ -155,6 +155,7 @@ require('../vendor/myfunc.php');
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
+                                                    <td><?= tgl_indo($jadwalujian); ?></td>
                                                     <td><?= $nama; ?></td>
                                                     <td><?= $nim; ?></td>
                                                     <td class="text-center"><?= number_format($nilaikompre, 2) + 0; ?></td>

@@ -54,7 +54,7 @@ require('../vendor/myfunc.php');
                     </div>
 
                     <div class="row">
-                        <form action="ujianskripsi-laporan-cetak2.php" method="POST">
+                        <form action="ujianskripsi-nilai-cetak.php" method="POST">
                             <label>Cetak Laporan Bulan</label>
                             <div class="row">
                                 <div class="col">
