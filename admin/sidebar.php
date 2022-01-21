@@ -40,11 +40,11 @@
   </li>
   <hr class="sidebar-divider">
   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap" aria-expanded="true" aria-controls="collapseBootstrap">
-      <i class="far fa-fw fa-window-maximize"></i>
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#rekapnilai" aria-expanded="true" aria-controls="rekapnilai">
+      <i class="fa fa-fw fa-check-circle"></i>
       <span>Rekap Nilai</span>
     </a>
-    <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+    <div id="rekapnilai" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Rekap Nilai</h6>
         <a class="collapse-item" href="ujiankomprehensif-nilai.php">Nilai Ujian Komprehensif</a>
