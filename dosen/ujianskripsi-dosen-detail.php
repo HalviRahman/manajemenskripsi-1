@@ -212,7 +212,7 @@ require('../vendor/myfunc.php');
                                                     <tbody>
                                                         <tr>
                                                             <td width="70%">a. Pentingnya masalah</td>
-                                                            <td><select name="pentingnyamasalah" class="form-control">
+                                                            <td><select name="pentingnyamasalah" id="pentingnyamasalah" class="form-control">
                                                                     <option value="5">5</option>
                                                                     <option value="4">4</option>
                                                                     <option value="3">3</option>
@@ -223,7 +223,7 @@ require('../vendor/myfunc.php');
                                                         </tr>
                                                         <tr>
                                                             <td>b. Keselarasan rumusan masalah, tujuan, dan metode penelitian</td>
-                                                            <td><select name="keselarasan" class="form-control">
+                                                            <td><select name="keselarasan" id="keselarasan" class="form-control">
                                                                     <option value="5">5</option>
                                                                     <option value="4">4</option>
                                                                     <option value="3">3</option>
@@ -234,7 +234,7 @@ require('../vendor/myfunc.php');
                                                         </tr>
                                                         <tr>
                                                             <td>c. Ketepatan teknik analisa data</td>
-                                                            <td><select name="analisadata" class="form-control">
+                                                            <td><select name="analisadata" id="analisadata" class="form-control">
                                                                     <option value="5">5</option>
                                                                     <option value="4">4</option>
                                                                     <option value="3">3</option>
@@ -245,7 +245,7 @@ require('../vendor/myfunc.php');
                                                         </tr>
                                                         <tr>
                                                             <td>d. Relevansi Kajian Pustaka</td>
-                                                            <td><select name="kajianpustaka" class="form-control">
+                                                            <td><select name="kajianpustaka" id="kajianpustaka" class="form-control">
                                                                     <option value="5">5</option>
                                                                     <option value="4">4</option>
                                                                     <option value="3">3</option>
@@ -256,7 +256,7 @@ require('../vendor/myfunc.php');
                                                         </tr>
                                                         <tr>
                                                             <td>e. Paparan Data</td>
-                                                            <td><select name="paparandata" class="form-control">
+                                                            <td><select name="paparandata" id="paparandata" class="form-control">
                                                                     <option value="5">5</option>
                                                                     <option value="4">4</option>
                                                                     <option value="3">3</option>
@@ -267,7 +267,7 @@ require('../vendor/myfunc.php');
                                                         </tr>
                                                         <tr>
                                                             <td>f. Keteraturan alur pembahasan</td>
-                                                            <td><select name="alurpembahasan" class="form-control">
+                                                            <td><select name="alurpembahasan" id="alurpembahasan" class="form-control">
                                                                     <option value="5">5</option>
                                                                     <option value="4">4</option>
                                                                     <option value="3">3</option>
@@ -278,13 +278,21 @@ require('../vendor/myfunc.php');
                                                         </tr>
                                                         <tr>
                                                             <td>g. Kesesuaian kesimpulan dengan masalah penelitian</td>
-                                                            <td><select name="kesimpulan" class="form-control">
+                                                            <td><select name="kesimpulan" id="kesimpulan" class="form-control">
                                                                     <option value="5">5</option>
                                                                     <option value="4">4</option>
                                                                     <option value="3">3</option>
                                                                     <option value="2">2</option>
                                                                     <option value="1">1</option>
                                                                 </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="text-align: right;">
+                                                                <h1>Nilai</h1>
+                                                            </td>
+                                                            <td>
+                                                                <h1><span id="nilaitotal"></span></h1>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -300,7 +308,7 @@ require('../vendor/myfunc.php');
                                                     <tbody>
                                                         <tr>
                                                             <td width="70%">a. Penguasaan materi</td>
-                                                            <td><select name="penguasaanmateri" class="form-control">
+                                                            <td><select name="penguasaanmateri" id="penguasaanmateri" class="form-control">
                                                                     <option value="5">5</option>
                                                                     <option value="4">4</option>
                                                                     <option value="3">3</option>
@@ -311,7 +319,7 @@ require('../vendor/myfunc.php');
                                                         </tr>
                                                         <tr>
                                                             <td>b. Sikap</td>
-                                                            <td><select name="sikap" class="form-control">
+                                                            <td><select name="sikap" id="sikap" class="form-control">
                                                                     <option value="5">5</option>
                                                                     <option value="4">4</option>
                                                                     <option value="3">3</option>
@@ -332,7 +340,7 @@ require('../vendor/myfunc.php');
                                                     <tbody>
                                                         <tr>
                                                             <td width="70%">a. Ketepatan teknik penulisan dan tata bahasa</td>
-                                                            <td><select name="penulisan" class="form-control">
+                                                            <td><select name="penulisan" id="penulisan" class="form-control">
                                                                     <option value="5">5</option>
                                                                     <option value="4">4</option>
                                                                     <option value="3">3</option>
@@ -392,6 +400,23 @@ require('../vendor/myfunc.php');
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="../js/ruang-admin.min.js"></script>
+
+    <script>
+        $('select').change(function() {
+            var pentingnyamasalah = Number($('#pentingnyamasalah').val());
+            var keselarasan = Number($('#keselarasan').val());
+            var analisadata = Number($('#analisadata').val());
+            var kajianpustaka = Number($('#kajianpustaka').val());
+            var paparandata = Number($('#paparandata').val());
+            var alurpembahasan = Number($('#alurpembahasan').val());
+            var kesimpulan = Number($('#kesimpulan').val());
+            var penguasaanmateri = Number($('#penguasaanmateri').val());
+            var sikap = Number($('#sikap').val());
+            var penulisan = Number($('#penulisan').val());
+            $('#nilaitotal').html((pentingnyamasalah + keselarasan + analisadata + kajianpustaka + paparandata + alurpembahasan + kesimpulan + penguasaanmateri + sikap + penulisan) * 2);
+        });
+    </script>
+
 
 </body>
 
