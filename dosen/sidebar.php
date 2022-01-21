@@ -22,8 +22,8 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-user"></i>
+        <a class="nav-link" href="penguji-dashboard.php">
+            <i class="fas fa-fw fa-check-circle"></i>
             <span>Penguji</span>
         </a>
     </li>

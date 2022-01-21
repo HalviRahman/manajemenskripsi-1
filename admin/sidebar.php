@@ -67,6 +67,7 @@
         <a class="collapse-item" href="kaprodi-isi.php">Kaprodi</a>
         <a class="collapse-item" href="daftarruang.php">Daftar Ruang</a>
         <a class="collapse-item" href="bidangminat.php">Bidang Minat</a>
+        <a class="collapse-item" href="loginas.php">Masuk Sebagai</a>
       </div>
     </div>
   </li>

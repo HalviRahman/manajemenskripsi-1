@@ -1,11 +1,10 @@
 <?php
 session_start();
 $userid = $_SESSION['userid'];
-$nama = $_SESSION['nama'];
 global $userid;
 $role = $_SESSION['role'];
 $jabatan = $_SESSION['jabatan'];
-if ($role != 'dosen') {
+if ($role != 'admin') {
     header("location:../deauth.php");
 }
 require('../config.php');
@@ -47,50 +46,66 @@ require('../vendor/myfunc.php');
                 <!-- Container Fluid-->
                 <div class="container-fluid" id="container-wrapper">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Data Mahasiswa Bimbingan</h1>
+                        <h1 class="h3 mb-0 text-gray-800"></h1>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="./">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Daftar Mahasiswa Bimbingan</li>
+                            <li class="breadcrumb-item active" aria-current="page">Masuk Sebagai</li>
                         </ol>
                     </div>
 
-                    <!-- Data table -->
+                    <!-- ujian hari ini -->
                     <div class="row">
-                        <!-- Pengajuan Ujian -->
+                        <!-- Datatables -->
                         <div class="col-lg-12">
                             <div class="card mb-4">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Daftar Mahasiswa Bimbingan</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Masuk Sebagai</h6>
                                 </div>
+
                                 <div class="table-responsive p-3">
-                                    <table class="table align-items-center table-flush" id="dataTableHover">
+                                    <?php
+                                    //ambil nilai variabel pesan di URL
+                                    if (isset($_GET['pesan'])) {
+                                        $pesan = $_GET['pesan'];
+                                        if ($pesan == 'success') {
+                                    ?>
+                                            <div class="alert alert-success" role="alert">
+                                                Berhasil!
+                                            </div>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+                                    <table class="table align-items-center table-flush" id="dataTable">
                                         <thead class="thead-light">
                                             <tr>
                                                 <th class="text-center">No</th>
-                                                <th class="text-center">Nama</th>
                                                 <th class="text-center">NIM</th>
-                                                <th class="text-center">Judul</th>
+                                                <th class="text-center">Nama</th>
+                                                <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                             $no = 1;
-                                            // ambil data pengajuan ujian proposal
-                                            $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE pembimbing=?");
-                                            $stmt->bind_param("s", $nama);
+                                            // ambil data pengajuan judul
+                                            $stmt = $conn->prepare("SELECT * FROM pengguna");
                                             $stmt->execute();
                                             $result = $stmt->get_result();
                                             while ($dhasil = $result->fetch_assoc()) {
-                                                $nimmhs = $dhasil['nim'];
-                                                $namamhs = $dhasil['nama'];
-                                                $judul = $dhasil['judul'];
+                                                $nim = $dhasil['nim'];
+                                                $nama = $dhasil['nama'];
+                                                $email = $dhasil['email'];
+                                                $status = $dhasil['aktif'];
                                                 $token = $dhasil['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
-                                                    <td><?= $namamhs; ?></td>
-                                                    <td><?= $nimmhs; ?></td>
-                                                    <td><?= $judul; ?></td>
+                                                    <td><?= $nim; ?></td>
+                                                    <td><?= $nama; ?></td>
+                                                    <td class="text-center">
+                                                        <a href="loginas-masuk.php?token=<?= $token; ?>" class="btn btn-info" type="button" onclick="return confirm('Masuk sebagai pengguna ini ?')"><i class="fa fa-user" aria-hidden="true"></i> Masuk</a>
+                                                    </td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -101,10 +116,12 @@ require('../vendor/myfunc.php');
                                 </div>
                             </div>
                         </div>
-
                     </div>
+                    <!--Row-->
+
                 </div>
             </div>
+
             <!-- Footer -->
             <?php
             require('footer.php');
