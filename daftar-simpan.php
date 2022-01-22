@@ -8,8 +8,8 @@ $nim = mysqli_real_escape_string($conn, $_POST['nim']);
 $nohp = mysqli_real_escape_string($conn, $_POST['nohp']);
 $email = mysqli_real_escape_string($conn, $_POST['email']);
 $userid = mysqli_real_escape_string($conn, $_POST['userid']);
-$password = mysqli_real_escape_string($conn, $_POST['password']);
-$password2 = mysqli_real_escape_string($conn, $_POST['password2']);
+$password = mysqli_real_escape_string($conn, strtolower($_POST['password']));
+$password2 = mysqli_real_escape_string($conn, strtolower($_POST['password2']));
 $passmd5 = md5($password);
 $token = md5(microtime());
 if ($kunci == $hasil) {
