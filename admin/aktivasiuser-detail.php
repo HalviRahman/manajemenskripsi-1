@@ -77,6 +77,7 @@ require('../vendor/phpmailer/sendmail.php');
                 $nohp = $dhasil['nohp'];
                 $email = $dhasil['email'];
                 $userid = $dhasil['userid'];
+                $role = $dhasil['role'];
                 $aktif = $dhasil['aktif'];
                 $token = $dhasil['token'];
                 ?>
@@ -108,13 +109,21 @@ require('../vendor/phpmailer/sendmail.php');
                       <input type="text" class="form-control" value="<?= $userid; ?>" name="userid" readonly>
                     </div>
                     <div class="form-group">
+                      <label>Role</label>
+                      <select name="role" class="form-control">
+                        <option value="mahasiswa" selected>Mahasiswa</option>
+                        <option value="dosen">Dosen</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
                       <label>Status User</label>
                       <select name="aktif" class="form-control">
                         <option value="0" selected>Tidak Aktif</option>
                         <option value="1">Aktif</option>
                       </select>
                     </div>
-                    <button type="submit" name="edit" id="btn-submit" class="btn btn-primary btn-lg btn-block">Aktifkan Akun</button>
+                    <button type="submit" name="edit" id="btn-submit" class="btn btn-primary btn-lg btn-block">Aktifkan
+                      Akun</button>
                   </form>
                 </div>
               </div>
@@ -143,12 +152,12 @@ require('../vendor/phpmailer/sendmail.php');
 
   <!-- disable button once it clicked -->
   <script type="text/javascript">
-    $(document).ready(function() {
-      $("#my-form").submit(function(e) {
-        $("#btn-submit").attr("disabled", true);
-        return true;
-      });
+  $(document).ready(function() {
+    $("#my-form").submit(function(e) {
+      $("#btn-submit").attr("disabled", true);
+      return true;
     });
+  });
   </script>
 </body>
 

@@ -69,9 +69,9 @@ require('../vendor/myfunc.php');
                     $pesan = $_GET['pesan'];
                     if ($pesan == 'success') {
                   ?>
-                      <div class="alert alert-success" role="alert">
-                        Berhasil!
-                      </div>
+                  <div class="alert alert-success" role="alert">
+                    Berhasil!
+                  </div>
                   <?php
                     }
                   }
@@ -92,7 +92,7 @@ require('../vendor/myfunc.php');
                       <?php
                       $no = 1;
                       // ambil data pengajuan judul
-                      $stmt = $conn->prepare("SELECT * FROM pengguna");
+                      $stmt = $conn->prepare("SELECT * FROM pengguna order by aktif ASC");
                       $stmt->execute();
                       $result = $stmt->get_result();
                       while ($dhasil = $result->fetch_assoc()) {
@@ -102,26 +102,30 @@ require('../vendor/myfunc.php');
                         $status = $dhasil['aktif'];
                         $token = $dhasil['token'];
                       ?>
-                        <tr>
-                          <td><?= $no; ?></td>
-                          <td><?= $nim; ?></td>
-                          <td><?= $nama; ?></td>
-                          <td><?= $email; ?></td>
-                          <td class="text-center">
-                            <?php
+                      <tr>
+                        <td><?= $no; ?></td>
+                        <td><?= $nim; ?></td>
+                        <td><?= $nama; ?></td>
+                        <td><?= $email; ?></td>
+                        <td class="text-center">
+                          <?php
                             if ($status == 0) {
                             ?>
-                              <a href="aktivasiuser-detail.php?token=<?= $token; ?>" type="button" class="btn btn-danger btn-sm">Nonaktif</a>
-                            <?php
+                          <a href="aktivasiuser-detail.php?token=<?= $token; ?>" type="button"
+                            class="btn btn-danger btn-sm">Nonaktif</a>
+                          <?php
                             } elseif ($status == 1) {
                             ?>
-                              <a href="aktivasiuser-detail.php?token=<?= $token; ?>" type="button" class="btn btn-success btn-sm">Aktif</a>
-                            <?php } ?>
-                          </td>
-                          <td class="text-center">
-                            <a href="aktivasiuser-hapus.php?token=<?= $token; ?>" class="btn btn-danger" type="button" onclick="return confirm('Hapus data ini ?')"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                          </td>
-                        </tr>
+                          <a href="aktivasiuser-detail.php?token=<?= $token; ?>" type="button"
+                            class="btn btn-success btn-sm">Aktif</a>
+                          <?php } ?>
+                        </td>
+                        <td class="text-center">
+                          <a href="aktivasiuser-hapus.php?token=<?= $token; ?>" class="btn btn-danger" type="button"
+                            onclick="return confirm('Hapus data ini ?')"><i class="fa fa-trash"
+                              aria-hidden="true"></i></a>
+                        </td>
+                      </tr>
                       <?php
                         $no++;
                       }
@@ -160,10 +164,10 @@ require('../vendor/myfunc.php');
 
   <!-- Page level custom scripts -->
   <script>
-    $(document).ready(function() {
-      $('#dataTable').DataTable(); // ID From dataTable 
-      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-    });
+  $(document).ready(function() {
+    $('#dataTable').DataTable(); // ID From dataTable 
+    $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+  });
   </script>
 
 </body>
