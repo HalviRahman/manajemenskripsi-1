@@ -21,8 +21,8 @@ if (isset($_POST['edit'])) {
   $email = mysqli_real_escape_string($conn, $_POST['email']);
   $nohp = mysqli_real_escape_string($conn, $_POST['nohp']);
   $userid = mysqli_real_escape_string($conn, $_POST['userid']);
-  $password = mysqli_real_escape_string($conn, $_POST['password']);
-  $password2 = mysqli_real_escape_string($conn, $_POST['password2']);
+  $password = mysqli_real_escape_string($conn, strtolower($_POST['password']));
+  $password2 = mysqli_real_escape_string($conn, strtolower($_POST['password2']));
   $pass = md5($password);
   $kunci = mysqli_real_escape_string($conn, strtolower($_POST['kunci']));
   $hasil = mysqli_real_escape_string($conn, strtolower($_POST['hasil']));

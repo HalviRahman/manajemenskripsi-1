@@ -12,7 +12,7 @@ date_default_timezone_set("Asia/Jakarta");
 $tanggal = date('Y-m-d H:i:s');
 //ambil data dosen pembimbing
 $stmt = $conn->prepare("SELECT * FROM pengajuanjudul WHERE nim=?");
-$stmt->bind_param("s", $nim,);
+$stmt->bind_param("s", $nim);
 $stmt->execute();
 $result = $stmt->get_result();
 $dhasil = $result->fetch_assoc();

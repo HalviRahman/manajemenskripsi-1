@@ -20,7 +20,7 @@ $tanggal = date('Y-m-d H:i:s');
 
 //ambil data dosen penguji integrasi
 $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE nim=?");
-$stmt->bind_param("s", $nim,);
+$stmt->bind_param("s", $nim);
 $stmt->execute();
 $result = $stmt->get_result();
 $dhasil = $result->fetch_assoc();
