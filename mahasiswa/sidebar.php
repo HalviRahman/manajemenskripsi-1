@@ -147,4 +147,9 @@
     }
     ?>
     <hr class="sidebar-divider">
+    <li class="nav-item active">
+        <a class="nav-link" href="../uploads/Mahasiswa.pdf" target="_blank">
+            <i class="fa fa-book"></i>
+            <span>Panduan</span></a>
+    </li>
 </ul>
