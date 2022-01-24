@@ -28,4 +28,20 @@
         </a>
     </li>
     <hr class="sidebar-divider">
+    <li class="nav-item active">
+        <a class="nav-link" href="../uploads/Dosen.pdf" target="_blank">
+            <i class="fa fa-book"></i>
+            <span>Panduan Dosen</span></a>
+    </li>
+    <?php
+    if ($_SESSION['jabatan'] == 'kaprodi' || $_SESSION['jabatan'] == 'sekprodi') {
+    ?>
+        <li class="nav-item active">
+            <a class="nav-link" href="../uploads/Sekprodi.pdf" target="_blank">
+                <i class="fa fa-book"></i>
+                <span>Panduan Pimpinan Prodi</span></a>
+        </li>
+    <?php
+    }
+    ?>
 </ul>
