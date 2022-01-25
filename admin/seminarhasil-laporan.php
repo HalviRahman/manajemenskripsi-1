@@ -106,7 +106,7 @@ require('../vendor/myfunc.php');
                         <th class="text-center">Pembimbing Anggota 2</th>
                         <th class="text-center">Penguji Ketua</th>
                         <th class="text-center">Penguji Anggota 1</th>
-                        <!--<th class="text-center">Aksi</th>-->
+                        <th class="text-center">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -126,22 +126,20 @@ require('../vendor/myfunc.php');
                         $penguji2 = $dhasil['penguji2'];
                         $token = $dhasil['token'];
                       ?>
-                      <tr>
-                        <td><?= $no; ?></td>
-                        <td><?= $nama; ?></td>
-                        <td><?= $nim; ?></td>
-                        <td><?= $judul; ?></td>
-                        <td><?= tgljam_indo($jadwalujian); ?></td>
-                        <td><?= $ruang; ?></td>
-                        <td><?= $pembimbing; ?></td>
-                        <td><?= $penguji1; ?></td>
-                        <td><?= $penguji2; ?></td>
-                        <!--
-                                                    <td class="text-center">
-                                                        <a href="ujianproposal-laporan-cetak.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-print" aria-hidden="true"></i></a>
-                                                    </td>
-                                            -->
-                      </tr>
+                        <tr>
+                          <td><?= $no; ?></td>
+                          <td><?= $nama; ?></td>
+                          <td><?= $nim; ?></td>
+                          <td><?= $judul; ?></td>
+                          <td><?= tgljam_indo($jadwalujian); ?></td>
+                          <td><?= $ruang; ?></td>
+                          <td><?= $pembimbing; ?></td>
+                          <td><?= $penguji1; ?></td>
+                          <td><?= $penguji2; ?></td>
+                          <td class="text-center">
+                            <a href="ujianproposal-admin-detail1.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                          </td>
+                        </tr>
                       <?php
                         $no++;
                       }
@@ -179,10 +177,10 @@ require('../vendor/myfunc.php');
 
   <!-- Page level custom scripts -->
   <script>
-  $(document).ready(function() {
-    $('#dataTable').DataTable(); // ID From dataTable 
-    $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-  });
+    $(document).ready(function() {
+      $('#dataTable').DataTable(); // ID From dataTable 
+      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+    });
   </script>
 
 </body>

@@ -147,6 +147,98 @@ require('../vendor/myfunc.php');
                                             </div>
                                         </div>
                                     </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col" align="center">
+                                                <label>FORM A, A-1, A-2</label>
+                                                <br />
+                                                <a href="<?= $forma; ?>" target="_blank"><img src="<?= '../img/pdficon.jpg'; ?>" width="100px" class="img-thumbnail" name="sklproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Foto</label>
+                                                <br />
+                                                <a href="<?= $foto; ?>" target="_blank"><img src="<?= $foto; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>SKL Seminar Hasil</label>
+                                                <br />
+                                                <a href="<?= $sklsemhas; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Bukti Bayar Semester Terakhir</label>
+                                                <br />
+                                                <a href="<?= $buktibayar; ?>" target="_blank"><img src="<?= $buktibayar; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Kartu Hasil Studi</label>
+                                                <br />
+                                                <a href="<?= $khs; ?>" target="_blank"><img src="<?= $khs; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Transkrip Nilai</label>
+                                                <br />
+                                                <a href="<?= $transkripnilai; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col" align="center">
+                                                <label>Ijazah terakhir</label>
+                                                <br />
+                                                <a href="<?= $ijazah; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="sklproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Sertifikat TOEFL</label>
+                                                <br />
+                                                <a href="<?= $toefl; ?>" target="_blank"><img src="<?= $toefl; ?>" width="100px" class="img-thumbnail" name="sklproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Sertifikat TOAFL</label>
+                                                <br />
+                                                <a href="<?= $toafl; ?>" target="_blank"><img src="<?= $toafl; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Form Alumni</label>
+                                                <br />
+                                                <a href="<?= $alumni; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="sklkompre"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Laporan Skripsi</label>
+                                                <br />
+                                                <a href="<?= $skripsi; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                            <div class="col" align="center">
+                                                <label>Hasil Cek Plagiasi</label>
+                                                <br />
+                                                <a href="<?= $turnitin; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
+                                                <br />
+                                                <small style="color: blue">Klik pada gambar untuk membuka file</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
                                     <label>Nilai</label>
                                     <div class="table-responsive">
                                         <table class="table table-bordered">

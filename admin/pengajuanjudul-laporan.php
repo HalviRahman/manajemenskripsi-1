@@ -100,6 +100,7 @@ require('../vendor/myfunc.php');
                                                 <th class="text-center">NIM</th>
                                                 <th class="text-center">Judul</th>
                                                 <th class="text-center">Pembimbing</th>
+                                                <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -123,6 +124,9 @@ require('../vendor/myfunc.php');
                                                     <td><?= $nim; ?></td>
                                                     <td><?= $judul; ?></td>
                                                     <td><?= $pembimbing; ?></td>
+                                                    <td class="text-center">
+                                                        <a href="pengajuanjudul-admin-detail.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                                    </td>
                                                 </tr>
                                             <?php
                                                 $no++;

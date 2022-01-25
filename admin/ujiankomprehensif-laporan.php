@@ -5,7 +5,7 @@ global $userid;
 $role = $_SESSION['role'];
 $jabatan = $_SESSION['jabatan'];
 if ($role != 'admin') {
-    header("location:../deauth.php");
+  header("location:../deauth.php");
 }
 require('../config.php');
 require('../vendor/myfunc.php');
@@ -32,15 +32,15 @@ require('../vendor/myfunc.php');
   <div id="wrapper">
     <!-- Sidebar -->
     <?php
-        require('sidebar.php');
-        ?>
+    require('sidebar.php');
+    ?>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
         <!-- TopBar -->
         <?php
-                require('topbar.php');
-                ?>
+        require('topbar.php');
+        ?>
         <!-- Topbar -->
 
         <!-- Container Fluid-->
@@ -105,44 +105,42 @@ require('../vendor/myfunc.php');
                         <th class="text-center">Tempat</th>
                         <th class="text-center">Penguji 1 (FISIKA)</th>
                         <th class="text-center">Penguji 2 (INTEGRASI)</th>
-                        <!--<th class="text-center">Aksi</th>-->
+                        <th class="text-center">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php
-                                            $no = 1;
-                                            $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE status=4");
-                                            $stmt->execute();
-                                            $result = $stmt->get_result();
-                                            while ($dhasil = $result->fetch_assoc()) {
-                                                $nim = $dhasil['nim'];
-                                                $nama = $dhasil['nama'];
-                                                $bidang = $dhasil['bidang'];
-                                                $jadwalujian = $dhasil['jadwalujian'];
-                                                $ruang = $dhasil['ruang'];
-                                                $penguji1 = $dhasil['penguji1'];
-                                                $penguji2 = $dhasil['penguji2'];
-                                                $token = $dhasil['token'];
-                                            ?>
-                      <tr>
-                        <td><?= $no; ?></td>
-                        <td><?= $nama; ?></td>
-                        <td><?= $nim; ?></td>
-                        <td><?= $bidang; ?></td>
-                        <td><?= tgljam_indo($jadwalujian); ?></td>
-                        <td><?= $ruang; ?></td>
-                        <td><?= $penguji1; ?></td>
-                        <td><?= $penguji2; ?></td>
-                        <!--
-                                                    <td class="text-center">
-                                                        <a href="ujianproposal-laporan-cetak.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-print" aria-hidden="true"></i></a>
-                                                    </td>
-                                            -->
-                      </tr>
+                      $no = 1;
+                      $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE status=4");
+                      $stmt->execute();
+                      $result = $stmt->get_result();
+                      while ($dhasil = $result->fetch_assoc()) {
+                        $nim = $dhasil['nim'];
+                        $nama = $dhasil['nama'];
+                        $bidang = $dhasil['bidang'];
+                        $jadwalujian = $dhasil['jadwalujian'];
+                        $ruang = $dhasil['ruang'];
+                        $penguji1 = $dhasil['penguji1'];
+                        $penguji2 = $dhasil['penguji2'];
+                        $token = $dhasil['token'];
+                      ?>
+                        <tr>
+                          <td><?= $no; ?></td>
+                          <td><?= $nama; ?></td>
+                          <td><?= $nim; ?></td>
+                          <td><?= $bidang; ?></td>
+                          <td><?= tgljam_indo($jadwalujian); ?></td>
+                          <td><?= $ruang; ?></td>
+                          <td><?= $penguji1; ?></td>
+                          <td><?= $penguji2; ?></td>
+                          <td class="text-center">
+                            <a href="ujianproposal-admin-detail1.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                          </td>
+                        </tr>
                       <?php
-                                                $no++;
-                                            }
-                                            ?>
+                        $no++;
+                      }
+                      ?>
                     </tbody>
                   </table>
                 </div>
@@ -155,8 +153,8 @@ require('../vendor/myfunc.php');
     </div>
     <!-- Footer -->
     <?php
-        require('footer.php');
-        ?>
+    require('footer.php');
+    ?>
     <!-- Footer -->
   </div>
   </div>
@@ -176,10 +174,10 @@ require('../vendor/myfunc.php');
 
   <!-- Page level custom scripts -->
   <script>
-  $(document).ready(function() {
-    $('#dataTable').DataTable(); // ID From dataTable 
-    $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-  });
+    $(document).ready(function() {
+      $('#dataTable').DataTable(); // ID From dataTable 
+      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+    });
   </script>
 
 </body>

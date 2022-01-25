@@ -103,7 +103,7 @@ require('../vendor/myfunc.php');
                                                 <th class="text-center">Ketua Penguji</th>
                                                 <th class="text-center">Anggota Penguji 1</th>
                                                 <th class="text-center">Anggota Penguji 2 (Pembimbing)</th>
-                                                <!--<th class="text-center">Aksi</th>-->
+                                                <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -133,11 +133,9 @@ require('../vendor/myfunc.php');
                                                     <td><?= $penguji1; ?></td>
                                                     <td><?= $penguji2; ?></td>
                                                     <td><?= $pembimbing; ?></td>
-                                                    <!--
                                                     <td class="text-center">
-                                                        <a href="ujianproposal-laporan-cetak.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-print" aria-hidden="true"></i></a>
+                                                        <a href="ujianproposal-admin-detail1.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
                                                     </td>
-                                            -->
                                                 </tr>
                                             <?php
                                                 $no++;
