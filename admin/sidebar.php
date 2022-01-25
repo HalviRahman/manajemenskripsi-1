@@ -18,8 +18,8 @@
   </li>
   <li class="nav-item active">
     <a class="nav-link" href="pemakaianruang.php">
-      <i class="fa fa-home"></i>
-      <span>Pemakaian Ruangan</span></a>
+      <i class="fa fa-calendar"></i>
+      <span>Jadwal</span></a>
   </li>
   <hr class="sidebar-divider">
   <li class="nav-item">

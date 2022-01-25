@@ -8,7 +8,7 @@ function sendmail($email, $nama, $subject, $pesan)
 	require_once "PHPMailer.php";
 	require_once "Exception.php";
 	require_once "SMTP.php";
-	require __DIR__ . "../config.php";
+	require "config.php";
 
 	$qemail = mysqli_query($conn, "SELECT * FROM email");
 	$demail = mysqli_fetch_array($qemail);

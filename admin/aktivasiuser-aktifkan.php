@@ -1,8 +1,9 @@
 <?php
 session_start();
+
 $userid = $_SESSION['userid'];
 global $userid;
-// $role = $_SESSION['role'];
+$role = $_SESSION['role'];
 $jabatan = $_SESSION['jabatan'];
 $nama = $_SESSION['nama'];
 $nim = $_SESSION['nim'];
@@ -13,16 +14,17 @@ if ($role != 'admin') {
 require('../config.php');
 require('../vendor/myfunc.php');
 require('../vendor/phpmailer/sendmail.php');
-$aktif = mysqli_real_escape_string($conn, $_POST['aktif']);
-$token = mysqli_real_escape_string($conn, $_POST['token']);
-$role = mysqli_real_escape_string($conn, $_POST['role']);
+
+$aktifmhs = mysqli_real_escape_string($conn, $_POST['aktif']);
+$tokenmhs = mysqli_real_escape_string($conn, $_POST['token']);
+$rolemhs = mysqli_real_escape_string($conn, $_POST['role']);
 $namamhs = mysqli_real_escape_string($conn, $_POST['namamhs']);
-$email = $_POST['email'];
+$emailmhs = $_POST['email'];
 
 $stmt = $conn->prepare("UPDATE pengguna
                               SET aktif=?, role=?, jabatan=?
                               WHERE token=?");
-$stmt->bind_param("ssss", $aktif, $role, $role, $token);
+$stmt->bind_param("ssss", $aktifmhs, $rolemhs, $rolemhs, $tokenmhs);
 $stmt->execute();
 
 $actual_link = "https://$_SERVER[HTTP_HOST]/manajemenskripsi/";
@@ -41,6 +43,6 @@ $pesan = "Yth. " . $namamhs . "
                 <br/>
 				Wassalamualaiakum Wr. Wb.
 				";
-sendmail($email, $nama, $subject, $pesan);
+sendmail($emailmhs, $namamhs, $subject, $pesan);
 
 header('location:aktivasiuser.php?pesan=success');

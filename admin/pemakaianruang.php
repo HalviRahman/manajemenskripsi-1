@@ -72,13 +72,14 @@ require('../vendor/myfunc.php');
                         <th class="text-center">Waktu</th>
                         <th class="text-center">Ujian</th>
                         <th class="text-center">Nama Mahasiswa</th>
+                        <th class="text-center">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
                       <!-- ambil data ujian proposal-->
                       <?php
                       $no = 1;
-                      $stmt = $conn->prepare("SELECT * FROM ujianproposal where jadwalujian is not null AND DATE(jadwalujian)>='$tglhariini'");
+                      $stmt = $conn->prepare("SELECT * FROM ujianproposal where jadwalujian is not null ORDER BY jadwalujian DESC");
                       $stmt->execute();
                       $result = $stmt->get_result();
                       $juser = $result->num_rows;
@@ -88,14 +89,18 @@ require('../vendor/myfunc.php');
                           $nama = $dhasil['nama'];
                           $jadwalujian = $dhasil['jadwalujian'];
                           $ruang = $dhasil['ruang'];
+                          $token = $dhasil['token'];
                       ?>
-                      <tr>
-                        <td><?= $no; ?></td>
-                        <td><?= $ruang; ?></td>
-                        <td><?= tgljam_indo($jadwalujian); ?></td>
-                        <td><?= $ujian; ?></td>
-                        <td><?= $nama; ?></td>
-                      </tr>
+                          <tr>
+                            <td><?= $no; ?></td>
+                            <td><?= $ruang; ?></td>
+                            <td><?= tgljam_indo($jadwalujian); ?></td>
+                            <td><?= $ujian; ?></td>
+                            <td><?= $nama; ?></td>
+                            <td class="text-center">
+                              <a href="ujianproposal-admin-detail2.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
                       <?php
                           $no++;
                         }
@@ -105,7 +110,7 @@ require('../vendor/myfunc.php');
                       <!-- ujian komprehensif-->
                       <?php
                       // $no = 1;
-                      $stmt = $conn->prepare("SELECT * FROM ujiankompre where jadwalujian is not null AND DATE(jadwalujian)>='$tglhariini'");
+                      $stmt = $conn->prepare("SELECT * FROM ujiankompre where jadwalujian is not null ORDER BY jadwalujian DESC");
                       $stmt->execute();
                       $result = $stmt->get_result();
                       $juser = $result->num_rows;
@@ -115,14 +120,18 @@ require('../vendor/myfunc.php');
                           $nama = $dhasil['nama'];
                           $jadwalujian = $dhasil['jadwalujian'];
                           $ruang = $dhasil['ruang'];
+                          $dhasil = $dhasil['token'];
                       ?>
-                      <tr>
-                        <td><?= $no; ?></td>
-                        <td><?= $ruang; ?></td>
-                        <td><?= tgljam_indo($jadwalujian); ?></td>
-                        <td><?= $ujian; ?></td>
-                        <td><?= $nama; ?></td>
-                      </tr>
+                          <tr>
+                            <td><?= $no; ?></td>
+                            <td><?= $ruang; ?></td>
+                            <td><?= tgljam_indo($jadwalujian); ?></td>
+                            <td><?= $ujian; ?></td>
+                            <td><?= $nama; ?></td>
+                            <td class="text-center">
+                              <a href="ujiankompre-admin-detail2.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
                       <?php
                           $no++;
                         }
@@ -132,7 +141,7 @@ require('../vendor/myfunc.php');
                       <!-- ujian seminar hasil-->
                       <?php
                       // $no = 1;
-                      $stmt = $conn->prepare("SELECT * FROM semhas where jadwalujian is not null AND DATE(jadwalujian)>='$tglhariini'");
+                      $stmt = $conn->prepare("SELECT * FROM semhas where jadwalujian is not null ORDER BY jadwalujian DESC");
                       $stmt->execute();
                       $result = $stmt->get_result();
                       $juser = $result->num_rows;
@@ -142,14 +151,18 @@ require('../vendor/myfunc.php');
                           $nama = $dhasil['nama'];
                           $jadwalujian = $dhasil['jadwalujian'];
                           $ruang = $dhasil['ruang'];
+                          $token = $dhasil['token'];
                       ?>
-                      <tr>
-                        <td><?= $no; ?></td>
-                        <td><?= $ruang; ?></td>
-                        <td><?= tgljam_indo($jadwalujian); ?></td>
-                        <td><?= $ujian; ?></td>
-                        <td><?= $nama; ?></td>
-                      </tr>
+                          <tr>
+                            <td><?= $no; ?></td>
+                            <td><?= $ruang; ?></td>
+                            <td><?= tgljam_indo($jadwalujian); ?></td>
+                            <td><?= $ujian; ?></td>
+                            <td><?= $nama; ?></td>
+                            <td class="text-center">
+                              <a href="semnarhasil-admin-detail2.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
                       <?php
                           $no++;
                         }
@@ -159,7 +172,7 @@ require('../vendor/myfunc.php');
                       <!-- ujian skripsi-->
                       <?php
                       // $no = 1;
-                      $stmt = $conn->prepare("SELECT * FROM ujianskripsi where jadwalujian is not null AND DATE(jadwalujian)>='$tglhariini'");
+                      $stmt = $conn->prepare("SELECT * FROM ujianskripsi where jadwalujian is not null ORDER BY jadwalujian DESC");
                       $stmt->execute();
                       $result = $stmt->get_result();
                       $juser = $result->num_rows;
@@ -169,14 +182,18 @@ require('../vendor/myfunc.php');
                           $nama = $dhasil['nama'];
                           $jadwalujian = $dhasil['jadwalujian'];
                           $ruang = $dhasil['ruang'];
+                          $token = $dhasil['token'];
                       ?>
-                      <tr>
-                        <td><?= $no; ?></td>
-                        <td><?= $ruang; ?></td>
-                        <td><?= tgljam_indo($jadwalujian); ?></td>
-                        <td><?= $ujian; ?></td>
-                        <td><?= $nama; ?></td>
-                      </tr>
+                          <tr>
+                            <td><?= $no; ?></td>
+                            <td><?= $ruang; ?></td>
+                            <td><?= tgljam_indo($jadwalujian); ?></td>
+                            <td><?= $ujian; ?></td>
+                            <td><?= $nama; ?></td>
+                            <td class="text-center">
+                              <a href="ujianskripsi-admin-detail2.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
                       <?php
                           $no++;
                         }
@@ -217,10 +234,10 @@ require('../vendor/myfunc.php');
 
   <!-- Page level custom scripts -->
   <script>
-  $(document).ready(function() {
-    $('#dataTable').DataTable(); // ID From dataTable 
-    $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-  });
+    $(document).ready(function() {
+      $('#dataTable').DataTable(); // ID From dataTable 
+      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+    });
   </script>
 
 </body>
