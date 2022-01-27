@@ -22,27 +22,50 @@ require('../config.php');
 require('../vendor/phpmailer/sendmail.php');
 require('../vendor/myfunc.php');
 
-//update status file proposal
-$stmt = $conn->prepare("UPDATE ujiankompre
+//cek apakah ruangan kosong, kalo kosong baru boleh dipake
+$stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE ruang='$ruangan' AND jadwalujian='$jadwalujian'");
+$stmt->execute();
+$result = $stmt->get_result();
+$jsempro = $result->num_rows;
+
+$stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE ruang='$ruangan' AND jadwalujian='$jadwalujian'");
+$stmt->execute();
+$result = $stmt->get_result();
+$jkompre = $result->num_rows;
+
+$stmt = $conn->prepare("SELECT * FROM semhas WHERE ruang='$ruangan' AND jadwalujian='$jadwalujian'");
+$stmt->execute();
+$result = $stmt->get_result();
+$jsemhas = $result->num_rows;
+
+$stmt = $conn->prepare("SELECT * FROM ujianskripsi WHERE ruang='$ruangan' AND jadwalujian='$jadwalujian'");
+$stmt->execute();
+$result = $stmt->get_result();
+$jskripsi = $result->num_rows;
+
+if ($jsempro == 0 and $jkompre == 0 and $jsemhas == 0 and $jskripsi == 0) {
+
+        //update status file proposal
+        $stmt = $conn->prepare("UPDATE ujiankompre
                         SET jadwalujian=?,
                             ruang=?,
                             linkzoom=?,
                             status=3
                         WHERE token=?");
-$stmt->bind_param("ssss", $jadwalujian, $ruangan, $linkzoom, $token);
-$stmt->execute();
+        $stmt->bind_param("ssss", $jadwalujian, $ruangan, $linkzoom, $token);
+        $stmt->execute();
 
-//kirim email notifikasi ke penguji1
-$stmt = $conn->prepare("SELECT * FROM pengguna WHERE nama=?");
-$stmt->bind_param("s", $penguji1);
-$stmt->execute();
-$result = $stmt->get_result();
-$dhasil = $result->fetch_assoc();
-$emailpenguji1 = $dhasil['email'];
-$namapenguji1 = $dhasil['nama'];
-$actual_link = "https://$_SERVER[HTTP_HOST]/manajemenskripsi";
-$subject = "Notifikasi Pelaksanaan Ujian Komprehensif";
-$pesan = "Yth. " . $namapenguji1 . "
+        //kirim email notifikasi ke penguji1
+        $stmt = $conn->prepare("SELECT * FROM pengguna WHERE nama=?");
+        $stmt->bind_param("s", $penguji1);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $dhasil = $result->fetch_assoc();
+        $emailpenguji1 = $dhasil['email'];
+        $namapenguji1 = $dhasil['nama'];
+        $actual_link = "https://$_SERVER[HTTP_HOST]/manajemenskripsi";
+        $subject = "Notifikasi Pelaksanaan Ujian Komprehensif";
+        $pesan = "Yth. " . $namapenguji1 . "
         <br/>
         Assalamualaikum Wr. Wb.
         <br/>
@@ -62,19 +85,19 @@ $pesan = "Yth. " . $namapenguji1 . "
         <br/>
         Wassalamualaikum Wr. Wb.
         ";
-sendmail($emailpenguji1, $namapenguji1, $subject, $pesan);
+        sendmail($emailpenguji1, $namapenguji1, $subject, $pesan);
 
-//kirim email notifikasi ke penguji2
-$stmt = $conn->prepare("SELECT * FROM pengguna WHERE nama=?");
-$stmt->bind_param("s", $penguji2);
-$stmt->execute();
-$result = $stmt->get_result();
-$dhasil = $result->fetch_assoc();
-$emailpenguji2 = $dhasil['email'];
-$namapenguji2 = $dhasil['nama'];
-$actual_link = "https://$_SERVER[HTTP_HOST]/manajemenskripsi";
-$subject = "Notifikasi Pelaksanaan Ujian Komprehensif";
-$pesan = "Yth. " . $namapenguji2 . "
+        //kirim email notifikasi ke penguji2
+        $stmt = $conn->prepare("SELECT * FROM pengguna WHERE nama=?");
+        $stmt->bind_param("s", $penguji2);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $dhasil = $result->fetch_assoc();
+        $emailpenguji2 = $dhasil['email'];
+        $namapenguji2 = $dhasil['nama'];
+        $actual_link = "https://$_SERVER[HTTP_HOST]/manajemenskripsi";
+        $subject = "Notifikasi Pelaksanaan Ujian Komprehensif";
+        $pesan = "Yth. " . $namapenguji2 . "
         <br/>
         Assalamualaikum Wr. Wb.
         <br/>
@@ -94,19 +117,19 @@ $pesan = "Yth. " . $namapenguji2 . "
         <br/>
         Wassalamualaikum Wr. Wb.
         ";
-sendmail($emailpenguji2, $namapenguji2, $subject, $pesan);
+        sendmail($emailpenguji2, $namapenguji2, $subject, $pesan);
 
-//kirim email notifikasi ke mahasiswa
-$stmt = $conn->prepare("SELECT * FROM pengguna WHERE nama=?");
-$stmt->bind_param("s", $namamhs);
-$stmt->execute();
-$result = $stmt->get_result();
-$dhasil = $result->fetch_assoc();
-$emailmhs = $dhasil['email'];
-$namamhs = $dhasil['nama'];
-$actual_link = "https://$_SERVER[HTTP_HOST]/manajemenskripsi";
-$subject = "Notifikasi Pelaksanaan Ujian Komprehensif";
-$pesan = "Yth. " . $namamhs . "
+        //kirim email notifikasi ke mahasiswa
+        $stmt = $conn->prepare("SELECT * FROM pengguna WHERE nama=?");
+        $stmt->bind_param("s", $namamhs);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $dhasil = $result->fetch_assoc();
+        $emailmhs = $dhasil['email'];
+        $namamhs = $dhasil['nama'];
+        $actual_link = "https://$_SERVER[HTTP_HOST]/manajemenskripsi";
+        $subject = "Notifikasi Pelaksanaan Ujian Komprehensif";
+        $pesan = "Yth. " . $namamhs . "
         <br/>
         Assalamualaikum Wr. Wb.
         <br/>
@@ -126,6 +149,9 @@ $pesan = "Yth. " . $namamhs . "
         <br/>
         Wassalamualaikum Wr. Wb.
         ";
-sendmail($emailmhs, $namamhs, $subject, $pesan);
+        sendmail($emailmhs, $namamhs, $subject, $pesan);
 
-header('location:index.php?pesan=adminsetujui');
+        header('location:index.php?pesan=adminsetujui');
+} else {
+        header("location:ujiankomprehensif-admin-detail2.php?token=$token&pesan=jadwalerror");
+}

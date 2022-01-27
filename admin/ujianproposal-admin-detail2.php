@@ -7,9 +7,10 @@ $jabatan = $_SESSION['jabatan'];
 $nama = $_SESSION['nama'];
 $nim = $_SESSION['nim'];
 if ($role != 'admin') {
-    header("location:../deauth.php");
+  header("location:../deauth.php");
 }
 require('../config.php');
+require('../vendor/myfunc.php');
 ?>
 
 <!DOCTYPE html>
@@ -32,15 +33,15 @@ require('../config.php');
   <div id="wrapper">
     <!-- Sidebar -->
     <?php
-        require('sidebar.php');
-        ?>
+    require('sidebar.php');
+    ?>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
         <!-- TopBar -->
         <?php
-                require('topbar.php');
-                ?>
+        require('topbar.php');
+        ?>
         <!-- Topbar -->
 
         <!-- Container Fluid-->
@@ -52,7 +53,18 @@ require('../config.php');
               <li class="breadcrumb-item active" aria-current="page">Pengajuan Ujian Seminar Proposal</li>
             </ol>
           </div>
-
+          <?php
+          if (isset($_GET['pesan'])) {
+            $pesan = $_GET['pesan'];
+            if ($pesan == 'jadwalerror') {
+          ?>
+              <div class="alert alert-danger" role="alert">
+                ERROR!! Jadwal yang dipilih sudah ada!!
+              </div>
+          <?php
+            }
+          }
+          ?>
           <div class="row">
             <div class="col-lg-12">
               <!-- Form Basic -->
@@ -60,27 +72,28 @@ require('../config.php');
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Data Ujian Seminar Proposal</h6>
                 </div>
+
                 <?php
-                                $no = 1;
-                                $token = $_GET['token'];
-                                // ambil data pengajuan judul
-                                $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE token=?");
-                                $stmt->bind_param("s", $token);
-                                $stmt->execute();
-                                $result = $stmt->get_result();
-                                $dhasil = $result->fetch_assoc();
-                                $nim = $dhasil['nim'];
-                                $nama = $dhasil['nama'];
-                                $bidang = $dhasil['bidang'];
-                                $judul = $dhasil['judul'];
-                                $persetujuanpembimbing = $dhasil['persetujuanpembimbing'];
-                                $khs = $dhasil['khs'];
-                                $proposal = $dhasil['proposal'];
-                                $pembimbing = $dhasil['pembimbing'];
-                                $penguji1 = $dhasil['penguji1'];
-                                $penguji2 = $dhasil['penguji2'];
-                                $token = $dhasil['token'];
-                                ?>
+                $no = 1;
+                $token = $_GET['token'];
+                // ambil data pengajuan judul
+                $stmt = $conn->prepare("SELECT * FROM ujianproposal WHERE token=?");
+                $stmt->bind_param("s", $token);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $dhasil = $result->fetch_assoc();
+                $nim = $dhasil['nim'];
+                $nama = $dhasil['nama'];
+                $bidang = $dhasil['bidang'];
+                $judul = $dhasil['judul'];
+                $persetujuanpembimbing = $dhasil['persetujuanpembimbing'];
+                $khs = $dhasil['khs'];
+                $proposal = $dhasil['proposal'];
+                $pembimbing = $dhasil['pembimbing'];
+                $penguji1 = $dhasil['penguji1'];
+                $penguji2 = $dhasil['penguji2'];
+                $token = $dhasil['token'];
+                ?>
                 <div class="card-body">
                   <input type="hidden" class="form-control" value="<?= $nama; ?>" name="nama">
                   <input type="hidden" class="form-control" value="<?= $nim; ?>" name="nim">
@@ -143,16 +156,16 @@ require('../config.php');
                           <label>Ruangan</label>
                           <select name="ruangan" class="form-control">
                             <?php
-                                                        $stmt = $conn->prepare("SELECT * FROM ruangan");
-                                                        $stmt->execute();
-                                                        $result = $stmt->get_result();
-                                                        while ($dhasil = $result->fetch_assoc()) {
-                                                            $namaruangan = $dhasil['namaruangan'];
-                                                        ?>
-                            <option value="<?= $namaruangan; ?>"><?= $namaruangan; ?></option>
+                            $stmt = $conn->prepare("SELECT * FROM ruangan");
+                            $stmt->execute();
+                            $result = $stmt->get_result();
+                            while ($dhasil = $result->fetch_assoc()) {
+                              $namaruangan = $dhasil['namaruangan'];
+                            ?>
+                              <option value="<?= $namaruangan; ?>"><?= $namaruangan; ?></option>
                             <?php
-                                                        }
-                                                        ?>
+                            }
+                            ?>
                           </select>
                         </div>
                       </div>
@@ -171,9 +184,7 @@ require('../config.php');
                     <input type="hidden" name="nim" value="<?= $nim; ?>">
                     <div class="row">
                       <div class="col">
-                        <button type="submit" class="btn btn-success btn-lg btn-block"
-                          formaction="ujianproposal-admin-setujui2.php"
-                          onclick="return confirm('Jadwalkan ujian ini ?')">JADWALKAN</button>
+                        <button type="submit" class="btn btn-success btn-lg btn-block" formaction="ujianproposal-admin-setujui2.php" onclick="return confirm('Jadwalkan ujian ini ?')">JADWALKAN</button>
                       </div>
                     </div>
                     <!-- modal tolak -->
@@ -191,10 +202,7 @@ require('../config.php');
                           </div>
                           <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                            <button name="aksi" value="tolak" type="submit" formaction="ujianproposal-admin-tolak2.php"
-                              class="btn btn-danger btn-sm"
-                              onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i
-                                class="fa fa-times"></i> Tolak</button>
+                            <button name="aksi" value="tolak" type="submit" formaction="ujianproposal-admin-tolak2.php" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i class="fa fa-times"></i> Tolak</button>
                           </div>
                         </div>
                       </div>
@@ -209,8 +217,8 @@ require('../config.php');
       </div>
       <!-- Footer -->
       <?php
-            require('footer.php');
-            ?>
+      require('footer.php');
+      ?>
       <!-- Footer -->
     </div>
   </div>

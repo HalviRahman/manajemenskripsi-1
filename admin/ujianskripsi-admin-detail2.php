@@ -53,7 +53,18 @@ require('../vendor/myfunc.php');
                             <li class="breadcrumb-item active" aria-current="page">Pengajuan Ujian Skripsi</li>
                         </ol>
                     </div>
-
+                    <?php
+                    if (isset($_GET['pesan'])) {
+                        $pesan = $_GET['pesan'];
+                        if ($pesan == 'jadwalerror') {
+                    ?>
+                            <div class="alert alert-danger" role="alert">
+                                ERROR!! Jadwal yang dipilih sudah ada!!
+                            </div>
+                    <?php
+                        }
+                    }
+                    ?>
                     <div class="row">
                         <div class="col-lg-12">
                             <!-- Form Basic -->

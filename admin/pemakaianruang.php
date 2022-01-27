@@ -52,9 +52,17 @@ require('../vendor/myfunc.php');
               <li class="breadcrumb-item active" aria-current="page">Pemakaian Ruangan</li>
             </ol>
           </div>
-          <!-- ujian hari ini -->
           <?php
-          $tglhariini = date('Y-m-d');
+          if (isset($_GET['pesan'])) {
+            $pesan = $_GET['pesan'];
+            if ($pesan == 'jadwalok') {
+          ?>
+              <div class="alert alert-success" role="alert">
+                Perubahan jadwal berhasil :)
+              </div>
+          <?php
+            }
+          }
           ?>
           <div class="row">
             <!-- Datatables -->
@@ -129,7 +137,7 @@ require('../vendor/myfunc.php');
                             <td><?= $ujian; ?></td>
                             <td><?= $nama; ?></td>
                             <td class="text-center">
-                              <a href="ujiankompre-admin-detail2.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                              <a href="ujiankomprehensif-admin-detail2.php?token=<?= $token; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
                             </td>
                           </tr>
                       <?php
