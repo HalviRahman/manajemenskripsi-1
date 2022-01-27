@@ -158,7 +158,7 @@ require('../config.php');
                                             <label>Bukti cek plagiarisme</label>
                                             <input type="file" name="turnitin" class="form-control" accept=".pdf">
                                             <small style="color: red;">
-                                                <li>Halaman hasil pengecekan Turnitin</li>
+                                                <li>Hanya halaman hasil pengecekan Turnitin</li>
                                                 <li>Format file PDF ukuran maksimal 1MB</li>
                                                 <li>Similarity maksimal 35%</li>
                                             </small>
