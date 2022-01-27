@@ -55,6 +55,17 @@ require('../vendor/myfunc.php');
           <!-- ujian hari ini -->
           <?php
           $tglhariini = date('Y-m-d');
+
+          if (isset($_GET['pesan'])) {
+            $pesan = $_GET['pesan'];
+            if ($pesan == 'adminsetujui') {
+          ?>
+              <div class="alert alert-success" role="alert">
+                Perubahan data berhasil :)
+              </div>
+          <?php
+            }
+          }
           ?>
           <div class="row">
             <!-- Datatables -->
