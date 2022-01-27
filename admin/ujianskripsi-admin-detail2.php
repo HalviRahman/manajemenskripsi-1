@@ -167,12 +167,14 @@ require('../vendor/myfunc.php');
                                                 <a href="<?= $foto; ?>" target="_blank"><img src="<?= $foto; ?>" width="100px" class="img-thumbnail" name="sklkompre"></a>
                                                 <br />
                                             </div>
+                                            <!--
                                             <div class="col" align="center">
                                                 <label>SKL Seminar Hasil</label>
                                                 <br />
                                                 <a href="<?= $sklsemhas; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="sklkompre"></a>
                                                 <br />
                                             </div>
+                -->
                                             <div class="col" align="center">
                                                 <label>Bukti Bayar Semester Terakhir</label>
                                                 <br />

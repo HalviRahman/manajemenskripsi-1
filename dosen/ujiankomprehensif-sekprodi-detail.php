@@ -7,9 +7,9 @@ $jabatan = $_SESSION['jabatan'];
 $nama = $_SESSION['nama'];
 $nim = $_SESSION['nim'];
 if ($role != 'dosen') {
-    if ($jabatan != 'kaprodi' || $jabatan != 'sekprodi') {
-        header("location:../deauth.php");
-    }
+  if ($jabatan != 'kaprodi' || $jabatan != 'sekprodi') {
+    header("location:../deauth.php");
+  }
 }
 require('../config.php');
 ?>
@@ -34,15 +34,15 @@ require('../config.php');
   <div id="wrapper">
     <!-- Sidebar -->
     <?php
-        require('sidebar.php');
-        ?>
+    require('sidebar.php');
+    ?>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
         <!-- TopBar -->
         <?php
-                require('topbar.php');
-                ?>
+        require('topbar.php');
+        ?>
         <!-- Topbar -->
 
         <!-- Container Fluid-->
@@ -63,32 +63,32 @@ require('../config.php');
                   <h6 class="m-0 font-weight-bold text-primary">Pengajuan Ujian Komprehensif</h6>
                 </div>
                 <?php
-                                $no = 1;
-                                $token = $_GET['token'];
-                                // ambil data pengajuan judul
-                                $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE token=?");
-                                $stmt->bind_param("s", $token);
-                                $stmt->execute();
-                                $result = $stmt->get_result();
-                                $dhasil = $result->fetch_assoc();
-                                $nim = $dhasil['nim'];
-                                $nama = $dhasil['nama'];
-                                $bidang = $dhasil['bidang'];
-                                $judul = $dhasil['judul'];
-                                $judulskripsi = $dhasil['judulskripsi'];
-                                $sklsempro = $dhasil['sklsempro'];
-                                $fileproposal = $dhasil['fileproposal'];
-                                $pembimbing = $dhasil['pembimbing'];
-                                $token = $dhasil['token'];
+                $no = 1;
+                $token = $_GET['token'];
+                // ambil data pengajuan judul
+                $stmt = $conn->prepare("SELECT * FROM ujiankompre WHERE token=?");
+                $stmt->bind_param("s", $token);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $dhasil = $result->fetch_assoc();
+                $nim = $dhasil['nim'];
+                $nama = $dhasil['nama'];
+                $bidang = $dhasil['bidang'];
+                $judul = $dhasil['judul'];
+                $judulskripsi = $dhasil['judulskripsi'];
+                $sklsempro = $dhasil['sklsempro'];
+                $fileproposal = $dhasil['fileproposal'];
+                $pembimbing = $dhasil['pembimbing'];
+                $token = $dhasil['token'];
 
-                                //ambil data penguji1
-                                $stmt2 = $conn->prepare("SELECT * FROM ujianproposal WHERE nim=?");
-                                $stmt2->bind_param("s", $nim);
-                                $stmt2->execute();
-                                $result2 = $stmt2->get_result();
-                                $dhasil2 = $result2->fetch_assoc();
-                                $penguji1 = $dhasil2['penguji1'];
-                                ?>
+                //ambil data penguji1
+                $stmt2 = $conn->prepare("SELECT * FROM ujianproposal WHERE nim=?");
+                $stmt2->bind_param("s", $nim);
+                $stmt2->execute();
+                $result2 = $stmt2->get_result();
+                $dhasil2 = $result2->fetch_assoc();
+                $penguji1 = $dhasil2['penguji1'];
+                ?>
                 <div class="card-body">
                   <input type="hidden" class="form-control" value="<?= $nama; ?>" name="nama">
                   <input type="hidden" class="form-control" value="<?= $nim; ?>" name="nim">
@@ -127,18 +127,19 @@ require('../config.php');
                   <div class="form-group">
                     <div class="row">
                       <div class="col" align="center">
+                        <!--
                         <label>Surat Keterangan Lulus Ujian Seminar Proposal</label>
                         <br />
                         <a href="<?= $sklsempro; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px"
                             class="img-thumbnail" name="fileproposal"></a>
                         <br />
                         <small style="color: blue">Klik pada gambar untuk membuka file</small>
+-->
                       </div>
                       <div class="col" align="center">
                         <label>File Proposal</label>
                         <br />
-                        <a href="<?= $fileproposal; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px"
-                            class="img-thumbnail" name="fileproposal"></a>
+                        <a href="<?= $fileproposal; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
                         <br />
                         <small style="color: blue">Klik pada gambar untuk membuka file</small>
                       </div>
@@ -151,40 +152,40 @@ require('../config.php');
                         <select name="penguji1" class="form-control">
                           <option value="<?= $penguji1; ?>"><?= $penguji1; ?></option>
                           <?php
-                                                    $stmt = $conn->prepare("SELECT * FROM pengguna WHERE role='dosen' and nama <> '$pembimbing'");
-                                                    $stmt->execute();
-                                                    $result = $stmt->get_result();
-                                                    while ($dhasil = $result->fetch_assoc()) {
-                                                        $nama = $dhasil['nama'];
-                                                        $stmt2 = $conn->prepare("SELECT * FROM ujianproposal WHERE penguji1='$nama' OR penguji2='$nama'");
-                                                        $stmt2->execute();
-                                                        $result2 = $stmt2->get_result();
-                                                        $jbimbingan = $result2->num_rows;
-                                                    ?>
-                          <option value="<?= $nama; ?>"><?= $nama; ?> (<?= $jbimbingan; ?>)</option>
+                          $stmt = $conn->prepare("SELECT * FROM pengguna WHERE role='dosen' and nama <> '$pembimbing'");
+                          $stmt->execute();
+                          $result = $stmt->get_result();
+                          while ($dhasil = $result->fetch_assoc()) {
+                            $nama = $dhasil['nama'];
+                            $stmt2 = $conn->prepare("SELECT * FROM ujianproposal WHERE penguji1='$nama' OR penguji2='$nama'");
+                            $stmt2->execute();
+                            $result2 = $stmt2->get_result();
+                            $jbimbingan = $result2->num_rows;
+                          ?>
+                            <option value="<?= $nama; ?>"><?= $nama; ?> (<?= $jbimbingan; ?>)</option>
                           <?php
-                                                    }
-                                                    ?>
+                          }
+                          ?>
                         </select>
                       </div>
                       <div class="col">
                         <label>Penguji Integrasi</label>
                         <select name="penguji2" class="form-control">
                           <?php
-                                                    $stmt = $conn->prepare("SELECT * FROM pengguna WHERE role='dosen' and nama <> '$pembimbing'");
-                                                    $stmt->execute();
-                                                    $result = $stmt->get_result();
-                                                    while ($dhasil = $result->fetch_assoc()) {
-                                                        $nama = $dhasil['nama'];
-                                                        $stmt2 = $conn->prepare("SELECT * FROM ujianproposal WHERE penguji1='$nama' OR penguji2='$nama'");
-                                                        $stmt2->execute();
-                                                        $result2 = $stmt2->get_result();
-                                                        $jbimbingan = $result2->num_rows;
-                                                    ?>
-                          <option value="<?= $nama; ?>"><?= $nama; ?> (<?= $jbimbingan; ?>)</option>
+                          $stmt = $conn->prepare("SELECT * FROM pengguna WHERE role='dosen' and nama <> '$pembimbing'");
+                          $stmt->execute();
+                          $result = $stmt->get_result();
+                          while ($dhasil = $result->fetch_assoc()) {
+                            $nama = $dhasil['nama'];
+                            $stmt2 = $conn->prepare("SELECT * FROM ujianproposal WHERE penguji1='$nama' OR penguji2='$nama'");
+                            $stmt2->execute();
+                            $result2 = $stmt2->get_result();
+                            $jbimbingan = $result2->num_rows;
+                          ?>
+                            <option value="<?= $nama; ?>"><?= $nama; ?> (<?= $jbimbingan; ?>)</option>
                           <?php
-                                                    }
-                                                    ?>
+                          }
+                          ?>
                         </select>
                       </div>
                     </div>
@@ -194,13 +195,10 @@ require('../config.php');
                     <input type="hidden" name="namamhs" value="<?= $namamhs; ?>">
                     <div class="row">
                       <div class="col">
-                        <button type="submit" class="btn btn-success btn-lg btn-block"
-                          formaction="ujiankomprehensif-sekprodi-setujui.php"
-                          onclick="return confirm('Menyetujui pengajuan ini ?')">SETUJUI</button>
+                        <button type="submit" class="btn btn-success btn-lg btn-block" formaction="ujiankomprehensif-sekprodi-setujui.php" onclick="return confirm('Menyetujui pengajuan ini ?')">SETUJUI</button>
                       </div>
                       <div class="col">
-                        <button type="button" data-toggle="modal" data-target="#modal-tolak"
-                          class="btn btn-danger btn-lg btn-block">TOLAK</button>
+                        <button type="button" data-toggle="modal" data-target="#modal-tolak" class="btn btn-danger btn-lg btn-block">TOLAK</button>
                       </div>
                     </div>
                     <!-- modal tolak -->
@@ -218,10 +216,7 @@ require('../config.php');
                           </div>
                           <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                            <button name="aksi" value="tolak" type="submit"
-                              formaction="ujiankomprehensif-sekprodi-tolak.php" class="btn btn-danger btn-sm"
-                              onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i
-                                class="fa fa-times"></i> Tolak</button>
+                            <button name="aksi" value="tolak" type="submit" formaction="ujiankomprehensif-sekprodi-tolak.php" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menolak pengajuan ini ?')"> <i class="fa fa-times"></i> Tolak</button>
                           </div>
                         </div>
                       </div>
@@ -236,8 +231,8 @@ require('../config.php');
       </div>
       <!-- Footer -->
       <?php
-            require('footer.php');
-            ?>
+      require('footer.php');
+      ?>
       <!-- Footer -->
     </div>
   </div>

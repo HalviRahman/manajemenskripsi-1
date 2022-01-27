@@ -80,6 +80,7 @@ require('../vendor/myfunc.php');
                                     <form action="ujiankompre-simpan.php" enctype="multipart/form-data" method="POST" id="my-form">
                                         <input type="hidden" name="bidang" value="<?= $bidang; ?>">
                                         <input type="hidden" name="judul" value="<?= $judul; ?>">
+                                        <!--
                                         <div class="form-group">
                                             <label>Surat Keterangan Lulus Ujian Seminar Proposal</label>
                                             <input type="file" name="sklsempro" class="form-control" accept=".pdf">
@@ -88,6 +89,7 @@ require('../vendor/myfunc.php');
                                                 <li>Format file PDF ukuran maksimal 1MB</li>
                                             </small>
                                         </div>
+-->
                                         <div class="form-group">
                                             <label>Upload Berkas File Proposal (revisi)</label>
                                             <input type="file" name="fileproposal" class="form-control" accept=".pdf">

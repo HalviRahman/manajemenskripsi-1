@@ -86,6 +86,7 @@ require('../vendor/myfunc.php');
                                         <input type="hidden" name="penguji2" value="<?= $penguji2; ?>">
                                         <input type="hidden" name="namamhs" value="<?= $nama; ?>">
                                         <input type="hidden" name="nimmhs" value="<?= $nim; ?>">
+                                        <!--
                                         <div class="form-group">
                                             <label>Surat Keterangan Lulus Ujian Proposal</label>
                                             <input type="file" name="sklproposal" class="form-control" accept=".pdf" required>
@@ -100,6 +101,7 @@ require('../vendor/myfunc.php');
                                                 <li>Format file PDF ukuran maksimal 1MB</li>
                                             </small>
                                         </div>
+                -->
                                         <div class="form-group">
                                             <label>Kartu Kendali Bukti Konsultasi</label>
                                             <input type="file" name="kartukendali" class="form-control" accept=".jpg,.jpeg" required>

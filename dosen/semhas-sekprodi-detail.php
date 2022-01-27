@@ -122,6 +122,7 @@ require('../config.php');
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
+                                            <!--
                                             <div class="col" align="center">
                                                 <label>SKL Seminar Proposal</label>
                                                 <br />
@@ -136,6 +137,7 @@ require('../config.php');
                                                 <br />
                                                 <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                             </div>
+-->
                                             <div class="col" align="center">
                                                 <label>Kartu Kendali</label>
                                                 <br />

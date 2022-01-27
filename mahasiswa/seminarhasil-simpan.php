@@ -19,21 +19,22 @@ $tanggal = date('Y-m-d H:i:s');
 
 //upload file
 $target_dir = "../lampiran/";
-$sklproposal = $target_dir . $nim . "-sklproposal" . ".pdf";
-$sklkompre = $target_dir . $nim . "-sklkompre" . ".pdf";
+//$sklproposal = $target_dir . $nim . "-sklproposal" . ".pdf";
+//$sklkompre = $target_dir . $nim . "-sklkompre" . ".pdf";
 $kartukendali = $target_dir . $nim . "-kartukendali" . ".jpg";
 $lembarpersetujuan = $target_dir . $nim . "-lembarpersetujuan" . ".jpg";
 $fileproposal = $target_dir . $nim . "-laporansemhas" . ".pdf";
 $uploadOk = 1;
 
 //ambil extensi file
-$extsklproposal = strtolower(pathinfo($sklproposal, PATHINFO_EXTENSION));
-$extsklkompre = strtolower(pathinfo($sklkompre, PATHINFO_EXTENSION));
+//$extsklproposal = strtolower(pathinfo($sklproposal, PATHINFO_EXTENSION));
+//$extsklkompre = strtolower(pathinfo($sklkompre, PATHINFO_EXTENSION));
 $extkartukendali = strtolower(pathinfo($kartukendali, PATHINFO_EXTENSION));
 $extlembarpersetujuan = strtolower(pathinfo($lembarpersetujuan, PATHINFO_EXTENSION));
 $extfileproposal = strtolower(pathinfo($fileproposal, PATHINFO_EXTENSION));
 
 // Check file size
+/*
 if ($_FILES["sklproposal"]["size"] > 1048576) {
     $uploadOk = 0;
     echo 'filesize persetujuan pembimbing over';
@@ -42,6 +43,7 @@ if ($_FILES["sklkompre"]["size"] > 1048576) {
     $uploadOk = 0;
     echo 'filesize khs over';
 }
+*/
 if ($_FILES["kartukendali"]["size"] > 1048576) {
     $uploadOk = 0;
     echo 'filesize kartukendali over';
@@ -56,6 +58,7 @@ if ($_FILES["fileproposal"]["size"] > 10485760) {
 }
 
 // check file extention
+/*
 if ($extsklproposal != "pdf") {
     $uploadOk = 0;
     echo 'ekstensi persetujuan pembimbing';
@@ -64,6 +67,7 @@ if ($extsklkompre != "pdf") {
     $uploadOk = 0;
     echo 'ekstensi persetujuan pembimbing';
 }
+*/
 if ($extkartukendali != "jpg" && $extkartukendali != "jpeg") {
     $uploadOk = 0;
     echo 'ekstensi kartu kendali';
@@ -94,14 +98,14 @@ if ($uploadOk == 0) {
     header("location:ujianproposal-isi.php?pesan=gagal");
     //echo 'something wrong';
 } else {
-    move_uploaded_file($_FILES["sklproposal"]["tmp_name"], $sklproposal);
-    move_uploaded_file($_FILES["sklkompre"]["tmp_name"], $sklkompre);
+    //move_uploaded_file($_FILES["sklproposal"]["tmp_name"], $sklproposal);
+    //move_uploaded_file($_FILES["sklkompre"]["tmp_name"], $sklkompre);
     move_uploaded_file($_FILES["kartukendali"]["tmp_name"], $kartukendali);
     move_uploaded_file($_FILES["lembarpersetujuan"]["tmp_name"], $lembarpersetujuan);
     move_uploaded_file($_FILES["fileproposal"]["tmp_name"], $fileproposal);
-    $stmt = $conn->prepare("INSERT INTO semhas (tanggal,nama,nim,bidang,judul,sklproposal,sklkompre,kartukendali,lembarpersetujuan,proposal,pembimbing,penguji1,penguji2,token)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param("ssssssssssssss", $tanggal, $nama, $nim, $bidang, $judul, $sklproposal, $sklkompre, $kartukendali, $lembarpersetujuan, $fileproposal, $pembimbing, $penguji1, $penguji2, $token);
+    $stmt = $conn->prepare("INSERT INTO semhas (tanggal,nama,nim,bidang,judul,kartukendali,lembarpersetujuan,proposal,pembimbing,penguji1,penguji2,token)
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("ssssssssssss", $tanggal, $nama, $nim, $bidang, $judul, $kartukendali, $lembarpersetujuan, $fileproposal, $pembimbing, $penguji1, $penguji2, $token);
     $stmt->execute();
 
     //kirim email notifikasi ke admin

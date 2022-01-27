@@ -95,11 +95,13 @@ require('../config.php');
                                             <input type="file" name="foto" class="form-control" accept=".jpg,.jpeg" required>
                                             <small style="color: red;">Format file JPG ukuran maksimal 1MB</small>
                                         </div>
+                                        <!--
                                         <div class="form-group">
                                             <label>Surat Keterangan Lulus Seminar Hasil</label>
                                             <input type="file" name="sklsemhas" class="form-control" accept=".pdf" required>
                                             <small style="color: red;">Download dari dashboard</small>
                                         </div>
+                -->
                                         <div class="form-group">
                                             <label>Bukti pembayaran semester terakhir</label>
                                             <input type="file" name="buktibayar" class="form-control" accept=".jpg,.jpeg" required>
@@ -156,8 +158,9 @@ require('../config.php');
                                             <label>Bukti cek plagiarisme</label>
                                             <input type="file" name="turnitin" class="form-control" accept=".pdf">
                                             <small style="color: red;">
+                                                <li>Halaman hasil pengecekan Turnitin</li>
                                                 <li>Format file PDF ukuran maksimal 1MB</li>
-                                                <li>Similarity maksimal 30%</li>
+                                                <li>Similarity maksimal 35%</li>
                                             </small>
                                         </div>
                                         <hr>

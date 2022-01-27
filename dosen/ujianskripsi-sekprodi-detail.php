@@ -180,6 +180,7 @@ require('../config.php');
                                                     <br />
                                                     <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                                 </div>
+                                                <!--
                                                 <div class="col" align="center">
                                                     <label>SKL Seminar Hasil</label>
                                                     <br />
@@ -187,6 +188,7 @@ require('../config.php');
                                                     <br />
                                                     <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                                 </div>
+                                                -->
                                                 <div class="col" align="center">
                                                     <label>Transkrip Nilai</label>
                                                     <br />

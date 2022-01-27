@@ -127,6 +127,7 @@ require('../vendor/myfunc.php');
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
+                                            <!--
                                             <div class="col" align="center">
                                                 <label>Surat Keterangan Lulus Seminar Proposal</label>
                                                 <br />
@@ -141,6 +142,7 @@ require('../vendor/myfunc.php');
                                                 <br />
                                                 <small style="color: blue">Klik pada gambar untuk membuka file</small>
                                             </div>
+-->
                                             <div class="col" align="center">
                                                 <label>File Proposal</label>
                                                 <br />

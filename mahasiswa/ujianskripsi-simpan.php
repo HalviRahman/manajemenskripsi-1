@@ -30,7 +30,7 @@ $penguji3 = $dhasil['penguji2'];
 $target_dir = "../lampiran/";
 $forma = $target_dir . $nim . "-forma" . ".pdf";
 $foto = $target_dir . $nim . "-foto" . ".jpg";
-$sklsemhas = $target_dir . $nim . "-sklsemhas" . ".pdf";
+//$sklsemhas = $target_dir . $nim . "-sklsemhas" . ".pdf";
 $buktibayar = $target_dir . $nim . "-buktibayar" . ".jpg";
 $khs = $target_dir . $nim . "-khs" . ".jpg";
 $transkripnilai = $target_dir . $nim . "-transkripnilai" . ".pdf";
@@ -45,7 +45,7 @@ $uploadOk = 1;
 //ambil extensi file
 $extforma = strtolower(pathinfo($forma, PATHINFO_EXTENSION));
 $extfoto = strtolower(pathinfo($foto, PATHINFO_EXTENSION));
-$extsklsemhas = strtolower(pathinfo($sklsemhas, PATHINFO_EXTENSION));
+//$extsklsemhas = strtolower(pathinfo($sklsemhas, PATHINFO_EXTENSION));
 $extbuktibayar = strtolower(pathinfo($buktibayar, PATHINFO_EXTENSION));
 $extkhs = strtolower(pathinfo($khs, PATHINFO_EXTENSION));
 $exttranskripnilai = strtolower(pathinfo($transkripnilai, PATHINFO_EXTENSION));
@@ -65,10 +65,12 @@ if ($extfoto != "jpg" && $extfoto != "jpeg") {
     $uploadOk = 0;
     echo 'ekstensi khs';
 }
+/*
 if ($extsklsemhas != "pdf") {
     $uploadOk = 0;
     echo 'ekstensi SKL Semhas salah';
 }
+*/
 if ($extbuktibayar != "jpg" && $extbuktibayar != "jpeg") {
     $uploadOk = 0;
     echo 'ekstensi buktibayar salah';
@@ -115,10 +117,12 @@ if ($_FILES["foto"]["size"] > 1048576) {
     $uploadOk = 0;
     echo 'filesize foto over';
 }
+/*
 if ($_FILES["sklsemhas"]["size"] > 1048576) {
     $uploadOk = 0;
     echo 'filesize sklsemhas over';
 }
+*/
 if ($_FILES["buktibayar"]["size"] > 1048576) {
     $uploadOk = 0;
     echo 'filesize bukti bayar over';
@@ -189,7 +193,7 @@ if ($uploadOk == 0) {
 } else {
     move_uploaded_file($_FILES["forma"]["tmp_name"], $forma);
     move_uploaded_file($_FILES["foto"]["tmp_name"], $foto);
-    move_uploaded_file($_FILES["sklsemhas"]["tmp_name"], $sklsemhas);
+    //move_uploaded_file($_FILES["sklsemhas"]["tmp_name"], $sklsemhas);
     move_uploaded_file($_FILES["buktibayar"]["tmp_name"], $buktibayar);
     move_uploaded_file($_FILES["khs"]["tmp_name"], $khs);
     move_uploaded_file($_FILES["transkripnilai"]["tmp_name"], $transkripnilai);
@@ -199,9 +203,9 @@ if ($uploadOk == 0) {
     move_uploaded_file($_FILES["alumni"]["tmp_name"], $alumni);
     move_uploaded_file($_FILES["skripsi"]["tmp_name"], $skripsi);
     move_uploaded_file($_FILES["turnitin"]["tmp_name"], $turnitin);
-    $stmt = $conn->prepare("INSERT INTO ujianskripsi (tanggal,nama,nim,bidang,judul,forma,foto,sklsemhas,buktibayar,khs,transkripnilai,ijazah,toefl,toafl,alumni,skripsi,turnitin,pembimbing,penguji1,penguji2,penguji3,token)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param("ssssssssssssssssssssss", $tanggal, $nama, $nim, $bidang, $judul, $forma, $foto, $sklsemhas, $buktibayar, $khs, $transkripnilai, $ijazah, $toefl, $toafl, $alumni, $skripsi, $turnitin, $pembimbing, $penguji1, $penguji2, $penguji3, $token);
+    $stmt = $conn->prepare("INSERT INTO ujianskripsi (tanggal,nama,nim,bidang,judul,forma,foto,buktibayar,khs,transkripnilai,ijazah,toefl,toafl,alumni,skripsi,turnitin,pembimbing,penguji1,penguji2,penguji3,token)
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("sssssssssssssssssssss", $tanggal, $nama, $nim, $bidang, $judul, $forma, $foto, $buktibayar, $khs, $transkripnilai, $ijazah, $toefl, $toafl, $alumni, $skripsi, $turnitin, $pembimbing, $penguji1, $penguji2, $penguji3, $token);
     $stmt->execute();
 
     //kirim email notifikasi ke admin
