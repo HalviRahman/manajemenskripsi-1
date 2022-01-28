@@ -76,6 +76,7 @@ require('../vendor/myfunc.php');
                                 $nama = $dhasil['nama'];
                                 $bidang = $dhasil['bidang'];
                                 $judul = $dhasil['judul'];
+                                $pembimbing = $dhasil['pembimbing'];
                                 $fileproposal = $dhasil['fileproposal'];
                                 ?>
                                 <div class="card-body">
@@ -118,6 +119,13 @@ require('../vendor/myfunc.php');
                                         <div class="form-group">
                                             <label>Dosen Pembimbing</label>
                                             <select name="pembimbing" class="form-control">
+                                                <?php
+                                                if (!is_null($pembimbing)) {
+                                                ?>
+                                                    <option value="<?= $pembimbing; ?>"><?= $pembimbing; ?></option>
+                                                <?php
+                                                }
+                                                ?>
                                                 <?php
                                                 $stmt = $conn->prepare("SELECT * FROM pengguna WHERE role='dosen'");
                                                 $stmt->execute();

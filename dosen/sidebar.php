@@ -31,7 +31,7 @@
     if ($_SESSION['jabatan'] == 'kaprodi' || $_SESSION['jabatan'] == 'sekprodi') {
     ?>
         <li class="nav-item">
-            <a class="nav-link" href="ujian.php" target="_blank">
+            <a class="nav-link" href="ujian.php">
                 <i class="fa fa-user"></i>
                 <span>Data Ujian Mahasiswa</span></a>
         </li>

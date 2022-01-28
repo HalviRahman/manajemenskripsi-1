@@ -79,6 +79,8 @@ require('../config.php');
                                 $khs = $dhasil['khs'];
                                 $proposal = $dhasil['proposal'];
                                 $pembimbing = $dhasil['pembimbing'];
+                                $penguji1 = $dhasil['penguji1'];
+                                $penguji2 = $dhasil['penguji2'];
                                 $token = $dhasil['token'];
                                 ?>
                                 <div class="card-body">
@@ -147,6 +149,13 @@ require('../config.php');
                                                 <label>Penguji Ketua</label>
                                                 <select name="penguji1" class="form-control">
                                                     <?php
+                                                    if (!is_null($penguji1)) {
+                                                    ?>
+                                                        <option value="<?= $penguji1; ?>"><?= $penguji1; ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    <?php
                                                     $stmt = $conn->prepare("SELECT * FROM pengguna WHERE role='dosen' and nama <> '$pembimbing'");
                                                     $stmt->execute();
                                                     $result = $stmt->get_result();
@@ -166,6 +175,13 @@ require('../config.php');
                                             <div class="col">
                                                 <label>Penguji Anggota</label>
                                                 <select name="penguji2" class="form-control">
+                                                    <?php
+                                                    if (!is_null($penguji2)) {
+                                                    ?>
+                                                        <option value="<?= $penguji2; ?>"><?= $penguji2; ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                     <?php
                                                     $stmt = $conn->prepare("SELECT * FROM pengguna WHERE role='dosen' and nama <> '$pembimbing'");
                                                     $stmt->execute();
