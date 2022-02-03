@@ -95,6 +95,20 @@ require('../vendor/myfunc.php');
                     } elseif ($pembimbing == $nama) {
                         $penguji = 'PEMBIMBING';
                     }
+
+                    if ($penguji1 == $nama) {
+                        $revisi = $revisi1;
+                        $nilai = $nilai1;
+                    } elseif ($penguji2 == $nama) {
+                        $revisi = $revisi2;
+                        $nilai = $nilai2;
+                    } elseif ($penguji3 == $nama) {
+                        $revisi = $revisi3;
+                        $nilai = $nilai3;
+                    } else {
+                        $revisi = $revisipembimbing;
+                        $nilai = $nilaipembimbing;
+                    }
                     ?>
                     <div class="row">
                         <div class="col-lg-12">
@@ -102,7 +116,6 @@ require('../vendor/myfunc.php');
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary"><?= $penguji; ?></h6>
                                 </div>
-
                                 <div class="card-body">
                                     <input type="hidden" class="form-control" value="<?= $nama; ?>" name="nama">
                                     <input type="hidden" class="form-control" value="<?= $nim; ?>" name="nim">
@@ -361,7 +374,7 @@ require('../vendor/myfunc.php');
                                                     <tbody>
                                                         <tr>
                                                             <td>
-                                                                <textarea name="revisi" class="form-control" rows="4"></textarea>
+                                                                <textarea name="revisi" class="form-control" rows="4"><?= $revisi; ?></textarea>
                                                             </td>
                                                         </tr>
                                                     </tbody>

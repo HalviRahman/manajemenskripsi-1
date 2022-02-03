@@ -90,6 +90,13 @@ require('../vendor/myfunc.php');
                     } elseif ($pembimbing == $nama) {
                         $penguji = 'PEMBIMBING';
                     }
+                    if ($penguji1 == $nama) {
+                        $revisi = $revisi1;
+                        $nilai = $nilai1;
+                    } else {
+                        $revisi = $revisi2;
+                        $nilai = $nilai2;
+                    }
                     ?>
                     <div class="row">
                         <div class="col-lg-12">
@@ -194,11 +201,20 @@ require('../vendor/myfunc.php');
                                             <div class="col">
                                                 <label>Keputusan</label>
                                                 <select class="form-control" name="keputusan">
+                                                    <?php
+                                                    if (!empty($nilai)) {
+                                                    ?>
+                                                        <option value="<?= $nilai; ?>"><?= $nilai; ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                     <option value="DITERIMA" selected>DITERIMA</option>
                                                     <option value="DITOLAK">DITOLAK</option>
                                                 </select>
                                                 <label>Revisi</label>
-                                                <textarea name="revisi" class="form-control" rows="5"></textarea>
+                                                <textarea name="revisi" class="form-control" rows="5"><?php if (isset($revisi)) {
+                                                                                                            echo $revisi;
+                                                                                                        } ?></textarea>
                                             </div>
                                         </div>
                                         <br />

@@ -7,9 +7,9 @@ $jabatan = $_SESSION['jabatan'];
 $nama = $_SESSION['nama'];
 $nip = $_SESSION['nim'];
 if ($role != 'dosen') {
-    if ($jabatan != 'kaprodi' || $jabatan != 'sekprodi') {
-        header("location:../deauth.php");
-    }
+  if ($jabatan != 'kaprodi' || $jabatan != 'sekprodi') {
+    header("location:../deauth.php");
+  }
 }
 require('../config.php');
 require('../vendor/myfunc.php');
@@ -35,15 +35,15 @@ require('../vendor/myfunc.php');
   <div id="wrapper">
     <!-- Sidebar -->
     <?php
-        require('sidebar.php');
-        ?>
+    require('sidebar.php');
+    ?>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
         <!-- TopBar -->
         <?php
-                require('topbar.php');
-                ?>
+        require('topbar.php');
+        ?>
         <!-- Topbar -->
 
         <!-- Container Fluid-->
@@ -57,51 +57,64 @@ require('../vendor/myfunc.php');
           </div>
 
           <?php
-                    $no = 1;
-                    $token = $_GET['token'];
-                    // ambil data pengajuan judul
-                    $stmt = $conn->prepare("SELECT * FROM semhas WHERE token=?");
-                    $stmt->bind_param("s", $token);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    $dhasil = $result->fetch_assoc();
-                    $nimmhs = $dhasil['nim'];
-                    $namamhs = $dhasil['nama'];
-                    $bidang = $dhasil['bidang'];
-                    $judul = $dhasil['judul'];
-                    $jadwalujian = $dhasil['jadwalujian'];
-                    $ruang = $dhasil['ruang'];
-                    $linkzoom = $dhasil['linkzoom'];
-                    $fileproposal = $dhasil['proposal'];
-                    $pembimbing = $dhasil['pembimbing'];
-                    $sklproposal = $dhasil['sklproposal'];
-                    $sklkompre = $dhasil['sklkompre'];
-                    $proposal = $dhasil['proposal'];
-                    $penguji1 = $dhasil['penguji1'];
-                    $nilai1 = $dhasil['nilai1'];
-                    $revisi1 = $dhasil['revisi1'];
-                    $penguji2 = $dhasil['penguji2'];
-                    $nilai2 = $dhasil['nilai2'];
-                    $revisi2 = $dhasil['revisi2'];
-                    $token = $dhasil['token'];
-                    if ($penguji1 == $nama) {
-                        $penguji = 'KETUA PENGUJI';
-                    } elseif ($penguji2 == $nama) {
-                        $penguji = 'PENGUJI ANGGOTA';
-                    } elseif ($pembimbing == $nama) {
-                        $penguji = 'PEMBIMBING';
-                    }
-                    ?>
+          $no = 1;
+          $token = $_GET['token'];
+          // ambil data pengajuan judul
+          $stmt = $conn->prepare("SELECT * FROM semhas WHERE token=?");
+          $stmt->bind_param("s", $token);
+          $stmt->execute();
+          $result = $stmt->get_result();
+          $dhasil = $result->fetch_assoc();
+          $nimmhs = $dhasil['nim'];
+          $namamhs = $dhasil['nama'];
+          $bidang = $dhasil['bidang'];
+          $judul = $dhasil['judul'];
+          $jadwalujian = $dhasil['jadwalujian'];
+          $ruang = $dhasil['ruang'];
+          $linkzoom = $dhasil['linkzoom'];
+          $fileproposal = $dhasil['proposal'];
+          $pembimbing = $dhasil['pembimbing'];
+          $revisipembimbing = $dhasil['revisipembimbing'];
+          $nilaipembimbing = $dhasil['nilaipembimbing'];
+          $sklproposal = $dhasil['sklproposal'];
+          $sklkompre = $dhasil['sklkompre'];
+          $proposal = $dhasil['proposal'];
+          $penguji1 = $dhasil['penguji1'];
+          $nilai1 = $dhasil['nilai1'];
+          $revisi1 = $dhasil['revisi1'];
+          $penguji2 = $dhasil['penguji2'];
+          $nilai2 = $dhasil['nilai2'];
+          $revisi2 = $dhasil['revisi2'];
+          $token = $dhasil['token'];
+          if ($penguji1 == $nama) {
+            $penguji = 'KETUA PENGUJI';
+          } elseif ($penguji2 == $nama) {
+            $penguji = 'PENGUJI ANGGOTA';
+          } elseif ($pembimbing == $nama) {
+            $penguji = 'PEMBIMBING';
+          }
+
+          if ($penguji1 == $nama) {
+            $revisi = $revisi1;
+            $nilai = $nilai1;
+          } elseif ($penguji2 == $nama) {
+            $revisi = $revisi2;
+            $nilai = $nilai2;
+          } else {
+            $revisi = $revisipembimbing;
+            $nilai = $nilaipembimbing;
+          }
+          ?>
           <?php
-                    if (isset($_GET['pesan'])) {
-                        $pesan = $_GET['pesan'];
-                    ?>
-          <div class="alert alert-danger">
-            <strong>ERROR!!</strong> nilai bilangan bulat diantara 0 s/d 100.
-          </div>
+          if (isset($_GET['pesan'])) {
+            $pesan = $_GET['pesan'];
+          ?>
+            <div class="alert alert-danger">
+              <strong>ERROR!!</strong> nilai bilangan bulat diantara 0 s/d 100.
+            </div>
           <?php
-                    }
-                    ?>
+          }
+          ?>
           <div class="row">
             <div class="col-lg-12">
               <div class="card mb-12">
@@ -162,8 +175,7 @@ require('../vendor/myfunc.php');
                     <div class="col">
                       <div class="form-group">
                         <label>Jadwal Ujian</label>
-                        <input type="text" class="form-control" name="jadwalujian"
-                          value="<?= tgljam_indo($jadwalujian); ?>" readonly>
+                        <input type="text" class="form-control" name="jadwalujian" value="<?= tgljam_indo($jadwalujian); ?>" readonly>
                       </div>
                     </div>
                     <div class="col">
@@ -175,20 +187,18 @@ require('../vendor/myfunc.php');
                           </div>
                         </div>
                         <?php
-                                                if ($ruang == 'Zoom') {
-                                                ?>
-                        <div class="col">
-                          <div class="form-group">
-                            <label>Link</label>
-                            <input type="text" class="form-control" name="linkzoom" value="<?= urldecode($linkzoom); ?>"
-                              readonly>
-                            <a href="<?= urldecode($linkzoom); ?>" type="button" class="btn btn-success"
-                              target="_blank">BUKA</a>
+                        if ($ruang == 'Zoom') {
+                        ?>
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Link</label>
+                              <input type="text" class="form-control" name="linkzoom" value="<?= urldecode($linkzoom); ?>" readonly>
+                              <a href="<?= urldecode($linkzoom); ?>" type="button" class="btn btn-success" target="_blank">BUKA</a>
+                            </div>
                           </div>
-                        </div>
                         <?php
-                                                }
-                                                ?>
+                        }
+                        ?>
                       </div>
                     </div>
                   </div>
@@ -197,8 +207,7 @@ require('../vendor/myfunc.php');
                       <div class="col" align="center">
                         <label>File Proposal</label>
                         <br />
-                        <a href="<?= $proposal; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px"
-                            class="img-thumbnail" name="fileproposal"></a>
+                        <a href="<?= $proposal; ?>" target="_blank"><img src="../img/pdficon.jpg" width="100px" class="img-thumbnail" name="fileproposal"></a>
                         <br />
                         <small style="color: blue">Klik pada gambar untuk membuka file</small>
                       </div>
@@ -251,17 +260,16 @@ require('../vendor/myfunc.php');
                     <div class="row">
                       <div class="col">
                         <label>Nilai</label>
-                        <input type="number" name="nilai" class="form-control" required>
+                        <input type="number" name="nilai" class="form-control" value="<?= $nilai; ?>" required>
                         <label>Revisi</label>
-                        <textarea name="revisi" class="form-control" rows="5"></textarea>
+                        <textarea name="revisi" class="form-control" rows="5"><?= $revisi; ?></textarea>
                       </div>
                     </div>
                     <br />
                     <input type="hidden" name="token" value="<?= $token; ?>">
                     <input type="hidden" name="penguji" value="<?= $penguji; ?>">
                     <div class="col">
-                      <button type="submit" class="btn btn-success btn-lg btn-block" formaction="semhas-dosen-nilai.php"
-                        onclick="return confirm('Menyimpan Nilai ?')">NILAI</button>
+                      <button type="submit" class="btn btn-success btn-lg btn-block" formaction="semhas-dosen-nilai.php" onclick="return confirm('Menyimpan Nilai ?')">NILAI</button>
                     </div>
                   </form>
                 </div>
@@ -273,8 +281,8 @@ require('../vendor/myfunc.php');
       </div>
       <!-- Footer -->
       <?php
-            require('footer.php');
-            ?>
+      require('footer.php');
+      ?>
       <!-- Footer -->
     </div>
   </div>

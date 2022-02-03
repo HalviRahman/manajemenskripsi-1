@@ -175,7 +175,7 @@ require('../vendor/myfunc.php');
                                                 $namamhs = $dhasil['nama'];
                                                 $judul = $dhasil['judul'];
                                                 $jadwalujian = $dhasil['jadwalujian'];
-                                                $ujian = 'Seminar Hasil';
+                                                $ujian = 'Skripsi';
                                                 $tokenmhs = $dhasil['token'];
                                             ?>
                                                 <tr>
@@ -186,7 +186,7 @@ require('../vendor/myfunc.php');
                                                     <td><?= $nimmhs; ?></td>
                                                     <td><?= $judul; ?></td>
                                                     <td class="text-center">
-                                                        <a href="semhas-dosen-detail.php?token=<?= $tokenmhs; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                                        <a href="ujianskripsi-dosen-detail.php?token=<?= $tokenmhs; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php

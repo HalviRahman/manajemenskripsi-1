@@ -86,6 +86,14 @@ require('../vendor/myfunc.php');
                     } elseif ($penguji2 == $nama) {
                         $penguji = 'PENGUJI ANGGOTA';
                     }
+
+                    if ($penguji1 == $nama) {
+                        $revisi = $revisi1;
+                        $nilai = $nilai1;
+                    } else {
+                        $revisi = $revisi2;
+                        $nilai = $nilai2;
+                    }
                     ?>
                     <?php
                     if (isset($_GET['pesan'])) {
@@ -228,9 +236,11 @@ require('../vendor/myfunc.php');
                                         <div class="row">
                                             <div class="col">
                                                 <label>Nilai (0 - 100)</label>
-                                                <input type="number" name="nilai" class="form-control" required>
+                                                <input type="number" name="nilai" class="form-control" value="<?= $nilai; ?>" required>
                                                 <label>Revisi</label>
-                                                <textarea name="revisi" class="form-control" rows="5"></textarea>
+                                                <textarea name="revisi" class="form-control" rows="5"><?php if (isset($revisi)) {
+                                                                                                            echo $revisi;
+                                                                                                        } ?></textarea>
                                             </div>
                                         </div>
                                         <br />
