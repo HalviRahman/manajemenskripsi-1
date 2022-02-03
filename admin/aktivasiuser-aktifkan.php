@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 $userid = $_SESSION['userid'];
 global $userid;
 $role = $_SESSION['role'];

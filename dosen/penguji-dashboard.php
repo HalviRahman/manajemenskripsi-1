@@ -72,6 +72,7 @@ require('../vendor/myfunc.php');
                                                 <th class="text-center">Nama</th>
                                                 <th class="text-center">NIM</th>
                                                 <th class="text-center">Judul</th>
+                                                <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -88,6 +89,7 @@ require('../vendor/myfunc.php');
                                                 $judul = $dhasil['judul'];
                                                 $jadwalujian = $dhasil['jadwalujian'];
                                                 $ujian = 'Seminar Proposal';
+                                                $tokenmhs = $dhasil['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -96,6 +98,9 @@ require('../vendor/myfunc.php');
                                                     <td><?= $namamhs; ?></td>
                                                     <td><?= $nimmhs; ?></td>
                                                     <td><?= $judul; ?></td>
+                                                    <td class="text-center">
+                                                        <a href="ujianproposal-dosen-detail.php?token=<?= $tokenmhs; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                                    </td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -113,6 +118,7 @@ require('../vendor/myfunc.php');
                                                 $judul = $dhasil['judul'];
                                                 $jadwalujian = $dhasil['jadwalujian'];
                                                 $ujian = 'Ujian Komprehensif';
+                                                $tokenmhs = $dhasil['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -121,6 +127,9 @@ require('../vendor/myfunc.php');
                                                     <td><?= $namamhs; ?></td>
                                                     <td><?= $nimmhs; ?></td>
                                                     <td><?= $judul; ?></td>
+                                                    <td class="text-center">
+                                                        <a href="ujiankompre-dosen-detail.php?token=<?= $tokenmhs; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                                    </td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -138,6 +147,7 @@ require('../vendor/myfunc.php');
                                                 $judul = $dhasil['judul'];
                                                 $jadwalujian = $dhasil['jadwalujian'];
                                                 $ujian = 'Seminar Hasil';
+                                                $tokenmhs = $dhasil['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -146,6 +156,9 @@ require('../vendor/myfunc.php');
                                                     <td><?= $namamhs; ?></td>
                                                     <td><?= $nimmhs; ?></td>
                                                     <td><?= $judul; ?></td>
+                                                    <td class="text-center">
+                                                        <a href="semhas-dosen-detail.php?token=<?= $tokenmhs; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                                    </td>
                                                 </tr>
                                             <?php
                                                 $no++;
@@ -163,6 +176,7 @@ require('../vendor/myfunc.php');
                                                 $judul = $dhasil['judul'];
                                                 $jadwalujian = $dhasil['jadwalujian'];
                                                 $ujian = 'Seminar Hasil';
+                                                $tokenmhs = $dhasil['token'];
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
@@ -171,6 +185,9 @@ require('../vendor/myfunc.php');
                                                     <td><?= $namamhs; ?></td>
                                                     <td><?= $nimmhs; ?></td>
                                                     <td><?= $judul; ?></td>
+                                                    <td class="text-center">
+                                                        <a href="semhas-dosen-detail.php?token=<?= $tokenmhs; ?>" class="btn btn-info" type="button"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                                    </td>
                                                 </tr>
                                             <?php
                                                 $no++;
