@@ -157,9 +157,13 @@ require('../vendor/myfunc.php');
                           $ruang = $dhasil['ruang'];
                           $pembimbing = $dhasil['pembimbing'];
                           $verifikasifile = $dhasil['verifikasifile'];
+                          $nilai2 = $dhasil['nilai2'];
+                          $nilai1 = $dhasil['nilai1'];
+                          $nilaipembimbing = $dhasil['nilaipembimbing'];
                           $status = $dhasil['status'];
                           $token = $dhasil['token'];
                           $keterangan = $dhasil['keterangan'];
+
                       ?>
                           <tr>
                             <td><?= $no; ?></td>
@@ -217,8 +221,12 @@ require('../vendor/myfunc.php');
                               } elseif ($verifikasifile == 1 and $status == 4) {
                               ?>
                                 <a href="ujianproposal-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                                <a href="ujianproposal-cetak.php?token=<?= $token; ?>" class="btn btn-success" type="button" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
+                                <?php
+                                if ($nilai1 == 'DITERIMA' and $nilai2 == 'DITERIMA' and $nilaipembimbing == 'DITERIMA') {
+                                ?>
+                                  <a href="ujianproposal-cetak.php?token=<?= $token; ?>" class="btn btn-success" type="button" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
                               <?php
+                                }
                               }
                               ?>
                             </td>
@@ -242,6 +250,8 @@ require('../vendor/myfunc.php');
                           $ruang = $dhasil['ruang'];
                           $pembimbing = $dhasil['pembimbing'];
                           $verifikasifile = $dhasil['verifikasifile'];
+                          $nilai1 = $dhasil['nilai1'];
+                          $nilai2 = $dhasil['nilai2'];
                           $status = $dhasil['status'];
                           $token = $dhasil['token'];
                           $keterangan = $dhasil['keterangan'];
@@ -300,8 +310,12 @@ require('../vendor/myfunc.php');
                               } elseif ($verifikasifile == 1 and $status == 4) {
                               ?>
                                 <a href="ujiankompre-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                                <a href="ujiankompre-cetak.php?token=<?= $token; ?>" class="btn btn-success" type="button" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
+                                <?php
+                                if ($nilai1 > 0 and $nilai2 > 0) {
+                                ?>
+                                  <a href="ujiankompre-cetak.php?token=<?= $token; ?>" class="btn btn-success" type="button" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
                               <?php
+                                }
                               }
                               ?>
                             </td>
@@ -325,6 +339,9 @@ require('../vendor/myfunc.php');
                           $ruang = $dhasil['ruang'];
                           $pembimbing = $dhasil['pembimbing'];
                           $verifikasifile = $dhasil['verifikasifile'];
+                          $nilai1 = $dhasil['nilai1'];
+                          $nilai2 = $dhasil['nilai2'];
+                          $nilaipembimbing = $dhasil['nilaipembimbing'];
                           $status = $dhasil['status'];
                           $token = $dhasil['token'];
                           $keterangan = $dhasil['keterangan'];
@@ -383,8 +400,12 @@ require('../vendor/myfunc.php');
                               } elseif ($verifikasifile == 1 and $status == 4) {
                               ?>
                                 <a href="seminarhasil-detail.php?token=<?= $token; ?>" class="btn btn-success" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                                <a href="seminarhasil-cetak.php?token=<?= $token; ?>" class="btn btn-success" type="button" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
+                                <?php
+                                if ($nilai1 > 0 and $nilai2 > 0 and $nilaipembimbing > 0) {
+                                ?>
+                                  <a href="seminarhasil-cetak.php?token=<?= $token; ?>" class="btn btn-success" type="button" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
                               <?php
+                                }
                               }
                               ?>
                             </td>
@@ -408,6 +429,10 @@ require('../vendor/myfunc.php');
                           $ruang = $dhasil['ruang'];
                           $pembimbing = $dhasil['pembimbing'];
                           $verifikasifile = $dhasil['verifikasifile'];
+                          $nilai1 = $dhasil['nilai1'];
+                          $nilai2 = $dhasil['nilai2'];
+                          $nilai3 = $dhasil['nilai3'];
+                          $nilaipembimbing = $dhasil['nilaipem$nilaipembimbing'];
                           $status = $dhasil['status'];
                           $token = $dhasil['token'];
                           $keterangan = $dhasil['keterangan'];
